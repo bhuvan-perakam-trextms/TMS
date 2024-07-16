@@ -1,0 +1,56 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-book"></i> Cash History</h5>
+
+
+            <kendo-grid [kendoGridBinding]="cashHistories" [filterable]="filterMode" [groupable]="false"
+                [pageable]="true" [sortable]="true" [pageSize]="10" [group]="group">
+
+                <ng-template kendoGridToolbarTemplate>
+                    <span><strong>Group By</strong></span>
+                    <kendo-dropdownlist [data]="groupByFields" [(ngModel)]="selectedGroupByField"
+                        (valueChange)="onGroupChange($event)" textField="name" valueField="code" style="width: 200px;">
+                    </kendo-dropdownlist>
+
+                    <kendo-grid-spacer></kendo-grid-spacer>
+                    <button kendoGridExcelCommand type="button">
+                        Export to Excel
+                    </button>
+                    <button kendoGridPDFCommand>Export to PDF</button>
+                </ng-template>
+
+                <kendo-grid-column field="Entity" title="Entity" [width]="150" [hidden]="selectedGroupByField.code !== 'Entity'">
+                </kendo-grid-column>
+                <kendo-grid-column field="BankAccountNumber" title="Account Number"
+                    [hidden]="selectedGroupByField.code !== 'BankAccountNumber'"> </kendo-grid-column>
+                <kendo-grid-column field="Currency" title="Currency"
+                    [hidden]="selectedGroupByField.code !== 'Currency'"> </kendo-grid-column>
+                <kendo-grid-column field="Market" title="Market" [hidden]="selectedGroupByField.code !== 'Market'">
+                </kendo-grid-column>
+                <kendo-grid-column field="Metadata" title="Metadata"
+                    [hidden]="selectedGroupByField.code !== 'Metadata'"> </kendo-grid-column>
+                <kendo-grid-column field="BalanceType" title="Type"> </kendo-grid-column>
+                <kendo-grid-column field="Day1" title="T1"> </kendo-grid-column>
+                <kendo-grid-column field="Day2" title="T2"> </kendo-grid-column>
+                <kendo-grid-column field="Day3" title="T3"> </kendo-grid-column>
+                <kendo-grid-column field="Day4" title="T4"> </kendo-grid-column>
+                <kendo-grid-column field="Day5" title="T5"> </kendo-grid-column>
+                <kendo-grid-column field="Day6" title="T6"> </kendo-grid-column>
+                <kendo-grid-column field="Day7" title="T7"> </kendo-grid-column>
+
+                <ng-template kendoGridDetailTemplate let-dataItem let-rowIndex="rowIndex"
+                    [kendoGridDetailTemplateShowIf]="showOnlyDeltaSepcificDetails">
+                    <kendo-grid [data]="dataItem.Delta" kendoGridFocusable>
+                        <kendo-grid-column field="Type" title="Type" [width]="120">
+                        </kendo-grid-column>
+                        <kendo-grid-column field="Amount" title="Amount" format="c">
+                        </kendo-grid-column>
+                        <kendo-grid-column field="Reason" title="Reason">
+                        </kendo-grid-column>
+                    </kendo-grid>
+                </ng-template>
+            </kendo-grid>
+        </div>
+    </div>
+</div>

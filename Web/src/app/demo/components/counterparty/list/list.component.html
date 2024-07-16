@@ -1,0 +1,111 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
+
+            <p-panel [toggleable]="true" [collapsed]="false" [style]="{'margin': '1%'}">
+                <ng-template pTemplate="header">
+                    <div class="flex align-items-center gap-2">
+                        <span class="font-bold">
+                            Counterparty A
+                        </span>
+                    </div>
+                </ng-template>
+                <div class="col-12">
+                    <div class="grid">
+                        <div class="col-12 align-items-center justify-content-center">
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Legal Name</b>
+                                </label>
+                                <span class="col-9 mb-2 md:col-9 md:mb-2">Legal Counterparty A</span>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Alias Name</b>
+                                </label>
+                                <span class="col-9 mb-2 md:col-9 md:mb-2">Dummy Alias Name</span>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-3 mb-2 md:col-3 md:mb-2">
+                                    <b>Type</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-multiSelect inputId="multiselect" [options]="types" [(ngModel)]="selectedType"
+                                        optionLabel="name" [filter]="true">
+                                    </p-multiSelect>
+                                </div>
+                            </div>
+
+                            <p-divider layout="horizontal" align="left">
+                                <span class="p-tag">Legal Entity Identifiers</span>
+                            </p-divider>
+                            <div class="field grid">
+                                <label class="col-3 mb-2 md:col-3 md:mb-2">
+                                    <b>Treasury</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-multiSelect inputId="multiselect" [options]="treasuryTypes"
+                                        [(ngModel)]="selectedTreasuryType" optionLabel="name" [filter]="true">
+                                    </p-multiSelect>
+                                </div>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-3 mb-2 md:col-3 md:mb-2">
+                                    <b>Other Identifiers</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-checkbox value="Accounts Payable" inputId="accountsPayable" />
+                                    <label for="accountsPayable" class="ml-2 md:ml-2">Accounts Payable</label>
+                                </div>
+                            </div>
+
+                            <p-divider layout="horizontal" align="left">
+                                <span class="p-tag">Contact Details</span>
+                            </p-divider>
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Address</b>
+                                </label>
+                                <span class="col-9 mb-2 md:col-9 md:mb-2">
+                                    <p>Address - 1, City, Town</p>
+                                    <p>Pincode</p>
+                                </span>
+                            </div>
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>EmailId</b>
+                                </label>
+                                <span class="col-9 mb-2 md:col-9 md:mb-2">
+                                    emailId-CounterpartyA.com
+                                </span>
+                            </div>
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Telephone</b>
+                                </label>
+                                <span class="col-9 mb-2 md:col-9 md:mb-2">
+                                    +44-123456789
+                                </span>
+                            </div>
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Key Contact</b>
+                                </label>
+                                <span class="col-9 mb-2 md:col-9 md:mb-2">
+                                    KeyContact-counterPartyA.com
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p-panel>
+
+        </div>
+    </div>
+</div>

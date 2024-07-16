@@ -1,0 +1,49 @@
+{
+	"data": [
+		{
+			"id": 1000,
+			"bankCode": "f230fh0g3",
+			"entity": "HSBC US - Newyork",
+			"bankImage": "hsbc-logo.png",
+			"accountNumber": "1234567890",
+            "amount": 50000,
+            "currency": "USD"
+		},
+		{
+			"id": 1001,
+			"bankCode": "nvklal433",
+			"entity": "BBVA",
+			"bankImage": "bbva-logo.png",
+			"accountNumber": "0987654321",
+			"amount": 15000,
+			"currency": "EUR"
+		},
+		{
+			"id": 1002,
+			"bankCode": "zz21cz3c1",
+			"entity": "Barclays - UK - Glassgow",
+			"bankImage": "barclays-logo.png",
+			"accountNumber": "1234567890",
+			"amount": 10000,
+			"currency": "GBP"
+		},
+		{
+			"id": "1003",
+			"code": "244wgerg2",
+			"entity": "Chase - UK - Belfast",
+			"bankImage": "chase-logo.png",
+			"accountNumber": "1234567890",
+			"amount": 40000,
+			"currency": "GBP"
+		},
+		{
+			"id": 1004,
+			"code": "h456wer53",
+			"entity": "HSBC UK - London",
+			"bankImage": "hsbc-logo.png",
+			"accountNumber": "1234567890",
+			"amount": 25000,
+			"currency": "GBP"
+		}
+	]
+}

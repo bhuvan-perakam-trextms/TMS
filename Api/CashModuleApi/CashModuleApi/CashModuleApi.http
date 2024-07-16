@@ -1,0 +1,6 @@
+@CashModuleApi_HostAddress = http://localhost:5098
+
+GET {{CashModuleApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

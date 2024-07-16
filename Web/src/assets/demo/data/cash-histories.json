@@ -1,0 +1,226 @@
+{
+    "data": [
+        {
+            "Entity": "HSBC",
+            "BankAccountNumber": "789456321",
+            "Currency": "EUR",
+            "Market": "FTSE",
+            "Metadata": "Europe Account",
+            "BalanceType": "Opening",
+            "Day1": 100000,
+            "Day2": 50000,
+            "Day3": 100000,
+            "Day4": 50000,
+            "Day5": 10000,
+            "Day6": 7000,
+            "Day7": 8000
+        },
+        {
+            "Entity": "HSBC",
+            "BankAccountNumber": "789456321",
+            "Currency": "EUR",
+            "Market": "FTSE",
+            "Metadata": "Europe Account",
+            "BalanceType": "Closing",
+            "Day1": 100000,
+            "Day2": 50000,
+            "Day3": 100000,
+            "Day4": 50000,
+            "Day5": 10000,
+            "Day6": 7000,
+            "Day7": 8000
+        },
+        {
+            "Entity": "HSBC",
+            "BankAccountNumber": "789456321",
+            "Currency": "EUR",
+            "Market": "FTSE",
+            "Metadata": "Europe Account",
+            "BalanceType": "Delta",
+            "Day1": 0,
+            "Day2": 0,
+            "Day3": 0,
+            "Day4": 0,
+            "Day5": 0,
+            "Day6": 0,
+            "Day7": 0,
+            "Delta": []
+        },
+        {
+            "Entity": "Bank of America",
+            "BankAccountNumber": "123456789",
+            "Currency": "USD",
+            "Market": "NYSE",
+            "Metadata": "US Account",
+            "BalanceType": "Opening",
+            "Day1": 200000,
+            "Day2": 150000,
+            "Day3": 180000,
+            "Day4": 160000,
+            "Day5": 140000,
+            "Day6": 130000,
+            "Day7": 120000
+        },
+        {
+            "Entity": "Bank of America",
+            "BankAccountNumber": "123456789",
+            "Currency": "USD",
+            "Market": "NYSE",
+            "Metadata": "US Account",
+            "BalanceType": "Closing",
+            "Day1": 210000,
+            "Day2": 160000,
+            "Day3": 190000,
+            "Day4": 170000,
+            "Day5": 150000,
+            "Day6": 140000,
+            "Day7": 130000
+        },
+        {
+            "Entity": "Bank of America",
+            "BankAccountNumber": "123456789",
+            "Currency": "USD",
+            "Market": "NYSE",
+            "Metadata": "US Account",
+            "BalanceType": "Delta",
+            "Day1": 10000,
+            "Day2": 10000,
+            "Day3": 10000,
+            "Day4": 10000,
+            "Day5": 10000,
+            "Day6": 10000,
+            "Day7": 10000,
+            "Delta": [
+                {
+                    "Entity": "Bank of America",
+                    "BankAccountNumber": "123456789",
+                    "Amount": "5000",
+                    "Type": "Debit",
+                    "Reason": "Contractor Payments"
+                },
+                {
+                    "Entity": "Bank of America",
+                    "BankAccountNumber": "123456789",
+                    "Amount": "5000",
+                    "Type": "Debit",
+                    "Reason": "Consultant Fees"
+                }
+            ]
+        },
+        {
+            "Entity": "Deutsche Bank",
+            "BankAccountNumber": "987654321",
+            "Currency": "EUR",
+            "Market": "DAX",
+            "Metadata": "Germany Account",
+            "BalanceType": "Opening",
+            "Day1": 50000,
+            "Day2": 60000,
+            "Day3": 55000,
+            "Day4": 58000,
+            "Day5": 57000,
+            "Day6": 59000,
+            "Day7": 61000
+        },
+        {
+            "Entity": "Deutsche Bank",
+            "BankAccountNumber": "987654321",
+            "Currency": "EUR",
+            "Market": "DAX",
+            "Metadata": "Germany Account",
+            "BalanceType": "Closing",
+            "Day1": 52000,
+            "Day2": 61000,
+            "Day3": 56000,
+            "Day4": 59000,
+            "Day5": 58000,
+            "Day6": 60000,
+            "Day7": 62000
+        },
+        {
+            "Entity": "Deutsche Bank",
+            "BankAccountNumber": "987654321",
+            "Currency": "EUR",
+            "Market": "DAX",
+            "Metadata": "Germany Account",
+            "BalanceType": "Delta",
+            "Day1": 2000,
+            "Day2": 1000,
+            "Day3": 1000,
+            "Day4": 1000,
+            "Day5": 1000,
+            "Day6": 1000,
+            "Day7": 1000,
+            "Delta": [
+                {
+                    "Entity": "Deutsche Bank",
+                    "BankAccountNumber": "987654321",
+                    "Amount": "2000",
+                    "Type": "Debit",
+                    "Reason": "Operational Costs"
+                }
+            ]
+        },
+        {
+            "Entity": "Barclays",
+            "BankAccountNumber": "456789123",
+            "Currency": "GBP",
+            "Market": "FTSE",
+            "Metadata": "UK Account",
+            "BalanceType": "Opening",
+            "Day1": 80000,
+            "Day2": 75000,
+            "Day3": 77000,
+            "Day4": 78000,
+            "Day5": 76000,
+            "Day6": 74000,
+            "Day7": 73000
+        },
+        {
+            "Entity": "Barclays",
+            "BankAccountNumber": "456789123",
+            "Currency": "GBP",
+            "Market": "FTSE",
+            "Metadata": "UK Account",
+            "BalanceType": "Closing",
+            "Day1": 82000,
+            "Day2": 76000,
+            "Day3": 78000,
+            "Day4": 79000,
+            "Day5": 77000,
+            "Day6": 75000,
+            "Day7": 74000
+        },
+        {
+            "Entity": "Barclays",
+            "BankAccountNumber": "456789123",
+            "Currency": "GBP",
+            "Market": "FTSE",
+            "Metadata": "UK Account",
+            "BalanceType": "Delta",
+            "Day1": 2000,
+            "Day2": 1000,
+            "Day3": 1000,
+            "Day4": 1000,
+            "Day5": 1000,
+            "Day6": 1000,
+            "Day7": 1000,
+            "Delta": [
+                {
+                    "Entity": "Barclays",
+                    "BankAccountNumber": "456789123",
+                    "Amount": "1000",
+                    "Type": "Debit",
+                    "Reason": "Consultant Fees"
+                },
+                {
+                    "Entity": "Barclays",
+                    "BankAccountNumber": "456789123",
+                    "Amount": "1000",
+                    "Type": "Debit",
+                    "Reason": "Consultant Fees"
+                }
+            ]
+        }
+    ]
+}

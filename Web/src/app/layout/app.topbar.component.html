@@ -1,0 +1,25 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img src="assets/layout/images/TREX_Logo.png" alt="logo">
+        <span>TREX</span>
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <div style="margin-top: 1rem;">
+            <span class="block text-500 font-medium mb-3">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
+        </div>
+       
+        <button class="p-link layout-topbar-button" (click)="signOut()">
+            <i class="pi pi-sign-out"></i>
+            <span>Sign out</span>
+        </button>
+    </div>
+</div>

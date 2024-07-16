@@ -1,0 +1,99 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-shield"></i> CounterParty Rules</h5>
+
+            <p-panel [style]="{'margin': '1%'}" header="Rule Setup">
+                <!-- <ng-template pTemplate="header">
+                    <div class="flex align-items-center gap-2">
+                        <span class="font-bold">
+                            Counterparty Rule - A
+                        </span>
+                    </div>
+                </ng-template> -->
+                <div class="col-12">
+                    <div class="grid">
+                        <div class="col-12 align-items-center justify-content-center">
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Rule Type</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-dropdown inputId="multiselect" [options]="rules" [(ngModel)]="selectedRule"
+                                        optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Currency</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-dropdown inputId="multiselect" [options]="currencies" [(ngModel)]="selectedCurrency"
+                                        optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Market</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-dropdown inputId="multiselect" [options]="markets" [(ngModel)]="selectedMarket"
+                                        optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>Entity</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-dropdown inputId="multiselect" [options]="entities" [(ngModel)]="selectedEntity"
+                                        optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                            </div>
+                            
+
+
+                            <p-divider layout="horizontal" align="left">
+                                <span class="p-tag">Default Payment Instructions</span>
+                            </p-divider>
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>From Bank Account</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-dropdown inputId="multiselect" [options]="fromAccounts" [(ngModel)]="selectedFromAccount"
+                                        optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="field grid">
+                                <label class="col-2 mb-2 md:col-3 md:mb-2">
+                                    <b>To Bank Account</b>
+                                </label>
+                                <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                    <p-dropdown inputId="multiselect" [options]="toAccounts" [(ngModel)]="selectedToAccount"
+                                        optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p-panel>
+
+            <p-panel [style]="{'margin': '1%'}" header="Existing Rules">
+
+            </p-panel>
+
+        </div>
+    </div>
+</div>
