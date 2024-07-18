@@ -15,5 +15,6 @@ export interface BankAccountDetail
     alias: string;
     metadata: string;
     trexid: string;
+    isActive: boolean;
     balance: BackAccountBalance;
 }

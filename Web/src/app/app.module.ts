@@ -15,6 +15,7 @@ import { PhotoService } from './demo/service/photo.service';
 import { BankService } from './demo/service/bank.service';
 import { UserService } from './demo/service/user.service';
 import { CashHistoryService } from './demo/service/cashhistory.service';
+import { MapToArrayPipe } from './demo/pipes/map-to-array.pipe';
 
 
 

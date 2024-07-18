@@ -26,6 +26,10 @@ import { MultiSelectModule } from "primeng/multiselect";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 
+import { GridModule } from '@progress/kendo-angular-grid';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { MapToArrayPipe } from '../../pipes/map-to-array.pipe';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -50,9 +54,12 @@ import { InputTextModule } from "primeng/inputtext";
         //CascadeSelectModule,
         //MultiSelectModule,
         //InputTextareaModule,
-        //InputTextModule
+        //InputTextModule,
+
+        GridModule,
+        DropDownsModule
     ],
-    declarations: [BankaccountsComponent],
+    declarations: [BankaccountsComponent, MapToArrayPipe],
 })
 export class BankAccountsModule { }
 

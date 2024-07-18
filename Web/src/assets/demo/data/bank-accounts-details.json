@@ -14,6 +14,7 @@
             "alias": "Company Primary Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-1234567",
+            "isActive": true,
             "balance": {
                 "openingBalance": "1000000.00",
                 "closingBalance": "900000.00",
@@ -42,6 +43,7 @@
             "alias": "Company Secondary Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-2345678",
+            "isActive": true,
             "balance": {
                 "openingBalance": "800000.00",
                 "closingBalance": "700000.00",
@@ -70,6 +72,7 @@
             "alias": "Company Tertiary Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-3456789",
+            "isActive": true,
             "balance": {
                 "openingBalance": "500000.00",
                 "closingBalance": "450000.00",
@@ -96,6 +99,7 @@
             "alias": "Company Primary Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-4567890",
+            "isActive": true,
             "balance": {
                 "openingBalance": "800000.00",
                 "closingBalance": "750000.00",
@@ -122,6 +126,7 @@
             "alias": "Company Secondary Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-5678901",
+            "isActive": true,
             "balance": {
                 "openingBalance": "600000.00",
                 "closingBalance": "550000.00",
@@ -150,6 +155,7 @@
             "alias": "Company Tertiary Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-6789012",
+            "isActive": true,
             "balance": {
                 "openingBalance": "400000.00",
                 "closingBalance": "380000.00",
@@ -176,6 +182,7 @@
             "alias": "Company European Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-7890123",
+            "isActive": true,
             "balance": {
                 "openingBalance": "1200000.00",
                 "closingBalance": "1150000.00",
@@ -203,6 +210,7 @@
             "alias": "Company Spanish Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-8901234",
+            "isActive": true,
             "balance": {
                 "openingBalance": "900000.00",
                 "closingBalance": "880000.00",
@@ -230,6 +238,7 @@
             "alias": "Company Iberian Corporate Account",
             "metadata": "Company Account",
             "trexId": "Trex-9012345",
+            "isActive": true,
             "balance": {
                 "openingBalance": "1500000.00",
                 "closingBalance": "1480000.00",
