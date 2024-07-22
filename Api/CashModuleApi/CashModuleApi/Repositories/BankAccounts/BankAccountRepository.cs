@@ -16,33 +16,36 @@ namespace CashModuleApi.Repositories.BankAccounts
             using (var conn = new NpgsqlConnection(_connectionString))
             {
                 conn.Open();
-                string storedProcedure = "upsert_bank_account";
+                string storedProcedure = "UpsertBankAccount";
                 using (var cmd = new NpgsqlCommand(storedProcedure, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("p_id", account.Id);
-                    cmd.Parameters.AddWithValue("p_account_name", account.AccountName);
-                    cmd.Parameters.AddWithValue("p_iban", account.IBAN);
-                    cmd.Parameters.AddWithValue("p_account_number", account.AccountNumber);
-                    cmd.Parameters.AddWithValue("p_swift_bic", account.SwiftBIC);
-                    cmd.Parameters.AddWithValue("p_currency", account.Currency);
-                    cmd.Parameters.AddWithValue("p_market", account.Market);
-                    cmd.Parameters.AddWithValue("p_entity", account.Entity);
-                    cmd.Parameters.AddWithValue("p_alias", account.Alias);
-                    cmd.Parameters.AddWithValue("p_metadata", account.Metadata);
-                    cmd.Parameters.AddWithValue("p_trexid", account.Trexid);
+                    cmd.Parameters.AddWithValue("Id", account.Id);
+                    cmd.Parameters.AddWithValue("AccountName", account.AccountName);
+                    cmd.Parameters.AddWithValue("Iban", account.IBAN);
+                    cmd.Parameters.AddWithValue("AccountNumber", account.AccountNumber);
+                    cmd.Parameters.AddWithValue("SwiftBic", account.SwiftBIC);
+                    cmd.Parameters.AddWithValue("Currency", account.Currency);
+                    cmd.Parameters.AddWithValue("Market", account.Market);
+                    cmd.Parameters.AddWithValue("Entity", account.Entity);
+                    cmd.Parameters.AddWithValue("Alias", account.Alias);
+                    cmd.Parameters.AddWithValue("Metadata", account.Metadata);
+                    cmd.Parameters.AddWithValue("Trexid", account.Trexid);
+                    cmd.Parameters.AddWithValue("IsActive", account.IsActive);
+                    cmd.Parameters.AddWithValue("ImageUrl", account.ImageUrl);  
+
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public List<BankAccount> GetAllBankAccounts()
+        public IEnumerable<BankAccount> GetAllBankAccounts()
         {
             var bankAccounts = new List<BankAccount>();
             using (var conn = new NpgsqlConnection(_connectionString))
             {
                 conn.Open();
-                string selectQuery = "SELECT * FROM bank_accounts;";
+                string selectQuery = "SELECT * FROM BankAccounts;";
                 using (var cmd = new NpgsqlCommand(selectQuery, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -59,7 +62,10 @@ namespace CashModuleApi.Repositories.BankAccounts
                             entity: reader.GetString(7),
                             alias: reader.GetString(8),
                             metadata: reader.GetString(9),
-                            trexid: reader.GetString(10)
+                            trexid: reader.GetString(10),
+                            isActive: reader.GetBoolean(11),
+                            imageUrl: reader.GetString(12)  
+
                         );
                         bankAccounts.Add(account);
                     }
@@ -70,7 +76,7 @@ namespace CashModuleApi.Repositories.BankAccounts
 
         public BankAccount GetBankAccountById(int id)
         {
-            var query = "SELECT Id, AccountName, IBAN, AccountNumber, SwiftBIC, Currency, Market, Entity, Alias, Metadata, Trexid FROM BankAccounts WHERE Id = @Id";
+            var query = "SELECT Id, AccountName, IBAN, AccountNumber, SwiftBIC, Currency, Market, Entity, Alias, Metadata, Trexid, IsActive FROM BankAccounts WHERE Id = @Id";
 
             using (var connection = new NpgsqlConnection(_connectionString))
             {
@@ -94,7 +100,10 @@ namespace CashModuleApi.Repositories.BankAccounts
                                 entity: reader.GetString(7),
                                 alias: reader.GetString(8),
                                 metadata: reader.GetString(9),
-                                trexid: reader.GetString(10)
+                                trexid: reader.GetString(10),
+                                isActive: reader.GetBoolean(11),
+                                imageUrl: reader.GetString(12) 
+
                             );
                         }
                     }

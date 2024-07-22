@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("TMSConnection");
 
 builder.Services.AddSingleton<IBankAccountRepository>(provider => new BankAccountRepository(connectionString));
 builder.Services.AddSingleton<IBankAccountService, BankAccountServices>();

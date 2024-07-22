@@ -10,5 +10,8 @@ CREATE TABLE IF NOT EXISTS BankAccounts (
     Entity TEXT NOT NULL,
     Alias TEXT NOT NULL,
     Metadata TEXT[],
-    Trexid TEXT[]
+    Trexid TEXT[],
+    IsActive BOOL,
+    ImageUrl TEXT[]
+
 );

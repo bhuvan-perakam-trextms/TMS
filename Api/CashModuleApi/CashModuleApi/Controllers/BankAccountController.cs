@@ -8,11 +8,11 @@ namespace CashModuleApi.Controllers
     [ApiController]
     public class BankAccountController : ControllerBase
     {
-        private readonly IBankAccountService Service;
+        private readonly IBankAccountService _bankAccountService;
 
-        public BankAccountController(IBankAccountService service)
+        public BankAccountController(IBankAccountService bankAccountService)
         {
-            Service = service;
+            _bankAccountService = bankAccountService;
         }
 
         [HttpGet]
@@ -20,7 +20,7 @@ namespace CashModuleApi.Controllers
         {
             try
             {
-                var accounts = Service.GetAllBankAccounts();
+                var accounts = _bankAccountService.GetAllBankAccounts();
                 return Ok(accounts);
             }
             catch (Exception ex)
@@ -34,12 +34,10 @@ namespace CashModuleApi.Controllers
         {
             try
             {
-                var account = Service.GetBankAccountById(id);
+                var account = _bankAccountService.GetBankAccountById(id);
 
                 if (account == null)
-                {
                     return NotFound($"Bank account with ID {id} not found");
-                }
 
                 return Ok(account);
             }
@@ -75,13 +73,13 @@ namespace CashModuleApi.Controllers
                 if (account == null || account.Id != id)
                     return BadRequest("Invalid bank account object");
 
-                var existingAccount = Service.GetBankAccountById(id);
+                var existingAccount = _bankAccountService.GetBankAccountById(id);
                 if (existingAccount == null)
                 {
                     return NotFound($"Bank account with ID {id} not found");
                 }
 
-                Service.CreateOrUpdateBankAccount(account);
+                _bankAccountService.CreateOrUpdateBankAccount(account);
                 return NoContent();
             }
             catch (Exception ex)
