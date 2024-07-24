@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
@@ -27,6 +27,11 @@ import { CheckboxModule } from "primeng/checkbox";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 import { RulesComponent } from './rules/rules.component';
+import { AccountComponent } from './account/account.component';
+import { RippleModule } from 'primeng/ripple';
+import { ConfirmationService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -49,17 +54,32 @@ import { RulesComponent } from './rules/rules.component';
         ChipsModule,
         DropdownModule,
         MultiSelectModule,
-        CheckboxModule
+        CheckboxModule,
         //InputMaskModule,
         //InputNumberModule,
         //CascadeSelectModule,
         //MultiSelectModule,
         //InputTextareaModule,
-        //InputTextModule
+        //InputTextModule,
+        ButtonModule,
+        RippleModule,
+		DialogModule,
+        ConfirmDialogModule,
+        
+    
+
+        
+	
+	
+		
+      
+
+        
     ],
     declarations: [
         ListComponent,
-        RulesComponent
+        RulesComponent,
+        AccountComponent
     ],
 })
 export class CounterpartyModule { }
