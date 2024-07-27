@@ -43,4 +43,33 @@ export class BankaccountsComponent implements OnInit, OnDestroy {
     }
     return Object.entries(upcomingPayments).map(([key, value]) => ({ key, value }));
   }
+
+  getCurrencyClass(Currency)
+  {
+    let baseClass = " pi pi-fw";
+    switch (Currency) {
+      case 'GBP':
+        return `${baseClass} pi-pound`;
+      case 'EUR':
+        return `${baseClass} pi-euro`;
+      case 'USD':
+        return `${baseClass} pi-dollar`;
+      default:
+        return `${baseClass} pi-money-bill`;  // Fallback image if needed
+    }
+  }
+
+  getCountryImageUrl(value)
+  {
+    let basePath = "assets/demo/images/country/";
+    switch (value) {
+      case 'United Kingdom':
+        return `${basePath}uk-logo.png`;
+      case 'Spain':
+        return `${basePath}spain-logo.png`;
+      default:
+        return 'path/to/default-image.png';  // Fallback image if needed
+    }
+  }
+
 }
