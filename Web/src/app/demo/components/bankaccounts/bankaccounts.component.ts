@@ -11,13 +11,9 @@ export class BankaccountsComponent implements OnInit, OnDestroy {
   group = [{ field: "entity" }]
   bankAccountDetails: BankAccountDetail[] = []
   filterMode: FilterableSettings = "menu";
-  displayOverlay: boolean = true;
+  displayOverlay: boolean = false;
   selectedBankAccountDetail: any;
 
-  showDialog() {
-      this.displayOverlay = true;
-  }
-  
   constructor(private bankService: BankService) {
   }
 
