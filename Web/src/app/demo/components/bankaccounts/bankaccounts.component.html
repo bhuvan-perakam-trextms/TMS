@@ -3,638 +3,238 @@
         <div class="card p-fluid">
             <h5><i class="pi pi-fw pi-building"></i> Bank Accounts</h5>
 
+            <!-- <div class="card flex justify-content-center">
+                <p-button (onClick)="showDialog()" label="Show" />
+                <a href="javascript:void(0)" (click)="handlePopup(null)"> Show</a>
+                <p-dialog header="Edit Profile" [modal]="true" [(visible)]="displayOverlay" [style]="{ width: '25rem' }">
+                    <span class="p-text-secondary block mb-5">Update your information.</span>
+                    <div class="flex align-items-center gap-3 mb-3">
+                        <label for="username" class="font-semibold w-6rem">Username</label>
+                        <input pInputText id="username" class="flex-auto" autocomplete="off" />
+                    </div>
+                    <div class="flex align-items-center gap-3 mb-5">
+                        <label for="email" class="font-semibold w-6rem">Email</label>
+                        <input pInputText id="email" class="flex-auto" autocomplete="off" />
+                    </div>
+                    <div class="flex justify-content-end gap-2">
+                        <p-button label="Cancel" severity="secondary" (onClick)="displayOverlay = false" />
+                        <p-button label="Save" (onClick)="displayOverlay = false" />
+                    </div>
+                </p-dialog>
+            </div> -->
+
             <kendo-grid [kendoGridBinding]="bankAccountDetails" [filterable]="filterMode" [groupable]="false"
-            [pageable]="true" [sortable]="false" [pageSize]="10" [group]="group">
+                [pageable]="true" [sortable]="false" [pageSize]="10" [group]="group">
 
-            <kendo-grid-column field="entity" title="Entity" [hidden]="true">
-                <ng-template kendoGridGroupHeaderTemplate let-group let-field="field" let-value="value">
-                    <div class="flex align-items-center gap-2">
-                        <img src="{{group.items[0].imageUrl}}" class="shadow-4" alt="{{group.items[0].entity}}" width="30">
-                        <span class="font-bold">
-                            {{value}}
-                        </span>
-                    </div>
-                 </ng-template>
-            </kendo-grid-column>
-            <kendo-grid-column field="accountName" title="Account Name">
-            </kendo-grid-column>
-            <kendo-grid-column field="currency" title="Currency">
-            </kendo-grid-column>
-            <kendo-grid-column field="market" title="Market">
-            </kendo-grid-column>
-            <kendo-grid-column field="country" title="Country">
-            </kendo-grid-column>
-
-            <ng-template kendoGridDetailTemplate let-dataItem let-rowIndex="rowIndex">
-                <p-panel [collapsed]="false" [style]="{'margin': '0.5%'}">
-                    <div class="col-12">
-                        <div class="grid">
-                            <div class="col-7 p-fluid">
-                                <div class="field grid">
-                                    <label htmlFor="accountName" class="col-12 mb-2 md:col-3 md:mb-0">
-                                        <b>Account Name</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="accountName" type="text" [disabled]="true"
-                                            [value]= "dataItem.accountName"/>
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="iban" class="col-12 mb-2 md:col-3 md:mb-0">
-                                        <b>IBAN</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="iban" type="text" [disabled]="true" [value]="dataItem.iban" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="accountNumber" class="col-12 mb-2 md:col-3 md:mb-0"><b>Account
-                                            Number</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="accountNumber" type="text" [disabled]="true"
-                                            [value]="dataItem.accountNumber" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="swift_bic" class="col-12 mb-2 md:col-3 md:mb-0"><b>SWIFT</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="swift_bic" type="text" [disabled]="true"
-                                            [value]="dataItem.swift_bic" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="currency" class="col-12 mb-2 md:col-3 md:mb-0"><b>Currency</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="currency" type="text" [disabled]="true" [value]="dataItem.currency"/>
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="market" class="col-12 mb-2 md:col-3 md:mb-0"><b>Market</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="market" type="text" [disabled]="true" [value]="dataItem.market" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="entity" class="col-12 mb-2 md:col-3 md:mb-0"><b>Country</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="entity" type="text" [disabled]="true" [value]="dataItem.country" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="alias" class="col-12 mb-2 md:col-3 md:mb-0"><b>Alias</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="alias" type="text" [disabled]="true"
-                                            [value]="dataItem.alias" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="metadata" class="col-12 mb-2 md:col-3 md:mb-0"><b>Metadata</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="metadata" type="text" [disabled]="true"
-                                            [value]="dataItem.metadata" />
-                                    </div>
-                                </div>
-                                <div class="field grid">
-                                    <label htmlFor="trexid" class="col-12 mb-2 md:col-3 md:mb-0"><b>TrexId</b></label>
-                                    <div class="col-12 md:col-9">
-                                        <input pInputText id="trexid" type="text" [disabled]="true"
-                                            [value]="dataItem.trexId" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-1">
-                                <p-divider layout="vertical">
-                                    <i class="pi pi-fw pi-bolt"></i>
-                                </p-divider>
-                            </div>
-                            <div class="col-4 align-items-center justify-content-center">
-                                <div class="field grid">
-                                    <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                        <b>Opening Balance</b>
-                                    </label>
-                                    <span class="col-7 mb-2 md:col-6 md:mb-0">{{dataItem.balance.openingBalance}}</span>
-                                </div>
-                                <div class="field grid">
-                                    <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                        <b>Live Balance</b>
-                                    </label>
-                                    <span class="col-7 mb-2 md:col-6 md:mb-0">{{dataItem.balance.closingBalance}}</span>
-                                </div>
-                                <div class="field grid">
-                                    <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                        <b>Net Movement</b>
-                                    </label>
-                                    <ul>
-                                        <li>
-                                            <div class="field grid">
-                                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                    <b>Inflow</b>
-                                                </label>
-                                                <span class="col-7 mb-2 md:col-6 md:mb-0">{{dataItem.balance.inflow}}</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="field grid">
-                                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                    <b>Outflow</b>
-                                                </label>
-                                                <span class="col-7 mb-2 md:col-6 md:mb-0">{{dataItem.balance.outflow}}</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <p-divider layout="horizontal" align="center">
-                                    <span class="p-tag">Averages</span>
-                                </p-divider>
-                                <div class="field grid">
-                                    <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                        <b>Weekly Balance</b>
-                                    </label>
-                                    <span class="col-7 mb-2 md:col-6 md:mb-0">{{dataItem.balance.weeklyBalance}}</span>
-                                </div>
-    
-                                <div class="field grid">
-                                    <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                        <b>Monthly Balance</b>
-                                    </label>
-                                    <span class="col-7 mb-2 md:col-6 md:mb-0">{{dataItem.balance.monthlyBalance}}</span>
-                                </div>
-    
-                                <p-divider layout="horizontal" align="center">
-                                    <span class="p-tag">Upcoming Payments</span>
-                                </p-divider>
-    
-                                <p class="line-height-3 m-0" *ngFor="let upcomingPayment of dataItem.balance.upcomingPayments | mapToArray">
-                                    {{upcomingPayment}}
-                                    <b>{{upcomingPayment.key}} - </b> {{upcomingPayment.value}} 
-                                </p>
-                            </div>
+                <kendo-grid-column field="entity" title="Entity" [hidden]="true">
+                    <ng-template kendoGridGroupHeaderTemplate let-group let-field="field" let-value="value">
+                        <div class="flex align-items-center gap-2">
+                            <img src="{{group.items[0].imageUrl}}" class="shadow-4" alt="{{group.items[0].entity}}"
+                                width="30">
+                            <span class="font-bold">
+                                {{value}}
+                            </span>
                         </div>
-                    </div>
-                    
-                </p-panel>
-            </ng-template>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="accountName" title="Account Name">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <a href="javascript:void(0)" (click)="handlePopup(dataItem)"> {{dataItem.accountName}}
+                        </a>
+                    </ng-template>
+                </kendo-grid-column>
+            
+                <kendo-grid-column field="currency" title="Currency">
+                </kendo-grid-column>
+                <kendo-grid-column field="market" title="Market">
+                </kendo-grid-column>
+                <kendo-grid-column field="country" title="Country">
+                </kendo-grid-column>
+                
 
             </kendo-grid>
 
-            <p-panel [toggleable]="true" [collapsed]="true" [style]="{'margin': '1%'}">
+            <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{width: '70vw'}"
+                [breakpoints]="{'960px': '75vw'}">
                 <ng-template pTemplate="header">
                     <div class="flex align-items-center gap-2">
-                        <img src="assets/demo/images/bank/hsbc-logo.png" class="shadow-4" alt="HSBC London UK"
-                            width="30">
-                        <span class="font-bold">
-                            HSBC London UK
+                        <img src="{{selectedBankAccountDetail?.imageUrl}}" class="shadow-4"
+                            alt="{{selectedBankAccountDetail?.entity}}" width="30">
+                        <span> {{selectedBankAccountDetail?.entity}} - {{selectedBankAccountDetail?.accountName}}
                         </span>
                     </div>
                 </ng-template>
+
+                <!-- <p-panel [collapsed]="false" [style]="{'margin': '0.5%'}"> -->
                 <div class="col-12">
-                    <div class="grid">
-                        <div class="col-7 p-fluid">
+                    <div class="grid m-0 p-0">
+                        <div class="col-12 m-0 p-0" >
+                            <p-divider align="left" class="m-0 p-0">
+                                <i class="pi pi-fw pi-sun"></i>
+                                <b>Details</b>
+                                <i class="pi pi-fw pi-sun"></i>
+                            </p-divider>
                             <div class="field grid">
-                                <label htmlFor="accountName" class="col-12 mb-2 md:col-3 md:mb-0">
-                                    <b>Account Name</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="accountName" type="text" [disabled]="true"
-                                        value="HSBC London Corporate Account" />
+                                <div class="col-6">
+                                    <div class="field grid">
+                                        <label htmlFor="accountName" class="col-4 md:col-4 mb-0 md:mb-0">
+                                            <b>Account Name</b>
+                                        </label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="accountName" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.accountName" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="accountNumber" class="col-4 md:col-4 mb-0 md:mb-0"><b>Account
+                                                Number</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="accountNumber" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.accountNumber" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="iban" class="col-4 md:col-4 mb-0 md:mb-0">
+                                            <b>IBAN</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="iban" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.iban" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="swift_bic"
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>SWIFT</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="swift_bic" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.swiftCode" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="metadata"
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>Metadata</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="metadata" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.metadata" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="field grid">
+                                        <label htmlFor="currency"
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>Currency</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="currency" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.currency" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="market"
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>Market</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="market" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.market" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="entity"
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="entity" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.country" />
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="alias" class="col-4 md:col-4 mb-0 md:mb-0"><b>Alias</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="alias" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.alias" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="field grid">
+                                        <label htmlFor="trexid"
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>TrexId</b></label>
+                                        <div class="col-7 md:col-7">
+                                            <input pInputText id="trexid" type="text" [disabled]="true"
+                                                [value]="selectedBankAccountDetail?.trexId" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="field grid">
-                                <label htmlFor="iban" class="col-12 mb-2 md:col-3 md:mb-0">
-                                    <b>IBAN</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="iban" type="text" [disabled]="true" value="123456789" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="accountNumber" class="col-12 mb-2 md:col-3 md:mb-0"><b>Account
-                                        Number</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="accountNumber" type="text" [disabled]="true"
-                                        value="987654321" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="swift_bic" class="col-12 mb-2 md:col-3 md:mb-0"><b>SWIFT\BIC</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="swift_bic" type="text" [disabled]="true"
-                                        value="SWIFT-12345" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="currency" class="col-12 mb-2 md:col-3 md:mb-0"><b>Currency</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="currency" type="text" [disabled]="true" value="GBP" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="market" class="col-12 mb-2 md:col-3 md:mb-0"><b>Market</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="market" type="text" [disabled]="true" value="Market ABC" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="entity" class="col-12 mb-2 md:col-3 md:mb-0"><b>Entity</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="entity" type="text" [disabled]="true" value="UK Entity" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="alias" class="col-12 mb-2 md:col-3 md:mb-0"><b>Alias</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="alias" type="text" [disabled]="true"
-                                        value="Corporate Account for finances" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="metadata" class="col-12 mb-2 md:col-3 md:mb-0"><b>Metadata</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="metadata" type="text" [disabled]="true"
-                                        value="TAG 1, TAG 2, TAG 3" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="trexid" class="col-12 mb-2 md:col-3 md:mb-0"><b>TrexId</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="trexid" type="text" [disabled]="true"
-                                        value="TREX 1, TREX 2, TREX 3" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <p-divider layout="vertical">
+                            <p-divider align="left" style="margin: 3%;">
                                 <i class="pi pi-fw pi-bolt"></i>
+                                <b>Balances</b>
                             </p-divider>
-                        </div>
-                        <div class="col-4 align-items-center justify-content-center">
                             <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Opening Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£10,000,00.00</span>
+                                <div class="col-6">
+                                    <div class="field grid">
+                                        <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Opening Balance</b></label>
+                                        <span
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.openingBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                    </div>
+                                    <div class="field grid">
+                                        <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Weekly Balance</b></label>
+                                        <span
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.weeklyBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                    </div>
+                                    <div class="field grid">
+                                        <label class="col-4 mb-7 md:col-4 md:mb-0"><b>Inflow</b></label>
+                                        <span
+                                            class="col-4 mb-7 md:col-4 md:mb-0">{{selectedBankAccountDetail?.balance.inflow  | currency:selectedBankAccountDetail?.currency}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="field grid">
+                                        <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Closing Balance</b></label>
+                                        <span
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.closingBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                    </div>
+                                    <div class="field grid">
+                                        <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Monthly Balance</b></label>
+                                        <span
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.monthlyBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                    </div>
+
+                                    <div class="field grid">
+                                        <label class="col-4 mb-7 md:col-4 md:mb-0"><b>Outflow</b></label>
+                                        <span
+                                            class="col-4 mb-7 md:col-4 md:mb-0">{{selectedBankAccountDetail?.balance.outflow  | currency:selectedBankAccountDetail?.currency}}</span>
+                                    </div>
+                                </div>
                             </div>
+
+                            <p-divider align="left" style="margin: 3%;">
+                                <i class="pi pi-fw pi-money-bill"></i>
+                                <b>Upcoming Payments</b>
+                            </p-divider>
                             <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Live Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>
-                                        Net Movement
-                                    </b>
-                                </label>
-                                <ul>
-                                    <li>
+                                <div class="col-7">
+                                    <div class="field grid" *ngFor="let payment of getUpcomingPaymentsArray(selectedBankAccountDetail?.balance.upcomingPayments)">
+                                            <label class="col-4 mb-7 md:col-4 md:mb-0"><b>{{ payment.key }}</b></label>
+                                            <span class="col-4 mb-7 md:col-4 md:mb-0">{{ payment.value  | currency:selectedBankAccountDetail?.currency }}</span>
+                                    </div>
+
+                                    <ng-template #noPayments>
                                         <div class="field grid">
-                                            <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                <b>Inflow</b>
-                                            </label>
-                                            <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000.00</span>
+                                            <p>No upcoming payments.</p>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="field grid">
-                                            <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                <b>Outflow</b>
-                                            </label>
-                                            <span class="col-7 mb-2 md:col-6 md:mb-0">£10,000.00</span>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    </ng-template>
+                                </div>
                             </div>
-                            <p-divider layout="horizontal" align="center">
-                                <span class="p-tag">Averages</span>
-                            </p-divider>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Weekly Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Monthly Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-
-                            <p-divider layout="horizontal" align="center">
-                                <span class="p-tag">Upcoming Payments</span>
-                            </p-divider>
-
-                            <p class="line-height-3 m-0"><b>ABC Vendor Payment - </b> £50,000</p>
                         </div>
                     </div>
                 </div>
-                
-            </p-panel>
-            <p-panel [toggleable]="true"  [collapsed]="true" [style]="{'margin': '1%'}">
-                <ng-template pTemplate="header">
-                    <div class="flex align-items-center gap-2">
-                        <img src="assets/demo/images/bank/barclays-logo.png" class="shadow-4" alt="Barclays London UK"
-                            width="30">
-                        <span class="font-bold">
-                            Barclays London UK
-                        </span>
-                    </div>
+
+                <ng-template pTemplate="footer">
+                    <button pButton icon="pi pi-check" (click)="displayOverlay=false" label="Ok"
+                        class="p-button-outlined"></button>
                 </ng-template>
-                <div class="col-12">
-                    <div class="grid">
-                        <div class="col-7 p-fluid">
-                            <div class="field grid">
-                                <label htmlFor="accountName" class="col-12 mb-2 md:col-3 md:mb-0">
-                                    <b>Account Name</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="accountName" type="text" [disabled]="true"
-                                        value="Barclays London Corporate Account" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="iban" class="col-12 mb-2 md:col-3 md:mb-0">
-                                    <b>IBAN</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="iban" type="text" [disabled]="true" value="123456789" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="accountNumber" class="col-12 mb-2 md:col-3 md:mb-0"><b>Account
-                                        Number</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="accountNumber" type="text" [disabled]="true"
-                                        value="987654321" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="swift_bic" class="col-12 mb-2 md:col-3 md:mb-0"><b>SWIFT\BIC</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="swift_bic" type="text" [disabled]="true"
-                                        value="SWIFT-12345" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="currency" class="col-12 mb-2 md:col-3 md:mb-0"><b>Currency</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="currency" type="text" [disabled]="true" value="GBP" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="market" class="col-12 mb-2 md:col-3 md:mb-0"><b>Market</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="market" type="text" [disabled]="true" value="Market ABC" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="entity" class="col-12 mb-2 md:col-3 md:mb-0"><b>Entity</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="entity" type="text" [disabled]="true" value="UK Entity" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="alias" class="col-12 mb-2 md:col-3 md:mb-0"><b>Alias</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="alias" type="text" [disabled]="true"
-                                        value="Corporate Account for finances" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="metadata" class="col-12 mb-2 md:col-3 md:mb-0"><b>Metadata</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="metadata" type="text" [disabled]="true"
-                                        value="TAG 1, TAG 2, TAG 3" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="trexid" class="col-12 mb-2 md:col-3 md:mb-0"><b>TrexId</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="trexid" type="text" [disabled]="true"
-                                        value="TREX 1, TREX 2, TREX 3" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <p-divider layout="vertical">
-                                <i class="pi pi-fw pi-bolt"></i>
-                            </p-divider>
-                        </div>
-                        <div class="col-4 align-items-center justify-content-center">
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Opening Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£10,000,00.00</span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Live Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>
-                                        Net Movement
-                                    </b>
-                                </label>
-                                <ul>
-                                    <li>
-                                        <div class="field grid">
-                                            <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                <b>Inflow</b>
-                                            </label>
-                                            <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000.00</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="field grid">
-                                            <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                <b>Outflow</b>
-                                            </label>
-                                            <span class="col-7 mb-2 md:col-6 md:mb-0">£10,000.00</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <p-divider layout="horizontal" align="center">
-                                <span class="p-tag">Averages</span>
-                            </p-divider>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Weekly Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
+            </p-dialog>
 
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Monthly Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-
-                            <p-divider layout="horizontal" align="center" [style]="{'margin': '2%'}">
-                                <span class="p-tag">Upcoming Payments</span>
-                            </p-divider>
-
-                            <p class="line-height-3 m-0"><b>ABC Vendor Payment - </b> £50,000</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </p-panel>
-
-            <p-panel [toggleable]="true"  [collapsed]="true" [style]="{'margin': '1%'}">
-                <ng-template pTemplate="header">
-                    <div class="flex align-items-center gap-2">
-                        <img src="assets/demo/images/bank/bbva-logo.png" class="shadow-4" alt="Barclays London UK"
-                            width="30">
-                        <span class="font-bold">
-                            BBVA Málaga España
-                        </span>
-                    </div>
-                </ng-template>
-                <div class="col-12">
-                    <div class="grid">
-                        <div class="col-7 p-fluid">
-                            <div class="field grid">
-                                <label htmlFor="accountName" class="col-12 mb-2 md:col-3 md:mb-0">
-                                    <b>Account Name</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="accountName" type="text" [disabled]="true"
-                                        value="BBVA Málaga Corporate Account" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="iban" class="col-12 mb-2 md:col-3 md:mb-0">
-                                    <b>IBAN</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="iban" type="text" [disabled]="true" value="123456789" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="accountNumber" class="col-12 mb-2 md:col-3 md:mb-0"><b>Account
-                                        Number</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="accountNumber" type="text" [disabled]="true"
-                                        value="987654321" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="swift_bic" class="col-12 mb-2 md:col-3 md:mb-0"><b>SWIFT\BIC</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="swift_bic" type="text" [disabled]="true"
-                                        value="SWIFT-12345" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="currency" class="col-12 mb-2 md:col-3 md:mb-0"><b>Currency</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="currency" type="text" [disabled]="true" value="GBP" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="market" class="col-12 mb-2 md:col-3 md:mb-0"><b>Market</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="market" type="text" [disabled]="true" value="Market ABC" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="entity" class="col-12 mb-2 md:col-3 md:mb-0"><b>Entity</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="entity" type="text" [disabled]="true" value="UK Entity" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="alias" class="col-12 mb-2 md:col-3 md:mb-0"><b>Alias</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="alias" type="text" [disabled]="true"
-                                        value="Corporate Account for finances" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="metadata" class="col-12 mb-2 md:col-3 md:mb-0"><b>Metadata</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="metadata" type="text" [disabled]="true"
-                                        value="TAG 1, TAG 2, TAG 3" />
-                                </div>
-                            </div>
-                            <div class="field grid">
-                                <label htmlFor="trexid" class="col-12 mb-2 md:col-3 md:mb-0"><b>TrexId</b></label>
-                                <div class="col-12 md:col-9">
-                                    <input pInputText id="trexid" type="text" [disabled]="true"
-                                        value="TREX 1, TREX 2, TREX 3" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <p-divider layout="vertical">
-                                <i class="pi pi-fw pi-bolt"></i>
-                            </p-divider>
-                        </div>
-                        <div class="col-4 align-items-center justify-content-center">
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Opening Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£10,000,00.00</span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Live Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>
-                                        Net Movement
-                                    </b>
-                                </label>
-                                <ul>
-                                    <li>
-                                        <div class="field grid">
-                                            <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                <b>Inflow</b>
-                                            </label>
-                                            <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000.00</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="field grid">
-                                            <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                                <b>Outflow</b>
-                                            </label>
-                                            <span class="col-7 mb-2 md:col-6 md:mb-0">£10,000.00</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <p-divider layout="horizontal" align="center" [style]="{'margin': '2%'}">
-                                <span class="p-tag">Averages</span>
-                            </p-divider>
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Weekly Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-7 mb-2 md:col-6 md:mb-0">
-                                    <b>Monthly Balance</b>
-                                </label>
-                                <span class="col-7 mb-2 md:col-6 md:mb-0">£9,000,00.00</span>
-                            </div>
-
-                            <p-divider layout="horizontal" align="center" [style]="{'margin': '2%'}">
-                                <span class="p-tag">Upcoming Payments</span>
-                            </p-divider>
-
-                            <p class="line-height-3 m-0"><b>ABC Vendor Payment - </b> £50,000</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </p-panel>
-        </div>
+           </div>
     </div>
 </div>
