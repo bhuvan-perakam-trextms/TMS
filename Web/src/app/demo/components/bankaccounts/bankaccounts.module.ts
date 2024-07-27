@@ -25,6 +25,12 @@ import { CascadeSelectModule } from "primeng/cascadeselect";
 import { MultiSelectModule } from "primeng/multiselect";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
+import { DialogModule } from 'primeng/dialog';
+
+import { GridModule } from '@progress/kendo-angular-grid';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
+import { MapToArrayPipe } from '../../pipes/map-to-array.pipe';
 
 @NgModule({
     imports: [
@@ -32,6 +38,7 @@ import { InputTextModule } from "primeng/inputtext";
         FormsModule,
         ChartModule,
         DividerModule,
+        DialogModule,
         MenuModule,
         TableModule,
         StyleClassModule,
@@ -50,9 +57,12 @@ import { InputTextModule } from "primeng/inputtext";
         //CascadeSelectModule,
         //MultiSelectModule,
         //InputTextareaModule,
-        //InputTextModule
+        //InputTextModule,
+
+        GridModule,
+        DropDownsModule
     ],
-    declarations: [BankaccountsComponent],
+    declarations: [BankaccountsComponent, MapToArrayPipe],
 })
 export class BankAccountsModule { }
 

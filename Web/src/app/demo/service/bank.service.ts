@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BankAccount } from '../api/bankAccount';
+import { BankAccountDetail } from '../api/bankaccountdetail';
 
 @Injectable()
 export class BankService {
@@ -10,6 +11,13 @@ export class BankService {
         return this.http.get<any>('assets/demo/data/bank-accounts.json')
             .toPromise()
             .then(res => res.data as BankAccount[])
+            .then(data => data);
+    }
+
+    getBankAccountsDetails() {
+        return this.http.get<any>('assets/demo/data/bank-accounts-details.json')
+            .toPromise()
+            .then(res => res.data as BankAccountDetail[])
             .then(data => data);
     }
 
