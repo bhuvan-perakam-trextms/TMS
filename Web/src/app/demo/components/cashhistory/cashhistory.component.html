@@ -5,7 +5,8 @@
 
 
             <kendo-grid [kendoGridBinding]="cashHistories" [filterable]="filterMode" [groupable]="false"
-                [pageable]="true" [sortable]="true" [pageSize]="10" [group]="group">
+                [pageable]="true" [sortable]="true" [pageSize]="10"
+                [group]="group"  style="width: 100%;">
 
                 <ng-template kendoGridToolbarTemplate>
                     <span><strong>Group By</strong></span>
@@ -20,24 +21,73 @@
                     <button kendoGridPDFCommand>Export to PDF</button>
                 </ng-template>
 
-                <kendo-grid-column field="Entity" title="Entity" [width]="150" [hidden]="selectedGroupByField.code !== 'Entity'">
-                </kendo-grid-column>
                 <kendo-grid-column field="BankAccountNumber" title="Account Number"
                     [hidden]="selectedGroupByField.code !== 'BankAccountNumber'"> </kendo-grid-column>
                 <kendo-grid-column field="Currency" title="Currency"
-                    [hidden]="selectedGroupByField.code !== 'Currency'"> </kendo-grid-column>
+                    [hidden]="selectedGroupByField.code !== 'Currency'">
+                    <!-- <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <i [class]="getCurrencyClass(dataItem.Currency)"></i> {{dataItem.Currency}}
+                    </ng-template> -->
+                    <ng-template kendoGridGroupHeaderTemplate let-group let-field="field" let-value="value">
+                        <div class="flex align-items-center gap-2">
+                            <i [class]="getCurrencyClass(value)"></i> {{value}}
+                        </div>
+                    </ng-template>
+                </kendo-grid-column>
+
+
                 <kendo-grid-column field="Market" title="Market" [hidden]="selectedGroupByField.code !== 'Market'">
                 </kendo-grid-column>
                 <kendo-grid-column field="Metadata" title="Metadata"
                     [hidden]="selectedGroupByField.code !== 'Metadata'"> </kendo-grid-column>
-                <kendo-grid-column field="BalanceType" title="Type"> </kendo-grid-column>
-                <kendo-grid-column field="Day1" title="T1"> </kendo-grid-column>
-                <kendo-grid-column field="Day2" title="T2"> </kendo-grid-column>
-                <kendo-grid-column field="Day3" title="T3"> </kendo-grid-column>
-                <kendo-grid-column field="Day4" title="T4"> </kendo-grid-column>
-                <kendo-grid-column field="Day5" title="T5"> </kendo-grid-column>
-                <kendo-grid-column field="Day6" title="T6"> </kendo-grid-column>
-                <kendo-grid-column field="Day7" title="T7"> </kendo-grid-column>
+
+                <kendo-grid-column field="Entity" title="Entity" [width]="150" [hidden]="selectedGroupByField.code !== 'Entity'">
+                    <ng-template kendoGridGroupHeaderTemplate let-group let-field="field" let-value="value">
+                        <div class="flex align-items-center gap-2">
+                            <img [src]="getBankImageUrl(value)" class="shadow-4" alt="{{value}}"
+                                width="30">
+                            <span class="font-bold">
+                                {{value}}
+                            </span>
+                        </div>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="BalanceType" title="Type"  [width]="100"> </kendo-grid-column>
+                <kendo-grid-column field="Day1" [title]="getDate(-1)"  [width]="130" >
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day1 | currency: dataItem.Currency}}
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="Day2" [title]="getDate(-2)"  [width]="130" >
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day2 | currency: dataItem.Currency}}
+                    </ng-template>    
+                </kendo-grid-column>
+                <kendo-grid-column field="Day3"  [title]="getDate(-3)" [width]="130">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day3 | currency: dataItem.Currency}}
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="Day4"  [title]="getDate(-4)" [width]="130">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day4 | currency: dataItem.Currency}}
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="Day5"  [title]="getDate(-5)" [width]="130">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day5 | currency: dataItem.Currency}}
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="Day6"  [title]="getDate(-6)" [width]="130">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day6 | currency: dataItem.Currency}}
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="Day7"  [title]="getDate(-7)" [width]="130">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        {{ dataItem.Day7 | currency: dataItem.Currency}}
+                    </ng-template>
+                </kendo-grid-column>
 
                 <ng-template kendoGridDetailTemplate let-dataItem let-rowIndex="rowIndex"
                     [kendoGridDetailTemplateShowIf]="showOnlyDeltaSepcificDetails">

@@ -23,10 +23,20 @@
                 </kendo-grid-column>
 
                 <kendo-grid-column field="currency" title="Currency">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <i [class]="getCurrencyClass(dataItem.currency)"></i> {{dataItem.currency}}
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="market" title="Market">
                 </kendo-grid-column>
                 <kendo-grid-column field="country" title="Country">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    
+                        <div class="flex align-items-center gap-2">
+                            <img [src]="getCountryImageUrl(dataItem.country)" class="shadow-4" alt="{{dataItem.country}}" width="30"/>
+                            <span> {{dataItem.country}} </span>
+                        </div>
+                    </ng-template>
                 </kendo-grid-column>
 
 
@@ -43,7 +53,6 @@
                     </div>
                 </ng-template>
 
-                <!-- <p-panel [collapsed]="false" [style]="{'margin': '0.5%'}"> -->
                 <div class="col-12">
                     <div class="grid m-0 p-0">
                         <div class="col-12 m-0 p-0">
@@ -142,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p-divider align="left" style="margin: 3%;">
+                            <p-divider align="left">
                                 <i class="pi pi-fw pi-bolt"></i>
                                 <b>Balances</b>
                             </p-divider>
@@ -191,7 +200,7 @@
                                 </div>
                             </div>
 
-                            <p-divider align="left" style="margin: 3%;">
+                            <p-divider align="left">
                                 <i class="pi pi-fw pi-money-bill"></i>
                                 <b>Upcoming Payments</b>
                             </p-divider>
