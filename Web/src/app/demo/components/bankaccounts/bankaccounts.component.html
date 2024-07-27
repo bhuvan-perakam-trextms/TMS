@@ -2,30 +2,8 @@
     <div class="col-12">
         <div class="card p-fluid">
             <h5><i class="pi pi-fw pi-building"></i> Bank Accounts</h5>
-
-            <!-- <div class="card flex justify-content-center">
-                <p-button (onClick)="showDialog()" label="Show" />
-                <a href="javascript:void(0)" (click)="handlePopup(null)"> Show</a>
-                <p-dialog header="Edit Profile" [modal]="true" [(visible)]="displayOverlay" [style]="{ width: '25rem' }">
-                    <span class="p-text-secondary block mb-5">Update your information.</span>
-                    <div class="flex align-items-center gap-3 mb-3">
-                        <label for="username" class="font-semibold w-6rem">Username</label>
-                        <input pInputText id="username" class="flex-auto" autocomplete="off" />
-                    </div>
-                    <div class="flex align-items-center gap-3 mb-5">
-                        <label for="email" class="font-semibold w-6rem">Email</label>
-                        <input pInputText id="email" class="flex-auto" autocomplete="off" />
-                    </div>
-                    <div class="flex justify-content-end gap-2">
-                        <p-button label="Cancel" severity="secondary" (onClick)="displayOverlay = false" />
-                        <p-button label="Save" (onClick)="displayOverlay = false" />
-                    </div>
-                </p-dialog>
-            </div> -->
-
             <kendo-grid [kendoGridBinding]="bankAccountDetails" [filterable]="filterMode" [groupable]="false"
                 [pageable]="true" [sortable]="false" [pageSize]="10" [group]="group">
-
                 <kendo-grid-column field="entity" title="Entity" [hidden]="true">
                     <ng-template kendoGridGroupHeaderTemplate let-group let-field="field" let-value="value">
                         <div class="flex align-items-center gap-2">
@@ -43,14 +21,14 @@
                         </a>
                     </ng-template>
                 </kendo-grid-column>
-            
+
                 <kendo-grid-column field="currency" title="Currency">
                 </kendo-grid-column>
                 <kendo-grid-column field="market" title="Market">
                 </kendo-grid-column>
                 <kendo-grid-column field="country" title="Country">
                 </kendo-grid-column>
-                
+
 
             </kendo-grid>
 
@@ -68,7 +46,7 @@
                 <!-- <p-panel [collapsed]="false" [style]="{'margin': '0.5%'}"> -->
                 <div class="col-12">
                     <div class="grid m-0 p-0">
-                        <div class="col-12 m-0 p-0" >
+                        <div class="col-12 m-0 p-0">
                             <p-divider align="left" class="m-0 p-0">
                                 <i class="pi pi-fw pi-sun"></i>
                                 <b>Details</b>
@@ -173,17 +151,20 @@
                                     <div class="field grid">
                                         <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Opening Balance</b></label>
                                         <span
-                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.openingBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.openingBalance
+                                            | currency:selectedBankAccountDetail?.currency}}</span>
                                     </div>
                                     <div class="field grid">
                                         <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Weekly Balance</b></label>
                                         <span
-                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.weeklyBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.weeklyBalance
+                                            | currency:selectedBankAccountDetail?.currency}}</span>
                                     </div>
                                     <div class="field grid">
                                         <label class="col-4 mb-7 md:col-4 md:mb-0"><b>Inflow</b></label>
                                         <span
-                                            class="col-4 mb-7 md:col-4 md:mb-0">{{selectedBankAccountDetail?.balance.inflow  | currency:selectedBankAccountDetail?.currency}}</span>
+                                            class="col-4 mb-7 md:col-4 md:mb-0">{{selectedBankAccountDetail?.balance.inflow
+                                            | currency:selectedBankAccountDetail?.currency}}</span>
                                     </div>
                                 </div>
 
@@ -191,18 +172,21 @@
                                     <div class="field grid">
                                         <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Closing Balance</b></label>
                                         <span
-                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.closingBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.closingBalance
+                                            | currency:selectedBankAccountDetail?.currency}}</span>
                                     </div>
                                     <div class="field grid">
                                         <label class="col-4 mb-4 md:col-4 md:mb-1"><b>Monthly Balance</b></label>
                                         <span
-                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.monthlyBalance  | currency:selectedBankAccountDetail?.currency}}</span>
+                                            class="col-7 mb-7 md:col-7 md:mb-1">{{selectedBankAccountDetail?.balance.monthlyBalance
+                                            | currency:selectedBankAccountDetail?.currency}}</span>
                                     </div>
 
                                     <div class="field grid">
                                         <label class="col-4 mb-7 md:col-4 md:mb-0"><b>Outflow</b></label>
                                         <span
-                                            class="col-4 mb-7 md:col-4 md:mb-0">{{selectedBankAccountDetail?.balance.outflow  | currency:selectedBankAccountDetail?.currency}}</span>
+                                            class="col-4 mb-7 md:col-4 md:mb-0">{{selectedBankAccountDetail?.balance.outflow
+                                            | currency:selectedBankAccountDetail?.currency}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -213,9 +197,11 @@
                             </p-divider>
                             <div class="field grid">
                                 <div class="col-7">
-                                    <div class="field grid" *ngFor="let payment of getUpcomingPaymentsArray(selectedBankAccountDetail?.balance.upcomingPayments)">
-                                            <label class="col-4 mb-7 md:col-4 md:mb-0"><b>{{ payment.key }}</b></label>
-                                            <span class="col-4 mb-7 md:col-4 md:mb-0">{{ payment.value  | currency:selectedBankAccountDetail?.currency }}</span>
+                                    <div class="field grid"
+                                        *ngFor="let payment of getUpcomingPaymentsArray(selectedBankAccountDetail?.balance.upcomingPayments)">
+                                        <label class="col-4 mb-7 md:col-4 md:mb-0"><b>{{ payment.key }}</b></label>
+                                        <span class="col-4 mb-7 md:col-4 md:mb-0">{{ payment.value |
+                                            currency:selectedBankAccountDetail?.currency }}</span>
                                     </div>
 
                                     <ng-template #noPayments>
@@ -235,6 +221,6 @@
                 </ng-template>
             </p-dialog>
 
-           </div>
+        </div>
     </div>
 </div>
