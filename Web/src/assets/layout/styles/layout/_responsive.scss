@@ -1,10 +1,13 @@
-@media screen and (min-width: 1960px) {
+@media screen and (min-width: 4800px) {
     .layout-main, .landing-wrapper {
         width: 1504px;
         margin-left: auto !important;
         margin-right: auto !important;
     }
 
+    .custom-width-lg {
+        width: 6rem;
+      }
 }
 
 @media (min-width: 992px) {
@@ -53,6 +56,10 @@
             display: none;
         }
     }
+
+    .custom-width-md {
+        width: 8rem;
+      }
 }
 
 @media (max-width: 991px) {
@@ -97,4 +104,8 @@
             }
         }
     }
+
+    .custom-width-md {
+        width: 8rem;
+      }
 }
