@@ -19,6 +19,9 @@ import { MapToArrayPipe } from './demo/pipes/map-to-array.pipe';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -27,7 +30,9 @@ import { BrowserModule } from '@angular/platform-browser';
     imports: [AppRoutingModule, AppLayoutModule, BrowserModule,
         BrowserAnimationsModule,
         GridModule,
-        AppRoutingModule],
+        AppRoutingModule,
+        FormsModule,
+        DropDownListModule],
     providers: 
     [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -38,7 +43,7 @@ import { BrowserModule } from '@angular/platform-browser';
         NodeService,
         PhotoService,
         ProductService,
-
+        DropDownListModule,
         CashHistoryService,
         BankService,
         UserService
