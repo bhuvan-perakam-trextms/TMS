@@ -23,6 +23,7 @@ import {
                     { path: 'cashhistory', loadChildren: () => import('./demo/components/cashhistory/cashhistory.module').then(m => m.CashHistoryModule) },
                     { path: 'counterparty', loadChildren: () => import('./demo/components/counterparty/counterparty.module').then(m => m.CounterpartyModule) },
                     { path: 'bank-accounts', loadChildren: () => import('./demo/components/bankaccounts/bankaccounts.module').then(m => m.BankAccountsModule) },
+                    { path: 'payments/moneymovements', loadChildren: () => import('./demo/components/payments/moneymovements/moneymovements.module').then(m => m.MoneymovementsModule) },
                     { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
                     { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
