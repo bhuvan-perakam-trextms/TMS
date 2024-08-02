@@ -3,16 +3,13 @@
         <div class="card p-fluid">
             <h5><i class="pi pi-fw pi-arrows-h"></i> Money Movements</h5>
 
-            <kendo-grid [kendoGridBinding]="tableData" [pageSize]="20" [pageable]="true" 
-            [sortable]="true" [filterable]="filterMode" [groupable]="true"
-            [group]="group" style="width: 100%;">
-  
+            <kendo-grid [kendoGridBinding]="tableData" [pageSize]="20" [pageable]="true" [sortable]="true"
+                [filterable]="filterMode" [groupable]="true" style="width: 100%;">
+
                 <kendo-grid-column field="date" title="Date" width="150">
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('date')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'date'" type="text" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'date')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
@@ -24,8 +21,6 @@
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('account')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'account'" type="text" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'account')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
@@ -37,8 +32,6 @@
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('counterparty')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'counterparty'" type="text" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'counterparty')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
@@ -50,8 +43,6 @@
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('description')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'description'" type="text" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'description')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
@@ -63,8 +54,6 @@
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('direction')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'direction'" type="text" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'direction')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
@@ -76,12 +65,10 @@
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('amount')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'amount'" type="number" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'amount')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-                        <span>{{ dataItem.amount }}</span>
+                        <span>{{ dataItem.amount | currency: dataItem.currency }}</span>
                     </ng-template>
                 </kendo-grid-column>
 
@@ -89,15 +76,12 @@
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
-                            <i class="fa fa-filter filter-icon" (click)="toggleFilter('status')"></i>
-                            <input kendoGridFilterInput *ngIf="filterField === 'status'" type="text" [attr.aria-label]="column.title" (input)="applyFilter($event.target.value, 'status')">
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                         <span>{{ dataItem.status }}</span>
                     </ng-template>
                 </kendo-grid-column>
-
             </kendo-grid>
         </div>
     </div>
