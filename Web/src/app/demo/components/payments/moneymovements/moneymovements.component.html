@@ -79,9 +79,17 @@
                         </div>
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span [ngClass]="{
+                            'active': dataItem.status === 'Active',
+                            'inactive': dataItem.status === 'InActive',
+                            'failed': dataItem.status === 'Failed',
+                            'expired': dataItem.status === 'Expired',
+                            'not-approved': dataItem.status === 'Not Approved'
+                        }"></span>
                         <span>{{ dataItem.status }}</span>
                     </ng-template>
                 </kendo-grid-column>
+
             </kendo-grid>
         </div>
     </div>
