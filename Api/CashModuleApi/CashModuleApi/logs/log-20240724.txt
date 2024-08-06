@@ -1,0 +1,11 @@
+2024-07-24 14:40:19.931 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-24 14:40:19.996 +05:30 [INF] Hosting environment: Development
+2024-07-24 14:40:19.998 +05:30 [INF] Content root path: C:\Users\Bhargavi veni\OneDrive\Desktop\New folder\TMS\Api\CashModuleApi\CashModuleApi
+2024-07-24 14:40:20.259 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44354/swagger/index.html - null null
+2024-07-24 14:40:20.785 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44354/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-24 14:40:20.786 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44354/_vs/browserLink - null null
+2024-07-24 14:40:20.786 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44354/swagger/index.html - 200 null text/html;charset=utf-8 537.1821ms
+2024-07-24 14:40:20.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44354/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 5.0913ms
+2024-07-24 14:40:20.862 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44354/_vs/browserLink - 200 null text/javascript; charset=UTF-8 75.8585ms
+2024-07-24 14:40:20.927 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44354/swagger/v1/swagger.json - null null
+2024-07-24 14:40:21.077 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44354/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 150.1144ms

@@ -44,6 +44,9 @@ export class AppMenuComponent implements OnInit {
                         ]
                     },
                     {
+                        label: 'Transfers', icon: 'pi pi-fw pi-exchange', routerLink: ['/dashboard/transfers']
+                    },
+                    {
                         label: 'Payments', icon: 'pi pi-fw pi-money-bill',
                         items: [
                             // {

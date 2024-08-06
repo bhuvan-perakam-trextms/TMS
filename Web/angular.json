@@ -32,7 +32,7 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss",
+                            "src/styles.scss",                            
                             "node_modules/@progress/kendo-theme-bootstrap/dist/bootstrap-main.css"
                         ],
                         "scripts": [],

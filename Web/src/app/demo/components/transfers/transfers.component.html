@@ -1,0 +1,153 @@
+<div class="grid">
+  <div class="col-12">
+      <div class="card p-fluid">
+          <h5><i class="pi pi-fw pi-exchange"></i> Transfers</h5>
+
+          <p-panel [style]="{'margin': '1%'}" header="Transfer Setup">
+              <p-tabView>
+                  <p-tabPanel header="Internal Payments">
+                      <div class="grid">
+                          <div class="col-12 align-items-center justify-content-center">
+                              <div class="field grid">
+                                  <label for="fromAccount" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>From Account</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="fromAccount" [options]="accounts" ></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="toAccount" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>To Account</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="toAccount" [options]="accounts" [(ngModel)]="internalPayments.toAccount"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="currency" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Currency</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="currency" [options]="currencies" [(ngModel)]="internalPayments.currency"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="account" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Account</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="account" [options]="accounts" [(ngModel)]="internalPayments.account"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="reference" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Reference</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <input id="reference" type="text" [(ngModel)]="internalPayments.reference" />
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="executionDate" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Execution Date</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-calendar id="executionDate" [(ngModel)]="internalPayments.executionDate"></p-calendar>
+                                  </div>
+                              </div>
+                              <div class="col-12 mb-2 md:col-4 md:mb-2">
+                                  <button (click)="submitInternal()">Submit</button>
+                                  <button (click)="clearInternal()">Clear</button>
+                              </div>
+                          </div>
+                      </div>
+                  </p-tabPanel>
+                  
+                  <p-tabPanel header="External Payments">
+                      <div class="grid">
+                          <div class="col-12 align-items-center justify-content-center">
+                              <div class="field grid">
+                                  <label for="fromAccountExternal" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>From Account</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="fromAccountExternal" [options]="accounts" [(ngModel)]="externalPayments.fromAccount"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="toAccountExternal" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>To Account</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="toAccountExternal" [options]="accounts" [(ngModel)]="externalPayments.toAccount"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="accountNumber" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Account Number</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <input id="accountNumber" type="text" [(ngModel)]="externalPayments.accountNumber" />
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="name" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Name</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-input id="name" type="text" [(ngModel)]="externalPayments.name" />
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="sortCode" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Sort Code</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <input id="sortCode" type="text" [(ngModel)]="externalPayments.sortCode" />
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="currencyExternal" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Currency</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="currencyExternal" [options]="currencies" [(ngModel)]="externalPayments.currency"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="accountExternal" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Account</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-dropdown id="accountExternal" [options]="accounts" [(ngModel)]="externalPayments.account"></p-dropdown>
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="referenceExternal" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Reference</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <input id="referenceExternal" type="text" [(ngModel)]="externalPayments.reference" />
+                                  </div>
+                              </div>
+                              <div class="field grid">
+                                  <label for="executionDateExternal" class="col-2 mb-2 md:col-3 md:mb-2">
+                                      <b>Execution Date</b>
+                                  </label>
+                                  <div class="col-4 mb-2 md:col-4 md:mb-2">
+                                      <p-calendar id="executionDateExternal" [(ngModel)]="externalPayments.executionDate"></p-calendar>
+                                  </div>
+                              </div>
+                              <div class="col-12 mb-2 md:col-4 md:mb-2">
+                                  <button (click)="submitExternal()">Submit</button>
+                                  <button (click)="clearExternal()">Clear</button>
+                              </div>
+                          </div>
+                      </div>
+                  </p-tabPanel>
+              </p-tabView>
+          </p-panel>
+      </div>
+  </div>
+</div>

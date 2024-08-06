@@ -11,7 +11,8 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-
+import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
 import { BankService } from './demo/service/bank.service';
 import { UserService } from './demo/service/user.service';
 import { CashHistoryService } from './demo/service/cashhistory.service';
@@ -20,9 +21,18 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
-import { FormsModule } from '@angular/forms';
 import { CurrencyService } from './demo/service/currency.service';
 import { CounterpartyService } from './demo/service/counterparty.service';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { TransfersModule } from './demo/components/transfers/transfers.module';
+ import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { CalendarModule } from 'primeng/calendar';
+import { PanelModule } from 'primeng/panel';
+import { DividerModule } from 'primeng/divider';
+
+
+
+
 
 
 
@@ -33,8 +43,15 @@ import { CounterpartyService } from './demo/service/counterparty.service';
         BrowserAnimationsModule,
         GridModule,
         AppRoutingModule,
+        PanelModule,
+        DividerModule,
         FormsModule,
-        DropDownListModule],
+        ReactiveFormsModule,
+        TabViewModule,
+        DropdownModule,
+        ButtonsModule,
+        CalendarModule,
+        TransfersModule],
     providers: 
     [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -53,5 +70,6 @@ import { CounterpartyService } from './demo/service/counterparty.service';
         CounterpartyService
     ],
     bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
