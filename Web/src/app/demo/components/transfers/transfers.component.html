@@ -13,7 +13,7 @@
                                       <b>From Account</b>
                                   </label>
                                   <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                      <p-dropdown id="fromAccount" [options]="accounts" ></p-dropdown>
+                                      <p-dropdown id="fromAccount" [options]="accounts" [(ngModel)]="internalPayments.fromAccount" ></p-dropdown>
                                   </div>
                               </div>
                               <div class="field grid">
@@ -45,7 +45,7 @@
                                       <b>Reference</b>
                                   </label>
                                   <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                      <input id="reference" type="text" [(ngModel)]="internalPayments.reference" />
+                                      <input id="reference" type="text" pInputText [(ngModel)]="internalPayments.reference" />
                                   </div>
                               </div>
                               <div class="field grid">
@@ -88,7 +88,7 @@
                                       <b>Account Number</b>
                                   </label>
                                   <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                      <input id="accountNumber" type="text" [(ngModel)]="externalPayments.accountNumber" />
+                                      <input id="accountNumber" type="text" pInputText [(ngModel)]="externalPayments.accountNumber" />
                                   </div>
                               </div>
                               <div class="field grid">
@@ -96,7 +96,7 @@
                                       <b>Name</b>
                                   </label>
                                   <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                      <p-input id="name" type="text" [(ngModel)]="externalPayments.name" />
+                                      <input id="name" type="text" pInputText [(ngModel)]="externalPayments.name" />
                                   </div>
                               </div>
                               <div class="field grid">
@@ -104,7 +104,7 @@
                                       <b>Sort Code</b>
                                   </label>
                                   <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                      <input id="sortCode" type="text" [(ngModel)]="externalPayments.sortCode" />
+                                      <input id="sortCode" type="text" pInputText [(ngModel)]="externalPayments.sortCode" />
                                   </div>
                               </div>
                               <div class="field grid">
@@ -128,7 +128,7 @@
                                       <b>Reference</b>
                                   </label>
                                   <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                      <input id="referenceExternal" type="text" [(ngModel)]="externalPayments.reference" />
+                                      <input id="referenceExternal" type="text" pInputText [(ngModel)]="externalPayments.reference" />
                                   </div>
                               </div>
                               <div class="field grid">
