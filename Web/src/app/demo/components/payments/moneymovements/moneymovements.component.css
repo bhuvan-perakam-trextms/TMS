@@ -1,0 +1,43 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bold-header {
+  font-weight: bold;
+}
+
+.filter-icon {
+  cursor: pointer;
+  margin-left: 8px;
+}
+.toolbar-container {
+  display: flex;
+  align-items: center;
+}
+.active::before {
+  content: "\2705";
+  color: green;
+}
+
+.inactive::before {
+  content: "⛔";
+  color: gray;
+}
+
+.failed::before {
+  content: "❌";
+  color: red;
+}
+
+.not-approved::before {
+  content: "⚠️";
+  color: orange;
+}
+
+.expired::before {
+  content: "⌛";
+  color: brown;
+}
+

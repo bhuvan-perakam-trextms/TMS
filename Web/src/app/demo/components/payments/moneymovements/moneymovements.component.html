@@ -1,0 +1,96 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-arrows-h"></i> Money Movements</h5>
+
+            <kendo-grid [kendoGridBinding]="tableData" [pageSize]="20" [pageable]="true" [sortable]="true"
+                [filterable]="filterMode" [groupable]="true" style="width: 100%;">
+
+                <kendo-grid-column field="date" title="Date" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.date }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+                <kendo-grid-column field="account" title="Account" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.account }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+                <kendo-grid-column field="counterparty" title="Counterparty" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.counterparty }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+                <kendo-grid-column field="description" title="Description" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.description }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+                <kendo-grid-column field="direction" title="Direction" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.direction }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+                <kendo-grid-column field="amount" title="Amount" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.amount | currency: dataItem.currency }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+                <kendo-grid-column field="status" title="Status" width="150">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span [ngClass]="{
+                            'active': dataItem.status === 'Active',
+                            'inactive': dataItem.status === 'InActive',
+                            'failed': dataItem.status === 'Failed',
+                            'expired': dataItem.status === 'Expired',
+                            'not-approved': dataItem.status === 'Not Approved'
+                        }"></span>
+                        <span>{{ dataItem.status }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+
+            </kendo-grid>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,256 @@
+{
+    "data": [
+        {
+            "entity": "HSBC",
+            "imageUrl": "assets/demo/images/bank/hsbc-logo.png",
+            "accountName": "HSBC London Corporate Account 1",
+            "iban": "GB29HBUK60161331926819",
+            "accountNumber": "31926819",
+            "swiftCode": "HBUKGB4B",
+            "currency": "GBP",
+            "market": "Forex",
+            "country": "United Kingdom",
+            "city": "London",
+            "alias": "Company Primary Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-1234567",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "1000000.00",
+                "closingBalance": "900000.00",
+                "inflow": "9000.00",
+                "outflow": "10000.00",
+                "weeklyBalance": "900000.00",
+                "monthlyBalance": "900000.00",
+                "upcomingPayments": {
+                    "ABC VENDOR Payment": "50000.00",
+                    "XYZ Supplies": "30000.00",
+                    "Tech Corp Services": "20000.00"
+                }
+            }
+        },
+        {
+            "entity": "HSBC",
+            "imageUrl": "assets/demo/images/bank/hsbc-logo.png",
+            "accountName": "HSBC London Corporate Account 2",
+            "iban": "GB94HBUK60161331926820",
+            "accountNumber": "31926820",
+            "swiftCode": "HBUKGB4B",
+            "currency": "GBP",
+            "market": "Commodities",
+            "country": "United Kingdom",
+            "city": "London",
+            "alias": "Company Secondary Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-2345678",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "800000.00",
+                "closingBalance": "700000.00",
+                "inflow": "12000.00",
+                "outflow": "9000.00",
+                "weeklyBalance": "700000.00",
+                "monthlyBalance": "700000.00",
+                "upcomingPayments": {
+                    "Global Commodities Inc": "45000.00",
+                    "Mineral Traders Ltd": "25000.00",
+                    "Energy Solutions": "15000.00"
+                }
+            }
+        },
+        {
+            "entity": "HSBC",
+            "imageUrl": "assets/demo/images/bank/hsbc-logo.png",
+            "accountName": "HSBC London Corporate Account 3",
+            "iban": "GB92HBUK60161331926821",
+            "accountNumber": "31926821",
+            "swiftCode": "HBUKGB4B",
+            "currency": "GBP",
+            "market": "Equities",
+            "country": "United Kingdom",
+            "city": "London",
+            "alias": "Company Tertiary Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-3456789",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "500000.00",
+                "closingBalance": "450000.00",
+                "inflow": "10000.00",
+                "outflow": "8000.00",
+                "weeklyBalance": "450000.00",
+                "monthlyBalance": "450000.00",
+                "upcomingPayments": {
+                    "LMN PARTNER Payment": "30000.00"
+                }
+            }
+        },
+        {
+            "entity": "Barclays",
+            "imageUrl": "assets/demo/images/bank/barclays-logo.png",
+            "accountName": "Barclays UK Corporate Account 1",
+            "iban": "GB33BUKB20201555555555",
+            "accountNumber": "55555555",
+            "swiftCode": "BUKBGB22",
+            "currency": "GBP",
+            "market": "Real Estate",
+            "country": "United Kingdom",
+            "city": "London",
+            "alias": "Company Primary Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-4567890",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "800000.00",
+                "closingBalance": "750000.00",
+                "inflow": "12000.00",
+                "outflow": "7000.00",
+                "weeklyBalance": "750000.00",
+                "monthlyBalance": "750000.00",
+                "upcomingPayments": {
+                    "XYZ SUPPLIER Payment": "30000.00"
+                }
+            }
+        },
+        {
+            "entity": "Barclays",
+            "imageUrl": "assets/demo/images/bank/barclays-logo.png",
+            "accountName": "Barclays UK Corporate Account 2",
+            "iban": "GB89BUKB20201555555556",
+            "accountNumber": "55555556",
+            "swiftCode": "BUKBGB22",
+            "currency": "GBP",
+            "market": "Investment Banking",
+            "country": "United Kingdom",
+            "city": "London",
+            "alias": "Company Secondary Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-5678901",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "600000.00",
+                "closingBalance": "550000.00",
+                "inflow": "8000.00",
+                "outflow": "6000.00",
+                "weeklyBalance": "550000.00",
+                "monthlyBalance": "550000.00",
+                "upcomingPayments": {
+                    "ABC Financial Services": "25000.00",
+                    "XYZ Investments Ltd": "15000.00",
+                    "Global Capital Group": "10000.00"
+                }
+            }
+        },
+        {
+            "entity": "Barclays",
+            "imageUrl": "assets/demo/images/bank/barclays-logo.png",
+            "accountName": "Barclays UK Corporate Account 3",
+            "iban": "GB77BUKB20201555555557",
+            "accountNumber": "55555557",
+            "swiftCode": "BUKBGB22",
+            "currency": "GBP",
+            "market": "Wealth Management",
+            "country": "United Kingdom",
+            "city": "London",
+            "alias": "Company Tertiary Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-6789012",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "400000.00",
+                "closingBalance": "380000.00",
+                "inflow": "6000.00",
+                "outflow": "4000.00",
+                "weeklyBalance": "380000.00",
+                "monthlyBalance": "380000.00",
+                "upcomingPayments": {
+                    "LMN Wealth Advisors": "20000.00"
+                }
+            }
+        },
+        {
+            "entity": "BBVA",
+            "imageUrl": "assets/demo/images/bank/bbva-logo.png",
+            "accountName": "BBVA Madrid Corporate Account 1",
+            "iban": "ES9121000418450200051332",
+            "accountNumber": "0200051332",
+            "swiftCode": "BBVAESMM",
+            "currency": "EUR",
+            "market": "Private Banking",
+            "country": "Spain",
+            "city": "Madrid",
+            "alias": "Company European Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-7890123",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "1200000.00",
+                "closingBalance": "1150000.00",
+                "inflow": "15000.00",
+                "outflow": "25000.00",
+                "weeklyBalance": "1150000.00",
+                "monthlyBalance": "1150000.00",
+                "upcomingPayments": {
+                    "ABC Wealth Management": "20000.00",
+                    "XYZ Private Bank": "10000.00"
+                }
+            }
+        },
+        {
+            "entity": "BBVA",
+            "imageUrl": "assets/demo/images/bank/bbva-logo.png",
+            "accountName": "BBVA Madrid Corporate Account 2",
+            "iban": "ES9121000418450200051333",
+            "accountNumber": "0200051333",
+            "swiftCode": "BBVAESMM",
+            "currency": "EUR",
+            "market": "Retail Banking",
+            "country": "Spain",
+            "city": "Madrid",
+            "alias": "Company Spanish Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-8901234",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "900000.00",
+                "closingBalance": "880000.00",
+                "inflow": "12000.00",
+                "outflow": "10000.00",
+                "weeklyBalance": "880000.00",
+                "monthlyBalance": "880000.00",
+                "upcomingPayments": {
+                    "XYZ Retailers": "30000.00",
+                    "ABC Supermarkets": "15000.00"
+                }
+            }
+        },
+        {
+            "entity": "BBVA",
+            "imageUrl": "assets/demo/images/bank/bbva-logo.png",
+            "accountName": "BBVA Madrid Corporate Account 3",
+            "iban": "ES9121000418450200051334",
+            "accountNumber": "0200051334",
+            "swiftCode": "BBVAESMM",
+            "currency": "EUR",
+            "market": "Corporate Banking",
+            "country": "Spain",
+            "city": "Madrid",
+            "alias": "Company Iberian Corporate Account",
+            "metadata": "Company Account",
+            "trexId": "Trex-9012345",
+            "isActive": true,
+            "balance": {
+                "openingBalance": "1500000.00",
+                "closingBalance": "1480000.00",
+                "inflow": "18000.00",
+                "outflow": "12000.00",
+                "weeklyBalance": "1480000.00",
+                "monthlyBalance": "1480000.00",
+                "upcomingPayments": {
+                    "XYZ Corporates": "25000.00",
+                    "ABC Enterprises": "20000.00"
+                }
+            }
+        }
+    ]
+}

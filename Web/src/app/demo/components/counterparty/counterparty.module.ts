@@ -7,6 +7,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { AccountComponent } from './account/account.component';
+import { DialogModule } from 'primeng/dialog';
 
 import { PanelModule } from 'primeng/panel';
 import { SplitterModule } from 'primeng/splitter';
@@ -27,13 +29,18 @@ import { CheckboxModule } from "primeng/checkbox";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 import { RulesComponent } from './rules/rules.component';
+<<<<<<< HEAD
 import { AccountComponent } from './account/account.component';
 import { RippleModule } from 'primeng/ripple';
 import { ConfirmationService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
+=======
+import { GridModule } from '@progress/kendo-angular-grid';
+>>>>>>> main
 
 
+AccountComponent
 @NgModule({
     imports: [
         CommonModule,
@@ -61,6 +68,7 @@ import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
         //MultiSelectModule,
         //InputTextareaModule,
         //InputTextModule,
+<<<<<<< HEAD
         ButtonModule,
         RippleModule,
 		DialogModule,
@@ -74,6 +82,12 @@ import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
 		
       
 
+=======
+        GridModule,
+        DialogModule,
+        ButtonModule
+        
+>>>>>>> main
         
     ],
     declarations: [
