@@ -7,6 +7,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { AccountComponent } from './account/account.component';
+import { DialogModule } from 'primeng/dialog';
 
 import { PanelModule } from 'primeng/panel';
 import { SplitterModule } from 'primeng/splitter';
@@ -27,8 +29,10 @@ import { CheckboxModule } from "primeng/checkbox";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 import { RulesComponent } from './rules/rules.component';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
+AccountComponent
 @NgModule({
     imports: [
         CommonModule,
@@ -49,17 +53,23 @@ import { RulesComponent } from './rules/rules.component';
         ChipsModule,
         DropdownModule,
         MultiSelectModule,
-        CheckboxModule
+        CheckboxModule,
         //InputMaskModule,
         //InputNumberModule,
         //CascadeSelectModule,
         //MultiSelectModule,
         //InputTextareaModule,
-        //InputTextModule
+        //InputTextModule,
+        GridModule,
+        DialogModule,
+        ButtonModule
+        
+        
     ],
     declarations: [
         ListComponent,
-        RulesComponent
+        RulesComponent,
+        AccountComponent
     ],
 })
 export class CounterpartyModule { }
