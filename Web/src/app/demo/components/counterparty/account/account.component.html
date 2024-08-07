@@ -1,196 +1,6 @@
 <div class="grid">
     <div class="col-12">
         <div class="card p-fluid">
-<<<<<<< HEAD
-            <h5><i class="pi pi-fw pi-dollar"></i>CounterParty - Account</h5>
-            <form #form="ngForm" (ngSubmit)="onSave(form)">
-                <div class="field grid">
-                    <label class="col-3 mb-2 md:col-3 md:mb-2">
-                        <b>CounterParty Account</b>
-                    </label>
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <p-dropdown
-                            inputId="multiselect"
-                            [options]="counterpartyAccount"
-                            [(ngModel)]="selectedcounterpartyAccount"
-                            name="counterpartyAccount"
-                            optionLabel="name"
-                            required
-                        >
-                        </p-dropdown>
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label htmlFor="bank" class="col-3 mb-2 md:col-3 md:mb-2"
-                        ><b>Bank</b></label
-                    >
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <input
-                            pInputText
-                            id="bank"
-                            type="text"
-                            [(ngModel)]="bank"
-                            name="bank"
-                            required
-                        />
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label
-                        htmlFor="accountNumber"
-                        class="col-3 mb-2 md:col-3 md:mb-2"
-                        ><b>Account Number</b></label
-                    >
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <input
-                            pInputText
-                            id="accountNumber"
-                            type="text"
-                            [(ngModel)]="accountNumber"
-                            name="accountNumber"
-                            required
-                        />
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label class="col-3 mb-2 md:col-3 md:mb-2">
-                        <b>Country</b>
-                    </label>
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <p-dropdown
-                            inputId="multiselect"
-                            [options]="country"
-                            [(ngModel)]="selectedcountry"
-                            name="country"
-                            optionLabel="name"
-                            required
-                        >
-                        </p-dropdown>
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label
-                        htmlFor="swift_bic"
-                        class="col-3 mb-2 md:col-3 md:mb-2"
-                        ><b>Swift\Bic</b></label
-                    >
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <input
-                            pInputText
-                            id="swift_bic"
-                            type="text"
-                            [(ngModel)]="swiftBic"
-                            name="swift_bic"
-                            required
-                        />
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label class="col-3 mb-2 md:col-3 md:mb-2">
-                        <b>Currency</b>
-                    </label>
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <p-dropdown
-                            inputId="multiselect"
-                            [options]="currency"
-                            [(ngModel)]="selectedcurrency"
-                            name="currency"
-                            optionLabel="name"
-                            required
-                        >
-                        </p-dropdown>
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label
-                        htmlFor="Sort Code"
-                        class="col-3 mb-2 md:col-3 md:mb-2"
-                        ><b>Sort Code</b></label
-                    >
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <input
-                            pInputText
-                            id="Sort Code"
-                            type="text"
-                            [(ngModel)]="sortCode"
-                            name="sortCode"
-                            required
-                        />
-                    </div>
-                </div>
-                <div class="field grid">
-                    <label class="col-3 mb-2 md:col-3 md:mb-2">
-                        <b>Is Active</b>
-                    </label>
-                    <div class="col-4 mb-2 md:col-4 md:mb-2">
-                        <p-checkbox
-                            value="isActive"
-                            inputId="isActive"
-                            [(ngModel)]="isActive"
-                            name="isActive"
-                            required
-                        />
-                        <label for="isActive" class="ml-2 md:ml-2"
-                            >Is Active</label
-                        >
-                    </div>
-                </div>
-
-                <div class="field grid">
-                    <p-dialog
-                        header="Save"
-                        [(visible)]="display"
-                        [modal]="true"
-                        showEffect="fade"
-                        [style]="{ width: '30vw' }"
-                        [breakpoints]="{ '960px': '75vw' }"
-                    >
-                        <p class="line-height-3 m-0">Data Saved Successfully</p>
-                        <ng-template pTemplate="footer">
-                            <button
-                                pButton
-                                icon="pi pi-Save"
-                                (click)="display = false"
-                                label="Ok"
-                                class="p-button-save"
-                            ></button>
-                        </ng-template>
-                    </p-dialog>
-
-                    <div class="col-2 mb-2 md:col-1.5 md:mb-2">
-                        <button
-                            type="submit"
-                            pButton
-                            icon="pi pi-save"
-                            label="Save"
-                            [disabled]="!form.valid"
-                        ></button>
-                    </div>
-
-                    <p-confirmDialog
-                        header="Confirm"
-                        key="clear2"
-                        icon="pi pi-exclamation-triangle"
-                        message="Are you sure you want to proceed?"
-                        [style]="{ width: '350px' }"
-                        acceptButtonStyleClass="p-button-text"
-                        rejectButtonStyleClass="p-button-text"
-                    ></p-confirmDialog>
-
-                    <div class="col-2 mb-2 md:col-2 md:mb-2">
-                        <button
-                            type="button"
-                            (click)="confirmClear()"
-                            pButton
-                            icon="pi pi-trash"
-                            label="clear"
-                            class="p-button-danger"
-                            style="width: auto"
-                        ></button>
-                    </div>
-                </div>
-            </form>
-=======
             <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
             <kendo-grid
                 [kendoGridBinding]="accountdata"
@@ -284,10 +94,8 @@
                 <div class="col-12">
                     <div class="grid m-0 p-0">
                         <div class="col-12 m-0 p-0">
-                            <p-divider align="left" class="m-0 p-0">
-                                <i class="pi pi-fw pi-sun"></i>
-                                <b>Account Details</b>
-                                <i class="pi pi-fw pi-sun"></i>
+                            <p-divider layout="horizontal" align="left">
+                                <span class="p-tag">Account Deails</span>
                             </p-divider>
                             <div class="field grid">
                                 <div class="col-6">
@@ -444,7 +252,6 @@
                     </div>
                 </div>
             </p-dialog>
->>>>>>> main
         </div>
     </div>
 </div>

@@ -29,15 +29,7 @@ import { CheckboxModule } from "primeng/checkbox";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 import { RulesComponent } from './rules/rules.component';
-<<<<<<< HEAD
-import { AccountComponent } from './account/account.component';
-import { RippleModule } from 'primeng/ripple';
-import { ConfirmationService } from 'primeng/api';
-import { DialogModule } from 'primeng/dialog';
-import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
-=======
 import { GridModule } from '@progress/kendo-angular-grid';
->>>>>>> main
 
 
 AccountComponent
@@ -68,26 +60,10 @@ AccountComponent
         //MultiSelectModule,
         //InputTextareaModule,
         //InputTextModule,
-<<<<<<< HEAD
-        ButtonModule,
-        RippleModule,
-		DialogModule,
-        ConfirmDialogModule,
-        
-    
-
-        
-	
-	
-		
-      
-
-=======
         GridModule,
         DialogModule,
         ButtonModule
         
->>>>>>> main
         
     ],
     declarations: [
