@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
@@ -62,7 +62,8 @@ AccountComponent
         //InputTextModule,
         GridModule,
         DialogModule,
-        ButtonModule
+        ButtonModule,
+        ReactiveFormsModule
         
         
     ],

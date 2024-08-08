@@ -1,15 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FilterableSettings } from '@progress/kendo-angular-grid';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: './list.component.html',
 })
 export class ListComponent implements OnInit, OnDestroy {
+
+    myForm: FormGroup;
+     
+    constructor(private fb: FormBuilder) {}
+
     group = [{ field: 'entity' }];
     filterMode: FilterableSettings = 'menu';
     listData: any[] = [];
     displayOverlay: boolean = false;
     selectednameDetail: any;
+    selectedNameDetail: any;
+    
 
   treasuryTypes: any[] = [];
   selectedTreasuryType: any[] = [];
@@ -37,6 +45,19 @@ export class ListComponent implements OnInit, OnDestroy {
       {name: 'Warehouse', code: 'WH'},
       {name: 'Repo', code: 'REPO'},
     ]
+
+
+    this.myForm = this.fb.group({
+        legalName: ['', Validators.required],
+        aliasName: ['', Validators.required],
+        selectedType: [null, Validators.required],
+        selectedTreasuryType: [null, Validators.required],
+        otherIdentifiers: ['', Validators.maxLength(50)],
+        address: ['', Validators.required],
+        emailID: ['', [Validators.required, Validators.email]],
+        Telephone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        keyContact: ['', Validators.required],
+      });
     }
 
     ngOnDestroy(): void {}
@@ -108,7 +129,14 @@ export class ListComponent implements OnInit, OnDestroy {
         ];
     }
 
-
+    handleSubmit() {
+        if (this.myForm.valid) {
+          // handle the form submission
+        } else {
+          this.myForm.markAllAsTouched(); // highlight all fields with errors
+        }
+      }
+    
    
 
     

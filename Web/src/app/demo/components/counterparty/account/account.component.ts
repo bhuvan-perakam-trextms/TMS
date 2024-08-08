@@ -1,6 +1,7 @@
 
 import { Component,OnInit } from '@angular/core';
 import { FilterableSettings } from '@progress/kendo-angular-grid';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Country {
   name: string;
@@ -19,6 +20,10 @@ interface Currency {
   
 })
 export class AccountComponent implements OnInit {
+
+  newForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
 
   group = [{ field: "entity" }]
   filterMode: FilterableSettings = "menu";
@@ -56,10 +61,26 @@ export class AccountComponent implements OnInit {
     {name: 'Russian Ruble', code: 'RUB'}
   ];
 
+  
+
   ngOnInit(): void {
     this.getaccountData();
-    
+
+
+    this.newForm = this.fb.group({
+      accountName: ['', Validators.required],
+      accountNumber: ['', Validators.required],
+      country: [null, Validators.required],
+      currency: [null, Validators.required],
+      iban: ['', Validators.required],
+      swift_bic: ['', Validators.required],
+      trexid: ['', Validators.required],
+      isActive: ['', Validators.required],
+    });
+
+
   }
+ 
 
 
   
@@ -112,6 +133,15 @@ export class AccountComponent implements OnInit {
         return `${basePath}spain-logo.png`;
       default:
         return 'path/to/default-image.png';  // Fallback image if needed
+    }
+  }
+
+
+  handleSubmit() {
+    if (this.newForm.valid) {
+      // handle the form submission
+    } else {
+      this.newForm.markAllAsTouched(); // highlight all fields with errors
     }
   }
 }
