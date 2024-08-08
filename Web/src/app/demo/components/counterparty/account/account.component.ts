@@ -66,7 +66,6 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.getaccountData();
 
-
     this.newForm = this.fb.group({
       accountName: ['', Validators.required],
       accountNumber: ['', Validators.required],
@@ -94,15 +93,15 @@ export class AccountComponent implements OnInit {
 
   getaccountData(){
     this.accountdata=[
-      {name:'counterparty1',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'Active'},
-      {name:'counterparty2',accountName:'HSBC',country:'United Kingdom',currency:'GBP',isActive:'InActive'},
-      {name:'counterparty3',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'InActive'},
-      {name:'counterparty4',accountName:'HSBC',country:'United Kingdom',currency:'GBP',isActive:'Active'},
-      {name:'counterparty5',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'Active'},
-      {name:'counterparty6',accountName:'HSBC',country:'United Kingdom',currency:'GBP',isActive:'InActive'},
-      {name:'counterparty7',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'InActive'},
-      {name:'counterparty8',accountName:'Barclays',country:'United Kingdom',currency:'GBP',isActive:'InActive'},
-      {name:'counterparty9',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'Active'}
+      {name:'Counterparty 1',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'Active', accountNumber: '1234567'},
+      {name:'Counterparty 2',accountName:'HSBC',country:'United Kingdom',currency:'GBP',isActive:'InActive', accountNumber: '1234567'},
+      {name:'Counterparty 3',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'InActive', accountNumber: '1234567'},
+      {name:'Counterparty 4',accountName:'HSBC',country:'United Kingdom',currency:'GBP',isActive:'Active', accountNumber: '1234567'},
+      {name:'Counterparty 5',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'Active', accountNumber: '1234567'},
+      {name:'Counterparty 6',accountName:'HSBC',country:'United Kingdom',currency:'GBP',isActive:'InActive', accountNumber: '1234567'},
+      {name:'Counterparty 7',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'InActive', accountNumber: '1234567'},
+      {name:'Counterparty 8',accountName:'Barclays',country:'United Kingdom',currency:'GBP',isActive:'InActive', accountNumber: '1234567'},
+      {name:'Counterparty 9',accountName:'BBVA',country:'Spain',currency:'EUR',isActive:'Active', accountNumber: '1234567'}
 
 
     ]
