@@ -8,21 +8,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ListComponent implements OnInit, OnDestroy {
 
     myForm: FormGroup;
-     
-    constructor(private fb: FormBuilder) {}
+
+    constructor(private fb: FormBuilder) { }
 
     group = [{ field: 'entity' }];
     filterMode: FilterableSettings = 'menu';
     listData: any[] = [];
     displayOverlay: boolean = false;
     selectednameDetail: any;
-    selectedNameDetail: any;
-    
 
-  treasuryTypes: any[] = [];
-  selectedTreasuryType: any[] = [];
-  types: any[] = [];
-  selectedType: any[] = [];
+    treasuryTypes: any[] = [];
+    selectedTreasuryType: any[] = [];
+    types: any[] = [];
+    selectedType: any[] = [];
 
 
     value!: string;
@@ -30,37 +28,36 @@ export class ListComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.getlistdata();
 
-
-        this.types = 
-  [
-    {name: 'Counterparty Type 1', code: 'CPT1'},
-    {name: 'Counterparty Type 2', code: 'CPT2'},
-  ];
-
-
-        this.treasuryTypes = 
-    [
-      {name: 'Swaps', code: 'SWP'},
-      {name: 'MM Deals', code: 'MMDEAL'},
-      {name: 'Warehouse', code: 'WH'},
-      {name: 'Repo', code: 'REPO'},
-    ]
+        this.types =
+            [
+                { name: 'Counterparty Type 1', code: 'CPT1' },
+                { name: 'Counterparty Type 2', code: 'CPT2' },
+            ];
 
 
-    this.myForm = this.fb.group({
-        legalName: ['', Validators.required],
-        aliasName: ['', Validators.required],
-        selectedType: [null, Validators.required],
-        selectedTreasuryType: [null, Validators.required],
-        otherIdentifiers: ['', Validators.maxLength(50)],
-        address: ['', Validators.required],
-        emailID: ['', [Validators.required, Validators.email]],
-        Telephone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-        keyContact: ['', Validators.required],
-      });
+        this.treasuryTypes =
+            [
+                { name: 'Swaps', code: 'SWP' },
+                { name: 'MM Deals', code: 'MMDEAL' },
+                { name: 'Warehouse', code: 'WH' },
+                { name: 'Repo', code: 'REPO' },
+            ]
+
+
+        this.myForm = this.fb.group({
+            legalName: ['', Validators.required],
+            aliasName: ['', Validators.required],
+            selectedType: [null, Validators.required],
+            selectedTreasuryType: [null, Validators.required],
+            otherIdentifiers: ['', Validators.required],
+            address: ['', Validators.required],
+            emailID: ['', [Validators.required, Validators.email]],
+            Telephone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+            keyContact: ['', Validators.required],
+        });
     }
 
-    ngOnDestroy(): void {}
+    ngOnDestroy(): void { }
 
     handlePopup(dataItem) {
         this.displayOverlay = true;
@@ -68,60 +65,60 @@ export class ListComponent implements OnInit, OnDestroy {
         console.log(this.selectednameDetail);
     }
 
-   
+
 
     getlistdata() {
         this.listData = [
             {
-                name: 'counterparty1',
+                name: 'Counterparty 1',
                 aliasName: 'Company Tertiary Corporate Account',
                 country: 'Spain',
                 currency: 'EUR',
             },
             {
-                name: 'counterparty2',
+                name: 'Counterparty 2',
                 aliasName: 'Company European Corporate Account',
                 country: 'UK',
                 currency: 'GBP',
             },
             {
-                name: 'counterparty3',
+                name: 'Counterparty 3',
                 aliasName: 'Company Tertiary Corporate Account',
                 country: 'Spain',
                 currency: 'EUR',
             },
             {
-                name: 'counterparty4',
+                name: 'Counterparty 4',
                 aliasName: 'Company Primary Corporate Account',
                 country: 'Uk',
                 currency: 'GBP',
             },
             {
-                name: 'counterparty5',
+                name: 'Counterparty 5',
                 aliasName: 'Company Tertiary Corporate Account',
                 country: 'Spain',
                 currency: 'EUR',
             },
             {
-                name: 'counterparty6',
+                name: 'Counterparty 6',
                 aliasName: 'Company European Corporate Account',
                 country: 'UK',
                 currency: 'GBP',
             },
             {
-                name: 'counterparty7',
+                name: 'Counterparty 7',
                 aliasName: 'Company Tertiary Corporate Account',
                 country: 'Spain',
                 currency: 'EUR',
             },
             {
-                name: 'counterparty8',
+                name: 'Counterparty 8',
                 aliasName: 'Company Primary Corporate Account',
                 country: 'UK',
                 currency: 'GBP',
             },
             {
-                name: 'counterparty9',
+                name: 'Counterparty 9',
                 aliasName: 'Company Tertiary Corporate Account',
                 country: 'Spain',
                 currency: 'EUR',
@@ -131,13 +128,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
     handleSubmit() {
         if (this.myForm.valid) {
-          // handle the form submission
+            // handle the form submission
         } else {
-          this.myForm.markAllAsTouched(); // highlight all fields with errors
+            this.myForm.markAllAsTouched(); // highlight all fields with errors
         }
-      }
-    
-   
+    }
 
-    
+
+
+
 }

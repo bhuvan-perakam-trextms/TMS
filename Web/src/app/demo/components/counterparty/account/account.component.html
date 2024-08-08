@@ -2,34 +2,16 @@
     <div class="col-12">
         <div class="card p-fluid">
             <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
-            <kendo-grid
-                [kendoGridBinding]="accountdata"
-                [pageSize]="20"
-                [pageable]="true"
-                [sortable]="true"
-                [filterable]="filterMode"
-                [groupable]="true"
-                style="width: 100%"
-            >
+            <kendo-grid [kendoGridBinding]="accountdata" [pageSize]="20" [pageable]="true" [sortable]="true"
+                [filterable]="filterMode" [groupable]="true" style="width: 100%">
                 <kendo-grid-column field="name" title="Name">
-                    <ng-template
-                        kendoGridCellTemplate
-                        let-dataItem
-                        let-rowIndex="rowIndex"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            (click)="handlePopup(dataItem)"
-                        >
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
                             {{ dataItem.name }}
                         </a>
                     </ng-template>
                 </kendo-grid-column>
-                <kendo-grid-column
-                    field="accountName"
-                    title="Account Name"
-                    width="150"
-                >
+                <kendo-grid-column field="accountName" title="Account Name" [width]="150">
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
@@ -40,37 +22,21 @@
                     </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="country" title="Country">
-                    <ng-template
-                        kendoGridCellTemplate
-                        let-dataItem
-                        let-rowIndex="rowIndex"
-                    >
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                         <div class="flex align-items-center gap-2">
-                            <img
-                                [src]="getCountryImageUrl(dataItem.country)"
-                                class="shadow-4"
-                                alt="{{ dataItem.country }}"
-                                width="30"
-                            />
+                            <img [src]="getCountryImageUrl(dataItem.country)" class="shadow-4"
+                                alt="{{ dataItem.country }}" width="30" />
                             <span> {{ dataItem.country }} </span>
                         </div>
                     </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="currency" title="Currency">
-                    <ng-template
-                        kendoGridCellTemplate
-                        let-dataItem
-                        let-rowIndex="rowIndex"
-                    >
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                         <i [class]="getCurrencyClass(dataItem.currency)"></i>
                         {{ dataItem.currency }}
                     </ng-template>
                 </kendo-grid-column>
-                <kendo-grid-column
-                    field="isActive"
-                    title="Is Active"
-                    width="150"
-                >
+                <kendo-grid-column field="isActive" title="Is Active" [width]="150">
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
@@ -81,21 +47,17 @@
                     </ng-template>
                 </kendo-grid-column>
             </kendo-grid>
-            <p-dialog
-                [(visible)]="displayOverlay"
-                [modal]="true"
-                showEffect="fade"
-                [style]="{ width: '70vw' }"
-                [breakpoints]="{ '960px': '75vw' }"
-            >
-                <form [formGroup]="newForm" (ngSubmit)="handleSubmit()">
-                    <ng-template pTemplate="header">
-                        <div class="flex align-items-center gap-2"></div>
+            <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{ width: '70vw' }"
+                [breakpoints]="{ '960px': '75vw' }">
+                <ng-template pTemplate="header">
+                    <div class="flex align-items-center gap-2">
                         <span>
-                            {{ selectedcounterPartyDetail?.entity }} -
-                            {{ selectedcounterPartyDetail?.name }}
+                            {{ this.selectedcounterPartyDetail?.name }} - {{ this.selectedcounterPartyDetail?.accountName }}
                         </span>
-                    </ng-template>
+                    </div>
+                </ng-template>
+
+                <form [formGroup]="newForm" (ngSubmit)="handleSubmit()" *ngIf="selectedcounterPartyDetail">
                     <div class="col-12">
                         <div class="grid m-0 p-0">
                             <div class="col-12 m-0 p-0">
@@ -105,30 +67,14 @@
                                 <div class="field grid">
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="accountName"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                            >
+                                            <label htmlFor="accountName" class="col-4 md:col-4 mb-0 md:mb-0">
                                                 <b>Account Name</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input
-                                                    pInputText
-                                                    id="accountName"
-                                                    type="text"
-                                                    [disabled]="false"
-                                                />
-                                                <div
-                                                    *ngIf="
-                                                        newForm.get(
-                                                            'accountName'
-                                                        ).invalid &&
-                                                        newForm.get(
-                                                            'accountName'
-                                                        ).touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                <input pInputText id="accountName" type="text" [disabled]="false"
+                                                    formControlName="accountName" [(ngModel)]="selectedcounterPartyDetail.accountName" />
+                                                <div *ngIf="newForm.get('accountName').invalid &&
+                                                        newForm.get('accountName').touched" class="error">
                                                     Account Name is required.
                                                 </div>
                                             </div>
@@ -136,32 +82,19 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="currency"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                                ><b>Currency</b></label
-                                            >
+                                            <label htmlFor="currency"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Currency</b></label>
                                             <div class="col-7 md:col-7">
-                                                <p-dropdown
-                                                    [options]="currencies"
-                                                    id="currency"
-                                                    [(ngModel)]="
-                                                        selectedCurrency
-                                                    "
-                                                    optionLabel="name"
-                                                    placeholder="Select a Currency"
-                                                >
-                                                    <div
-                                                        *ngIf="
+                                                <p-dropdown [options]="currencies" id="currency" [(ngModel)]="selectedCurrency" optionLabel="name" placeholder="Select a Currency"
+                                                    formControlName="currency">
+                                                    <div *ngIf="
                                                             newForm.get(
                                                                 'currency'
                                                             ).invalid &&
                                                             newForm.get(
                                                                 'currency'
                                                             ).touched
-                                                        "
-                                                        class="error"
-                                                    >
+                                                        " class="error">
                                                         Currency is required.
                                                     </div>
                                                 </p-dropdown>
@@ -170,32 +103,14 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="entity"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                                ><b>Country</b></label
-                                            >
+                                            <label htmlFor="entity"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
                                             <div class="col-7 md:col-7">
-                                                <p-dropdown
-                                                    [options]="countries"
-                                                    id="country"
-                                                    [(ngModel)]="
-                                                        selectedCountry
-                                                    "
-                                                    optionLabel="name"
-                                                    placeholder="Select a Country"
-                                                >
-                                                    <div
-                                                        *ngIf="
-                                                            newForm.get(
-                                                                'country'
-                                                            ).invalid &&
-                                                            newForm.get(
-                                                                'country'
-                                                            ).touched
-                                                        "
-                                                        class="error"
-                                                    >
+                                                <p-dropdown [options]="countries" id="country"
+                                                    [(ngModel)]="selectedCountry" optionLabel="name"
+                                                    placeholder="Select a Country" formControlName="country">
+                                                    <div *ngIf="newForm.get('country').invalid &&
+                                                            newForm.get('country').touched" class="error">
                                                         Country is required.
                                                     </div>
                                                 </p-dropdown>
@@ -204,29 +119,18 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="accountNumber"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                                ><b>Account Number</b></label
-                                            >
+                                            <label htmlFor="accountNumber"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Account Number</b></label>
                                             <div class="col-7 md:col-7">
-                                                <input
-                                                    pInputText
-                                                    id="accountNumber"
-                                                    type="text"
-                                                    [disabled]="false"
-                                                />
-                                                <div
-                                                    *ngIf="
+                                                <input pInputText id="accountNumber" type="text" [disabled]="false" formControlName="accountNumber" [(ngModel)]="selectedcounterPartyDetail.accountNumber" />
+                                                <div *ngIf="
                                                         newForm.get(
                                                             'accountNumber'
                                                         ).invalid &&
                                                         newForm.get(
                                                             'accountNumber'
                                                         ).touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                    " class="error">
                                                     Account Number is required.
                                                 </div>
                                             </div>
@@ -234,28 +138,16 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="iban"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                            >
-                                                <b>IBAN</b></label
-                                            >
+                                            <label htmlFor="iban" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>IBAN</b></label>
                                             <div class="col-7 md:col-7">
-                                                <input
-                                                    pInputText
-                                                    id="iban"
-                                                    type="text"
-                                                    [disabled]="false"
-                                                />
-                                                <div
-                                                    *ngIf="
+                                                <input pInputText id="iban" type="text" [disabled]="false" />
+                                                <div *ngIf="
                                                         newForm.get('iban')
                                                             .invalid &&
                                                         newForm.get('iban')
                                                             .touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                    " class="error">
                                                     Iban is required.
                                                 </div>
                                             </div>
@@ -263,27 +155,16 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="swift_bic"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                                ><b>SWIFT</b></label
-                                            >
+                                            <label htmlFor="swift_bic"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>SWIFT</b></label>
                                             <div class="col-7 md:col-7">
-                                                <input
-                                                    pInputText
-                                                    id="swift_bic"
-                                                    type="text"
-                                                    [disabled]="false"
-                                                />
-                                                <div
-                                                    *ngIf="
+                                                <input pInputText id="swift_bic" type="text" [disabled]="false" />
+                                                <div *ngIf="
                                                         newForm.get('swift_bic')
                                                             .invalid &&
                                                         newForm.get('swift_bic')
                                                             .touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                    " class="error">
                                                     swift Bic is required.
                                                 </div>
                                             </div>
@@ -291,26 +172,16 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="trexid"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                                ><b>TrexId</b></label
-                                            >
+                                            <label htmlFor="trexid"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>TrexId</b></label>
                                             <div class="col-7 md:col-7">
-                                                <input
-                                                    pInputText
-                                                    id="trexid"
-                                                    type="text"
-                                                />
-                                                <div
-                                                    *ngIf="
+                                                <input pInputText id="trexid" type="text" />
+                                                <div *ngIf="
                                                         newForm.get('trexid')
                                                             .invalid &&
                                                         newForm.get('trexid')
                                                             .touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                    " class="error">
                                                     Trex Id is required.
                                                 </div>
                                             </div>
@@ -318,26 +189,16 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="field grid">
-                                            <label
-                                                htmlFor="isACtive"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"
-                                                ><b>Is Active</b></label
-                                            >
+                                            <label htmlFor="isACtive" class="col-4 md:col-4 mb-0 md:mb-0"><b>Is
+                                                    Active</b></label>
                                             <div>
-                                                <input
-                                                    pInputText
-                                                    id="isActive"
-                                                    type="checkbox"
-                                                />
-                                                <div
-                                                    *ngIf="
+                                                <p-checkbox  formControlName="isActive"  value="New York" inputId="isActive" />
+                                                <div *ngIf="
                                                         newForm.get('isActive')
                                                             .invalid &&
                                                         newForm.get('isActive')
                                                             .touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                    " class="error">
                                                     Is Active is required.
                                                 </div>
                                             </div>
@@ -345,19 +206,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <ng-template pTemplate="footer">
-                                <!-- <button
-                                    pButton
-                                    icon="pi pi-check"
-                                    (click)="displayOverlay = false"
-                                    label="Ok"
-                                    class="p-button-outlined"
-                                ></button> -->
-                                <p-button type="submit" label="OK"></p-button>
-                            </ng-template>
                         </div>
                     </div>
                 </form>
+
+                <ng-template pTemplate="footer">
+                    <span>
+                        <p-button label="Save" severity="success" (click)="handleSubmit()" />
+                    </span>
+                    <span>
+                        <p-button label="Clear" severity="info" (click)="displayOverlay=false" />
+                    </span>
+                </ng-template>
             </p-dialog>
         </div>
     </div>
