@@ -12,6 +12,7 @@ import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 
+import { ApprovalService } from './demo/service/approval.service';
 import { BankService } from './demo/service/bank.service';
 import { UserService } from './demo/service/user.service';
 import { CashHistoryService } from './demo/service/cashhistory.service';
@@ -46,7 +47,8 @@ import { FormsModule } from '@angular/forms';
         DropDownListModule,
         CashHistoryService,
         BankService,
-        UserService
+        UserService,
+        ApprovalService
     ],
     bootstrap: [AppComponent],
 })

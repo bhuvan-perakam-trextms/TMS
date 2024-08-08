@@ -46,17 +46,11 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Payments', icon: 'pi pi-fw pi-money-bill',
                         items: [
-                            // {
-                            //     label: 'Internal Transfers', icon: 'pi pi-fw pi-arrow-right'
-                            // },
-                            // {
-                            //     label: 'External Transfers', icon: 'pi pi-fw pi-arrow-up-right'
-                            // },
                             {
                                 label: 'Money Movements', icon: 'pi pi-fw pi-arrows-h', routerLink: ['/dashboard/payments/moneymovements']
                             },
                             {
-                                label: 'Approvals', icon: 'pi pi-fw pi-user-plus'
+                                label: 'Approvals', icon: 'pi pi-fw pi-user-plus', routerLink: ['/dashboard/payments/approvals']
                             },
                         ]
                     }
