@@ -4,10 +4,10 @@
             <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
             <kendo-grid [kendoGridBinding]="listData" [pageSize]="20" [pageable]="true" [sortable]="true"
                 [filterable]="filterMode" [groupable]="true" style="width: 100%">
-                <kendo-grid-column field="name" title="Name"  [width]="300">
+                <kendo-grid-column field="legalName" title=" Legal Name"  [width]="300">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                         <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
-                            {{ dataItem.name }}
+                            {{ dataItem.legalName }}
                         </a>
                     </ng-template>
                 </kendo-grid-column>
@@ -21,7 +21,7 @@
                         <span>{{ dataItem.aliasName }}</span>
                     </ng-template>
                 </kendo-grid-column>
-                <kendo-grid-column field="country" title="Country" [width]="150">
+                <kendo-grid-column field="country" title="Country">
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
@@ -31,7 +31,7 @@
                         <span>{{ dataItem.country }}</span>
                     </ng-template>
                 </kendo-grid-column>
-                <kendo-grid-column field="currency" title="Currency" [width]="150">
+                <kendo-grid-column field="currency" title="Currency">
                     <ng-template kendoGridHeaderTemplate let-column="column">
                         <div class="header-container">
                             <span class="bold-header">{{ column.title }}</span>
@@ -47,12 +47,12 @@
                 <ng-template pTemplate="header">
                     <div class="flex align-items-center gap-2">
                         <span>
-                            {{ this.selectednameDetail.name }} - {{ this.selectednameDetail.aliasName }}
+                            {{ this.selectednameDetail.legalName }} - {{ this.selectednameDetail.aliasName }}
                         </span>
                     </div>
                 </ng-template>
 
-                <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+                <form [formGroup]="myForm" (ngSubmit)="handleSubmit()"  *ngIf="selectednameDetail">
                     <div class="col-12">
                         <div class="grid m-0 p-0">
                             <div class="col-12 m-0 p-0">
@@ -66,14 +66,9 @@
                                                 <b>Legal Name</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input pInputText id="legalName" type="text"
-                                                    formControlName="legalName" />
-                                                <div *ngIf="
-                                                        myForm.get('legalName')
-                                                            .invalid &&
-                                                        myForm.get('legalName')
-                                                            .touched
-                                                    " class="error">
+                                                <input pInputText id="legalName" type="text"  
+                                                    formControlName="legalName" [(ngModel)]="selectednameDetail.legalName" />
+                                                <div *ngIf="myForm.get('legalName').invalid && myForm.get('legalName').touched" class="error">
                                                     Legal Name is required.
                                                 </div>
                                             </div>
@@ -85,14 +80,9 @@
                                                 <b>Alias Name</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input pInputText id="aliasName" type="text"
-                                                    formControlName="aliasName" />
-                                                <div *ngIf="
-                                                        myForm.get('aliasName')
-                                                            .invalid &&
-                                                        myForm.get('aliasName')
-                                                            .touched
-                                                    " class="error">
+                                                <input pInputText id="aliasName" type="text" 
+                                                    formControlName="aliasName" [(ngModel)]="selectednameDetail.aliasName" />
+                                                <div *ngIf="myForm.get('aliasName').invalid && myForm.get('aliasName').touched" class="error">
                                                     Alias Name is required.
                                                 </div>
                                             </div>
@@ -106,15 +96,9 @@
                                             <div class="col-7 md:col-7">
                                                 <p-multiSelect inputId="multiselect" id="selectedType" [options]="types"
                                                     [(ngModel)]="selectedType" optionLabel="name" [filter]="true"
-                                                    formControlName="selectedType">
+                                                    formControlName="selectedType"  [(ngModel)]="selectednameDetail.selectedType">
                                                     <div *ngIf="
-                                                            myForm.get(
-                                                                'selectedType'
-                                                            ).invalid &&
-                                                            myForm.get(
-                                                                'selectedType'
-                                                            ).touched
-                                                        " class="error">
+                                                            myForm.get('selectedType').invalid && myForm.get('selectedType').touched" class="error">
                                                         Type is required.
                                                     </div>
                                                 </p-multiSelect>
@@ -135,17 +119,9 @@
                                                 <p-multiSelect inputId="multiselect" id="selectedTreasuryType"
                                                     [options]="treasuryTypes" [(ngModel)]="selectedTreasuryType"
                                                     optionLabel="name" [filter]="true"
-                                                    formControlName="selectedTreasuryType">
-                                                    <div *ngIf="
-                                                            myForm.get(
-                                                                'selectedTreasuryType'
-                                                            ).invalid &&
-                                                            myForm.get(
-                                                                'selectedTreasuryType'
-                                                            ).touched
-                                                        " class="error">
-                                                        Treasury Type is
-                                                        required.
+                                                    formControlName="selectedTreasuryType"  [(ngModel)]="selectednameDetail.selectedTreasuryType">
+                                                    <div *ngIf="myForm.get('selectedTreasuryType').invalid && myForm.get('selectedTreasuryType').touched" class="error">
+                                                        Treasury Type is required.
                                                     </div>
                                                 </p-multiSelect>
                                             </div>
@@ -158,18 +134,11 @@
                                                 <b>Other Identifiers</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input pInputText id="otherIdentifiers" type="text"
-                                                    formControlName="otherIdentifiers" />
+                                                <input pInputText id="otherIdentifiers" type="text" 
+                                                    formControlName="otherIdentifiers" [(ngModel)]="selectednameDetail.otherIdentifiers" />
                                                 <div *ngIf="
-                                                        myForm.get(
-                                                            'otherIdentifiers'
-                                                        ).invalid &&
-                                                        myForm.get(
-                                                            'otherIdentifiers'
-                                                        ).touched
-                                                    " class="error">
-                                                    Other Identifiers is
-                                                    required.
+                                                        myForm.get('otherIdentifiers').invalid && myForm.get('otherIdentifiers').touched" class="error">
+                                                    Other Identifiers isrequired.
                                                 </div>
                                             </div>
                                         </div>
@@ -182,21 +151,27 @@
                                 <div class="field grid">
                                     <div class="col-6">
                                         <div class="field grid">
+                                            <label htmlFor="entity" class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <p-dropdown [options]="countries" id="country"[(ngModel)]="selectedCountry" optionLabel="name"placeholder="Select a Country" 
+                                                formControlName="country" [(ngModel)]="selectednameDetail.country">
+                                                    <div *ngIf="myForm.get('country').invalid && myForm.get('country').touched" class="error">
+                                                        Country is required.
+                                                    </div>
+                                                </p-dropdown>
+                                            </div>
+                                        </div>
+                                     </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
                                             <label htmlFor="address" class="col-4 md:col-4 mb-0 md:mb-0">
                                                 <b>Address</b>
                                             </label>
                                             <div class="col-7 md:col-7">
                                                 <textarea rows="4" cols="26" id="address" pInputTextarea
-                                                    formControlName="address">
+                                                    formControlName="address" [(ngModel)]="selectednameDetail.address">
                                                 <div
-                                                    *ngIf="
-                                                    myForm.get('address')
-                                                            .invalid &&
-                                                            myForm.get('address')
-                                                            .touched
-                                                    "
-                                                    class="error"
-                                                >
+                                                    *ngIf="myForm.get('address').invalid && myForm.get('address').touched" class="error" >
                                                     Address is required.
                                                 </div>
                                                 </textarea>
@@ -210,13 +185,9 @@
                                                 <b>Email-ID</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input pInputText id="emailID" type="text" formControlName="emailID" />
-                                                <div *ngIf="
-                                                        myForm.get('emailID')
-                                                            .invalid &&
-                                                        myForm.get('emailID')
-                                                            .touched
-                                                    " class="error">
+                                                <input pInputText id="emailID" type="text" 
+                                                formControlName="emailID"  [(ngModel)]="selectednameDetail.emailID" />
+                                                <div *ngIf="myForm.get('emailID').invalid && myForm.get('emailID').touched" class="error">
                                                     Valid Email-ID is required.
                                                 </div>
                                             </div>
@@ -228,14 +199,10 @@
                                                 <b>Telephone</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input pInputText id="Telephone" type="text"
-                                                    formControlName="Telephone" />
+                                                <input pInputText id="Telephone" type="text" 
+                                                    formControlName="Telephone"    [(ngModel)]="selectednameDetail.Telephone"/>
                                                 <div *ngIf="
-                                                        myForm.get('Telephone')
-                                                            .invalid &&
-                                                        myForm.get('Telephone')
-                                                            .touched
-                                                    " class="error">
+                                                        myForm.get('Telephone').invalid && myForm.get('Telephone').touched" class="error">
                                                     Valid Telephone is required.
                                                 </div>
                                             </div>
@@ -247,14 +214,10 @@
                                                 <b>key Contact</b>
                                             </label>
                                             <div class="col-7 md:col-7">
-                                                <input pInputText id="keyContact" type="text"
-                                                    formControlName="keyContact" />
+                                                <input pInputText id="keyContact" type="text"  
+                                                    formControlName="keyContact"  [(ngModel)]="selectednameDetail.keyContact" />
                                                 <div *ngIf="
-                                                        myForm.get('keyContact')
-                                                            .invalid &&
-                                                        myForm.get('keyContact')
-                                                            .touched
-                                                    " class="error">
+                                                        myForm.get('keyContact').invalid && myForm.get('keyContact').touched" class="error">
                                                     Key Contact is required.
                                                 </div>
                                             </div>
