@@ -1,8 +1,92 @@
-.form-group {
-    margin-bottom: 15px;
-  }
-  
-  button {
-    margin-right: 10px;
-  }
-  
+.form-horizontal .field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 15px; /* Margin bottom from .form-group */
+}
+
+.form-horizontal .field label {
+  flex: 0 0 15%; /* Adjust percentage as needed */
+  margin-right: 1rem;
+}
+
+.form-horizontal .field div {
+  flex: 1 1 35%; /* Adjust percentage as needed */
+}
+
+.form-horizontal .field input,
+.form-horizontal .field p-dropdown,
+.form-horizontal .field p-calendar {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start; 
+  margin-top: 15px; /* Ensure spacing similar to form-group */
+}
+
+button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+/* .submit-btn {
+  background-color: #ECEAD9;
+  color: black;
+} */
+
+.submit-btn {
+  background-color: #00b32a; 
+  color: white;
+}
+
+/* .clear-btn { 
+  background-color: #ECEAD9;
+  color: black;
+} */
+
+.clear-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.md\\:col-4, .md\\:col-7 {
+  flex-basis: auto;
+}
+
+
+
+.submit-btn, .clear-btn {
+  padding: 0.5rem 1rem;
+}
+
+.p-fluid {
+  padding: 1rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}

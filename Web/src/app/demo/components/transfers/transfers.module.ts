@@ -7,7 +7,7 @@ import { TabViewModule  } from 'primeng/tabview';
 import { DropdownModule } from "primeng/dropdown";
 import { InputTextModule } from "primeng/inputtext";
 import { CalendarModule } from "primeng/calendar";
-
+import { TableModule } from 'primeng/table';
 import { TransfersComponent } from './transfers.component';
 import { TransfersRoutingModule } from './transfers-routing.module'; 
 
@@ -19,8 +19,8 @@ import { TransfersRoutingModule } from './transfers-routing.module';
     CommonModule,
     FormsModule,
     TransfersRoutingModule ,
-
     PanelModule,
+    TableModule,
     TabViewModule,
     DropdownModule,
     InputTextModule,
