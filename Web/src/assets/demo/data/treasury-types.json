@@ -1,0 +1,8 @@
+{
+	"data": [
+		{ "name": "Swaps", "code": "SWP" },
+        { "name": "MM Deals", "code": "MMDEAL" },
+        { "name": "Warehouse", "code": "WH" },
+        { "name": "Repo", "code": "REPO" }
+    ]
+}

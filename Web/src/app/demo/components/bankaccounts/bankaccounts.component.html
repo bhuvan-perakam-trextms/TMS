@@ -24,7 +24,7 @@
 
                 <kendo-grid-column field="currency" title="Currency">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                        <i [class]="getCurrencyClass(dataItem.currency)"></i> {{dataItem.currency}}
+                        <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> {{dataItem.currency}}
                     </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="market" title="Market">
@@ -33,7 +33,7 @@
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                     
                         <div class="flex align-items-center gap-2">
-                            <img [src]="getCountryImageUrl(dataItem.country)" class="shadow-4" alt="{{dataItem.country}}" width="30"/>
+                            <img [src]="this.countryService.getCountryImageUrl(dataItem.country)" class="shadow-4" alt="{{dataItem.country}}" width="30"/>
                             <span> {{dataItem.country}} </span>
                         </div>
                     </ng-template>

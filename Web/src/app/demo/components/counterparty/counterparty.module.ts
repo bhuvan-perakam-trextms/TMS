@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { AccountComponent } from './account/account.component';
+import { DialogModule } from 'primeng/dialog';
 
 import { PanelModule } from 'primeng/panel';
 import { SplitterModule } from 'primeng/splitter';
@@ -27,8 +29,10 @@ import { CheckboxModule } from "primeng/checkbox";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
 import { RulesComponent } from './rules/rules.component';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
+AccountComponent
 @NgModule({
     imports: [
         CommonModule,
@@ -49,17 +53,24 @@ import { RulesComponent } from './rules/rules.component';
         ChipsModule,
         DropdownModule,
         MultiSelectModule,
-        CheckboxModule
+        CheckboxModule,
         //InputMaskModule,
         //InputNumberModule,
         //CascadeSelectModule,
         //MultiSelectModule,
         //InputTextareaModule,
-        //InputTextModule
+        //InputTextModule,
+        GridModule,
+        DialogModule,
+        ButtonModule,
+        ReactiveFormsModule
+        
+        
     ],
     declarations: [
         ListComponent,
-        RulesComponent
+        RulesComponent,
+        AccountComponent
     ],
 })
 export class CounterpartyModule { }

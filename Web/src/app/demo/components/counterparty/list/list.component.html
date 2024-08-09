@@ -2,110 +2,263 @@
     <div class="col-12">
         <div class="card p-fluid">
             <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
-
-            <p-panel [toggleable]="true" [collapsed]="false" [style]="{'margin': '1%'}">
+            <kendo-grid [kendoGridBinding]="counterpartiesList" [pageSize]="20" [pageable]="true" [sortable]="true"
+                [filterable]="filterMode" [groupable]="true" style="width: 100%">
+                <kendo-grid-column field="legalName" title=" Legal Name">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
+                            {{ dataItem.legalName }}
+                        </a>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="aliasName" title="Alias Name">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.aliasName }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="country" title="Country">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <div class="flex align-items-center gap-2">
+                            <img [src]="this.countryService.getCountryImageUrl(dataItem.country)" class="shadow-4"
+                                alt="{{ dataItem.country }}" width="30" />
+                            <span> {{ dataItem.country }} </span>
+                        </div>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="currency" title="Currency">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i>
+                        <span>{{ dataItem.currency }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+            <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{ width: '70vw' }"
+                [breakpoints]="{ '960px': '75vw' }">
                 <ng-template pTemplate="header">
                     <div class="flex align-items-center gap-2">
-                        <span class="font-bold">
-                            Counterparty A
+                        <span>
+                            {{ this.selectedCounterparty.legalName }} - {{ this.selectedCounterparty.aliasName }}
                         </span>
                     </div>
                 </ng-template>
-                <div class="col-12">
-                    <div class="grid">
-                        <div class="col-12 align-items-center justify-content-center">
 
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Legal Name</b>
-                                </label>
-                                <span class="col-9 mb-2 md:col-9 md:mb-2">Legal Counterparty A</span>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Alias Name</b>
-                                </label>
-                                <span class="col-9 mb-2 md:col-9 md:mb-2">Dummy Alias Name</span>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-3 mb-2 md:col-3 md:mb-2">
-                                    <b>Type</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-multiSelect inputId="multiselect" [options]="types" [(ngModel)]="selectedType"
-                                        optionLabel="name" [filter]="true">
-                                    </p-multiSelect>
+                <form [formGroup]="counterpartyForm" (ngSubmit)="submitCounterpartyForm()" *ngIf="selectedCounterparty">
+                    <div class="col-12">
+                        <div class="grid m-0 p-0">
+                            <div class="col-12 m-0 p-0">
+                                <p-divider layout="horizontal" align="left">
+                                    <span class="p-tag">Details</span>
+                                </p-divider>
+                                <div class="field grid">
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="legalName" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Legal Name</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="legalName" type="text" formControlName="legalName"
+                                                    [(ngModel)]="selectedCounterparty.legalName" />
+                                                <div *ngIf="counterpartyForm.get('legalName').invalid && counterpartyForm.get('legalName').touched"
+                                                    class="error">
+                                                    Legal Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="aliasName" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Alias Name</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="aliasName" type="text" formControlName="aliasName"
+                                                    [(ngModel)]="selectedCounterparty.aliasName" />
+                                                <div *ngIf="counterpartyForm.get('aliasName').invalid && counterpartyForm.get('aliasName').touched"
+                                                    class="error">
+                                                    Alias Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="type" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Type</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <p-multiSelect inputId="multiselect" id="selectedCounterpartyType" [options]="counterpartyTypes"
+                                                    [(ngModel)]="selectedType" optionLabel="name" [filter]="true"
+                                                    formControlName="selectedCounterpartyType"
+                                                    [(ngModel)]="selectedCounterparty.selectedType">
+                                                    <div *ngIf="
+                                                            counterpartyForm.get('selectedCounterpartyType').invalid && counterpartyForm.get('selectedCounterpartyType').touched"
+                                                        class="error">
+                                                        Type is required.
+                                                    </div>
+                                                </p-multiSelect>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <p-divider layout="horizontal" align="left">
+                                    <span class="p-tag">Legal Entity Identifiers</span>
+                                </p-divider>
+                                <div class="field grid">
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="treasury" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Treasury</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <p-multiSelect inputId="multiselect" id="selectedTreasuryType"
+                                                    [options]="treasuryTypes" [(ngModel)]="selectedTreasuryType"
+                                                    optionLabel="name" [filter]="true"
+                                                    formControlName="selectedTreasuryType"
+                                                    [(ngModel)]="selectedCounterparty.selectedTreasuryType">
+                                                    <div *ngIf="counterpartyForm.get('selectedTreasuryType').invalid && counterpartyForm.get('selectedTreasuryType').touched"
+                                                        class="error">
+                                                        Treasury Type is required.
+                                                    </div>
+                                                </p-multiSelect>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <p-divider layout="horizontal" align="left">
-                                <span class="p-tag">Legal Entity Identifiers</span>
-                            </p-divider>
-                            <div class="field grid">
-                                <label class="col-3 mb-2 md:col-3 md:mb-2">
-                                    <b>Treasury</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-multiSelect inputId="multiselect" [options]="treasuryTypes"
-                                        [(ngModel)]="selectedTreasuryType" optionLabel="name" [filter]="true">
-                                    </p-multiSelect>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="otherIdentifiers" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Other Identifiers</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="otherIdentifiers" type="text"
+                                                    formControlName="otherIdentifiers"
+                                                    [(ngModel)]="selectedCounterparty.otherIdentifiers" />
+                                                <div *ngIf="
+                                                        counterpartyForm.get('otherIdentifiers').invalid && counterpartyForm.get('otherIdentifiers').touched"
+                                                    class="error">
+                                                    Other Identifiers isrequired.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="field grid">
-                                <label class="col-3 mb-2 md:col-3 md:mb-2">
-                                    <b>Other Identifiers</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-checkbox value="Accounts Payable" inputId="accountsPayable" />
-                                    <label for="accountsPayable" class="ml-2 md:ml-2">Accounts Payable</label>
+                                <p-divider layout="horizontal" align="left">
+                                    <span class="p-tag">Contact Details</span>
+                                </p-divider>
+                                <div class="field grid">
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="entity"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <p-dropdown [options]="countries" id="country"
+                                                    [(ngModel)]="selectedCountry" optionLabel="name"
+                                                    placeholder="Select a Country" formControlName="country"
+                                                    [(ngModel)]="selectedCounterparty.country">
+                                                    <div *ngIf="counterpartyForm.get('country').invalid && counterpartyForm.get('country').touched"
+                                                        class="error">
+                                                        Country is required.
+                                                    </div>
+                                                </p-dropdown>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="address" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Address</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <textarea rows="4" cols="26" id="address" pInputTextarea
+                                                    formControlName="address" [(ngModel)]="selectedCounterparty.address">
+                                                <div
+                                                    *ngIf="counterpartyForm.get('address').invalid && counterpartyForm.get('address').touched" class="error" >
+                                                    Address is required.
+                                                </div>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="emailId" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Email-ID</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="emailID" type="text" formControlName="emailID"
+                                                    [(ngModel)]="selectedCounterparty.emailID" />
+                                                <div *ngIf="counterpartyForm.get('emailID').invalid && counterpartyForm.get('emailID').touched"
+                                                    class="error">
+                                                    Valid Email-ID is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="Telephone" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Telephone</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="Telephone" type="text" formControlName="Telephone"
+                                                    [(ngModel)]="selectedCounterparty.Telephone" />
+                                                <div *ngIf="
+                                                        counterpartyForm.get('Telephone').invalid && counterpartyForm.get('Telephone').touched"
+                                                    class="error">
+                                                    Valid Telephone is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="keyContact" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>key Contact</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="keyContact" type="text"
+                                                    formControlName="keyContact"
+                                                    [(ngModel)]="selectedCounterparty.keyContact" />
+                                                <div *ngIf="
+                                                        counterpartyForm.get('keyContact').invalid && counterpartyForm.get('keyContact').touched"
+                                                    class="error">
+                                                    Key Contact is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <p-divider layout="horizontal" align="left">
-                                <span class="p-tag">Contact Details</span>
-                            </p-divider>
-
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Address</b>
-                                </label>
-                                <span class="col-9 mb-2 md:col-9 md:mb-2">
-                                    <p>Address - 1, City, Town</p>
-                                    <p>Pincode</p>
-                                </span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>EmailId</b>
-                                </label>
-                                <span class="col-9 mb-2 md:col-9 md:mb-2">
-                                    emailId-CounterpartyA.com
-                                </span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Telephone</b>
-                                </label>
-                                <span class="col-9 mb-2 md:col-9 md:mb-2">
-                                    +44-123456789
-                                </span>
-                            </div>
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Key Contact</b>
-                                </label>
-                                <span class="col-9 mb-2 md:col-9 md:mb-2">
-                                    KeyContact-counterPartyA.com
-                                </span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </p-panel>
+                </form>
 
+                <ng-template pTemplate="footer">
+                    <span>
+                        <p-button label="Save" severity="success" (click)="submitCounterpartyForm()" />
+                    </span>
+                    <span>
+                        <p-button label="Clear" severity="info" (click)="displayOverlay=false" />
+                    </span>
+                </ng-template>
+            </p-dialog>
         </div>
     </div>
 </div>

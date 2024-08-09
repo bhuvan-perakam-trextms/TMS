@@ -1,0 +1,103 @@
+{
+    "data": [
+        {
+            "name": "Counterparty 1",
+            "accountName": "BBVA",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "Active",
+            "accountNumber": "1234567",
+            "iban": "GB29HBUK60161331926819",
+            "swift_bic": "BUKBGB22",
+            "trexid": "Trex-3456789"
+        },
+        {
+            "name": "Counterparty 2",
+            "accountName": "HSBC",
+            "country": "United Kingdom",
+            "currency": "GBP",
+            "isActive": "InActive",
+            "accountNumber": "1234567",
+            "iban": "GB89BUKB20201555555556",
+            "swift_bic": "HBUKGB4B",
+            "trexid": "Trex-5678901"
+        },
+        {
+            "name": "Counterparty 3",
+            "accountName": "BBVA",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "InActive",
+            "accountNumber": "1234567",
+            "iban": "GB29HBUK60161331926819",
+            "swift_bic": "BUKBGB22",
+            "trexid": "Trex-3456789"
+        },
+        {
+            "name": "Counterparty 4",
+            "accountName": "HSBC",
+            "country": "United Kingdom",
+            "currency": "GBP",
+            "isActive": "Active",
+            "accountNumber": "1234567",
+            "iban": "GB89BUKB20201555555556",
+            "swift_bic": "HBUKGB4B",
+            "trexid": "Trex-5678901"
+        },
+        {
+            "name": "Counterparty 5",
+            "accountName": "BBVA",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "Active",
+            "accountNumber": "1234567",
+            "iban": "GB29HBUK60161331926819",
+            "swift_bic": "BUKBGB22",
+            "trexid": "Trex-3456789"
+        },
+        {
+            "name": "Counterparty 6",
+            "accountName": "HSBC",
+            "country": "United Kingdom",
+            "currency": "GBP",
+            "isActive": "InActive",
+            "accountNumber": "1234567",
+            "iban": "GB89BUKB20201555555556",
+            "swift_bic": "HBUKGB4B",
+            "trexid": "Trex-5678901"
+        },
+        {
+            "name": "Counterparty 7",
+            "accountName": "BBVA",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "InActive",
+            "accountNumber": "1234567",
+            "iban": "GB29HBUK60161331926819",
+            "swift_bic": "BUKBGB22",
+            "trexid": "Trex-3456789"
+        },
+        {
+            "name": "Counterparty 8",
+            "accountName": "Barclays",
+            "country": "United Kingdom",
+            "currency": "GBP",
+            "isActive": "InActive",
+            "accountNumber": "1234567",
+            "iban": "GB89BUKB20201555555556",
+            "swift_bic": "HBUKGB4B",
+            "trexid": "Trex-5678901"
+        },
+        {
+            "name": "Counterparty 9",
+            "accountName": "BBVA",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "Active",
+            "accountNumber": "1234567",
+            "iban": "GB29HBUK60161331926819",
+            "swift_bic": "BUKBGB22",
+            "trexid": "Trex-3456789"
+        }
+    ]
+}
