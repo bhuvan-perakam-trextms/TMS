@@ -1,0 +1,14 @@
+{
+    "data": [ 
+        { "name": "Euro", "code": "EUR" },
+        { "name": "British Pound", "code": "GBP" },
+        { "name": "Swiss Franc", "code": "CHF" },
+        { "name": "Swedish Krona", "code": "SEK" },
+        { "name": "Norwegian Krone", "code": "NOK" },
+        { "name": "Danish Krone", "code": "DKK" },
+        { "name": "Polish Złoty", "code": "PLN" },
+        { "name": "Czech Koruna", "code": "CZK" },
+        { "name": "Hungarian Forint", "code": "HUF" },
+        { "name": "Russian Ruble", "code": "RUB" }
+    ]
+}
