@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BankAccountDetail } from '../../api/bankaccountdetail';
 import { FilterableSettings } from '@progress/kendo-angular-grid';
 import { BankService } from '../../service/bank.service';
+import { CountryService } from '../../service/country.service';
+import { CurrencyService } from '../../service/currency.service';
 
 @Component({
   templateUrl: './bankaccounts.component.html'
@@ -14,24 +16,23 @@ export class BankaccountsComponent implements OnInit, OnDestroy {
   displayOverlay: boolean = false;
   selectedBankAccountDetail: any;
 
-  constructor(private bankService: BankService) {
+  constructor(private bankService: BankService, private countryService: CountryService, private currencyService:CurrencyService) {
   }
 
   ngOnInit(): void {
-    this.bankService.getBankAccountsDetails().then(data => 
-      {
-        this.bankAccountDetails = data;
-        this.selectedBankAccountDetail = this.bankAccountDetails[0];
-        console.log(this.selectedBankAccountDetail);
-      }
+    this.bankService.getBankAccountsDetails().then(data => {
+      this.bankAccountDetails = data;
+      this.selectedBankAccountDetail = this.bankAccountDetails[0];
+      console.log(this.selectedBankAccountDetail);
+    }
     );
   }
 
   ngOnDestroy(): void {
-    
+
   }
 
-  handlePopup(dataItem)  {
+  handlePopup(dataItem) {
     this.displayOverlay = true;
     this.selectedBankAccountDetail = dataItem;
     console.log(this.selectedBankAccountDetail);
@@ -39,37 +40,9 @@ export class BankaccountsComponent implements OnInit, OnDestroy {
 
   getUpcomingPaymentsArray(upcomingPayments: { [key: string]: string } | null | undefined): Array<{ key: string, value: string }> {
     if (!upcomingPayments) {
-      return []; // Return an empty array if upcomingPayments is null or undefined
+      return []; 
     }
     return Object.entries(upcomingPayments).map(([key, value]) => ({ key, value }));
-  }
-
-  getCurrencyClass(Currency)
-  {
-    let baseClass = " pi pi-fw";
-    switch (Currency) {
-      case 'GBP':
-        return `${baseClass} pi-pound`;
-      case 'EUR':
-        return `${baseClass} pi-euro`;
-      case 'USD':
-        return `${baseClass} pi-dollar`;
-      default:
-        return `${baseClass} pi-money-bill`;  // Fallback image if needed
-    }
-  }
-
-  getCountryImageUrl(value)
-  {
-    let basePath = "assets/demo/images/country/";
-    switch (value) {
-      case 'United Kingdom':
-        return `${basePath}uk-logo.png`;
-      case 'Spain':
-        return `${basePath}spain-logo.png`;
-      default:
-        return 'path/to/default-image.png';  // Fallback image if needed
-    }
   }
 
 }

@@ -1,0 +1,6 @@
+{
+	"data": [
+		{ "name": "Counterparty Type 1", "code": "CPT1" },
+        { "name": "Counterparty Type 2", "code": "CPT2" }
+    ]
+}

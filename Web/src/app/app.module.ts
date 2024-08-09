@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule } from '@angular/forms';
+import { CurrencyService } from './demo/service/currency.service';
+import { CounterpartyService } from './demo/service/counterparty.service';
 
 
 
@@ -48,6 +50,8 @@ import { FormsModule } from '@angular/forms';
         CashHistoryService,
         BankService,
         UserService,
+        CurrencyService,
+        CounterpartyService,
         ApprovalService
     ],
     bootstrap: [AppComponent],
