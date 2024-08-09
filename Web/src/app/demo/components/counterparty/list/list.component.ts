@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilterableSettings } from '@progress/kendo-angular-grid';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from 'src/app/demo/service/country.service';
@@ -13,8 +13,8 @@ export class ListComponent implements OnInit {
 
     filterMode: FilterableSettings = 'menu';
     displayOverlay: boolean = false;
-
     counterpartyForm: FormGroup;
+
     counterpartiesList: any[] = [];
 
     selectedCounterparty: any;
@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
     selectedCountry!: SelectType;
     countries: SelectType[] = [];
 
-    constructor(private fb: FormBuilder,
+    constructor(private formBuilder: FormBuilder,
         private countryService: CountryService,
         private currencyService: CurrencyService,
         private counterypartyService: CounterpartyService) {
@@ -44,7 +44,7 @@ export class ListComponent implements OnInit {
     }
 
     initForm() {
-        this.counterpartyForm = this.fb.group({
+        this.counterpartyForm = this.formBuilder.group({
             legalName: ['', Validators.required],
             aliasName: ['', Validators.required],
             selectedCounterpartyType: [null, Validators.required],

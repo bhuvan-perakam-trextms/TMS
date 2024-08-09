@@ -25,7 +25,7 @@ export class AccountComponent implements OnInit {
   selectedCurrency!: SelectType;
   currencies: SelectType[] = [];
 
-  constructor(private fb: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
     private countryService: CountryService,
     private currencyService: CurrencyService,
     private counterpartyService: CounterpartyService) {
@@ -41,7 +41,7 @@ export class AccountComponent implements OnInit {
   }
 
   initForm() {
-    this.counterpartyAccountForm = this.fb.group({
+    this.counterpartyAccountForm = this.formBuilder.group({
       accountName: ['', Validators.required],
       accountNumber: ['', Validators.required],
       country: [null, Validators.required],
