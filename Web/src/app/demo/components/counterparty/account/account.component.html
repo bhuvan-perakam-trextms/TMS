@@ -58,7 +58,7 @@
                     </div>
                 </ng-template>
 
-                <form [formGroup]="counterpartyAccountForm" (ngSubmit)="handleSubmit()" *ngIf="selectedcounterPartyDetail">
+                <form [formGroup]="counterpartyAccountForm" (ngSubmit)="submitCounterpartyAccountForm()" *ngIf="selectedcounterPartyDetail">
                     <div class="col-12">
                         <div class="grid m-0 p-0">
                             <div class="col-12 m-0 p-0">
@@ -201,7 +201,7 @@
 
                 <ng-template pTemplate="footer">
                     <span>
-                        <p-button label="Save" severity="success" (click)="handleSubmit()" />
+                        <p-button label="Save" severity="success" (click)="submitCounterpartyAccountForm()" />
                     </span>
                     <span>
                         <p-button label="Clear" severity="info" (click)="displayOverlay=false" />
