@@ -41,7 +41,7 @@
                 <div class="field grid">
                   <label for="toAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
                   <div class="col-7 md:col-7">
-                    <p-dropdown id="toAccount" formControlName="toAccount" [options]="filterToAccounts(internalPaymentsForm.get('fromAccount').value)"></p-dropdown>
+                    <p-dropdown id="toAccount" formControlName="toAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="internalPaymentsForm.get('toAccount').touched && internalPaymentsForm.get('toAccount').invalid">
                       <small class="p-error">To Account is required.</small>
                     </div>
@@ -136,7 +136,7 @@
                 <div class="field grid">
                   <label for="toAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
                   <div class="col-7 md:col-7">
-                    <p-dropdown id="toAccount" formControlName="toAccount" [options]="filterToAccounts(externalPaymentsForm.get('fromAccount').value)"></p-dropdown>
+                    <p-dropdown id="toAccount" formControlName="toAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="externalPaymentsForm.get('toAccount').touched && externalPaymentsForm.get('toAccount').invalid">
                       <small class="p-error">To Account is required.</small>
                     </div>
@@ -169,19 +169,19 @@
             <p-table [value]="externalPaymentsList" styleClass="p-datatable-gridlines">
               <ng-template pTemplate="header">
                 <tr>
-                  <th pSortableColumn="fromAccount" style="width:25%">
+                  <th pSortableColumn="fromAccount" style="width:20%">
                     From Account <p-sortIcon field="fromAccount" />
                   </th>
-                  <th pSortableColumn="toAccount" style="width:25%">
+                  <th pSortableColumn="toAccount" style="width:20%">
                     To Account <p-sortIcon field="toAccount" />
                   </th>
-                  <th pSortableColumn="currency" style="width:25%">
+                  <th pSortableColumn="currency" style="width:20%">
                     Currency <p-sortIcon field="currency" />
                   </th>
-                  <th pSortableColumn="sortCode" style="width:25%">
+                  <th pSortableColumn="sortCode" style="width:20%">
                     Sort Code <p-sortIcon field="sortCode" />
                   </th>
-                  <th pSortableColumn="executionDate" style="width:25%">
+                  <th pSortableColumn="executionDate" style="width:20%">
                     Execution Date <p-sortIcon field="executionDate" />
                   </th>
                 </tr>
