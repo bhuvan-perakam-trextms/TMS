@@ -8,6 +8,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { InputTextModule } from "primeng/inputtext";
 import { CalendarModule } from "primeng/calendar";
 import { TableModule } from 'primeng/table';
+
 import { TransfersComponent } from './transfers.component';
 import { TransfersRoutingModule } from './transfers-routing.module'; 
 

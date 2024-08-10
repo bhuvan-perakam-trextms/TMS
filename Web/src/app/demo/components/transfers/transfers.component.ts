@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-transfers',
@@ -9,7 +11,9 @@ export class TransfersComponent {
   accounts = [
     { label: 'Account1', value: 'Account1' },
     { label: 'Account2', value: 'Account2' },
-    { label: 'Account3', value: 'Account3' }
+    { label: 'Account3', value: 'Account3' },
+    { label: 'Account4', value: 'Account4' }
+
   ]; 
   currencies = [
     { label: 'USD', value: 'USD' },
@@ -66,6 +70,22 @@ export class TransfersComponent {
     };
   }
 
+  getCurrencyClass(currency: string): string {
+    const baseClass = "pi pi-fw";
+    switch (currency) {
+      case 'GBP':
+        return `${baseClass} pi-pound`;
+      case 'EUR':
+        return `${baseClass} pi-euro`;
+      case 'USD':
+        return `${baseClass} pi-dollar`;
+      default:
+        return `${baseClass} pi-money-bill`; // Fallback icon
+    }
+  }
+  filterToAccounts(fromAccount: string) {
+    return this.accounts.filter(account => account.value !== fromAccount);
+  }
   submitExternal() {
     this.externalPaymentsList.unshift({ ...this.externalPayments });
     this.clearExternal();

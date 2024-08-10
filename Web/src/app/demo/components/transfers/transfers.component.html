@@ -30,7 +30,7 @@
               <div class="field grid">
                 <label for="toAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
                 <div class="col-7 md:col-7">
-                  <p-dropdown id="toAccount" [options]="accounts" [(ngModel)]="internalPayments.toAccount"></p-dropdown>
+                  <p-dropdown id="toAccount" [options]="filterToAccounts(internalPayments.fromAccount)" [(ngModel)]="internalPayments.toAccount"></p-dropdown>
                 </div>
               </div>
               <div class="field grid">
@@ -80,7 +80,9 @@
               <tr>
                 <td>{{payment.fromAccount}}</td>
                 <td>{{payment.toAccount}}</td>
-                <td>{{payment.currency}}</td>
+                <td>
+                  <i [class]="getCurrencyClass(payment.currency)"></i> {{ payment.currency }}
+                </td>
                 <td>{{payment.executionDate | date}}</td>
               </tr>
             </ng-template>
@@ -120,7 +122,7 @@
               <div class="field grid">
                 <label for="toAccountExternal" class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
                 <div class="col-7 md:col-7">
-                  <p-dropdown id="toAccountExternal" [options]="accounts" [(ngModel)]="externalPayments.toAccount"></p-dropdown>
+                  <p-dropdown id="toAccountExternal" [options]="filterToAccounts(externalPayments.fromAccount)" [(ngModel)]="externalPayments.toAccount"></p-dropdown>
                 </div>
               </div>
               <div class="field grid">
@@ -182,7 +184,9 @@
               <tr>
                 <td>{{payment.fromAccount}}</td>
                 <td>{{payment.toAccount}}</td>
-                <td>{{payment.currency}}</td>
+                <td>
+                  <i [class]="getCurrencyClass(payment.currency)"></i> {{ payment.currency }}
+                </td>                
                 <td>{{payment.sortCode}}</td>
                 <td>{{payment.executionDate | date}}</td>
               </tr>
