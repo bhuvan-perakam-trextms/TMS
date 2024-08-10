@@ -30,6 +30,9 @@ export class AppMenuComponent implements OnInit {
                         label: 'Cash History', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/cashhistory']
                     },
                     {
+                        label: 'Transfers', icon: 'pi pi-fw pi-arrow-right-arrow-left', routerLink: ['/dashboard/transfers']
+                    },
+                    {
                         label: 'Counterparty', icon: 'pi pi-fw pi-dollar',
                         items: [
                             {
@@ -43,6 +46,7 @@ export class AppMenuComponent implements OnInit {
                             },
                         ]
                     },
+                    
                     {
                         label: 'Payments', icon: 'pi pi-fw pi-money-bill',
                         items: [

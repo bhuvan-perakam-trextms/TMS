@@ -15,7 +15,7 @@ import { ApprovalsComponent } from './approvals.component';
 import { ApprovalsRoutingModule } from './approvals-routing.module';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-
+import { SchedulerModule } from "@progress/kendo-angular-scheduler";
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     ButtonModule,
     TabViewModule,
 
-    FullCalendarModule 
+    FullCalendarModule,
+    SchedulerModule
   ]
 })
 export class ApprovalsModule { }

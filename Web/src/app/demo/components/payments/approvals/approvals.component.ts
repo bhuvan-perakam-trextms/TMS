@@ -1,81 +1,83 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ElementRef  } from '@angular/core';
 import { FilterableSettings } from '@progress/kendo-angular-grid';
 import { Approval } from 'src/app/demo/api/approval';
 import { ApprovalService } from 'src/app/demo/service/approval.service';
-import { CalendarOptions, EventInput } from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import { FullCalendarComponent } from '@fullcalendar/angular';
+import { SchedulerEvent } from "@progress/kendo-angular-scheduler";
 
 @Component({
   selector: 'app-approvals',
   templateUrl: './approvals.component.html',
   styleUrl: './approvals.component.scss'
 })
-export class ApprovalsComponent {
-  @ViewChild(FullCalendarComponent) fullCalendarComponent: FullCalendarComponent;
-
-  approvalsData: Approval[];
+export class ApprovalsComponent implements AfterViewInit  {
+  
   filterMode: FilterableSettings = "menu";
   displayOverlay: boolean = false;
   selectedApproval: Approval;
 
   paymentApprovals: any[];
-  calendarEvents: EventInput[];
-  calendarOptions: CalendarOptions;
+
+  selectedDate: Date;
+  approvalsData: Approval[];
+  approvalsCalendarData: SchedulerEvent[];
+  currentYear: number;
+  displayDate: Date;
 
   constructor(private approvalService: ApprovalService) {
+    this.currentYear = new Date().getFullYear(); 
+    this.displayDate = new Date(this.currentYear, 5, 24)
   }
 
   ngOnInit() {
     this.approvalService.getPaymentApprovals().then(data => {
       this.approvalsData = data;
-
-      this.calendarEvents = this.approvalsData.map(event => ({
-        title: `From: ${event.from}`,
-        start: event.executionDate,
-        extendedProps: {
-          to: event.to,
-          amount: event.amount,
-          status: event.status
-        }
-      }));
-
-      this.calendarOptions = {
-        initialView: 'dayGridMonth',
-        plugins: [dayGridPlugin, timeGridPlugin],
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        events: this.calendarEvents
-      };
-
+      let incrementalId = 1;
+      this.approvalsCalendarData = data.map(
+        (dataItem) =>
+            <SchedulerEvent>
+          {
+              id: incrementalId++,
+              start: this.parseAdjust(dataItem.executionDate.toString()),
+              startTimezone: null,
+              end: this.parseAdjust(dataItem.executionDate.toString()),
+              endTimezone: null,
+              isAllDay: false,
+              title: dataItem.from,
+              description: `Money moves from ${dataItem.from} to ${dataItem.to}`,
+              recurrenceRule: null,
+              recurrenceId: null,
+              recurrenceException: null,
+              roomId:  this.randomInt(1, 2),
+              ownerID: 2,
+              eventColor: '#33FF57'//this.getEventColor(dataItem), // Adding color to the event
+            }
+      );
+      
     });
 
     this.paymentApprovals = [
       { User: "Treasurer 1" },
       { User: "Treasurer 2" },
       { User: "Treasurer 3" }
-    ]
+    ];
   }
 
-  onTabClicked($event)
-  {
-    this.reRenderCalendar();
+  onTabClicked($event) {
   }
 
   ngAfterViewInit(): void {
-    // Call reRenderCalendar after view has been initialized
-    this.reRenderCalendar();
   }
 
-  reRenderCalendar(): void {
-    if (this.fullCalendarComponent) {
-      this.fullCalendarComponent.getApi().render();
+  getEventColor(dataItem: Approval): string {
+    if (dataItem.status === 'Expired') {
+      return '#FF5733'; // Red
+    } else if (dataItem.status === 'Awaiting Approval') {
+      return '#33FF57'; // Green
+    } else {
+      return '#3357FF'; // Blue
     }
   }
+
 
   getDate(days: number) {
     let date: Date = new Date();
@@ -95,4 +97,15 @@ export class ApprovalsComponent {
     this.selectedApproval = dataItem;
   }
 
+  parseAdjust(eventDate: string): Date 
+  {
+    const date = new Date(eventDate);
+    date.setFullYear(this.currentYear);
+    return date;
+  };
+  
+  randomInt(min, max): number 
+  {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 }

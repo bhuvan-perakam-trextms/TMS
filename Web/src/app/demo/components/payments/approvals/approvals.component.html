@@ -3,8 +3,8 @@
         <div class="card p-fluid">
             <h5><i class="pi pi-fw pi-user-plus"></i> Approvals</h5>
 
-            <p-tabView>
-                <p-tabPanel header="Tab View" (onClicked)="onTabClicked($event)">
+            <p-tabView (onChange)="onTabClicked($event)">
+                <p-tabPanel header="Tab View">
                     <kendo-grid [kendoGridBinding]="approvalsData" [pageSize]="20" [pageable]="true" [sortable]="true"
                         [filterable]="filterMode" [groupable]="true" style="width: 100%;">
 
@@ -130,8 +130,18 @@
                     </p-dialog>
                 </p-tabPanel>
                 <p-tabPanel header="Calendar View">
-                    <p-button (onClick)="reRenderCalendar()">Render Calendar</p-button>
-                    <full-calendar [options]="calendarOptions" *ngIf="calendarOptions"></full-calendar>
+                    <kendo-scheduler
+                    [kendoSchedulerBinding]="approvalsCalendarData"
+                    [selectedDate]="selectedDate"
+                    selectedViewIndex = "2"
+                    scrollTime="08:00">
+                    <kendo-scheduler-day-view></kendo-scheduler-day-view>
+                    <kendo-scheduler-week-view></kendo-scheduler-week-view>
+                    <kendo-scheduler-month-view></kendo-scheduler-month-view>
+                    <kendo-scheduler-timeline-view></kendo-scheduler-timeline-view>
+                    <kendo-scheduler-agenda-view></kendo-scheduler-agenda-view>
+                    <kendo-scheduler-year-view></kendo-scheduler-year-view>
+                  </kendo-scheduler>
                 </p-tabPanel>
             </p-tabView>
         </div>
