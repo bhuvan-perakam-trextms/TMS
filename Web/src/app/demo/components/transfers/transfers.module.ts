@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PanelModule } from 'primeng/panel';
 import { TabViewModule  } from 'primeng/tabview';
 import { DropdownModule } from "primeng/dropdown";
@@ -19,6 +18,7 @@ import { TransfersRoutingModule } from './transfers-routing.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     TransfersRoutingModule ,
     PanelModule,
     TableModule,

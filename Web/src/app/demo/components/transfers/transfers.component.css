@@ -96,8 +96,15 @@ button {
   margin-top: 5px;
 }
 
-.ng-invalid.ng-touched p-dropdown,
-.ng-invalid.ng-touched input,
+/* .ng-invalid.ng-touched p-dropdown,
 .ng-invalid.ng-touched p-calendar {
   border-color: red !important;
+} */
+
+.p-error {
+  color: red;
 }
+
+/* input.ng-dirty.ng-invalid {
+  border-color: red;
+} */

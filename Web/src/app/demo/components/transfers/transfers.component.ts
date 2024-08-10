@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-transfers',
   templateUrl: './transfers.component.html',
-  styleUrls: ['./transfers.component.css']
+  styleUrls: ['./transfers.component.css'],
+  providers: [DatePipe]
+
 })
-export class TransfersComponent {
+export class TransfersComponent implements OnInit {
   accounts = [
     { label: 'Account1', value: 'Account1' },
     { label: 'Account2', value: 'Account2' },
     { label: 'Account3', value: 'Account3' },
     { label: 'Account4', value: 'Account4' }
-
   ]; 
   currencies = [
     { label: 'USD', value: 'USD' },
@@ -21,23 +23,10 @@ export class TransfersComponent {
     { label: 'GBP', value: 'GBP' }
   ]; 
 
-  internalPayments = {
-    fromAccount: null,
-    toAccount: null,
-    currency: null,
-    executionDate: null,
-    reference: ''
-  };
-
-  externalPayments = {
-    fromAccount: null,
-    toAccount: null,
-    currency: null,
-    executionDate: null,
-    accountNumber: '',
-    sortCode: '',
-    reference: ''
-  };
+  internalPaymentsForm: FormGroup;
+  externalPaymentsForm: FormGroup;
+  internalFormattedDate: string | null = null;
+  externalFormattedDate: string | null = null;
 
   internalPaymentsList = [
     { fromAccount: 'Account1', toAccount: 'Account2', currency: 'USD', executionDate: 'Aug 6, 2024' },
@@ -55,19 +44,34 @@ export class TransfersComponent {
     { fromAccount: 'Account1', toAccount: 'Account4', currency: 'EUR', sortCode: '333333', executionDate: 'Jun 8, 2024' }
   ];
 
-  submitInternal() {
-    this.internalPaymentsList.unshift({ ...this.internalPayments });
-    this.clearInternal();
-  }
+  constructor(private fb: FormBuilder, private datePipe: DatePipe) { }
 
-  clearInternal() {
-    this.internalPayments = {
-      fromAccount: null,
-      toAccount: null,
-      currency: null,
-      executionDate: null,
-      reference: ''
-    };
+  ngOnInit() {
+    this.internalPaymentsForm = this.fb.group({
+      fromAccount: [null, Validators.required],
+      toAccount: [null, Validators.required],
+      currency: [null, Validators.required],
+      executionDate: [null, Validators.required],
+      reference: ['', Validators.required]
+    });
+
+    this.internalPaymentsForm.get('executionDate')?.valueChanges.subscribe(value => {
+      this.internalFormattedDate = this.datePipe.transform(value, 'MMM dd, yyyy');
+    });
+
+    this.externalPaymentsForm = this.fb.group({
+      fromAccount: [null, Validators.required],
+      toAccount: [null, Validators.required],
+      currency: [null, Validators.required],
+      executionDate: [null, Validators.required],
+      accountNumber: ['', Validators.required],
+      sortCode: ['', Validators.required],
+      reference: ['', Validators.required]
+    });
+    
+    this.externalPaymentsForm.get('executionDate')?.valueChanges.subscribe(value => {
+      this.externalFormattedDate = this.datePipe.transform(value, 'MMM dd, yyyy');
+    });
   }
 
   getCurrencyClass(currency: string): string {
@@ -80,26 +84,40 @@ export class TransfersComponent {
       case 'USD':
         return `${baseClass} pi-dollar`;
       default:
-        return `${baseClass} pi-money-bill`; // Fallback icon
+        return `${baseClass} pi-money-bill`; 
     }
   }
+
   filterToAccounts(fromAccount: string) {
     return this.accounts.filter(account => account.value !== fromAccount);
   }
+
+  submitInternal() {
+    if (this.internalPaymentsForm.invalid) {
+      this.internalPaymentsForm.markAllAsTouched();
+      return;
+    }
+    this.internalPaymentsForm.value["executionDate"] = this.internalFormattedDate;
+    this.internalPaymentsList.unshift(this.internalPaymentsForm.value);
+    this.internalPaymentsForm.reset();
+  }
+
+  clearInternal() {
+    this.internalPaymentsForm.reset();
+  }
+
   submitExternal() {
-    this.externalPaymentsList.unshift({ ...this.externalPayments });
-    this.clearExternal();
+    if (this.externalPaymentsForm.invalid) {
+      this.externalPaymentsForm.markAllAsTouched();
+      return;
+    }
+
+    this.externalPaymentsForm.value["executionDate"] = this.externalFormattedDate;
+    this.externalPaymentsList.unshift(this.externalPaymentsForm.value);
+    this.externalPaymentsForm.reset();
   }
 
   clearExternal() {
-    this.externalPayments = {
-      fromAccount: null,
-      toAccount: null,
-      currency: null,
-      executionDate: null,
-      accountNumber: '',
-      sortCode: '',
-      reference: ''
-    };
+    this.externalPaymentsForm.reset();
   }
 }

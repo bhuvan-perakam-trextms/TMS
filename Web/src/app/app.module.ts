@@ -70,6 +70,5 @@ import { DividerModule } from 'primeng/divider';
         CounterpartyService
     ],
     bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
