@@ -1,11 +1,10 @@
 <div class="layout-topbar">
-    <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/layout/images/TREX_Logo.png" alt="logo">
-        <span>TREX</span>
+    <a routerLink="">
+        <img src="assets/layout/images/TrexBlueLogo.png" width="170" alt="logo">
     </a>
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-        <i class="pi pi-bars"></i>
+        <i class="pi pi-bars top-bar-text-color"></i>
     </button>
 
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
@@ -14,10 +13,10 @@
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <div style="margin-top: 1rem;">
-            <span class="block text-500 font-medium mb-3">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
+            <span class="block font-medium mb-3 top-bar-text-color">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
         </div>
        
-        <button class="p-link layout-topbar-button" (click)="signOut()">
+        <button class="p-link layout-topbar-button top-bar-text-color" (click)="signOut()">
             <i class="pi pi-sign-out"></i>
             <span>Sign out</span>
         </button>
