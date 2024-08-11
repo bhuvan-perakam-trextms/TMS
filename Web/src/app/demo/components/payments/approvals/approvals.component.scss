@@ -1,0 +1,38 @@
+/* Customize the header to use Bootstrap styles */
+.fc .fc-toolbar-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .fc .fc-button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #fff;
+    border: none;
+  }
+  
+  .fc .fc-button:hover {
+    background-color: #0056b3; /* Darker shade of primary color */
+  }
+  
+  /* Customize events */
+  .fc-daygrid-day-number {
+    font-size: 1rem; /* Adjust font size */
+    color: #343a40; /* Darker text color */
+  }
+  
+  .fc-daygrid-day {
+    border: 1px solid #dee2e6; /* Border color similar to Bootstrap card border */
+  }
+  
+  .fc-event {
+    border-radius: .25rem; /* Rounded corners */
+    padding: .5rem; /* Padding for events */
+    background-color: #28a745; /* Bootstrap success color */
+    color: #fff;
+  }
+  
+  .fc-event:hover {
+    background-color: #218838; /* Darker shade of success color */
+  }
+  

@@ -1,0 +1,149 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-user-plus"></i> Approvals</h5>
+
+            <p-tabView (onChange)="onTabClicked($event)">
+                <p-tabPanel header="Tab View">
+                    <kendo-grid [kendoGridBinding]="approvalsData" [pageSize]="20" [pageable]="true" [sortable]="true"
+                        [filterable]="filterMode" [groupable]="true" style="width: 100%;">
+
+                        <kendo-grid-column field="from" title="From" width="250">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <a href="javascript:void(0)" (click)="handlePopup(dataItem)"> {{dataItem.from}} </a>
+                            </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column field="to" title="To">
+                        </kendo-grid-column>
+                        <kendo-grid-column field="amount" title="Amount">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{ dataItem.amount | currency: dataItem.Currency}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column field="executionDate" title="Execution Date">
+                        </kendo-grid-column>
+                        <kendo-grid-column field="status" title="Status">
+                        </kendo-grid-column>
+                    </kendo-grid>
+
+                    <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{width: '60vw'}"
+                        [breakpoints]="{'960px': '75vw'}">
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center gap-2">
+                                <span> Payment Id - 1 </span>
+                            </div>
+                        </ng-template>
+
+                        <div class="col-12">
+                            <div class="grid m-0 p-0">
+                                <div class="col-12 m-0 p-0">
+                                    <p-divider layout="horizontal" align="left">
+                                        <span class="p-tag">Details</span>
+                                    </p-divider>
+                                    <div class="field grid">
+                                        <div class="col-6">
+                                            <div class="field grid">
+                                                <label htmlFor="from" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                    <b>From Account</b>
+                                                </label>
+                                                <div class="col-8 md:col-8">
+                                                    <input pInputText id="from" type="text" [disabled]="true"
+                                                        [value]="selectedApproval?.from" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="field grid">
+                                                <label htmlFor="to" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                    <b>To Account</b>
+                                                </label>
+                                                <div class="col-8 md:col-8">
+                                                    <input pInputText id="to" type="text" [disabled]="true"
+                                                        [value]="selectedApproval?.to" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="field grid">
+                                                <label htmlFor="executionDate" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                    <b>Execution Date</b>
+                                                </label>
+                                                <div class="col-8 md:col-8">
+                                                    <input pInputText id="executionDate" type="text" [disabled]="true"
+                                                        [value]="selectedApproval?.executionDate" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="field grid">
+                                                <label htmlFor="amount" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                    <b>Amount</b>
+                                                </label>
+                                                <div class="col-8 md:col-8">
+                                                    <input pInputText id="amount" type="text" [disabled]="true"
+                                                        [value]="selectedApproval?.amount" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 m-0 p-0">
+                                    <p-divider layout="horizontal" align="left">
+                                        <span class="p-tag">Approvals</span>
+                                    </p-divider>
+                                    <div class="field grid">
+                                        <div class="col-12">
+                                            <p-table [value]="paymentApprovals" styleClass="p-datatable-gridlines">
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>Action</th>
+                                                        <th>Approved On</th>
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-paymentApproval>
+                                                    <tr>
+
+                                                        <td>{{paymentApproval.User}}</td>
+                                                        <td>
+                                                            <span class="mr-1">
+                                                                <p-button icon="pi pi-check" [rounded]="true"
+                                                                    severity="success" class="small-button"
+                                                                    [disabled]="true"></p-button>
+                                                            </span>
+
+                                                            <span>
+                                                                <p-button icon="pi pi-times" [rounded]="true"
+                                                                    severity="danger" size="small" [disabled]="true" />
+                                                            </span>
+                                                        </td>
+                                                        <td>2024-08-06</td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p-dialog>
+                </p-tabPanel>
+                <p-tabPanel header="Calendar View">
+                    <kendo-scheduler
+                    [kendoSchedulerBinding]="approvalsCalendarData"
+                    [selectedDate]="selectedDate"
+                    selectedViewIndex = "2"
+                    scrollTime="08:00">
+                    <kendo-scheduler-day-view></kendo-scheduler-day-view>
+                    <kendo-scheduler-week-view></kendo-scheduler-week-view>
+                    <kendo-scheduler-month-view></kendo-scheduler-month-view>
+                    <kendo-scheduler-timeline-view></kendo-scheduler-timeline-view>
+                    <kendo-scheduler-agenda-view></kendo-scheduler-agenda-view>
+                    <kendo-scheduler-year-view></kendo-scheduler-year-view>
+                  </kendo-scheduler>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,8 +11,8 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-import { TabViewModule } from 'primeng/tabview';
-import { DropdownModule } from 'primeng/dropdown';
+import { ApprovalService } from './demo/service/approval.service';
+
 import { BankService } from './demo/service/bank.service';
 import { UserService } from './demo/service/user.service';
 import { CashHistoryService } from './demo/service/cashhistory.service';
@@ -29,12 +29,8 @@ import { TransfersModule } from './demo/components/transfers/transfers.module';
 import { CalendarModule } from 'primeng/calendar';
 import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
-
-
-
-
-
-
+import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -51,7 +47,8 @@ import { DividerModule } from 'primeng/divider';
         DropdownModule,
         ButtonsModule,
         CalendarModule,
-        TransfersModule],
+        TransfersModule
+    ],
     providers: 
     [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -67,7 +64,8 @@ import { DividerModule } from 'primeng/divider';
         BankService,
         UserService,
         CurrencyService,
-        CounterpartyService
+        CounterpartyService,
+        ApprovalService
     ],
     bootstrap: [AppComponent],
 })

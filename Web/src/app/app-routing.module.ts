@@ -24,6 +24,7 @@ import {
                     { path: 'counterparty', loadChildren: () => import('./demo/components/counterparty/counterparty.module').then(m => m.CounterpartyModule) },
                     { path: 'bank-accounts', loadChildren: () => import('./demo/components/bankaccounts/bankaccounts.module').then(m => m.BankAccountsModule) },
                     { path: 'payments/moneymovements', loadChildren: () => import('./demo/components/payments/moneymovements/moneymovements.module').then(m => m.MoneymovementsModule) },
+                    { path: 'payments/approvals', loadChildren: () => import('./demo/components/payments/approvals/approvals.module').then(m => m.ApprovalsModule) },
                     { path: 'transfers', loadChildren: () => import('./demo/components/transfers/transfers.module').then(m => m.TransfersModule) },
                     { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
                     { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
