@@ -19,7 +19,6 @@ export class RulesComponent implements OnInit {
   selectedCurrency!: SelectType;
   currencies: SelectType[] = [];
 
-
   constructor(private formBuilder: FormBuilder,
     private currencyService: CurrencyService,
     private counterpartyService: CounterpartyService) {
@@ -33,7 +32,6 @@ export class RulesComponent implements OnInit {
     this.counterpartyService.getCounterpartyRule().then(data => { this.ruledata = data; });
 
     this.initForm();
-
   }
 
   initForm() {
