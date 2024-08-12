@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "ruleType": "Transaction",
+            "currency": "GBP",
+            "fromAccount": "Account 1",
+            "toAccount": "Account 2",
+            "market": "Market A",
+            "entity": "Balance",
+            "operator": ">",
+            "value": "1000"
+        },
+        {
+            "ruleType": "Transaction",
+            "currency": "GBP",
+            "fromAccount": "Account 3",
+            "toAccount": "Account 4",
+            "market": "Market B",
+            "entity": "Country",
+            "operator": "=",
+            "value": "United Kingdom"
+        },
+        {
+            "ruleType": "Transaction",
+            "currency": "GBP",
+            "fromAccount": "Account 1",
+            "toAccount": "Account 2",
+            "market": "Market A",
+            "entity": "Balance",
+            "operator": ">",
+            "value": "1000"
+        },
+        {
+            "ruleType": "Transaction",
+            "currency": "GBP",
+            "fromAccount": "Account 3",
+            "toAccount": "Account 4",
+            "market": " Market B",
+            "entity": "Country",
+            "operator": "=",
+            "value": "United Kingdom"
+        },
+        {
+            "ruleType": "Transaction",
+            "currency": "GBP",
+            "fromAccount": "Account 1",
+            "toAccount": "Account 2",
+            "market": "Market A",
+            "entity": "Balance",
+            "operator": ">",
+            "value": "1000"
+        },
+        {
+            "ruleType": "Transaction",
+            "currency": "GBP",
+            "fromAccount": "Account 3",
+            "toAccount": "Account 4",
+            "market": "Market B",
+            "entity": "Country",
+            "operator": "=",
+            "value": "United Kingdom"
+        }
+    ]
+}
