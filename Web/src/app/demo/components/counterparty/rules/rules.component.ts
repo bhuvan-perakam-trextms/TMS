@@ -1,66 +1,64 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FilterableSettings } from '@progress/kendo-angular-grid';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SelectType } from 'src/app/demo/api/selectType';
+import { CurrencyService } from 'src/app/demo/service/currency.service';
+import { CounterpartyService } from 'src/app/demo/service/counterparty.service';
 
 @Component({
   templateUrl: './rules.component.html'
 })
-export class RulesComponent implements OnInit, OnDestroy {
-  rules: any[] = [];
-  selectedRule: any;
+export class RulesComponent implements OnInit {
+  filterMode: FilterableSettings = "menu";
+  counterpartyRuleForm: FormGroup;
+  displayOverlay: boolean = false;
 
-  currencies: any[] = [];
-  selectedCurrency: any;
+  ruledata: any[] = [];
+  selectedcounterPartyRule: any
 
-  markets:any[] = [];
-  selectedMarket: any;
+  selectedCurrency!: SelectType;
+  currencies: SelectType[] = [];
 
-  entities:any[] = [];
-  selectedEntity: any;
+  constructor(private formBuilder: FormBuilder,
+    private currencyService: CurrencyService,
+    private counterpartyService: CounterpartyService) {
 
-  fromAccounts: any[] = [];
-  selectedFromAccount: any;
+  }
 
-  toAccounts: any[] = [];
-  selectedToAccount: any;
 
   ngOnInit(): void {
-    this.rules =
-      [
-        { name: 'Transactions', code: 'TRNS' },
-        { name: 'Deals', code: 'DLS' },
-      ];
 
-      this.currencies =
-      [
-        { name: 'GBP', code: 'GBP' },
-        { name: 'EUR', code: 'EUR' },
-      ];
+    this.currencyService.getCurrencies().then(data => { this.currencies = data; });
+    this.counterpartyService.getCounterpartyRule().then(data => { this.ruledata = data; });
 
-      this.markets = 
-      [
-        { name: 'Market A', code: 'MKTA' },
-        { name: 'Market B', code: 'MKTB' },
-      ];
-
-      this.entities = 
-      [
-        { name: 'Entity A', code: 'ENTA' },
-        { name: 'Entity B', code: 'ENTB' },
-      ];
-
-      this.fromAccounts = 
-      [
-        { name: 'HSBC London UK', code: 'LondonUK' },
-        { name: 'Barclay London UK', code: 'BarclayLondonUK' },
-      ]
-
-      this.toAccounts = 
-      [
-        { name: 'HSBC London UK', code: 'LondonUK' },
-        { name: 'Barclay London UK', code: 'BarclayLondonUK' },
-      ]
+    this.initForm();
   }
 
-  ngOnDestroy(): void {
-
+  initForm() {
+    this.counterpartyRuleForm = this.formBuilder.group({
+      ruleType: ['', Validators.required],
+      currency: [null, Validators.required],
+      fromAccount: ['', Validators.required],
+      toAccount: ['', Validators.required],
+      market: ['', Validators.required],
+      entity: ['', Validators.required],
+      operator: ['', Validators.required],
+      value: ['', Validators.required],
+    });
   }
+
+  handlePopup(dataItem) {
+    this.displayOverlay = true;
+    this.selectedcounterPartyRule = dataItem;
+    console.log(this.selectedcounterPartyRule);
+  }
+
+  submitcounterpartyRule() {
+    if (this.counterpartyRuleForm.valid) {
+
+    } else {
+      this.counterpartyRuleForm.markAllAsTouched();
+    }
+  }
+
 }

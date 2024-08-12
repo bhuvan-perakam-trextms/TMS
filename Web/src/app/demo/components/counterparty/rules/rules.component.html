@@ -1,99 +1,216 @@
 <div class="grid">
     <div class="col-12">
         <div class="card p-fluid">
-            <h5><i class="pi pi-fw pi-shield"></i> CounterParty Rules</h5>
-
-            <p-panel [style]="{'margin': '1%'}" header="Rule Setup">
-                <!-- <ng-template pTemplate="header">
+            <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
+            <kendo-grid [kendoGridBinding]="ruledata" [pageSize]="20" [pageable]="true" [sortable]="true"
+                [filterable]="filterMode" [groupable]="true" style="width: 100%">
+                <kendo-grid-column field="ruleType" title="Rule Type">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
+                            {{ dataItem.ruleType }}
+                        </a>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="currency" title="Currency">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i>
+                        {{ dataItem.currency }}
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="fromAccount" title="From Account">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.fromAccount }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="toAccount" title="To Account">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.toAccount }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="market" title="Market">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.market }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="entity" title="Entity">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.entity }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="operator" title="Operator">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.operator }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="value" title="Value">
+                    <ng-template kendoGridHeaderTemplate let-column="column">
+                        <div class="header-container">
+                            <span class="bold-header">{{ column.title }}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                        <span>{{ dataItem.value }}</span>
+                    </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+            <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{ width: '70vw' }"
+                [breakpoints]="{ '960px': '75vw' }">
+                <ng-template pTemplate="header">
                     <div class="flex align-items-center gap-2">
-                        <span class="font-bold">
-                            Counterparty Rule - A
+                        <span>
+                            {{ this.selectedcounterPartyRule?.name }} 
                         </span>
                     </div>
-                </ng-template> -->
-                <div class="col-12">
-                    <div class="grid">
-                        <div class="col-12 align-items-center justify-content-center">
+                </ng-template>
 
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Rule Type</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-dropdown inputId="multiselect" [options]="rules" [(ngModel)]="selectedRule"
-                                        optionLabel="name">
-                                    </p-dropdown>
+                <form [formGroup]="counterpartyRuleForm" (ngSubmit)="submitcounterpartyRule()" *ngIf="selectedcounterPartyRule">
+                    <div class="col-12">
+                        <div class="grid m-0 p-0">
+                            <div class="col-12 m-0 p-0">
+                                <p-divider layout="horizontal" align="left">
+                                    <span class="p-tag">Rule Setup</span>
+                                </p-divider>
+                                <div class="field grid">
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="ruleType" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Rule Type</b>
+                                            </label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="ruleType" type="text" 
+                                                    formControlName="ruleType"
+                                                    [(ngModel)]="selectedcounterPartyRule.ruleType" />
+                                                <div *ngIf="counterpartyRuleForm.get('ruleType').invalid && counterpartyRuleForm.get('ruleType').touched"
+                                                    class="error">
+                                                    Rule Type is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="currency"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Currency</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <p-dropdown [options]="currencies" id="currency"
+                                                    [(ngModel)]="selectedCurrency" optionLabel="name"
+                                                    placeholder="Select a Currency" formControlName="currency"
+                                                    [(ngModel)]="selectedcounterPartyRule.currency">
+                                                    <div *ngIf="counterpartyRuleForm.get('currency').invalid && counterpartyRuleForm.get('currency').touched"
+                                                        class="error">
+                                                        Currency is required.
+                                                    </div>
+                                                </p-dropdown>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="market"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Market</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="market" type="text" 
+                                                    formControlName="market"
+                                                    [(ngModel)]="selectedcounterPartyRule.market" />
+                                                <div *ngIf="counterpartyRuleForm.get('market').invalid && counterpartyRuleForm.get('market' ).touched"
+                                                    class="error">
+                                                    Market is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="entity" class="col-4 md:col-4 mb-0 md:mb-0">
+                                                <b>Entity</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="entity" type="text" 
+                                                    formControlName="entity"
+                                                    [(ngModel)]="selectedcounterPartyRule.entity" />
+                                                <div *ngIf="counterpartyRuleForm.get('entity').invalid && counterpartyRuleForm.get('entity').touched"
+                                                    class="error">
+                                                    Entity is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Currency</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-dropdown inputId="multiselect" [options]="currencies" [(ngModel)]="selectedCurrency"
-                                        optionLabel="name">
-                                    </p-dropdown>
-                                </div>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Market</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-dropdown inputId="multiselect" [options]="markets" [(ngModel)]="selectedMarket"
-                                        optionLabel="name">
-                                    </p-dropdown>
-                                </div>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>Entity</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-dropdown inputId="multiselect" [options]="entities" [(ngModel)]="selectedEntity"
-                                        optionLabel="name">
-                                    </p-dropdown>
-                                </div>
-                            </div>
-                            
-
-
-                            <p-divider layout="horizontal" align="left">
-                                <span class="p-tag">Default Payment Instructions</span>
-                            </p-divider>
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>From Bank Account</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-dropdown inputId="multiselect" [options]="fromAccounts" [(ngModel)]="selectedFromAccount"
-                                        optionLabel="name">
-                                    </p-dropdown>
-                                </div>
-                            </div>
-
-                            <div class="field grid">
-                                <label class="col-2 mb-2 md:col-3 md:mb-2">
-                                    <b>To Bank Account</b>
-                                </label>
-                                <div class="col-4 mb-2 md:col-4 md:mb-2">
-                                    <p-dropdown inputId="multiselect" [options]="toAccounts" [(ngModel)]="selectedToAccount"
-                                        optionLabel="name">
-                                    </p-dropdown>
+                                    <p-divider layout="horizontal" align="left">
+                                        <span class="p-tag">Default Payment Instructions</span>
+                                    </p-divider>
+                                    <div class="field grid">
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="fromAccount"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>From Account</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="fromAccount" type="text" 
+                                                    formControlName="fromAccount"
+                                                    [(ngModel)]="selectedcounterPartyRule.fromAccount" />
+                                                <div *ngIf="counterpartyRuleForm.get('fromAccount').invalid && counterpartyRuleForm.get('fromAccount').touched"
+                                                    class="error">
+                                                    From Account is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="field grid">
+                                            <label htmlFor="toAccount"
+                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
+                                            <div class="col-7 md:col-7">
+                                                <input pInputText id="toAccount" type="text" 
+                                                    formControlName="toAccount"
+                                                    [(ngModel)]="selectedcounterPartyRule.toAccount" />
+                                                <div *ngIf="counterpartyRuleForm.get('toAccount').invalid && counterpartyRuleForm.get('toAccount').touched"
+                                                    class="error">
+                                                    To Account is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </p-panel>
+                </form>
 
-            <p-panel [style]="{'margin': '1%'}" header="Existing Rules">
-
-            </p-panel>
-
+                <ng-template pTemplate="footer">
+                    <span>
+                        <p-button label="Save" severity="success" (click)="submitcounterpartyRule()" />
+                    </span>
+                    <span>
+                        <p-button label="Clear" severity="info" (click)="displayOverlay=false" />
+                    </span>
+                </ng-template>
+            </p-dialog>
+            
         </div>
     </div>
 </div>

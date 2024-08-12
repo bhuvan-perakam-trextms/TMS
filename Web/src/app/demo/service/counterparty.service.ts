@@ -26,9 +26,16 @@ export class CounterpartyService {
             .then(res => res.data as any[])
             .then(data => data);
     }
-    
+
     getCounterparties() {
         return this.http.get<any>('assets/demo/data/counterparties.json')
+            .toPromise()
+            .then(res => res.data as any[])
+            .then(data => data);
+    }
+
+    getCounterpartyRule() {
+        return this.http.get<any>('assets/demo/data/counterpartyrule.json')
             .toPromise()
             .then(res => res.data as any[])
             .then(data => data);
