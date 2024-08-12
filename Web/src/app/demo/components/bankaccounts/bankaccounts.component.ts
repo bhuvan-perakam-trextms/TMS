@@ -6,7 +6,8 @@ import { CountryService } from '../../service/country.service';
 import { CurrencyService } from '../../service/currency.service';
 
 @Component({
-  templateUrl: './bankaccounts.component.html'
+  templateUrl: './bankaccounts.component.html',
+  styleUrls: ['./bankaccounts.component.css']
 })
 export class BankaccountsComponent implements OnInit, OnDestroy {
 
