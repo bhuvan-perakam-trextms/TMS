@@ -172,7 +172,7 @@
                                                 <input pInputText id="fromAccount" type="text" 
                                                     formControlName="fromAccount"
                                                     [(ngModel)]="selectedcounterPartyRule.fromAccount" />
-                                                <div *ngIf="counterpartyRuleForm.get('fromAccount').invalid &&counterpartyRuleForm.get('fromAccount').touched"
+                                                <div *ngIf="counterpartyRuleForm.get('fromAccount').invalid && counterpartyRuleForm.get('fromAccount').touched"
                                                     class="error">
                                                     From Account is required.
                                                 </div>
@@ -187,7 +187,7 @@
                                                 <input pInputText id="toAccount" type="text" 
                                                     formControlName="toAccount"
                                                     [(ngModel)]="selectedcounterPartyRule.toAccount" />
-                                                <div *ngIf="counterpartyRuleForm.get('toAccount').invalid &&counterpartyRuleForm.get('toAccount').touched"
+                                                <div *ngIf="counterpartyRuleForm.get('toAccount').invalid && counterpartyRuleForm.get('toAccount').touched"
                                                     class="error">
                                                     To Account is required.
                                                 </div>
