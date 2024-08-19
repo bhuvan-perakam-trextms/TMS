@@ -29,19 +29,19 @@ export class TransfersComponent implements OnInit {
   externalFormattedDate: string | null = null;
 
   internalPaymentsList = [
-    { fromAccount: 'Account1', toAccount: 'Account2', currency: 'USD', executionDate: 'Aug 6, 2024' },
-    { fromAccount: 'Account2', toAccount: 'Account3', currency: 'EUR', executionDate: 'Aug 1, 2024' },
-    { fromAccount: 'Account3', toAccount: 'Account4', currency: 'GBP', executionDate: 'Jul 26, 2024' },
-    { fromAccount: 'Account4', toAccount: 'Account1', currency: 'USD', executionDate: 'Jul 1, 2024' },
-    { fromAccount: 'Account1', toAccount: 'Account3', currency: 'EUR', executionDate: 'Jun 30, 2024' }
+    { fromAccount: 'Account1', toAccount: 'Account2', currency: 'USD', amount: '2000', executionDate: 'Aug 6, 2024' },
+    { fromAccount: 'Account2', toAccount: 'Account3', currency: 'EUR', amount: '3200', executionDate: 'Aug 1, 2024' },
+    { fromAccount: 'Account3', toAccount: 'Account4', currency: 'GBP', amount: '1500', executionDate: 'Jul 26, 2024' },
+    { fromAccount: 'Account4', toAccount: 'Account1', currency: 'USD', amount: '6000', executionDate: 'Jul 1, 2024' },
+    { fromAccount: 'Account1', toAccount: 'Account3', currency: 'EUR', amount: '4000', executionDate: 'Jun 30, 2024' }
   ];
 
   externalPaymentsList = [
-    { fromAccount: 'Account1', toAccount: 'Account3', currency: 'USD', sortCode: '123456', executionDate: 'Aug 1, 2024' },
-    { fromAccount: 'Account2', toAccount: 'Account4', currency: 'EUR', sortCode: '654321', executionDate: 'Jul 29, 2024' },
-    { fromAccount: 'Account3', toAccount: 'Account1', currency: 'GBP', sortCode: '111111', executionDate: 'Jul 12, 2024' },
-    { fromAccount: 'Account4', toAccount: 'Account2', currency: 'USD', sortCode: '222222', executionDate: 'Jun 27, 2024' },
-    { fromAccount: 'Account1', toAccount: 'Account4', currency: 'EUR', sortCode: '333333', executionDate: 'Jun 8, 2024' }
+    { fromAccount: 'Account1', toAccount: 'Account3', currency: 'USD', sortCode: '123456', amount: '4500', executionDate: 'Aug 1, 2024' },
+    { fromAccount: 'Account2', toAccount: 'Account4', currency: 'EUR', sortCode: '654321', amount: '2200', executionDate: 'Jul 29, 2024' },
+    { fromAccount: 'Account3', toAccount: 'Account1', currency: 'GBP', sortCode: '111111', amount: '2000', executionDate: 'Jul 12, 2024' },
+    { fromAccount: 'Account4', toAccount: 'Account2', currency: 'USD', sortCode: '222222', amount: '1000', executionDate: 'Jun 27, 2024' },
+    { fromAccount: 'Account1', toAccount: 'Account4', currency: 'EUR', sortCode: '333333', amount: '2700', executionDate: 'Jun 8, 2024' }
   ];
 
   constructor(private fb: FormBuilder, private datePipe: DatePipe) { }
@@ -51,6 +51,7 @@ export class TransfersComponent implements OnInit {
       fromAccount: [null, Validators.required],
       toAccount: [null, Validators.required],
       currency: [null, Validators.required],
+      amount: [null, Validators.required],
       executionDate: [null, Validators.required],
       reference: ['', Validators.required]
     });
@@ -63,6 +64,7 @@ export class TransfersComponent implements OnInit {
       fromAccount: [null, Validators.required],
       toAccount: [null, Validators.required],
       currency: [null, Validators.required],
+      amount: [null, Validators.required],
       executionDate: [null, Validators.required],
       accountNumber: ['', Validators.required],
       sortCode: ['', Validators.required],
