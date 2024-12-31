@@ -22,14 +22,15 @@
                     </ng-template>
                 </kendo-grid-column>
 
-                <kendo-grid-column field="currency" title="Currency">
+                <kendo-grid-column field="currency" title="Currency" width="150">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                        <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> {{dataItem.currency}}
+                        <!-- <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> -->
+                        {{dataItem.currency}} 
                     </ng-template>
                 </kendo-grid-column>
-                <kendo-grid-column field="market" title="Market">
-                </kendo-grid-column>
-                <kendo-grid-column field="country" title="Country">
+                <!-- <kendo-grid-column field="market" title="Market">
+                </kendo-grid-column> -->
+                <kendo-grid-column field="country" title="Location">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                     
                         <div class="flex align-items-center gap-2">
@@ -39,6 +40,12 @@
                     </ng-template>
                 </kendo-grid-column>
 
+                <kendo-grid-column field="balance.openingBalance" title="Balance">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <!-- <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> -->
+                        {{dataItem.balance.openingBalance | currency: dataItem.currency}} 
+                    </ng-template>
+                </kendo-grid-column>
 
             </kendo-grid>
 
@@ -114,17 +121,17 @@
                                                 [value]="selectedBankAccountDetail?.currency" />
                                         </div>
                                     </div>
-                                    <div class="field grid">
+                                    <!-- <div class="field grid">
                                         <label htmlFor="market"
                                             class="col-4 md:col-4 mb-0 md:mb-0"><b>Market</b></label>
                                         <div class="col-7 md:col-7">
                                             <input pInputText id="market" type="text" [disabled]="true"
                                                 [value]="selectedBankAccountDetail?.market" />
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="field grid">
                                         <label htmlFor="entity"
-                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
+                                            class="col-4 md:col-4 mb-0 md:mb-0"><b>Location</b></label>
                                         <div class="col-7 md:col-7">
                                             <input pInputText id="entity" type="text" [disabled]="true"
                                                 [value]="selectedBankAccountDetail?.country" />
@@ -221,7 +228,7 @@
                 </div>
 
                 <ng-template pTemplate="footer">
-                    <button pButton icon="pi pi-check" (click)="displayOverlay=false" label="Ok"
+                    <button pButton icon="pi pi-check" (click)="displayOverlay=false" label="OK"
                         class="p-button-outlined"></button>
                 </ng-template>
             </p-dialog>
