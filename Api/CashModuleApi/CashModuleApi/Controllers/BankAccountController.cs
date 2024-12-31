@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using CashModuleApi.Domain;
+using CashModuleApi.Services.BankAccounts;
 
 namespace CashModuleApi.Controllers
 {
@@ -8,36 +8,84 @@ namespace CashModuleApi.Controllers
     [ApiController]
     public class BankAccountController : ControllerBase
     {
-        // GET: api/<BankAccountController>
+        private readonly IBankAccountService _bankAccountService;
+
+        public BankAccountController(IBankAccountService bankAccountService)
+        {
+            _bankAccountService = bankAccountService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetAllBankAccounts()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var accounts = _bankAccountService.GetAllBankAccounts();
+                return Ok(accounts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
-        // GET api/<BankAccountController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult GetBankAccountById(int id)
         {
-            return "value";
+            try
+            {
+                var account = _bankAccountService.GetBankAccountById(id);
+
+                if (account == null)
+                    return NotFound($"Bank account with ID {id} not found");
+
+                return Ok(account);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
-        // POST api/<BankAccountController>
+ /*       // POST: api/BankAccount
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult UpsertBankAccount([FromBody] BankAccount account)
         {
-        }
+            try
+            {
+                if (account == null)
+                    return BadRequest("Bank account object is null");
 
-        // PUT api/<BankAccountController>/5
+                Service.CreateOrUpdateBankAccount(account);
+                return CreatedAtAction(nameof(GetBankAccountById), new { id = account.Id }, account);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }*/
+
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult UpsertBankAccount(int id, [FromBody] BankAccount account)
         {
-        }
+            try
+            {
+                if (account == null || account.Id != id)
+                    return BadRequest("Invalid bank account object");
 
-        // DELETE api/<BankAccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                var existingAccount = _bankAccountService.GetBankAccountById(id);
+                if (existingAccount == null)
+                {
+                    return NotFound($"Bank account with ID {id} not found");
+                }
+
+                _bankAccountService.CreateOrUpdateBankAccount(account);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿namespace CashModuleApi.Services.BankAccount
+﻿using CashModuleApi.Domain;
+namespace CashModuleApi.Services.BankAccounts
 {
     public interface IBankAccountService
     {
-        /*
-         * Create
-         * Update
-         * Get
-         */
+        public BankAccount GetBankAccountById(int id);
+        public void CreateOrUpdateBankAccount(BankAccount account);
+        public IEnumerable<BankAccount> GetAllBankAccounts();
     }
 }
