@@ -12,11 +12,14 @@
     </button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <div style="margin-top: 1rem;">
-            <span class="block font-medium mb-3 top-bar-text-color">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
+        <!-- Welcome Message -->
+        <div class="mt-4">
+            <span class="block font-medium mb-3 top-bar-text-color">
+                Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}
+            </span>
         </div>
-       
-        <button class="p-link layout-topbar-button top-bar-text-color" (click)="signOut()">
+
+        <button class="p-link layout-topbar-button top-bar-text-color mt-2" (click)="signOut()">
             <i class="pi pi-sign-out"></i>
             <span>Sign out</span>
         </button>
