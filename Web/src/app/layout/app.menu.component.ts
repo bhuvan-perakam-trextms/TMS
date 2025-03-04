@@ -124,16 +124,62 @@ export class AppMenuComponent implements OnInit {
                 separator: true
             },
             {
-                label: 'Settings',
+                label: 'Treasury Deals',
+                items: [
+                    {
+                        label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    {
+                        label: 'Deposits', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    {
+                        label: 'Funds', icon: 'pi pi-fw pi-bookmark'
+                    },
+                ],
+            },
+            {
+                label: 'Asset & Liability Management',
+                items: [
+                    {
+                        label: 'Assets', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
+                ],
+            },
+            {
+                label: 'Forecasting',
+                items: [
+                    {
+                        label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
+                ],
+            },
+            {
+                label: 'Invoice Management',
+                items: [
+                    {
+                        label: 'Invoices', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
+                ],
+            },
+            {
+                label: 'Administration',
                 items: [
                     {
                         label: 'User Management', icon: 'pi pi-fw pi-bookmark'
                     },
                     {
-                        label: 'Dashboard Management', icon: 'pi pi-fw pi-bookmark'
+                        label: 'Role Management', icon: 'pi pi-fw pi-bookmark'
                     },
+                    {
+                        label: 'Permissions', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
                 ],
             },
+            
             {
                 label: 'UI Components',
                 items: [
