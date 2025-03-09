@@ -7,6 +7,8 @@ import { MenuService } from '../app.menu.service';
     templateUrl: './app.config.component.html',
 })
 export class AppConfigComponent {
+
+    ChatVisible : boolean = false;
     @Input() minimal: boolean = false;
 
     scales: number[] = [12, 13, 14, 15, 16];
@@ -43,13 +45,6 @@ export class AppConfigComponent {
         }));
     }
 
-    get inputStyle(): string {
-        return this.layoutService.config().inputStyle;
-    }
-    set inputStyle(_val: string) {
-        this.layoutService.config().inputStyle = _val;
-    }
-
     get ripple(): boolean {
         return this.layoutService.config().ripple;
     }
@@ -82,6 +77,11 @@ export class AppConfigComponent {
 
     onConfigButtonClick() {
         this.layoutService.showConfigSidebar();
+    }
+
+    onChatButtonClick()
+    {
+        this.ChatVisible = true;
     }
 
     changeTheme(theme: string, colorScheme: string) {

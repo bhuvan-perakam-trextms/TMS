@@ -17,7 +17,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Home',
                 items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/dashboard/dashboard'] }
                 ]
             },
             {
@@ -61,67 +61,84 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Asset & Liability',
+                label: 'Treasury Deals',
                 items: [
-                    {
-                        label: 'Assets', icon: 'pi pi-fw pi-bookmark',
-                        items: [
-                            {
-                                label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                ]
-                            },
-                        ]
-                    },
-                ],
-                separator: true
+                    { label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark', routerLink: ['/deals/projections'] },
+                    { label: 'Deposits', icon: 'pi pi-fw pi-bookmark', routerLink: ['/deals/deposits'] },
+                    { label: 'Funds', icon: 'pi pi-fw pi-bookmark', routerLink: ['/deals/funds'] }
+                ]
             },
             {
-                label: 'Capital Markets',
+                label: 'Asset & Liability Management',
+                items: [ { label: 'Assets', icon: 'pi pi-fw pi-bookmark', routerLink: ['/assets'] } ]
+            },
+            {
+                label: 'Forecasting',
                 items: [
-                    {
-                        label: 'Instruments', icon: 'pi pi-fw pi-bookmark',
-                        items: [
-                            {
-                                label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                ]
-                            },
-                        ]
-                    },
-                ],
-                separator: true
+                    { label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark', routerLink: ['/forecasting/cash'] }
+                ]
+            },
+            {
+                label: 'Invoice Management',
+                items: [
+                    { label: 'Invoices', icon: 'pi pi-fw pi-bookmark', routerLink: ['/invoicemanagement/invoices'] }
+                ]
             },
             {
                 label: 'Reporting',
                 items: [
-                    {
-                        label: 'Report Builder', icon: 'pi pi-fw pi-bookmark',
-                        items: [
-                            {
-                                label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                ]
-                            },
-                        ]
-                    },
-                ],
-                separator: true
+                    { label: 'Reports', icon: 'pi pi-fw pi-bookmark', routerLink: ['/reporting/reports'] },
+                    { label: 'Report Builder', icon: 'pi pi-fw pi-bookmark', routerLink: ['/reporting/reportbuilder'] }
+                ]
             },
             {
-                label: 'Marketing',
+                label: 'Settings',
                 items: [
                     {
-                        label: 'Configuration', icon: 'pi pi-fw pi-bookmark',
+                        label: 'Dashboard Management', icon: 'pi pi-fw pi-bookmark', routerLink: ['/settings/dashboardmanagement']
                     },
                 ],
-                separator: true
+            },
+            {
+                label: 'Treasury Deals',
+                items: [
+                    {
+                        label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    {
+                        label: 'Deposits', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    {
+                        label: 'Funds', icon: 'pi pi-fw pi-bookmark'
+                    },
+                ],
+            },
+            {
+                label: 'Asset & Liability Management',
+                items: [
+                    {
+                        label: 'Assets', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
+                ],
+            },
+            {
+                label: 'Forecasting',
+                items: [
+                    {
+                        label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
+                ],
+            },
+            {
+                label: 'Invoice Management',
+                items: [
+                    {
+                        label: 'Invoices', icon: 'pi pi-fw pi-bookmark'
+                    },
+                    
+                ],
             },
             {
                 label: 'Treasury Deals',
@@ -168,13 +185,16 @@ export class AppMenuComponent implements OnInit {
                 label: 'Administration',
                 items: [
                     {
-                        label: 'User Management', icon: 'pi pi-fw pi-bookmark'
+                        label: 'User Management', icon: 'pi pi-fw pi-bookmark' , routerLink: ['/settings/usermanagement']
+                    },
+                    {
+                        label: 'Role Management', icon: 'pi pi-fw pi-bookmark', routerLink: ['/settings/rolemanagement']
                     },
                     {
                         label: 'Role Management', icon: 'pi pi-fw pi-bookmark'
                     },
                     {
-                        label: 'Permissions', icon: 'pi pi-fw pi-bookmark'
+                        label: 'Permissions', icon: 'pi pi-fw pi-bookmark', routerLink: ['/settings/permissions']
                     },
                     
                 ],

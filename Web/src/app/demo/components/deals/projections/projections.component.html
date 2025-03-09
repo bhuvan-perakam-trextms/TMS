@@ -1,0 +1,31 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-home"></i> Investment Portfolio</h5> <br />
+            <p-chart type="pie" [data]="chartData" [options]="chartOptions" width="400" height="400"></p-chart>
+
+            <br /> <br />
+            <div class="grid-container">
+                <kendo-grid [data]="gridData" [pageable]="true" [pageSize]="10" [skip]="0" [sortable]="true"
+                    [filterable]="filterMode" [resizable]="false" [groupable]="true" [group]="group" (groupChange)="onGroupChange($event)">
+                    <kendo-grid-column field="Instrument" title="Instrument" width="150"></kendo-grid-column>
+                    <kendo-grid-column field="Counterparty" title="Counterparty" width="140"></kendo-grid-column>
+                    <kendo-grid-column field="StartDate" title="Start Date" width="120" format="{0:dd/MM/yyyy}">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="Maturity" title="Maturity" width="120" format="{0:dd/MM/yyyy}">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="Notional" title="Notional" width="120">
+                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                            {{dataItem.Notional | currency: dataItem.Currency}}
+                        </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="InterestRate" title="Interest Rate" width="130">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="Yield" title="Yield" width="120">
+                    </kendo-grid-column>
+                </kendo-grid>
+            </div>
+        </div>
+    </div>
+</div>

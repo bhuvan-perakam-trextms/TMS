@@ -1,0 +1,25 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <h5><i class="pi pi-fw pi-home"></i> Money Market Deposits</h5> <br />
+            <div style="overflow-x: auto;">
+                <kendo-grid [data]="gridData" [resizable]="true" [reorderable]="true" [sortable]="true"
+                    style="min-width: 1000px;">
+
+                    <kendo-grid-column field="logo" title=" " width="50">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <img src="{{dataItem.logo}}" class="shadow-4"
+                                width="40">
+                        </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column field="counterparty" title="Counterparty" width="250"></kendo-grid-column>
+                    <kendo-grid-column field="currency" title="Currency" width="100"></kendo-grid-column>
+                    <kendo-grid-column field="exposure" title="Exposure" width="150" format="{n0}"></kendo-grid-column>
+                    <kendo-grid-column field="limit" title="Limit" width="150" format="{n0}"></kendo-grid-column>
+                    <kendo-grid-column field="remainingLimit" title="Remaining Limit" width="150"
+                        format="{n0}"></kendo-grid-column>
+                </kendo-grid>
+            </div>
+        </div>
+    </div>
