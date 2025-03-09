@@ -10,4 +10,16 @@
 @import "./_responsive";
 @import "./_utils";
 @import "./_typography";
-@import "./_custom";
+
+
+.custom-hover-border:hover {
+    border-color: #07435B !important;
+}
+
+.font-times {
+    font-family: Arial, sans-serif !important;
+}
+
+.k-grid-header th {
+    font-weight: bold !important;
+}
