@@ -1,6 +1,6 @@
 <div class="layout-topbar">
     <a routerLink="">
-        <img src="assets/layout/images/TrexBlueLogo.png" width="170" alt="logo">
+        <img src="assets/layout/images/TrexBlueLogo.png" width="90" alt="logo">
     </a>
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
@@ -12,13 +12,32 @@
     </button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <div style="margin-top: 1rem;">
-            <span class="block font-medium mb-3 top-bar-text-color">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
+         
+            <div class="input-group search-bar">
+               
+    <input type="text" class="form-control" placeholder="Search for result">
+    <a class="input-group-text">
+        <i class="pi pi-search"></i>  <!-- PrimeNG Search Icon -->
+    </a>
+ 
         </div>
+         
+        <div class="tor__right">
+            <button class="layout_topbar_iconbutton"> 
+                <i class="pi pi-bell"></i>
+                 
+            </button> 
+            <button class="layout_topbar_iconbutton">
+                <i class="pi pi-spin pi-cog"  ></i>
+
+                
+            </button> 
+
+            <span class="user__details">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
        
-        <button class="p-link layout-topbar-button top-bar-text-color" (click)="signOut()">
+        <button class="p-link layout-topbar-button " (click)="signOut()">
             <i class="pi pi-sign-out"></i>
             <span>Sign out</span>
-        </button>
+        </button> </div>
     </div>
 </div>

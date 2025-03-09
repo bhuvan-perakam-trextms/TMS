@@ -1,0 +1,16 @@
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Adds space between the chart and table */
+    border-style: solid;
+    height: 200px;
+}
+
+.chart-container {
+    width: 800;  /* Adjust chart width */
+    height: 450px; /* Adjust chart height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

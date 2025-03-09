@@ -1,42 +1,57 @@
-.layout-config-button {
-    display: block;
+/* Container to stack the buttons vertically at the bottom-right */
+.layout-button-container {
     position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem; /* Adjust the gap between buttons if needed */
+}
+
+/* Common button styles */
+.layout-button-container button {
     width: 3rem;
     height: 3rem;
     line-height: 3rem;
-    background: var(--primary-color);
+    background: #07453B;
     color: var(--primary-color-text);
     text-align: center;
-    top: 50%;
-    right: 0;
-    margin-top: -1.5rem;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     transition: background-color var(--transition-duration);
     overflow: hidden;
     cursor: pointer;
-    z-index: 999;
-    box-shadow: -.25rem 0 1rem rgba(0,0,0,.15);
-
-    i {
-        font-size: 2rem;
-        line-height: inherit;
-        transform: rotate(0deg);
-        transition: transform 1s;
-    }
-    
-    &:hover {
-        background: var(--primary-400);
-    }
+    box-shadow: -0.25rem -0.25rem 1rem rgba(0, 0, 0, 0.15);
+    border: none;
 }
 
-.layout-config-sidebar {
-    &.p-sidebar {
-        .p-sidebar-content {
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-    }
+/* Icon styling inside the buttons */
+.layout-button-container button i {
+    font-size: 2rem;
+    line-height: inherit;
+    transform: rotate(0deg);
+    transition: transform 1s;
+}
+
+/* Hover effect */
+.layout-button-container button:hover {
+    background: var(--primary-400);
+}
+
+/* Specific adjustments for the settings (config) button */
+.layout-config-button {
+    /* For example, round the top left corner (facing inward) */
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Specific adjustments for the chat button */
+.layout-chat-button {
+    /* For example, round the bottom left corner */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: 0;
 }

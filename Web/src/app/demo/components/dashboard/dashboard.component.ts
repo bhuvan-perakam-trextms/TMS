@@ -116,6 +116,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                         drawBorder: false
                     }
                 }
+                
 
             }
         };

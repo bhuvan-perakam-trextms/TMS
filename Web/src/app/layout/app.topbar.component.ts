@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class AppTopBarComponent {
 
+    isChatOpen = false;
+    messages: string[] = [];  
+
     items!: MenuItem[];
 
     @ViewChild('menubutton') menuButton!: ElementRef;
@@ -34,5 +37,18 @@ export class AppTopBarComponent {
     {
         this.authService.signOut();
         this.router.navigate(['/']);
+    }
+
+    toggleChat() {
+        this.isChatOpen = !this.isChatOpen;
+      }
+    
+    sendMessage(event: any) 
+    {
+        const input = event.target.value;
+        if (input.trim() !== '') {
+          this.messages.push(input);
+          event.target.value = '';
+        }
     }
 }
