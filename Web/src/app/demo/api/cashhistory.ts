@@ -1,4 +1,4 @@
-import { CashHistoryDelta } from "./cashhistoryDelta";
+import { CashHistoryDelta } from "./cashhistorydelta";
 
 export interface CashHistory
 {

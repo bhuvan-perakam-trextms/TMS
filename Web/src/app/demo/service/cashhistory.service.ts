@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CashHistory } from '../api/cashhistory';
-import { CashHistoryDelta } from '../api/cashhistoryDelta';
 
 @Injectable()
 export class CashHistoryService {

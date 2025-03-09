@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BankAccountDetail } from '../../api/bankaccountdetail';
+import { BankAccountDetail } from '../../api/bankAccountDetail';
 import { FilterableSettings } from '@progress/kendo-angular-grid';
 import { BankService } from '../../service/bank.service';
 import { CountryService } from '../../service/country.service';

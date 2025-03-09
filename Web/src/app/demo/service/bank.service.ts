@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BankAccount } from '../api/bankAccount';
-import { BankAccountDetail } from '../api/bankaccountdetail';
+import { BankAccountDetail } from '../api/bankAccountDetail';
 
 @Injectable()
 export class BankService {
