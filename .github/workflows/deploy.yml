@@ -20,12 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd web
+          cd Web
           npm install --legacy-peer-deps
 
       - name: Build Angular app
         run: |
-          cd web
+          cd Web
           npm run build -- --configuration=production
 
       - name: Configure AWS credentials
