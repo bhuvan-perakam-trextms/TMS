@@ -153,7 +153,7 @@ export class AppMenuComponent implements OnInit {
                         label: 'Role Management', icon: 'pi pi-fw pi-bookmark'
                     },
                     {
-                        label: 'Permissions', icon: 'pi pi-fw pi-bookmark'
+                       // label: 'Permissions', icon: 'pi pi-fw pi-bookmark'
                         label: 'Permissions', icon: 'pi pi-fw pi-bookmark', routerLink: ['/settings/permissions']
                     },
                     

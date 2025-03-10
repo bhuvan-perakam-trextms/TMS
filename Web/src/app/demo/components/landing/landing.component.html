@@ -1,18 +1,18 @@
 <div class="layout-topbar">
     <a routerLink="">
-        <img src="assets/layout/images/TrexBlueLogo.png" width="170" alt="logo">
+        <img src="assets/layout/images/TrexBlueLogo.png" width="90" alt="logo">
     </a>
-
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+    <!-- <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars top-bar-text-color"></i>
-    </button>
+    </button> -->
 
-    <div #topbarmenu class="layout-topbar-menu">
-        <div style="margin-top: 1rem;">
-            <span class="block font-medium mb-3" style="color: white;">
-                <i class="pi pi-fw pi-flag-fill"></i> Welcome Administrator 
+    <div #topbarmenu class="layout-topbar-menu landing__topbar">
+        <div>
+            <span class="block font-medium">
+                <!-- <i class="pi pi-fw pi-flag-fill"></i>  -->
+                Welcome Administrator 
             </span>
-            <span class="block font-medium mb-3" style="color: white;">
+            <span class="block font-medium">
                 Total Account Balance is £ 300,000
             </span>
         </div>
@@ -22,91 +22,211 @@
 <div class="surface-0 flex justify-content-center">
     <div id="home" class="landing-wrapper overflow-hidden">
         <div id="pricing" class="py-4 px-4 lg:px-8 my-2 md:my-4">
-            <div class="text-center">
-                <h2 class="text-900 font-normal mb-2">Welcome to TREX</h2>
+          
+            <div class="grid">
+                <div class="col-12 lg:col-6 xl:col-9">
+                    <div class=" heading_land">
+                    <h2 >Welcome to TREX
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                    </h2></div>
+                    <div class="grid  mt-8 md:mt-0">
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items"
+                                [routerLink]="['/dashboard/dashboard']">
+                                <img src="assets/demo/images/landing/asset-management.png"   alt="enterprise">
+                                
+                                <span>Cash Management</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items"
+                                [routerLink]="['/deals/projections']">
+                                <img src="assets/demo/images/landing/cashdealing.png"   alt="enterprise">
+                                
+                                <span>Treasury Dealing</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items">
+                                <img src="assets/demo/images/landing/receipt.png"   alt="enterprise">
+                                
+                                <span >Invoice Management System</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items">
+                                <img src="assets/demo/images/landing/economy.png"   alt="enterprise">
+                                
+                                <span >Reporting</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items">
+                                <img src="assets/demo/images/landing/assets.png"   alt="enterprise">
+                                
+                                <span>Asset & Liability Management</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items">
+                                <img src="assets/demo/images/landing/cashflow.png"  alt="enterprise">
+                                
+                                <span>Cash Forecast</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items">
+                                <img src="assets/demo/images/landing/administrator1.png"   alt="enterprise">
+                                
+                                <span>Administrator</span>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 lg:col-3">
+                            <div class=" lading__items">
+                                <img src="assets/demo/images/landing/settings1.png"   alt="enterprise">
+                                
+                                <span>Settings</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-12 lg:col-6 xl:col-3 lading__card">
+                    
+                        <div class="card p-0" cdkDrag>
+                            <div class="heading">
+                                <h2>News</h2>
+                                <div class="right__btn">
+                                    <p-button label="View All" />
+                                  
+                                </div>
+                            </div>
+                
+                            <ul class="list-none my__task my__news">
+                                <li>
+                                    
+                                    <div class="task__details"> 
+                                        <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                   
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                               
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                                <li>
+                                  
+                                    <div class="task__details"> 
+                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
+                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
+                                         
+                                    </div>
+                                </li>
+                               
+                            </ul>
+                            <!-- <ul class="list-none p-0 m-0">
+                                    <li *ngFor="let task of tasks" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-5">
+                                        <div>
+                                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">{{task.Name}}</span>
+                                        </div>
+                                        <div class="mt-2 md:mt-0 flex align-items-center">
+                                            <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '8px'}">
+                                                <div [ngClass]="'bg-' + task.Color + '-500 h-full'" [ngStyle]="{width: task.Percentage}"></div>
+                                            </div>
+                                            <span [ngClass]="'text-'+ task.Color + '-500 ml-3 font-medium'">{{task.Percentage}}</span>
+                                        </div>
+                                    </li>
+                                </ul> -->
+                        </div>
+                     
+                    
+                    </div>
+                         
             </div>
-            
-            <div class="grid justify-content-between mt-8 md:mt-0">
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px"
-                        [routerLink]="['/dashboard/dashboard']">
-                        <img src="assets/demo/images/landing/CashManagement.png" class="w-8 h-8 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Cash Management</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px"
-                        [routerLink]="['/deals/projections']">
-                        <img src="assets/demo/images/landing/TreasuryDeals.jpg" class="w-10 h-10 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Treasury Dealing</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px">
-                        <img src="assets/demo/images/landing/IMS_1.jpg" class="w-8 h-8 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Invoice Management System</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px">
-                        <img src="assets/demo/images/landing/Reporting.jpg" class="w-10 h-10 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Reporting</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px">
-                        <img src="assets/demo/images/landing/currency.png" class="w-6 h-6 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Asset & Liability Management</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px">
-                        <img src="assets/demo/images/landing/cash-flow.png" class="w-6 h-6 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Cash Forecast</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px">
-                        <img src="assets/demo/images/landing/Administrator.png" class="w-6 h-6 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Administrator</span>
-                    </div>
-                </div>
-
-                <div class="col-12 lg:col-3 p-0 md:p-3 mt-4 md:mt-0">
-                    <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer border-2 custom-hover-border transition-duration-300 transition-all"
-                        style="border-radius:10px">
-                        <img src="assets/demo/images/landing/Settings.png" class="w-6 h-6 mx-auto" alt="enterprise">
-                        
-                        <span class="text-center font-semibold mt-3" style="color: #07435B;">Settings</span>
-                    </div>
-                </div>
-            </div>
+          
         </div>
 
     </div>
 </div>
 
-<div class="layout-footer p-3 mt-5 text-white" style="background-color: #07435B;">
+<div class="layout-footer">
     <img src="assets/layout/images/TrexBlueIcon.png" alt="Logo" height="20" class="mr-2"/>
     Connecting the dots in Treasury.
     <span class="font-medium ml-2">TREX - 2025</span>
