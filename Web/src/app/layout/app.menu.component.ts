@@ -100,88 +100,6 @@ export class AppMenuComponent implements OnInit {
                 ],
             },
             {
-                label: 'Treasury Deals',
-                items: [
-                    {
-                        label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    {
-                        label: 'Deposits', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    {
-                        label: 'Funds', icon: 'pi pi-fw pi-bookmark'
-                    },
-                ],
-            },
-            {
-                label: 'Asset & Liability Management',
-                items: [
-                    {
-                        label: 'Assets', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    
-                ],
-            },
-            {
-                label: 'Forecasting',
-                items: [
-                    {
-                        label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    
-                ],
-            },
-            {
-                label: 'Invoice Management',
-                items: [
-                    {
-                        label: 'Invoices', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    
-                ],
-            },
-            {
-                label: 'Treasury Deals',
-                items: [
-                    {
-                        label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    {
-                        label: 'Deposits', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    {
-                        label: 'Funds', icon: 'pi pi-fw pi-bookmark'
-                    },
-                ],
-            },
-            {
-                label: 'Asset & Liability Management',
-                items: [
-                    {
-                        label: 'Assets', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    
-                ],
-            },
-            {
-                label: 'Forecasting',
-                items: [
-                    {
-                        label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    
-                ],
-            },
-            {
-                label: 'Invoice Management',
-                items: [
-                    {
-                        label: 'Invoices', icon: 'pi pi-fw pi-bookmark'
-                    },
-                    
-                ],
-            },
-            {
                 label: 'Administration',
                 items: [
                     {
@@ -189,9 +107,6 @@ export class AppMenuComponent implements OnInit {
                     },
                     {
                         label: 'Role Management', icon: 'pi pi-fw pi-bookmark', routerLink: ['/settings/rolemanagement']
-                    },
-                    {
-                        label: 'Role Management', icon: 'pi pi-fw pi-bookmark'
                     },
                     {
                         label: 'Permissions', icon: 'pi pi-fw pi-bookmark', routerLink: ['/settings/permissions']
