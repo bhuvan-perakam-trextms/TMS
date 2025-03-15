@@ -10,6 +10,9 @@ import { SchedulerEvent } from "@progress/kendo-angular-scheduler";
   styleUrl: './approvals.component.scss'
 })
 export class ApprovalsComponent implements AfterViewInit  {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
   
   filterMode: FilterableSettings = "menu";
   displayOverlay: boolean = false;

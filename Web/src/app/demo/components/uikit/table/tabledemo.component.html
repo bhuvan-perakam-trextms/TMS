@@ -212,7 +212,7 @@
 							<button type="button" pButton pRipple [pRowToggler]="product" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
 						</td>
 						<td style="min-width: 12rem;">{{product.name}}</td>
-						<td><img [src]="'assets/demo/images/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
+						<td><img [src]="'assets/demo/images/product/' + product.image" [alt]="product.name" width="100"   /></td>
 						<td style="min-width: 8rem;">{{product.price | currency:'USD'}}</td>
 						<td style="min-width: 10rem;">{{product.category}}</td>
 						<td style="min-width: 10rem;"><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>

@@ -1,11 +1,54 @@
 <div class="grid">
     <div class="col-12">
+        <div class="header_main">
+            <h1>Approvals </h1>
+            <button pButton     label="Add Approvals"
+            class="custom-primary-button"></button>
+            </div>
         <div class="card p-fluid">
-            <h5><i class="pi pi-fw pi-user-plus"></i> Approvals</h5>
-
+            <!-- <h5><i class="pi pi-fw pi-user-plus"></i> Approvals</h5> -->
+            <div class="card-container">
             <p-tabView (onChange)="onTabClicked($event)">
                 <p-tabPanel header="Tab View">
-                    <kendo-grid [kendoGridBinding]="approvalsData" [pageSize]="20" [pageable]="true" [sortable]="true"
+                    <p-table [value]="approvalsData" [paginator]="true" [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"
+                    sortMode="single" 
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem'}">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="from">
+                                    From <p-sortIcon field="from"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="to">
+                                    To <p-sortIcon field="to"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="amount">
+                                    Amount <p-sortIcon field="amount"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="executionDate">
+                                    Execution Date <p-sortIcon field="executionDate"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="status">
+                                    Status <p-sortIcon field="status"></p-sortIcon>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-dataItem>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
+                                        {{ dataItem.from }}
+                                    </a>
+                                </td>
+                                <td>{{ dataItem.to }}</td>
+                                <td>{{ dataItem.amount | currency: dataItem.Currency }}</td>
+                                <td>{{ dataItem.executionDate }}</td>
+                                <td>{{ dataItem.status }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                    
+                    <!-- <kendo-grid [kendoGridBinding]="approvalsData" [pageSize]="20" [pageable]="true" [sortable]="true"
                         [filterable]="filterMode" [groupable]="true" style="width: 100%;">
 
                         <kendo-grid-column field="from" title="From" width="250">
@@ -25,7 +68,7 @@
                         </kendo-grid-column>
                         <kendo-grid-column field="status" title="Status">
                         </kendo-grid-column>
-                    </kendo-grid>
+                    </kendo-grid> -->
 
                     <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{width: '60vw'}"
                         [breakpoints]="{'960px': '75vw'}">
@@ -42,50 +85,46 @@
                                         <span class="p-tag">Details</span>
                                     </p-divider>
                                     <div class="field grid">
-                                        <div class="col-6">
-                                            <div class="field grid">
-                                                <label htmlFor="from" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                    <b>From Account</b>
+                                         
+                                            <div class="col-4 form-group"> 
+                                                <label htmlFor="from" >
+                                                    From Account 
                                                 </label>
-                                                <div class="col-8 md:col-8">
+                                                 
                                                     <input pInputText id="from" type="text" [disabled]="true"
                                                         [value]="selectedApproval?.from" />
-                                                </div>
+                                               
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="field grid">
-                                                <label htmlFor="to" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                    <b>To Account</b>
+                                       
+                                        
+                                            <div class="col-4 form-group"> 
+                                                <label htmlFor="to">
+                                                    To Account
                                                 </label>
-                                                <div class="col-8 md:col-8">
-                                                    <input pInputText id="to" type="text" [disabled]="true"
+                                                     <input pInputText id="to" type="text" [disabled]="true"
                                                         [value]="selectedApproval?.to" />
-                                                </div>
+                                                
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="field grid">
-                                                <label htmlFor="executionDate" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                    <b>Execution Date</b>
+                                         
+                                         <div class="col-4 form-group"> 
+                                                <label htmlFor="executionDate">
+                                                    Execution Date 
                                                 </label>
-                                                <div class="col-8 md:col-8">
-                                                    <input pInputText id="executionDate" type="text" [disabled]="true"
+                                                  <input pInputText id="executionDate" type="text" [disabled]="true"
                                                         [value]="selectedApproval?.executionDate" />
-                                                </div>
+                                                
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="field grid">
-                                                <label htmlFor="amount" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                    <b>Amount</b>
+                                      
+                                          <div class="col-4 form-group"> 
+                                                <label htmlFor="amount">
+                                                    Amount 
                                                 </label>
-                                                <div class="col-8 md:col-8">
+                                               
                                                     <input pInputText id="amount" type="text" [disabled]="true"
                                                         [value]="selectedApproval?.amount" />
-                                                </div>
+                                                
                                             </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-12 m-0 p-0">
@@ -144,6 +183,6 @@
                   </kendo-scheduler>
                 </p-tabPanel>
             </p-tabView>
-        </div>
+        </div></div>
     </div>
 </div>

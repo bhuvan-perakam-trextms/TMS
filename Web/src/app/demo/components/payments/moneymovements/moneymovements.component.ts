@@ -7,6 +7,9 @@ import { FilterableSettings } from '@progress/kendo-angular-grid';
   styleUrls: ['./moneymovements.component.css']
 })
 export class MoneymovementsComponent implements OnInit {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
 
   filterMode: FilterableSettings = "menu";
   tableData: any[] = [];
