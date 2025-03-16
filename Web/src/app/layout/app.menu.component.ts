@@ -60,99 +60,26 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             },
-            // {
-            //     label: 'Treasury Deals',
-            //     items: [
-            //         { label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark', routerLink: ['/deals/projections'] },
-            //         { label: 'Deposits', icon: 'pi pi-fw pi-bookmark', routerLink: ['/deals/deposits'] },
-            //         { label: 'Funds', icon: 'pi pi-fw pi-bookmark', routerLink: ['/deals/funds'] }
-            //     ]
-            // },
-            // {
-            //     label: 'Asset & Liability Management',
-            //     items: [ { label: 'Assets', icon: 'pi pi-fw pi-bookmark', routerLink: ['/assets'] } ]
-            // },
-            // {
-            //     label: 'Forecasting',
-            //     items: [
-            //         { label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark', routerLink: ['/forecasting/cash'] }
-            //     ]
-            // },
-            // {
-            //     label: 'Invoice Management',
-            //     items: [
-            //         { label: 'Invoices', icon: 'pi pi-fw pi-bookmark', routerLink: ['/invoicemanagement/invoices'] }
-            //     ]
-            // },
+            {
+                label: 'Treasury Deals',
+                items: [
+                    {
+                        label: 'Investment Portfolio', icon: 'fa-regular fa-address-book', routerLink: ['/deals/projections']
+                    },
+                    {
+                        label: 'Deposits', icon: 'pi pi-fw pi-credit-card', routerLink: ['/deals/funds']
+                    },
+                    {
+                        label: 'Funds', icon: 'fas fa-dollar-sign', routerLink: ['/deals/deposits']
+                    },
+                ],
+            },
             {
                 label: 'Reporting',
                 items: [
                     { label: 'Reports', icon: 'far fa-chart-bar', routerLink: ['/reporting/reports'] },
                     { label: 'Report Builder', icon: 'pi pi-pw pi-chart-line', routerLink: ['/reporting/reportbuilder/reportbuilder'] }
                 ]
-            },
-            {
-                label: 'Settings',
-                items: [
-                    {
-                        label: 'Dashboard Management', icon: 'fa-regular fa-circle-user', routerLink: ['/settings/dashboardmanagement']
-                    },
-                ],
-            },
-            // {
-            //     label: 'Treasury Deals',
-            //     items: [
-            //         {
-            //             label: 'Investment Portfolio', icon: 'pi pi-fw pi-bookmark'
-            //         },
-            //         {
-            //             label: 'Deposits', icon: 'pi pi-fw pi-bookmark'
-            //         },
-            //         {
-            //             label: 'Funds', icon: 'pi pi-fw pi-bookmark'
-            //         },
-            //     ],
-            // },
-            // {
-            //     label: 'Asset & Liability Management',
-            //     items: [
-            //         {
-            //             label: 'Assets', icon: 'pi pi-fw pi-bookmark'
-            //         },
-                    
-            //     ],
-            // },
-            // {
-            //     label: 'Forecasting',
-            //     items: [
-            //         {
-            //             label: 'Cash Forecast', icon: 'pi pi-fw pi-bookmark'
-            //         },
-                    
-            //     ],
-            // },
-            // {
-            //     label: 'Invoice Management',
-            //     items: [
-            //         {
-            //             label: 'Invoices', icon: 'pi pi-fw pi-bookmark'
-            //         },
-                    
-            //     ],
-            // },
-            {
-                label: 'Treasury Deals',
-                items: [
-                    {
-                        label: 'Investment Portfolio', icon: 'fa-regular fa-address-book'
-                    },
-                    {
-                        label: 'Deposits', icon: 'pi pi-fw pi-credit-card'
-                    },
-                    {
-                        label: 'Funds', icon: 'fas fa-dollar-sign'
-                    },
-                ],
             },
             {
                 label: 'Asset & Liability Management',
@@ -197,6 +124,14 @@ export class AppMenuComponent implements OnInit {
                         label: 'Permissions', icon: 'pi pi-pw pi-check-circle', routerLink: ['/settings/permissions']
                     },
                     
+                ],
+            },
+            {
+                label: 'Settings',
+                items: [
+                    {
+                        label: 'Dashboard Management', icon: 'fa-regular fa-circle-user', routerLink: ['/settings/dashboardmanagement']
+                    },
                 ],
             },
             {

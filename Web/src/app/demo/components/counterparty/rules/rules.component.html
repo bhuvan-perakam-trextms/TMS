@@ -10,7 +10,7 @@
             <div class="card_container">
                 <p-table [value]="ruledata" [paginator]="true" [rows]="20" [responsiveLayout]="'scroll'" sortMode="single" 
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem'}">
+        (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}">
 
                   
                     <ng-template pTemplate="header">
