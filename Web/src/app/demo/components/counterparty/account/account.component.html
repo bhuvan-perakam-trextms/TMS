@@ -4,7 +4,7 @@
             <h1>Accounts</h1>
             
             <div style="display: flex; gap: 10px;">
-                <button pButton label="Add Counterparty Accounts"
+                <button pButton label="Add Counterparty Account"
                         class="custom-primary-button"></button>
         
                 <button pButton label="Bulk Upload"
@@ -15,7 +15,7 @@
             <div class="card_container">
                 <p-table [value]="accountdata" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         (onPage)="pageChange($event)"         [showCurrentPageReport]="true"
-         [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"     [tableStyle]="{ 'min-width': '50rem' }"
+         [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"     [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px' }"
                 >
                     <ng-template pTemplate="header">
                         <tr>

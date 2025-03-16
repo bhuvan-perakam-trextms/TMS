@@ -1,103 +1,103 @@
 {
     "data": [
         {
-            "name": "Counterparty 1",
-            "accountName": "BBVA",
+            "name": "Banco Santander",
+            "accountName": "Banco Santander S.A.",
             "country": "Spain",
             "currency": "EUR",
             "isActive": "Active",
-            "accountNumber": "1234567",
-            "iban": "GB29HBUK60161331926819",
-            "swift_bic": "BUKBGB22",
-            "trexid": "Trex-3456789"
+            "accountNumber": "9876543",
+            "iban": "ES7921000813610123456789",
+            "swift_bic": "BSCHESMMXXX",
+            "trexid": "Trex-1012345"
         },
         {
-            "name": "Counterparty 2",
-            "accountName": "HSBC",
+            "name": "Lloyds Bank",
+            "accountName": "Lloyds Bank PLC",
             "country": "United Kingdom",
             "currency": "GBP",
             "isActive": "InActive",
-            "accountNumber": "1234567",
-            "iban": "GB89BUKB20201555555556",
-            "swift_bic": "HBUKGB4B",
-            "trexid": "Trex-5678901"
+            "accountNumber": "6543210",
+            "iban": "GB55LOYD20201588888888",
+            "swift_bic": "LOYDGB2L",
+            "trexid": "Trex-2016789"
         },
         {
-            "name": "Counterparty 3",
-            "accountName": "BBVA",
-            "country": "Spain",
-            "currency": "EUR",
-            "isActive": "InActive",
-            "accountNumber": "1234567",
-            "iban": "GB29HBUK60161331926819",
-            "swift_bic": "BUKBGB22",
-            "trexid": "Trex-3456789"
-        },
-        {
-            "name": "Counterparty 4",
-            "accountName": "HSBC",
-            "country": "United Kingdom",
-            "currency": "GBP",
-            "isActive": "Active",
-            "accountNumber": "1234567",
-            "iban": "GB89BUKB20201555555556",
-            "swift_bic": "HBUKGB4B",
-            "trexid": "Trex-5678901"
-        },
-        {
-            "name": "Counterparty 5",
-            "accountName": "BBVA",
+            "name": "CaixaBank",
+            "accountName": "CaixaBank S.A.",
             "country": "Spain",
             "currency": "EUR",
             "isActive": "Active",
-            "accountNumber": "1234567",
-            "iban": "GB29HBUK60161331926819",
-            "swift_bic": "BUKBGB22",
-            "trexid": "Trex-3456789"
+            "accountNumber": "5678901",
+            "iban": "ES2721000813612345678901",
+            "swift_bic": "CAIXESBBXXX",
+            "trexid": "Trex-3054321"
         },
         {
-            "name": "Counterparty 6",
-            "accountName": "HSBC",
+            "name": "Barclays",
+            "accountName": "Barclays Bank PLC",
             "country": "United Kingdom",
             "currency": "GBP",
-            "isActive": "InActive",
-            "accountNumber": "1234567",
-            "iban": "GB89BUKB20201555555556",
-            "swift_bic": "HBUKGB4B",
-            "trexid": "Trex-5678901"
+            "isActive": "Active",
+            "accountNumber": "4321098",
+            "iban": "GB89BARC20201544444444",
+            "swift_bic": "BARCGB22",
+            "trexid": "Trex-4098765"
         },
         {
-            "name": "Counterparty 7",
-            "accountName": "BBVA",
-            "country": "Spain",
-            "currency": "EUR",
-            "isActive": "InActive",
-            "accountNumber": "1234567",
-            "iban": "GB29HBUK60161331926819",
-            "swift_bic": "BUKBGB22",
-            "trexid": "Trex-3456789"
-        },
-        {
-            "name": "Counterparty 8",
-            "accountName": "Barclays",
-            "country": "United Kingdom",
-            "currency": "GBP",
-            "isActive": "InActive",
-            "accountNumber": "1234567",
-            "iban": "GB89BUKB20201555555556",
-            "swift_bic": "HBUKGB4B",
-            "trexid": "Trex-5678901"
-        },
-        {
-            "name": "Counterparty 9",
-            "accountName": "BBVA",
+            "name": "BBVA",
+            "accountName": "Banco Bilbao Vizcaya Argentaria (BBVA)",
             "country": "Spain",
             "currency": "EUR",
             "isActive": "Active",
-            "accountNumber": "1234567",
-            "iban": "GB29HBUK60161331926819",
-            "swift_bic": "BUKBGB22",
-            "trexid": "Trex-3456789"
+            "accountNumber": "2468135",
+            "iban": "ES1921000813619876543210",
+            "swift_bic": "BBVAESMMXXX",
+            "trexid": "Trex-5013579"
+        },
+        {
+            "name": "HSBC",
+            "accountName": "HSBC Bank PLC",
+            "country": "United Kingdom",
+            "currency": "GBP",
+            "isActive": "InActive",
+            "accountNumber": "1597530",
+            "iban": "GB29HBUK20201555555556",
+            "swift_bic": "HBUKGB4B",
+            "trexid": "Trex-6024682"
+        },
+        {
+            "name": "Sabadell",
+            "accountName": "Banco Sabadell S.A.",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "InActive",
+            "accountNumber": "7539514",
+            "iban": "ES1621000813617539514789",
+            "swift_bic": "BSABESBBXXX",
+            "trexid": "Trex-7031597"
+        },
+        {
+            "name": "NatWest",
+            "accountName": "National Westminster Bank PLC",
+            "country": "United Kingdom",
+            "currency": "GBP",
+            "isActive": "Active",
+            "accountNumber": "8529637",
+            "iban": "GB29NWBK20201577777777",
+            "swift_bic": "NWBKGB2L",
+            "trexid": "Trex-8042683"
+        },
+        {
+            "name": "Banco Popular",
+            "accountName": "Banco Popular Español",
+            "country": "Spain",
+            "currency": "EUR",
+            "isActive": "Active",
+            "accountNumber": "7418529",
+            "iban": "ES8021000813617418529637",
+            "swift_bic": "POPUESMMXXX",
+            "trexid": "Trex-9053792"
         }
     ]
 }

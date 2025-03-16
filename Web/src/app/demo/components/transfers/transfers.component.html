@@ -2,8 +2,8 @@
   <div class="col-12">
     <div class="header_main">
       <h1> Transfers</h1>
-      <button pButton  label="Add Transfers"
-      class="custom-primary-button"></button>
+      <!-- <button pButton  label="Add Transfers"
+      class="custom-primary-button"></button> -->
       </div>
     <div class="card p-fluid p-0">
        
@@ -82,7 +82,7 @@
             <div class="mt-32">
             <p-table [value]="internalPaymentsList" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'" sortMode="single" 
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem'}">
+    (onPage)="pageChange($event)" [showCurrentPageReport]="true"  [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}">
               <ng-template pTemplate="header">
                 
                 <tr>
