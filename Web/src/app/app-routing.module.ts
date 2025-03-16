@@ -35,7 +35,14 @@ import {
                   { path: 'funds', loadChildren: () => import('./demo/components/deals/funds/funds.module').then(m => m.FundsModule) },
                   { path: 'projections', loadChildren: () => import('./demo/components/deals/projections/projections.module').then(m => m.ProjectionsModule) },
               ]
-          },
+            },
+            {
+              path: 'reporting', component: AppLayoutComponent,
+              children: [
+                  { path: 'reports', loadChildren: () => import('./demo/components/reporting/reports.module').then(m => m.ReportsModule) },
+                  { path: 'reportbuilder', loadChildren: () => import('./demo/components/reporting/reports.module').then(m => m.ReportsModule) },
+              ]
+            },
             { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             { path: 'notfound', component: NotfoundComponent },

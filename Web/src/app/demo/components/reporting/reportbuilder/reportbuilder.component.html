@@ -1,1 +1,212 @@
-<p>reportbuilder works!</p>
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="mb-0"><i class="pi pi-chart-bar mr-2"></i>Report Builder</h4>
+      </div>
+
+      <br />
+  
+      <div class="card-body">
+        <!-- Date Range Controls -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="dateRange">Date Range: </label>
+            <p-dropdown [options]="dateRangeOptions" [(ngModel)]="selectedDateRange" 
+                       (onChange)="setDateRange($event.value)" optionLabel="label" optionValue="value"></p-dropdown>
+          </div>
+          
+          <div class="col-md-6" *ngIf="selectedDateRange === 'custom'">
+            <div class="row">
+              <div class="col-md-5">
+                <label for="startDate">Start Date:</label>
+                <p-calendar [(ngModel)]="startDate" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+              </div>
+              <div class="col-md-5">
+                <label for="endDate">End Date:</label>
+                <p-calendar [(ngModel)]="endDate" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <button pButton type="button" label="Apply" icon="pi pi-check" 
+                        (click)="onCustomDateRangeChange()"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Action Buttons -->
+        <div class="row mb-4">
+          <div class="col-md-12 text-right">
+            <button pButton type="button" label="Refresh" icon="pi pi-refresh" class="p-button-secondary mr-2" 
+                    (click)="refreshData()" [disabled]="loading"></button>
+            <button pButton type="button" label="Export to Excel" icon="pi pi-file-excel" class="p-button-success mr-2" 
+                    (click)="exportToExcel()" [disabled]="loading"></button>
+            <button pButton type="button" label="Export to PDF" icon="pi pi-file-pdf" class="p-button-danger" 
+                    (click)="exportToPDF()" [disabled]="loading"></button>
+          </div>
+        </div>
+  
+        <!-- Loading Indicator -->
+        <div *ngIf="loading" class="text-center p-4">
+          <p-progressSpinner [style]="{width: '50px', height: '50px'}" 
+                            styleClass="custom-spinner" strokeWidth="4"></p-progressSpinner>
+          <p>Loading report data...</p>
+        </div>
+  
+        <!-- Report Content -->
+        <div *ngIf="!loading" class="report-content">
+          <!-- Cash Summary Section -->
+          <div class="section-header mb-3">
+            <h5><i class="pi pi-wallet mr-2"></i>Cash Position Overview</h5>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Daily Cash Movement Summary</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(cashSummaryChart, 'bar', 'Daily Cash Movement Summary')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #cashSummaryChart></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Cash Movement Breakdown</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(cashBreakdownChart, 'bar', 'Cash Movement Breakdown')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #cashBreakdownChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Payroll & Account Positions Section -->
+          <div class="section-header mb-3">
+            <h5><i class="pi pi-users mr-2"></i>Payroll & Account Positions</h5>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Payroll Breakdown</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(payrollBreakdownChart, 'pie', 'Payroll Breakdown')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #payrollBreakdownChart></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Bank Account Position Changes</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(accountPositionChart, 'bar', 'Bank Account Position Changes')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #accountPositionChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Currency & Holdings Section -->
+          <div class="section-header mb-3">
+            <h5><i class="pi pi-dollar mr-2"></i>Currency & Holdings Distribution</h5>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Currency Breakdown</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(currencyBreakdownChart, 'doughnut', 'Currency Breakdown')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #currencyBreakdownChart></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Holdings Categorization</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(holdingsChart, 'pie', 'Holdings Categorization')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #holdingsChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Counterparty & Top Customers Section -->
+          <div class="section-header mb-3">
+            <h5><i class="pi pi-building mr-2"></i>Counterparty & Top Customers</h5>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Counterparty Exposure</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(counterpartyChart, 'bar', 'Counterparty Exposure')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #counterpartyChart></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h6>Top Customer Repayments</h6>
+                  <button pButton pRipple type="button" icon="pi pi-window-maximize" 
+                          class="p-button-text p-button-rounded" 
+                          (click)="expandChart(topCustomersChart, 'bar', 'Top Customer Repayments')"></button>
+                </div>
+                <div class="chart-body">
+                  <canvas #topCustomersChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Expanded Chart Modal -->
+  <p-dialog [(visible)]="displayChartModal" [modal]="true" [style]="{width: '90vw'}" 
+            [draggable]="false" [resizable]="false" [closable]="true"
+            [header]="expandedTitle" (onShow)="onDialogShow()">
+    <div class="expanded-chart-container">
+      <canvas #expandedChart></canvas>
+    </div>
+    <ng-template pTemplate="footer">
+      <button pButton pRipple type="button" label="Close" 
+              class="p-button-secondary" (click)="closeModal()"></button>
+    </ng-template>
+  </p-dialog>
