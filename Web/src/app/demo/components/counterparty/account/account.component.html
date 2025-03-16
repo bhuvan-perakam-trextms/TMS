@@ -1,10 +1,16 @@
 <div class="grid">
     <div class="col-12">
-        <div class="header_main">
-            <h1> Counter Parties </h1>
-            <button pButton     label="Add Counter Parties"
-            class="custom-primary-button"></button>
+        <div class="header_main" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+            <h1>Accounts</h1>
+            
+            <div style="display: flex; gap: 10px;">
+                <button pButton label="Add Counterparty Accounts"
+                        class="custom-primary-button"></button>
+        
+                <button pButton label="Bulk Upload"
+                        class="custom-primary-button"></button>
             </div>
+        </div>        
         <div class="card p-fluid">
             <div class="card_container">
                 <p-table [value]="accountdata" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -38,7 +44,7 @@
                                 </div>
                             </td>
                             <td>
-                                <i [class]="currencyService.getCurrencyClass(dataItem.currency)"></i>
+                                <!-- <i [class]="currencyService.getCurrencyClass(dataItem.currency)"></i> -->
                                 {{ dataItem.currency }}
                             </td>
                             <td>

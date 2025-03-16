@@ -1,1 +1,173 @@
-<p>reports works!</p>
+<div class="grid">
+    <div class="col-12">
+      <div class="card p-fluid">
+        <h5><i class="pi pi-fw pi-chart-bar"></i> Cash Position Report</h5>
+        
+        <!-- Section: Cash Position Overview -->
+        <div class="mb-4">
+          <div class="p-2 mb-3 surface-100 border-left-3 border-primary">
+            <h6 class="m-0 text-primary font-medium"><i class="pi pi-chart-line mr-2"></i>Cash Position Overview</h6>
+          </div>
+          <div class="grid">
+            <!-- Daily Cash Movement Summary -->
+            <div class="col-12 lg:col-4 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Daily Cash Movement Summary</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(cashSummaryChart, 'bar', 'Daily Cash Movement Summary')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #cashSummaryChart></canvas>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Cash Movement Breakdown -->
+            <div class="col-12 lg:col-4 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Cash Movement Breakdown</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(cashBreakdownChart, 'bar', 'Cash Movement Breakdown')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #cashBreakdownChart></canvas>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Bank Account Position Changes -->
+            <div class="col-12 lg:col-4 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Bank Account Position Changes</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(accountPositionChart, 'bar', 'Bank Account Position Changes')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #accountPositionChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Section: Cash Distribution Analysis -->
+        <div class="mb-4">
+          <div class="p-2 mb-3 surface-100 border-left-3 border-primary">
+            <h6 class="m-0 text-primary font-medium"><i class="pi pi-chart-pie mr-2"></i>Cash Distribution Analysis</h6>
+          </div>
+          <div class="grid">
+            <!-- Payroll Breakdown -->
+            <div class="col-12 lg:col-4 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Payroll Breakdown</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(payrollBreakdownChart, 'pie', 'Payroll Breakdown')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #payrollBreakdownChart></canvas>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Currency Breakdown -->
+            <div class="col-12 lg:col-4 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Currency Breakdown</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(currencyBreakdownChart, 'doughnut', 'Currency Breakdown')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #currencyBreakdownChart></canvas>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Holdings Categorization -->
+            <div class="col-12 lg:col-4 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Holdings Categorization</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(holdingsChart, 'pie', 'Holdings Categorization')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #holdingsChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Section: Counterparty & Customer Analysis -->
+        <div class="mb-4">
+          <div class="p-2 mb-3 surface-100 border-left-3 border-primary">
+            <h6 class="m-0 text-primary font-medium"><i class="pi pi-building mr-2"></i>Counterparty & Customer Analysis</h6>
+          </div>
+          <div class="grid">
+            <!-- Counterparty Exposure -->
+            <div class="col-12 lg:col-6 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Counterparty Exposure</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(counterpartyChart, 'bar', 'Counterparty Exposure')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #counterpartyChart></canvas>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Top Customer Repayments -->
+            <div class="col-12 lg:col-6 p-2">
+              <div class="p-3 border-1 surface-border border-round h-full">
+                <div class="flex justify-content-between align-items-center mb-3">
+                  <h6>Top Customer Repayments</h6>
+                  <button class="p-button p-button-text p-button-rounded p-button-icon-only" 
+                        (click)="expandChart(topCustomersChart, 'bar', 'Top Customer Repayments')">
+                    <i class="pi pi-window-maximize"></i>
+                  </button>
+                </div>
+                <div style="height: 300px;">
+                  <canvas #topCustomersChart></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal for Expanded Chart - Using PrimeNG Dialog -->
+  <p-dialog 
+    [(visible)]="displayChartModal" 
+    [modal]="true" 
+    [style]="{width: '90vw', maxWidth: '1200px'}" 
+    [draggable]="false" 
+    [resizable]="false"
+    header="{{expandedTitle}}"
+    (onShow)="onDialogShow()">
+    <div class="expanded-chart-container" style="height: 500px; width: 100%;">
+      <canvas #expandedChart></canvas>
+    </div>
+  </p-dialog>

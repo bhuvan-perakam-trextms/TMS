@@ -1,8 +1,8 @@
 <div class="grid">
     <div class="col-12">
         <div class="header_main">
-            <h1> Counter Parties </h1>
-            <button pButton     label="Add Counter Parties"
+            <h1> Counterparties </h1>
+            <button pButton     label="Add Counterparties"
             class="custom-primary-button"></button>
             </div>
         <div class="card p-fluid">
@@ -48,7 +48,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <i [class]="currencyService.getCurrencyClass(dataItem.currency)"></i>
+                                    <!-- <i class="pi pi-fw pi-euro"></i>
+                                    <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> -->
                                     <span>{{ dataItem.currency }}</span>
                                 </td>
                             </tr>
