@@ -33,8 +33,13 @@
                 
             </button> 
 
-            <span class="user__details">Welcome, {{ this.userService.getUser()?.name || 'Anonymous' }}</span>
-       
+            <div>
+            <span class="user__details">Welcome, {{ this.userService.getUser()?.name || 'Administrator' }}
+            </span>
+            <span class="block font-medium">
+                Total Account Balance is £ 12,005,000
+            </span>
+        </div>
         <button class="p-link layout-topbar-button " (click)="signOut()">
             <i class="pi pi-sign-out"></i>
             <span>Sign out</span>

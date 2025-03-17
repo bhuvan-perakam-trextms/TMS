@@ -1,8 +1,61 @@
 <div class="grid">
     <div class="col-12">
+        <div class="header_main" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+            <h1>Accounts</h1>
+            
+            <div style="display: flex; gap: 10px;">
+                <button pButton label="Add Counterparty Account"
+                        class="custom-primary-button"></button>
+        
+                <button pButton label="Bulk Upload"
+                        class="custom-primary-button"></button>
+            </div>
+        </div>        
         <div class="card p-fluid">
-            <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
-            <kendo-grid [kendoGridBinding]="accountdata" [pageSize]="20" [pageable]="true" [sortable]="true"
+            <div class="card_container">
+                <p-table [value]="accountdata" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        (onPage)="pageChange($event)"         [showCurrentPageReport]="true"
+         [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"     [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px' }"
+                >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="name">Legal Name <p-sortIcon field="name"></p-sortIcon></th>
+                            <th pSortableColumn="accountName">Account Name <p-sortIcon field="accountName"></p-sortIcon></th>
+                            <th pSortableColumn="country">Country <p-sortIcon field="country"></p-sortIcon></th>
+                            <th pSortableColumn="currency">Currency <p-sortIcon field="currency"></p-sortIcon></th>
+                            <th pSortableColumn="isActive">Is Active <p-sortIcon field="isActive"></p-sortIcon></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-dataItem>
+                        <tr>
+                            <td>
+                                <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
+                                    {{ dataItem.name }}
+                                </a>
+                            </td>
+                            <td>
+                                <span>{{ dataItem.accountName }}</span>
+                            </td>
+                            <td>
+                                <div class="flex align-items-center gap-2">
+                                    <img [src]="countryService.getCountryImageUrl(dataItem.country)"  
+                                        alt="{{ dataItem.country }}" width="30" />
+                                    <span> {{ dataItem.country }} </span>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- <i [class]="currencyService.getCurrencyClass(dataItem.currency)"></i> -->
+                                {{ dataItem.currency }}
+                            </td>
+                            <td>
+                                <span>{{ dataItem.isActive }}</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                
+                
+            <!-- <kendo-grid [kendoGridBinding]="accountdata" [pageSize]="20" [pageable]="true" [sortable]="true"
                 [filterable]="filterMode" [groupable]="true" style="width: 100%">
                 <kendo-grid-column field="name" title="Legal Name">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -24,7 +77,7 @@
                 <kendo-grid-column field="country" title="Country">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                         <div class="flex align-items-center gap-2">
-                            <img [src]="this.countryService.getCountryImageUrl(dataItem.country)" class="shadow-4"
+                            <img [src]="this.countryService.getCountryImageUrl(dataItem.country)"  
                                 alt="{{ dataItem.country }}" width="30" />
                             <span> {{ dataItem.country }} </span>
                         </div>
@@ -46,7 +99,8 @@
                         <span>{{ dataItem.isActive }}</span>
                     </ng-template>
                 </kendo-grid-column>
-            </kendo-grid>
+            </kendo-grid>  -->
+        </div>
             <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{ width: '70vw' }"
                 [breakpoints]="{ '960px': '75vw' }">
                 <ng-template pTemplate="header">
@@ -66,12 +120,12 @@
                                     <span class="p-tag">Account Deails</span>
                                 </p-divider>
                                 <div class="field grid">
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="accountName" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Account Name</b>
+                                   
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="accountName">
+                                               Account Name 
                                             </label>
-                                            <div class="col-7 md:col-7">
+                                            
                                                 <input pInputText id="accountName" type="text" [disabled]="false"
                                                     formControlName="accountName"
                                                     [(ngModel)]="selectedcounterPartyDetail.accountName" />
@@ -79,14 +133,13 @@
                                                     class="error">
                                                     Account Name is required.
                                                 </div>
-                                            </div>
+                                             
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="currency"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Currency</b></label>
-                                            <div class="col-7 md:col-7">
+                                     
+                                   
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="currency" ><b>Currency</b></label>
+                                            
                                                 <p-dropdown [options]="currencies" id="currency"
                                                     [(ngModel)]="selectedCurrency" optionLabel="name"
                                                     placeholder="Select a Currency" formControlName="currency"
@@ -96,14 +149,13 @@
                                                         Currency is required.
                                                     </div>
                                                 </p-dropdown>
-                                            </div>
+                                             
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="entity"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
-                                            <div class="col-7 md:col-7">
+                                    
+                                    
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="entity"><b>Country</b></label>
+                                           
                                                 <p-dropdown [options]="countries" id="country"
                                                     [(ngModel)]="selectedCountry" optionLabel="name"
                                                     placeholder="Select a Country" formControlName="country"
@@ -113,14 +165,13 @@
                                                         Country is required.
                                                     </div>
                                                 </p-dropdown>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="accountNumber"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Account Number</b></label>
-                                            <div class="col-7 md:col-7">
+                                   </div>
+                                   <div class="field grid">
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="accountNumber"><b>Account Number</b></label>
+                                            
                                                 <input pInputText id="accountNumber" type="text" [disabled]="false"
                                                     formControlName="accountNumber"
                                                     [(ngModel)]="selectedcounterPartyDetail.accountNumber" />
@@ -128,14 +179,14 @@
                                                     class="error">
                                                     Account Number is required.
                                                 </div>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="iban" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>IBAN</b></label>
-                                            <div class="col-7 md:col-7">
+                                 
+                                   
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="iban">
+                                                IBAN </label>
+                                             
                                                 <input pInputText id="iban" type="text" [disabled]="false"
                                                     formControlName="iban"
                                                     [(ngModel)]="selectedcounterPartyDetail.iban" />
@@ -143,14 +194,13 @@
                                                     class="error">
                                                     Iban is required.
                                                 </div>
-                                            </div>
+                                          
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="swift_bic"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>SWIFT</b></label>
-                                            <div class="col-7 md:col-7">
+                                    
+                                    
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="swift_bic"> SWIFT </label>
+                                          
                                                 <input pInputText id="swift_bic" type="text" [disabled]="false"
                                                     formControlName="swift_bic"
                                                     [(ngModel)]="selectedcounterPartyDetail.swift_bic" />
@@ -158,27 +208,26 @@
                                                     class="error">
                                                     swift Bic is required.
                                                 </div>
-                                            </div>
+                                             
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="trexid"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>TrexId</b></label>
-                                            <div class="col-7 md:col-7">
+                                    <div class="field grid">
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="trexid"> TrexId  </label>
+                                         
                                                 <input pInputText id="trexid" type="text" formControlName="trexid"
                                                     [(ngModel)]="selectedcounterPartyDetail.trexid" />
                                                 <div *ngIf="counterpartyAccountForm.get('trexid').invalid &&counterpartyAccountForm.get('trexid').touched"
                                                     class="error">
                                                     Trex Id is required.
                                                 </div>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="isACtive" class="col-4 md:col-4 mb-0 md:mb-0"><b>Is
-                                                    Active</b></label>
+                                    
+                                   
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="isACtive"> Is
+                                                    Active </label>
                                             <div>
                                                 <p-checkbox formControlName="isActive" value="New York"
                                                     inputId="isActive" />
@@ -192,7 +241,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -200,12 +249,14 @@
                 </form>
 
                 <ng-template pTemplate="footer">
-                    <span>
-                        <p-button label="Save" severity="success" (click)="submitCounterpartyAccountForm()" />
-                    </span>
-                    <span>
-                        <p-button label="Clear" severity="info" (click)="displayOverlay=false" />
-                    </span>
+                    <button pButton  label="Cancel" (click)="displayOverlay=false" 
+                    severity="secondary"></button>
+
+               <button pButton   (click)="submitCounterpartyAccountForm()" label="Save"
+                   class="custom-primary-button"></button>
+                   
+                       
+                   
                 </ng-template>
             </p-dialog>
         </div>

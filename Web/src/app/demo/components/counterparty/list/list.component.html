@@ -1,8 +1,68 @@
 <div class="grid">
     <div class="col-12">
+        <div class="header_main" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+            <h1>Counterparties</h1>
+            
+            <div style="display: flex; gap: 10px;">
+                <button pButton label="Add Counterparty"
+                        class="custom-primary-button"></button>
+        
+                <button pButton label="Bulk Upload"
+                        class="custom-primary-button"></button>
+            </div>
+        </div>
         <div class="card p-fluid">
-            <h5><i class="pi pi-fw pi-dollar"></i> Counter Parties</h5>
-            <kendo-grid [kendoGridBinding]="counterpartiesList" [pageSize]="20" [pageable]="true" [sortable]="true"
+            <!-- <div class="card_header">
+                <h2> Counter Parties</h2> 
+                <i class="pi pi-check" style="color: slateblue"></i>
+                  </div> -->
+                  <div class="card_container">
+                    <p-table [value]="counterpartiesList" [paginator]="true" [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"
+                    sortMode="single" 
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}"
+                    >
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="legalName">
+                                    Legal Name <p-sortIcon field="legalName"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="aliasName">
+                                    Alias Name <p-sortIcon field="aliasName"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="country">
+                                    Country <p-sortIcon field="country"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="currency">
+                                    Currency <p-sortIcon field="currency"></p-sortIcon>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-dataItem>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" (click)="handlePopup(dataItem)">
+                                        {{ dataItem.legalName }}
+                                    </a>
+                                </td>
+                                <td>{{ dataItem.aliasName }}</td>
+                                <td>
+                                    <div class="flex align-items-center gap-2">
+                                        <img [src]="countryService.getCountryImageUrl(dataItem.country)"  
+                                            alt="{{ dataItem.country }}" width="30" />
+                                        <span>{{ dataItem.country }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- <i class="pi pi-fw pi-euro"></i>
+                                    <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> -->
+                                    <span>{{ dataItem.currency }}</span>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                    
+            <!-- <kendo-grid [kendoGridBinding]="counterpartiesList" [pageSize]="20" [pageable]="true" [sortable]="true"
                 [filterable]="filterMode" [groupable]="true" style="width: 100%">
                 <kendo-grid-column field="legalName" title=" Legal Name">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -29,7 +89,7 @@
                     </ng-template>
                     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                         <div class="flex align-items-center gap-2">
-                            <img [src]="this.countryService.getCountryImageUrl(dataItem.country)" class="shadow-4"
+                            <img [src]="this.countryService.getCountryImageUrl(dataItem.country)"  
                                 alt="{{ dataItem.country }}" width="30" />
                             <span> {{ dataItem.country }} </span>
                         </div>
@@ -46,7 +106,8 @@
                         <span>{{ dataItem.currency }}</span>
                     </ng-template>
                 </kendo-grid-column>
-            </kendo-grid>
+            </kendo-grid> -->
+         </div>
             <p-dialog [(visible)]="displayOverlay" [modal]="true" showEffect="fade" [style]="{ width: '70vw' }"
                 [breakpoints]="{ '960px': '75vw' }">
                 <ng-template pTemplate="header">
@@ -65,42 +126,41 @@
                                     <span class="p-tag">Details</span>
                                 </p-divider>
                                 <div class="field grid">
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="legalName" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Legal Name</b>
+                                    
+                                        <div class="col-4 form-group"> 
+                                            <label htmlFor="legalName" >
+                                                 Legal Name 
                                             </label>
-                                            <div class="col-7 md:col-7">
+                                           
                                                 <input pInputText id="legalName" type="text" formControlName="legalName"
                                                     [(ngModel)]="selectedCounterparty.legalName" />
                                                 <div *ngIf="counterpartyForm.get('legalName').invalid && counterpartyForm.get('legalName').touched"
                                                     class="error">
                                                     Legal Name is required.
                                                 </div>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="aliasName" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Alias Name</b>
+                                     
+                                   
+                                        <div class="col-4 form-group"> 
+                                            <label htmlFor="aliasName">
+                                               Alias Name 
                                             </label>
-                                            <div class="col-7 md:col-7">
+                                           
                                                 <input pInputText id="aliasName" type="text" formControlName="aliasName"
                                                     [(ngModel)]="selectedCounterparty.aliasName" />
                                                 <div *ngIf="counterpartyForm.get('aliasName').invalid && counterpartyForm.get('aliasName').touched"
                                                     class="error">
                                                     Alias Name is required.
                                                 </div>
-                                            </div>
+                                           
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="type" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Type</b>
+                                   
+                                     
+                                        <div class="col-4 form-group"> 
+                                            <label htmlFor="type">
+                                                 Type 
                                             </label>
-                                            <div class="col-7 md:col-7">
                                                 <p-multiSelect inputId="multiselect" id="selectedCounterpartyType" [options]="counterpartyTypes"
                                                     [(ngModel)]="selectedType" optionLabel="name" [filter]="true"
                                                     formControlName="selectedCounterpartyType"
@@ -111,20 +171,19 @@
                                                         Type is required.
                                                     </div>
                                                 </p-multiSelect>
-                                            </div>
                                         </div>
-                                    </div>
+                                    
                                 </div>
                                 <p-divider layout="horizontal" align="left">
                                     <span class="p-tag">Legal Entity Identifiers</span>
                                 </p-divider>
                                 <div class="field grid">
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="treasury" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Treasury</b>
+                                     
+                                    <div class="col-4 form-group"> 
+                                            <label htmlFor="treasury">
+                                                Treasury 
                                             </label>
-                                            <div class="col-7 md:col-7">
+                                            
                                                 <p-multiSelect inputId="multiselect" id="selectedTreasuryType"
                                                     [options]="treasuryTypes" [(ngModel)]="selectedTreasuryType"
                                                     optionLabel="name" [filter]="true"
@@ -135,16 +194,16 @@
                                                         Treasury Type is required.
                                                     </div>
                                                 </p-multiSelect>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
+                                    
 
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="otherIdentifiers" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Other Identifiers</b>
+                                  
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="otherIdentifiers" >
+                                               Other Identifiers 
                                             </label>
-                                            <div class="col-7 md:col-7">
+                                            
                                                 <input pInputText id="otherIdentifiers" type="text"
                                                     formControlName="otherIdentifiers"
                                                     [(ngModel)]="selectedCounterparty.otherIdentifiers" />
@@ -153,21 +212,19 @@
                                                     class="error">
                                                     Other Identifiers isrequired.
                                                 </div>
-                                            </div>
+                                         
                                         </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <p-divider layout="horizontal" align="left">
                                     <span class="p-tag">Contact Details</span>
                                 </p-divider>
                                 <div class="field grid">
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="entity"
-                                                class="col-4 md:col-4 mb-0 md:mb-0"><b>Country</b></label>
-                                            <div class="col-7 md:col-7">
-                                                <p-dropdown [options]="countries" id="country"
+                                   
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="entity"> Country </label>
+                                              <p-dropdown [options]="countries" id="country"
                                                     [(ngModel)]="selectedCountry" optionLabel="name"
                                                     placeholder="Select a Country" formControlName="country"
                                                     [(ngModel)]="selectedCounterparty.country">
@@ -176,63 +233,27 @@
                                                         Country is required.
                                                     </div>
                                                 </p-dropdown>
-                                            </div>
+                                             
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="address" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Address</b>
+                                   
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="emailId">
+                                                 Email-ID 
                                             </label>
-                                            <div class="col-7 md:col-7">
-                                                <textarea rows="4" cols="26" id="address" pInputTextarea
-                                                    formControlName="address" [(ngModel)]="selectedCounterparty.address">
-                                                <div
-                                                    *ngIf="counterpartyForm.get('address').invalid && counterpartyForm.get('address').touched" class="error" >
-                                                    Address is required.
-                                                </div>
-                                                </textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="emailId" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Email-ID</b>
-                                            </label>
-                                            <div class="col-7 md:col-7">
+                                           
                                                 <input pInputText id="emailID" type="text" formControlName="emailID"
                                                     [(ngModel)]="selectedCounterparty.emailID" />
                                                 <div *ngIf="counterpartyForm.get('emailID').invalid && counterpartyForm.get('emailID').touched"
                                                     class="error">
                                                     Valid Email-ID is required.
                                                 </div>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="Telephone" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>Telephone</b>
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="keyContact">
+                                                 key Contact 
                                             </label>
-                                            <div class="col-7 md:col-7">
-                                                <input pInputText id="Telephone" type="text" formControlName="Telephone"
-                                                    [(ngModel)]="selectedCounterparty.Telephone" />
-                                                <div *ngIf="
-                                                        counterpartyForm.get('Telephone').invalid && counterpartyForm.get('Telephone').touched"
-                                                    class="error">
-                                                    Valid Telephone is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field grid">
-                                            <label htmlFor="keyContact" class="col-4 md:col-4 mb-0 md:mb-0">
-                                                <b>key Contact</b>
-                                            </label>
-                                            <div class="col-7 md:col-7">
+                                            
                                                 <input pInputText id="keyContact" type="text"
                                                     formControlName="keyContact"
                                                     [(ngModel)]="selectedCounterparty.keyContact" />
@@ -241,9 +262,39 @@
                                                     class="error">
                                                     Key Contact is required.
                                                 </div>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
+                                        <div class="col-12 form-group">
+                                            <label htmlFor="address">
+                                                 Address 
+                                            </label>
+                                           
+                                                <textarea rows="4" cols="26" id="address" pInputTextarea
+                                                    formControlName="address" [(ngModel)]="selectedCounterparty.address">
+                                                <div
+                                                    *ngIf="counterpartyForm.get('address').invalid && counterpartyForm.get('address').touched" class="error" >
+                                                    Address is required.
+                                                </div>
+                                                </textarea>
+                                            
+                                        </div>
+                                        <div class="col-4 form-group">
+                                            <label htmlFor="Telephone">
+                                                Telephone 
+                                            </label>
+                                           
+                                                <input pInputText id="Telephone" type="text" formControlName="Telephone"
+                                                    [(ngModel)]="selectedCounterparty.Telephone" />
+                                                <div *ngIf="
+                                                        counterpartyForm.get('Telephone').invalid && counterpartyForm.get('Telephone').touched"
+                                                    class="error">
+                                                    Valid Telephone is required.
+                                                </div>
+                                           
+                                        </div>
+                                  
+                                      
+                                     
                                 </div>
                             </div>
                         </div>
@@ -251,12 +302,12 @@
                 </form>
 
                 <ng-template pTemplate="footer">
-                    <span>
-                        <p-button label="Save" severity="success" (click)="submitCounterpartyForm()" />
-                    </span>
-                    <span>
-                        <p-button label="Clear" severity="info" (click)="displayOverlay=false" />
-                    </span>
+                     
+                      
+                    <button type="button" (click)="displayOverlay=false" severity="secondary" >Clear</button>
+              <button type="submit" class="custom-primary-button" (click)="submitCounterpartyForm()">Save</button>
+
+                       
                 </ng-template>
             </p-dialog>
         </div>

@@ -14,7 +14,7 @@
 .layout-button-container button {
     width: 3rem;
     height: 3rem;
-    line-height: 3rem;
+    line-height: 2rem;
     background: #07453B;
     color: var(--primary-color-text);
     text-align: center;
@@ -50,7 +50,7 @@
 /* Specific adjustments for the chat button */
 .layout-chat-button {
     /* For example, round the bottom left corner */
-    border-top-left-radius: 0;
+    border-top-left-radius: var(--border-radius);
     border-top-right-radius: 0;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: 0;

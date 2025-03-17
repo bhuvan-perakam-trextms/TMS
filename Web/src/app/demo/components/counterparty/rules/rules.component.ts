@@ -9,6 +9,9 @@ import { CounterpartyService } from 'src/app/demo/service/counterparty.service';
   templateUrl: './rules.component.html'
 })
 export class RulesComponent implements OnInit {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
   filterMode: FilterableSettings = "menu";
   counterpartyRuleForm: FormGroup;
   displayOverlay: boolean = false;

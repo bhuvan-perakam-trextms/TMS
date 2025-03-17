@@ -10,6 +10,9 @@ import { CounterpartyService } from 'src/app/demo/service/counterparty.service';
     templateUrl: './list.component.html',
 })
 export class ListComponent implements OnInit {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
 
     filterMode: FilterableSettings = 'menu';
     displayOverlay: boolean = false;

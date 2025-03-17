@@ -12,9 +12,13 @@ import { CounterpartyService } from 'src/app/demo/service/counterparty.service';
 
 })
 export class AccountComponent implements OnInit {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
   filterMode: FilterableSettings = "menu";
   counterpartyAccountForm: FormGroup;
   displayOverlay: boolean = false;
+  
 
   accountdata: any[] = [];
   selectedcounterPartyDetail: any
@@ -24,6 +28,7 @@ export class AccountComponent implements OnInit {
 
   selectedCurrency!: SelectType;
   currencies: SelectType[] = [];
+bankAccounts: any;
 
   constructor(private formBuilder: FormBuilder,
     private countryService: CountryService,

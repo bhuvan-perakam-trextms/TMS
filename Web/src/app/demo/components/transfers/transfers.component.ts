@@ -11,6 +11,9 @@ import { DatePipe } from '@angular/common';
 
 })
 export class TransfersComponent implements OnInit {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
   accounts = [
     { label: 'Account1', value: 'Account1' },
     { label: 'Account2', value: 'Account2' },

@@ -1,78 +1,90 @@
 <div class="grid">
   <div class="col-12">
-    <div class="card p-fluid">
-      <h5><i class="pi pi-fw pi-arrow-right-arrow-left"></i> Transfers</h5>
+    <div class="header_main">
+      <h1> Transfers</h1>
+      <!-- <button pButton  label="Add Transfers"
+      class="custom-primary-button"></button> -->
+      </div>
+    <div class="card p-fluid p-0">
+       
       <p-tabView>
         <p-tabPanel header="Internal Payments">
           <form [formGroup]="internalPaymentsForm" (ngSubmit)="submitInternal()">
             <div class="field grid">
-              <div class="col-6">
-                <div class="field grid">
-                  <label for="fromAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>From Account</b></label>
-                  <div class="col-7 md:col-7">
+            
+                <div class="col-4 form-group">
+                  <label for="fromAccount" ><b>From Account</b></label>
+                
                     <p-dropdown id="fromAccount" formControlName="fromAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="internalPaymentsForm.get('fromAccount').touched && internalPaymentsForm.get('fromAccount').invalid">
                       <small class="p-error">From Account is required.</small>
                     </div>
-                  </div>
+                   
                 </div>
-                <div class="field grid">
-                  <label for="currency" class="col-4 md:col-4 mb-0 md:mb-0"><b>Currency</b></label>
-                  <div class="col-7 md:col-7">
+                <div  class="col-4 form-group">
+                  <label for="currency"> Currency </label>
+                 
                     <p-dropdown id="currency" formControlName="currency" [options]="currencies"></p-dropdown>
                     <div *ngIf="internalPaymentsForm.get('currency').touched && internalPaymentsForm.get('currency').invalid">
                       <small class="p-error">Currency is required.</small>
                     </div>
-                  </div>
+                   
                 </div>
-                <div class="field grid">
-                  <label for="reference" class="col-4 md:col-4 mb-0 md:mb-0"><b>Reference</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="reference" > Reference </label>
+                  
                     <input id="reference" type="text" pInputText formControlName="reference" />
                     <div *ngIf="internalPaymentsForm.get('reference').touched && internalPaymentsForm.get('reference').invalid">
                       <small class="p-error">Reference is required.</small>
                     </div>
-                  </div>
+                   
                 </div>
+               
               </div>
-              
 
-              <div class="col-6">
-                <div class="field grid">
-                  <label for="toAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
-                  <div class="col-7 md:col-7">
+              <div class="field grid">
+                <div class="col-4 form-group">
+                  <label for="toAccount"> To Account </label>
+                   
                     <p-dropdown id="toAccount" formControlName="toAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="internalPaymentsForm.get('toAccount').touched && internalPaymentsForm.get('toAccount').invalid">
                       <small class="p-error">To Account is required.</small>
                     </div>
-                  </div>
+                  
                 </div>
-                <div class="field grid">
-                  <label for="amount" class="col-4 md:col-4 mb-0 md:mb-0"><b>Amount</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="amount" > Amount </label>
+                  
                     <input id="amount" type="text" pInputText formControlName="amount" />
                     <div *ngIf="internalPaymentsForm.get('amount').touched && internalPaymentsForm.get('amount').invalid">
                       <small class="p-error">Amount is required.</small>
                     </div>
-                  </div>
+                   
                 </div>
-                <div class="field grid">
-                  <label for="executionDate" class="col-4 md:col-4 mb-0 md:mb-0"><b>Execution Date</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="executionDate"> Execution Date </label>
+                  
                     <p-calendar id="executionDate" formControlName="executionDate" appendTo="body" showIcon="true"></p-calendar>
                     <div *ngIf="internalPaymentsForm.get('executionDate').touched && internalPaymentsForm.get('executionDate').invalid">
                       <small class="p-error">Execution Date is required.</small>
                     </div>
-                  </div>
+                  
                 </div>
               </div>
-            </div>
-            <div class="col-12 mb-2 md:col-12 md:mb-2 button-container">
-              <button type="submit" class="submit-btn">Submit</button>
-              <button type="button" (click)="clearInternal()" class="clear-btn">Clear</button>
-            </div>
-            <p-table [value]="internalPaymentsList" styleClass="p-datatable-gridlines">
+          
+            
+              <div class="field grid  text-right mt-24">
+                <div class="col-12">
+            
+              <button type="button" (click)="clearInternal()" severity="secondary" >Clear</button>
+              <button type="submit" class="custom-primary-button">Submit</button>
+            </div> </div>
+            <div class="mt-32">
+            <p-table [value]="internalPaymentsList" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'" sortMode="single" 
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="pageChange($event)" [showCurrentPageReport]="true"  [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}">
               <ng-template pTemplate="header">
+                
                 <tr>
                   <th pSortableColumn="fromAccount" style="width:20%">
                     From Account <p-sortIcon field="fromAccount" />
@@ -100,95 +112,97 @@
                   <td>{{rowData.executionDate}}</td>
                 </tr>
               </ng-template>
-            </p-table>
+            </p-table> </div>
           </form>
         </p-tabPanel>
         <p-tabPanel header="External Payments">
           <form [formGroup]="externalPaymentsForm" (ngSubmit)="submitExternal()">
             <div class="field grid">
-              <div class="col-6">
-                <div class="field grid">
-                  <label for="fromAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>From Account</b></label>
-                  <div class="col-7 md:col-7">
+              
+                <div class="col-4 form-group"> 
+                  <label for="fromAccount" > From Account </label>
                     <p-dropdown id="fromAccount" formControlName="fromAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="externalPaymentsForm.get('fromAccount').touched && externalPaymentsForm.get('fromAccount').invalid">
                       <small class="p-error">From Account is required.</small>
                     </div>
-                  </div>
+                   
                 </div>
-                <div class="field grid">
-                  <label for="accountNumber" class="col-4 md:col-4 mb-0 md:mb-0"><b>Account Number</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="accountNumber" > Account Number </label>
                     <input id="accountNumber" type="text" pInputText formControlName="accountNumber"/>
                     <div *ngIf="externalPaymentsForm.get('accountNumber').invalid && externalPaymentsForm.get('accountNumber').touched">
                       <small class="p-error">Account Number is required.</small>
                     </div>
-                  </div>
+                 
                 </div>  
-                <div class="field grid">
-                  <label for="currency" class="col-4 md:col-4 mb-0 md:mb-0"><b>Currency</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="currency" > Currency </label>
+                  
                     <p-dropdown id="currency" formControlName="currency" [options]="currencies"></p-dropdown>
                     <div *ngIf="externalPaymentsForm.get('currency').touched && externalPaymentsForm.get('currency').invalid">
                       <small class="p-error">Currency is required.</small>
                     </div>
-                  </div>
-                </div>
+                   
+                </div>   </div>
                 <div class="field grid">
-                  <label for="reference" class="col-4 md:col-4 mb-0 md:mb-0"><b>Reference</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="reference" > Reference </label>
+                 
                     <input id="reference" type="text" pInputText formControlName="reference" />
                     <div *ngIf="externalPaymentsForm.get('reference').touched && externalPaymentsForm.get('reference').invalid">
                       <small class="p-error">Reference is required.</small>
                     </div>
-                  </div>
+                  
                 </div>
-              </div>
-
-              <div class="col-6">
-                <div class="field grid">
-                  <label for="toAccount" class="col-4 md:col-4 mb-0 md:mb-0"><b>To Account</b></label>
-                  <div class="col-7 md:col-7">
+              
+                <div class="col-4 form-group">
+                  <label for="toAccount" > To Account </label>
+                
                     <p-dropdown id="toAccount" formControlName="toAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="externalPaymentsForm.get('toAccount').touched && externalPaymentsForm.get('toAccount').invalid">
                       <small class="p-error">To Account is required.</small>
                     </div>
-                  </div>
+                  
                 </div>
-                <div class="field grid">
-                  <label for="sortCode" class="col-4 md:col-4 mb-0 md:mb-0"><b>Sort Code</b></label>
-                  <div class="col-7 md:col-7">
+                <div class="col-4 form-group">
+                  <label for="sortCode" > Sort Code </label>
+                   
                     <input id="sortCode" type="text" pInputText formControlName="sortCode" />
                     <div *ngIf="externalPaymentsForm.get('sortCode').touched && externalPaymentsForm.get('sortCode').invalid">
                       <small class="p-error">Sort code is required.</small>
                     </div>
-                  </div>
-                </div>
+                 
+                </div> </div>
                 <div class="field grid">
-                  <label for="amount" class="col-4 md:col-4 mb-0 md:mb-0"><b>Amount</b></label>
-                  <div class="col-7 md:col-7">
+                <div  class="col-4 form-group">
+                  <label for="amount"> Amount </label>
+                   
                     <input id="amount" type="text" pInputText formControlName="amount" />
                     <div *ngIf="externalPaymentsForm.get('amount').touched && externalPaymentsForm.get('amount').invalid">
                       <small class="p-error">Amount is required.</small>
                     </div>
-                  </div>
+                   
                 </div>
-                <div class="field grid">
-                  <label for="executionDate" class="col-4 md:col-4 mb-0 md:mb-0"><b>Execution Date</b></label>
-                  <div class="col-7 md:col-7">
-                    <p-calendar id="executionDate" formControlName="executionDate" appendTo="body" showIcon="true"></p-calendar>
+                <div class="col-4 form-group">
+                  <label for="executionDate" > Execution Date </label>
+                 
+                    <p-calendar id="executionDate" severity="secondary"   formControlName="executionDate" appendTo="body" showIcon="true"></p-calendar>
                     <div *ngIf="externalPaymentsForm.get('executionDate').touched && externalPaymentsForm.get('executionDate').invalid">
                       <small class="p-error">Execution Date is required.</small>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 mb-2 md:col-12 md:mb-2 button-container">
-              <button type="submit" class="submit-btn">Submit</button>
-              <button type="button" (click)="clearExternal()" class="clear-btn">Clear</button>
-            </div>
-            <p-table [value]="externalPaymentsList" styleClass="p-datatable-gridlines">
+                  
+                </div></div>
+              
+                <div class="field grid">
+            <div class="col-12 text-right mt-24">
+              
+              <button type="button" (click)="clearExternal()"   severity="secondary" >Clear</button>
+              <button type="submit" class="custom-primary-button">Submit</button>
+            </div> </div>
+            <div class="mt-32">
+            <p-table [value]="externalPaymentsList" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'" sortMode="single" 
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem'}">
               <ng-template pTemplate="header">
                 <tr>
                   <th pSortableColumn="fromAccount" style="width:15%">
@@ -221,7 +235,7 @@
                   <td>{{rowData.executionDate}}</td>
                 </tr>
               </ng-template>
-            </p-table>
+            </p-table> </div>
           </form>
         </p-tabPanel>
       </p-tabView>
