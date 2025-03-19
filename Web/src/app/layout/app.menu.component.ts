@@ -33,21 +33,6 @@ export class AppMenuComponent implements OnInit {
                         label: 'Transfers', icon: 'fa-solid fa-arrow-right-arrow-left', routerLink: ['/dashboard/transfers']
                     },
                     {
-                        label: 'Counterparty', icon: 'far fa-object-ungroup',
-                        items: [
-                            {
-                                label: 'List', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/list']
-                            },
-                            {
-                                label: 'Account', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/account']
-                            },
-                            {
-                                label: 'Rules', icon: 'pi pi-fw pi-shield', routerLink: ['/dashboard/counterparty/rules']
-                            },
-                        ]
-                    },
-                    
-                    {
                         label: 'Payments', icon: 'pi pi-fw pi-money-bill',
                         items: [
                             {
@@ -61,16 +46,30 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Counterparty', icon: 'far fa-object-ungroup',
+                items: [
+                    {
+                        label: 'List', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/list']
+                    },
+                    {
+                        label: 'Account', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/account']
+                    },
+                    {
+                        label: 'Rules', icon: 'pi pi-fw pi-shield', routerLink: ['/dashboard/counterparty/rules']
+                    },
+                ]
+            },
+            {
                 label: 'Treasury Deals',
                 items: [
                     {
                         label: 'Investment Portfolio', icon: 'fa-regular fa-address-book', routerLink: ['/deals/projections']
                     },
                     {
-                        label: 'Deposits', icon: 'pi pi-fw pi-credit-card', routerLink: ['/deals/funds']
+                        label: 'Deposits', icon: 'pi pi-fw pi-credit-card', routerLink: ['/deals/deposits']
                     },
                     {
-                        label: 'Funds', icon: 'fas fa-dollar-sign', routerLink: ['/deals/deposits']
+                        label: 'Funds', icon: 'fas fa-dollar-sign', routerLink: ['/deals/funds']
                     },
                 ],
             },

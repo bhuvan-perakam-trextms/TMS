@@ -3,38 +3,38 @@
         {
             "ruleType": "Transaction",
             "currency": "GBP",
-            "fromAccount": "Account 1",
-            "toAccount": "Account 2",
+            "fromAccount": "HSBC UK",
+            "toAccount": "Lloyds Bank PLC",
             "market": "Market A",
             "entity": "Balance",
             "operator": ">",
-            "value": "1000"
+            "value": "100,000"
         },
         {
             "ruleType": "Transaction",
-            "currency": "GBP",
-            "fromAccount": "Account 3",
-            "toAccount": "Account 4",
-            "market": "Market B",
+            "currency": "EUR",
+            "fromAccount": "BBVA",
+            "toAccount": "Banco Santander S.A.",
+            "market": "Market A",
             "entity": "Country",
             "operator": "=",
-            "value": "United Kingdom"
+            "value": "Spain"
         },
         {
             "ruleType": "Transaction",
             "currency": "GBP",
-            "fromAccount": "Account 1",
-            "toAccount": "Account 2",
+            "fromAccount": "Lloyds Bank PLC",
+            "toAccount": "HSBC UK",
             "market": "Market A",
             "entity": "Balance",
             "operator": ">",
-            "value": "1000"
+            "value": "100,000"
         },
         {
             "ruleType": "Transaction",
             "currency": "GBP",
-            "fromAccount": "Account 3",
-            "toAccount": "Account 4",
+            "fromAccount": "Lloyds Bank PLC",
+            "toAccount": "Barclays UK",
             "market": " Market B",
             "entity": "Country",
             "operator": "=",
@@ -43,22 +43,22 @@
         {
             "ruleType": "Transaction",
             "currency": "GBP",
-            "fromAccount": "Account 1",
-            "toAccount": "Account 2",
+            "fromAccount": "Barclays US",
+            "toAccount": "HSBC US",
             "market": "Market A",
             "entity": "Balance",
             "operator": ">",
-            "value": "1000"
+            "value": "100,000"
         },
         {
             "ruleType": "Transaction",
             "currency": "GBP",
-            "fromAccount": "Account 3",
-            "toAccount": "Account 4",
+            "fromAccount": "BBVA",
+            "toAccount": "Banco Santander S.A.",
             "market": "Market B",
             "entity": "Country",
             "operator": "=",
-            "value": "United Kingdom"
+            "value": "Spain"
         }
     ]
 }

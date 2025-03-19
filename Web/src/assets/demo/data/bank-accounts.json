@@ -3,11 +3,22 @@
 		{
 			"id": 1000,
 			"bankCode": "f230fh0g3",
-			"entity": "HSBC",
+			"entity": "HSBC US",
 			"bankImage": "hsbc-logo.png",
 			"accountNumber": "1234567890",
             "amount": 50000,
             "currency": "USD",
+			"incash": "25000",
+			"outcash": "25000"
+		},
+		{
+			"id": 1004,
+			"bankCode": "f230fh0g3",
+			"entity": "HSBC UK",
+			"bankImage": "hsbc-logo.png",
+			"accountNumber": "1234567890",
+            "amount": 50000,
+            "currency": "GBP",
 			"incash": "25000",
 			"outcash": "25000"
 		},
@@ -34,6 +45,17 @@
 			"outcash": "5000"
 		},
 		{
+			"id": 1006,
+			"bankCode": "zz21cz3c1",
+			"entity": "Barclays US",
+			"bankImage": "barclays-logo.png",
+			"accountNumber": "1234567890",
+			"amount": 10000,
+			"currency": "USD",
+			"incash": "15000",
+			"outcash": "5000"
+		},
+		{
 			"id": "1003",
 			"code": "244wgerg2",
 			"entity": "Chase",
@@ -45,46 +67,13 @@
 			"outcash": "20000"
 		},
 		{
-			"id": 1004,
-			"bankCode": "f230fh0g3",
-			"entity": "HSBC",
-			"bankImage": "hsbc-logo.png",
-			"accountNumber": "1234567890",
-            "amount": 50000,
-            "currency": "USD",
-			"incash": "25000",
-			"outcash": "25000"
-		},
-		{
-			"id": 1005,
-			"bankCode": "nvklal433",
-			"entity": "BBVA",
-			"bankImage": "bbva-logo.png",
-			"accountNumber": "0987654321",
-			"amount": 15000,
-			"currency": "EUR",
-			"incash": "15000",
-			"outcash": "5000"
-		},
-		{
-			"id": 1006,
-			"bankCode": "zz21cz3c1",
-			"entity": "Barclays",
-			"bankImage": "barclays-logo.png",
-			"accountNumber": "1234567890",
-			"amount": 10000,
-			"currency": "GBP",
-			"incash": "15000",
-			"outcash": "5000"
-		},
-		{
 			"id": "1007",
 			"code": "244wgerg2",
-			"entity": "Chase",
+			"entity": "Chase US",
 			"bankImage": "chase-logo.png",
 			"accountNumber": "1234567890",
 			"amount": 40000,
-			"currency": "GBP",
+			"currency": "USD",
 			"incash": "20000",
 			"outcash": "20000"
 		}
