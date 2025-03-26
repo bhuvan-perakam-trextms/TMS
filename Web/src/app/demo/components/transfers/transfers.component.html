@@ -12,7 +12,7 @@
           <form [formGroup]="internalPaymentsForm" (ngSubmit)="submitInternal()">
             <div class="field grid">
             
-                <div class="col-4 form-group">
+                <div class="col-4 col-xs-12 form-group">
                   <label for="fromAccount" ><b>From Account</b></label>
                 
                     <p-dropdown id="fromAccount" formControlName="fromAccount" [options]="accounts"></p-dropdown>
@@ -21,7 +21,7 @@
                     </div>
                    
                 </div>
-                <div  class="col-4 form-group">
+                <div  class="col-4  col-xs-12 form-group">
                   <label for="currency"> Currency </label>
                  
                     <p-dropdown id="currency" formControlName="currency" [options]="currencies"></p-dropdown>
@@ -30,7 +30,7 @@
                     </div>
                    
                 </div>
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="reference" > Reference </label>
                   
                     <input id="reference" type="text" pInputText formControlName="reference" />
@@ -43,7 +43,7 @@
               </div>
 
               <div class="field grid">
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="toAccount"> To Account </label>
                    
                     <p-dropdown id="toAccount" formControlName="toAccount" [options]="accounts"></p-dropdown>
@@ -52,7 +52,7 @@
                     </div>
                   
                 </div>
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="amount" > Amount </label>
                   
                     <input id="amount" type="text" pInputText formControlName="amount" />
@@ -61,7 +61,7 @@
                     </div>
                    
                 </div>
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="executionDate"> Execution Date </label>
                   
                     <p-calendar id="executionDate" formControlName="executionDate" appendTo="body" showIcon="true"></p-calendar>
@@ -119,7 +119,7 @@
           <form [formGroup]="externalPaymentsForm" (ngSubmit)="submitExternal()">
             <div class="field grid">
               
-                <div class="col-4 form-group"> 
+                <div class=" col-4 col-xs-12 form-group"> 
                   <label for="fromAccount" > From Account </label>
                     <p-dropdown id="fromAccount" formControlName="fromAccount" [options]="accounts"></p-dropdown>
                     <div *ngIf="externalPaymentsForm.get('fromAccount').touched && externalPaymentsForm.get('fromAccount').invalid">
@@ -127,7 +127,7 @@
                     </div>
                    
                 </div>
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="accountNumber" > Account Number </label>
                     <input id="accountNumber" type="text" pInputText formControlName="accountNumber"/>
                     <div *ngIf="externalPaymentsForm.get('accountNumber').invalid && externalPaymentsForm.get('accountNumber').touched">
@@ -135,7 +135,7 @@
                     </div>
                  
                 </div>  
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="currency" > Currency </label>
                   
                     <p-dropdown id="currency" formControlName="currency" [options]="currencies"></p-dropdown>
@@ -145,7 +145,7 @@
                    
                 </div>   </div>
                 <div class="field grid">
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="reference" > Reference </label>
                  
                     <input id="reference" type="text" pInputText formControlName="reference" />
@@ -155,7 +155,7 @@
                   
                 </div>
               
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="toAccount" > To Account </label>
                 
                     <p-dropdown id="toAccount" formControlName="toAccount" [options]="accounts"></p-dropdown>
@@ -164,7 +164,7 @@
                     </div>
                   
                 </div>
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="sortCode" > Sort Code </label>
                    
                     <input id="sortCode" type="text" pInputText formControlName="sortCode" />
@@ -174,7 +174,7 @@
                  
                 </div> </div>
                 <div class="field grid">
-                <div  class="col-4 form-group">
+                <div  class="col-4  col-xs-12 form-group">
                   <label for="amount"> Amount </label>
                    
                     <input id="amount" type="text" pInputText formControlName="amount" />
@@ -183,7 +183,7 @@
                     </div>
                    
                 </div>
-                <div class="col-4 form-group">
+                <div class=" col-4 col-xs-12 form-group">
                   <label for="executionDate" > Execution Date </label>
                  
                     <p-calendar id="executionDate" severity="secondary"   formControlName="executionDate" appendTo="body" showIcon="true"></p-calendar>

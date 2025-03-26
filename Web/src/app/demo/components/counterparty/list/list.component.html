@@ -1,16 +1,17 @@
 <div class="grid">
     <div class="col-12">
-        <div class="header_main" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+        <div class="row">
+        <div class="header_main col-6">
             <h1>Counterparties</h1>
             
-            <div style="display: flex; gap: 10px;">
+            <div class=" col-6  col-xs-12 text-right ">
                 <button pButton label="Add Counterparty"
-                        class="custom-primary-button"></button>
+                        class="custom-primary-button mr-12"></button>
         
                 <button pButton label="Bulk Upload"
                         class="custom-primary-button"></button>
             </div>
-        </div>
+        </div></div>
         <div class="card p-fluid">
             <!-- <div class="card_header">
                 <h2> Counter Parties</h2> 
@@ -135,7 +136,7 @@
                                 </p-divider>
                                 <div class="field grid">
                                     
-                                        <div class="col-4 form-group"> 
+                                        <div class=" col-4 col-xs-12 form-group"> 
                                             <label htmlFor="legalName" >
                                                  Legal Name 
                                             </label>
@@ -150,7 +151,7 @@
                                         </div>
                                      
                                    
-                                        <div class="col-4 form-group"> 
+                                        <div class=" col-4 col-xs-12 form-group"> 
                                             <label htmlFor="aliasName">
                                                Alias Name 
                                             </label>
@@ -165,7 +166,7 @@
                                         </div>
                                    
                                      
-                                        <div class="col-4 form-group"> 
+                                        <div class=" col-4 col-xs-12 form-group"> 
                                             <label htmlFor="type">
                                                  Type 
                                             </label>
@@ -187,7 +188,7 @@
                                 </p-divider>
                                 <div class="field grid">
                                      
-                                    <div class="col-4 form-group"> 
+                                    <div class=" col-4 col-xs-12 form-group"> 
                                             <label htmlFor="treasury">
                                                 Treasury 
                                             </label>
@@ -207,7 +208,7 @@
                                     
 
                                   
-                                        <div class="col-4 form-group">
+                                        <div class=" col-4 col-xs-12 form-group">
                                             <label htmlFor="otherIdentifiers" >
                                                Other Identifiers 
                                             </label>
@@ -230,7 +231,7 @@
                                 </p-divider>
                                 <div class="field grid">
                                    
-                                        <div class="col-4 form-group">
+                                        <div class=" col-4 col-xs-12 form-group">
                                             <label htmlFor="entity"> Country </label>
                                               <p-dropdown [options]="countries" id="country"
                                                     [(ngModel)]="selectedCountry" optionLabel="name"
@@ -244,7 +245,7 @@
                                              
                                         </div>
                                    
-                                        <div class="col-4 form-group">
+                                        <div class=" col-4 col-xs-12 form-group">
                                             <label htmlFor="emailId">
                                                  Email-ID 
                                             </label>
@@ -257,7 +258,7 @@
                                                 </div>
                                             
                                         </div>
-                                        <div class="col-4 form-group">
+                                        <div class=" col-4 col-xs-12 form-group">
                                             <label htmlFor="keyContact">
                                                  key Contact 
                                             </label>
@@ -286,7 +287,7 @@
                                                 </textarea>
                                             
                                         </div>
-                                        <div class="col-4 form-group">
+                                        <div class=" col-4 col-xs-12 form-group">
                                             <label htmlFor="Telephone">
                                                 Telephone 
                                             </label>

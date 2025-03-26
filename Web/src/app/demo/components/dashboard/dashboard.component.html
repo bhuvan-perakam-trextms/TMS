@@ -68,7 +68,7 @@
                     <i class="pi pi-arrows-alt"></i>
                 </div>
             </div>
-            <p-table class="dashboard-custom" [value]="bankAccounts" [paginator]="true" [rows]="10" responsiveLayout="scroll" sortMode="single">
+            <p-table class="dashboard-custom custom-p-table" [rowsPerPageOptions]="[10, 20,30,40,50]" [value]="bankAccounts" [paginator]="true" [rows]="10" responsiveLayout="scroll" sortMode="single">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Bank</th>

@@ -85,6 +85,7 @@ $weight-700: 700;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 16px;
+        width: 100%;
 
         h1 {
             font-size: 16px;
@@ -156,7 +157,7 @@ $weight-700: 700;
     border: none;
 
     &.custom_height {
-        min-height: 74vh;
+        min-height: 72vh;
         height: auto;
         // @media (min-width: 1600px) {
         //     min-height: calc(100vh - 400px); // Increase space for big screens
@@ -1084,7 +1085,8 @@ button {
             margin: 4px 0px 30px 0px;
         }
     }
-    .p-button{
+
+    .p-button {
         margin-bottom: 12px;
     }
 
@@ -1115,15 +1117,95 @@ button {
         }
     }
 
-   
+
 
 
 }
-p-button{
- .p-button-info {
-        border:1px solid #0263EC !important;
+
+p-button {
+    .p-button-info {
+        border: 1px solid #0263EC !important;
         background: transparent !important;
         color: #0263EC !important;
-        
-    
-}}
+
+
+    }
+}
+
+.col-6 {
+    padding: 0px !important;
+}
+
+.mr-12 {
+    margin-right: 12px;
+}
+.custom-p-table {
+    .p-datatable>.p-datatable-wrapper {
+        max-height: 480px;
+        height: auto;
+        overflow-y: auto;
+        display: block;
+    }
+}
+
+@media (min-width:320px) and (max-width: 767px) {
+    .col-xs-12 {
+        width: 100% !important;
+    }
+
+    .header_main {
+
+        display: block !important;
+        width: 100% !important;
+
+        h1 {
+            margin-bottom: 20px !important;
+        }
+    }
+
+    .layout-topbar .layout-topbar-menu.layout-topbar-menu-mobile-active {
+        left: 0px;
+        width: 98% !important;
+    }
+
+    .layout-topbar .layout-topbar-menu .search-bar .form-control {
+        width: 80% !important;
+    }
+
+    .layout-topbar .layout-topbar-menu .search-bar .input-group-text {
+        right: 74px;
+    }
+}
+
+
+
+.p-datatable>.p-datatable-wrapper {
+    // max-height: 400px;
+    // overflow-y: auto;
+    // .p-datatable-table{
+    //     .p-datatable-thead{
+    //         display: block;
+    //         width: 100%;
+    //     }
+    //     .p-datatable-tbody{
+    //         max-height: 400px;
+    //         overflow-y: auto;
+    //         display: block;
+    //         width: 100%;
+    //     }
+    // }
+}
+
+@media (min-width:1550px) and (max-width: 4800px) {
+    .custom-p-table {
+        .p-datatable>.p-datatable-wrapper {
+            max-height: 95vh;
+            height: auto;
+            overflow-y: auto;
+            display: block;
+        }
+    }
+    .card.custom_height{
+        min-height: auto;
+    }
+}
