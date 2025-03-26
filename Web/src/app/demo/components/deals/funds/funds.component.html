@@ -1,14 +1,47 @@
 <div class="grid">
     <div class="col-12">
+        <div class="header_main">
+            <h1>Money Market Funds</h1>
+             
+            </div>
         <div class="card p-fluid">
-            <h5><i class="pi pi-fw pi-home"></i> Money Market Funds</h5> <br />
-            <div style="overflow-x: auto;">
-                <kendo-grid [data]="gridData" [pageSize]="10" [skip]="0" [pageable]="true" [sortable]="true"
+            <div class="card_container">
+         
+                <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" sortMode="multiple"
+    [tableStyle]="{ 'min-width': '1000px', 'border': '1px solid lightgray', 'border-radius': '5px'}">
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="ISIN">ISIN <p-sortIcon field="ISIN"></p-sortIcon></th>
+            <th pSortableColumn="Counterparty" width="250">Counterparty <p-sortIcon field="Counterparty"></p-sortIcon></th>
+            <th pSortableColumn="FundName" width="250">Fund Name <p-sortIcon field="FundName"></p-sortIcon></th>
+            <th pSortableColumn="Exposure">Exposure <p-sortIcon field="Exposure"></p-sortIcon></th>
+            <th pSortableColumn="Limit">Limit <p-sortIcon field="Limit"></p-sortIcon></th>
+            <th pSortableColumn="MMFInvestment">Investment <p-sortIcon field="MMFInvestment"></p-sortIcon></th>
+            <th pSortableColumn="DailyYield">Daily Yield <p-sortIcon field="DailyYield"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-dataItem>
+        <tr>
+            <td>{{ dataItem.ISIN }}</td>
+            <td>{{ dataItem.Counterparty }}</td>
+            <td>{{ dataItem.FundName }}</td>
+            <td>{{ dataItem.Exposure | currency: dataItem.Currency }}</td>
+            <td>{{ dataItem.Limit | currency: dataItem.Currency }}</td>
+            <td>{{ dataItem.MMFInvestment | currency: dataItem.Currency }}</td>
+            <td>{{ dataItem.DailyYield }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+            
+                <!-- <kendo-grid [data]="gridData" [pageSize]="10" [skip]="0" [pageable]="true" [sortable]="true"
                     [filterable]="filterMode" [resizable]="true">
                     <kendo-grid-column field="ISIN" title="ISIN" width="120"></kendo-grid-column>
                     <kendo-grid-column field="Counterparty" title="Counterparty" width="200"></kendo-grid-column>
                     <kendo-grid-column field="FundName" title="Fund Name" width="200"></kendo-grid-column>
-                    <!-- <kendo-grid-column field="Currency" title="Currency" width="120"></kendo-grid-column> -->
                     <kendo-grid-column field="Exposure" title="Exposure" width="120">
                         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                             {{dataItem.Exposure | currency: dataItem.Currency}}
@@ -27,7 +60,7 @@
                         </ng-template>
                     </kendo-grid-column>
                     <kendo-grid-column field="DailyYield" title="Daily Yield" width="130"></kendo-grid-column>
-                </kendo-grid>
-            </div>
+                </kendo-grid> -->
+             </div>
         </div>
     </div>

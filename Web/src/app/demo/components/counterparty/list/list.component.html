@@ -36,6 +36,9 @@
                                 <th pSortableColumn="currency">
                                     Currency <p-sortIcon field="currency"></p-sortIcon>
                                 </th>
+                                <th pSortableColumn="Actions">
+                                    Actions 
+                                </th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-dataItem>
@@ -57,6 +60,11 @@
                                     <!-- <i class="pi pi-fw pi-euro"></i>
                                     <i [class]="this.currencyService.getCurrencyClass(dataItem.currency)"></i> -->
                                     <span>{{ dataItem.currency }}</span>
+                                </td>
+                                <td>
+                                    <a href="#"> <em class="far fa-edit"></em> </a>
+                                    <a href="#"> <em class="far fa-eye"></em> </a>
+                                    <a href="#"> <em class="far fa-trash-alt"></em> </a>
                                 </td>
                             </tr>
                         </ng-template>

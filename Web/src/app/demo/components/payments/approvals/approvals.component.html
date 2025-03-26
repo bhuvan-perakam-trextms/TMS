@@ -10,7 +10,7 @@
             <div class="card-container">
             <p-tabView (onChange)="onTabClicked($event)">
                 <p-tabPanel header="Tab View">
-                    <p-table [value]="approvalsData" [paginator]="true" [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"
+                    <p-table  [value]="approvalsData" [paginator]="true" [rows]="20" [responsiveLayout]="'scroll'" sortMode="single"
                     sortMode="single" 
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem'}">
@@ -31,6 +31,9 @@
                                 <th pSortableColumn="status">
                                     Status <p-sortIcon field="status"></p-sortIcon>
                                 </th>
+                                <th pSortableColumn="Actions">
+                                    Actions 
+                                </th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-dataItem>
@@ -44,6 +47,11 @@
                                 <td>{{ dataItem.amount | currency: dataItem.Currency }}</td>
                                 <td>{{ dataItem.executionDate }}</td>
                                 <td>{{ dataItem.status }}</td>
+                                <td>
+                                    <a href="#"> <em class="far fa-edit"></em> </a>
+                                    <a href="#"> <em class="far fa-eye"></em> </a>
+                                    <a href="#"> <em class="far fa-trash-alt"></em> </a>
+                                </td>
                             </tr>
                         </ng-template>
                     </p-table>

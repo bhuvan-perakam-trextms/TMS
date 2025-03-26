@@ -39,6 +39,9 @@
                             <th pSortableColumn="value">
                                 Value <p-sortIcon field="value"></p-sortIcon>
                             </th>
+                            <th pSortableColumn="Actions">
+                                Actions 
+                            </th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-dataItem>
@@ -58,6 +61,11 @@
                             <td>{{ dataItem.entity }}</td>
                             <td>{{ dataItem.operator }}</td>
                             <td>{{ dataItem.value }}</td>
+                            <td>
+                                <a href="#"> <em class="far fa-edit"></em> </a>
+                                <a href="#"> <em class="far fa-eye"></em> </a>
+                                <a href="#"> <em class="far fa-trash-alt"></em> </a>
+                            </td>
                         </tr>
                     </ng-template>
                 </p-table>

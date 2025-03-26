@@ -11,6 +11,9 @@ import { Task } from '../../api/task';
     templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+pageChange($event: any) {
+throw new Error('Method not implemented.');
+}
     bankAccounts!: BankAccount[];
     tasks!: Task[];
 
@@ -21,6 +24,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     barChartOptions: any;
 
     subscription!: Subscription;
+counterpartiesList: any;
 
     constructor(private bankService: BankService,  public layoutService: LayoutService) {
         this.subscription = this.layoutService.configUpdate$
@@ -200,4 +204,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     return formattedDate;
   }
+  
 }

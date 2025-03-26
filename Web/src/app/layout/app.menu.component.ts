@@ -52,7 +52,7 @@ export class AppMenuComponent implements OnInit {
                         label: 'List', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/list']
                     },
                     {
-                        label: 'Account', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/account']
+                        label: 'Account', icon: 'pi pi-fw pi-user', routerLink: ['/dashboard/counterparty/account']
                     },
                     {
                         label: 'Rules', icon: 'pi pi-fw pi-shield', routerLink: ['/dashboard/counterparty/rules']
@@ -63,7 +63,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Treasury Deals',
                 items: [
                     {
-                        label: 'Investment Portfolio', icon: 'fa-regular fa-address-book', routerLink: ['/deals/projections']
+                        label: 'Investment Portfolio', icon: 'fa-regular fa-address-book', routerLink: ['/invoicemanagement/invoices']
                     },
                     {
                         label: 'Deposits', icon: 'pi pi-fw pi-credit-card', routerLink: ['/deals/deposits']

@@ -33,7 +33,10 @@
                         ],
                         "styles": [
                             "src/styles.scss",                            
-                            "node_modules/@progress/kendo-theme-bootstrap/dist/bootstrap-main.css"
+                            "node_modules/@progress/kendo-theme-bootstrap/dist/bootstrap-main.css",
+                            "node_modules/primeicons/primeicons.css",
+                            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+
                         ],
                         "scripts": [],
                         "browser": "src/main.ts"
