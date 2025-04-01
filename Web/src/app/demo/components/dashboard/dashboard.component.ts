@@ -11,6 +11,7 @@ import { Task } from '../../api/task';
     templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+dataItem: any;
 pageChange($event: any) {
 throw new Error('Method not implemented.');
 }

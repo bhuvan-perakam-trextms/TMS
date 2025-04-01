@@ -102,7 +102,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Invoice Management',
                 items: [
                     {
-                        label: 'Invoices', icon: 'far fa-file-alt'
+                        label: 'Invoices', icon: 'far fa-file-alt',  routerLink: ['/invoicemanagement/invoices']
                     },
                     
                 ],

@@ -12,6 +12,7 @@ import {
     GoogleSigninButtonModule, 
     GoogleSigninButtonDirective 
 } from '@abacritt/angularx-social-login';
+import { InvoicesComponent } from './demo/components/invoicemanagement/invoices/invoices.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,12 @@ import {
               children: [
                   { path: 'reports', loadChildren: () => import('./demo/components/reporting/reports.module').then(m => m.ReportsModule) },
                   { path: 'reportbuilder', loadChildren: () => import('./demo/components/reporting/reports.module').then(m => m.ReportsModule) },
+              ]
+            },
+            {
+              path: 'invoicemanagement', component: AppLayoutComponent,
+              children: [
+                  { path: 'invoices', component: InvoicesComponent }
               ]
             },
             { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
