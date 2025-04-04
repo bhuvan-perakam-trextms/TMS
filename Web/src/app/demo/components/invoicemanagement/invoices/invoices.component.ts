@@ -10,6 +10,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { SidebarModule } from 'primeng/sidebar';  
+
 
 @Component({
   selector: 'app-invoices',
@@ -20,12 +22,19 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     StyleClassModule,
     PanelMenuModule,
     ButtonModule,
+    SidebarModule
+
   ],
   templateUrl: './invoices.component.html',
   styleUrl: './invoices.component.scss'
 })
  
 export class InvoicesComponent implements OnInit, OnDestroy {
+    visible: boolean = false;
+
+  openSidebar() {
+    this.visible = true;
+  }
 dataItem: any;
 pageChange($event: any) {
 throw new Error('Method not implemented.');
