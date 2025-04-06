@@ -1,177 +1,178 @@
-
 <div class="header_main">
     <h1> Invoice Management </h1>
-    </div>
+</div>
 <div class="grid">
 
-<div class="col-12">
-    <div class="card p-0 custom_height">
-        <div class="heading">
-            <h2>Import File</h2>  
-          </div> 
-        <div class="drag_drop">
-            <i class="pi pi-cloud-upload"></i>
-            <p>
-                Drag & drop files here, or click to choose files.
-                <span>Support the formats
-                    JPEG, PNG and PDF formats, up to 50MB</span>
-            </p>
-            <p-button label="Upload" variant="outlined" severity="info" />
+    <div class="col-12">
+        <div class="card p-0 custom_height">
+            <div class="heading">
+                <h2>Import File</h2>
+            </div>
+            <div class="drag_drop">
+                <i class="pi pi-cloud-upload"></i>
+                <p>
+                    Drag & drop files here, or click to choose files.
+                    <span>Support the formats
+                        JPEG, PNG and PDF formats, up to 50MB</span>
+                </p>
+                <p-button label="Upload" variant="outlined" severity="info" />
 
-              
-        </div>
-        <div class="heading mt-50">
-            <h2>Imported Files</h2>  
-          </div> 
-          <div class="col-12">
-          <p-table   [paginator]="true" [rows]="20"  [value]="tasks"  [responsiveLayout]="'scroll'" sortMode="single"
-          sortMode="single" 
-          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-  (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}"
-          >
-              <ng-template pTemplate="header">
-                  <tr>
-                      <th pSortableColumn="legalName">
-                          Imported File <p-sortIcon field="legalName"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="aliasName">
-                          Import Results <p-sortIcon field="aliasName"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="country">
-                          Imported on <p-sortIcon field="country"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="currency">
-                        Imported By  <p-sortIcon field="currency"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="Actions">
-                          Actions 
-                      </th>
-                  </tr>
-              </ng-template>
-              <ng-template pTemplate="body" let-dataItem>
-                  <tr>
-                    <td>
-                        <a href="javascript:void(0)" (click)="visible = true">{{ dataItem.importedFile }}</a>
-                      </td>
-                      <td>{{ dataItem.importResults }}</td>
-                      <td>{{ dataItem.importedOn }}</td>
-                      <td>{{ dataItem.importedBy }}</td>
-                      <td>
-                          <!-- <a href="#"> <em class="far fa-edit"></em> </a> -->
-                          <a href="#"> <em class="far fa-eye"></em> </a>
-                          <a href="#"> <em class="far fa-trash-alt"></em> </a>
-                      </td>
-                  </tr>
-              </ng-template>
-          </p-table>
-        </div>
- 
-        <p-sidebar [(visible)]="visible" position="right" [modal]="true">
-            <!-- Custom Header -->
-            <div class="p-sidebar-header-custom">
-                <h3>Invoice</h3>
-                <button pButton icon="pi pi-times" class="close-btn" (click)="visible = false"></button>
+
             </div>
-           <!-- Sidebar Body -->
-            <div class="p-sidebar-body">
-                <div class="grid mt-24">
-                    <div class="col-6">
-                        <h2>Invoice</h2>
-                    </div>
-                    <div class="col-6">
-                        <div class="invoice-view">
-                            <label>Reference</label>
-                            <span>INV/2023/009</span>
-                        </div>
-                        <div class="invoice-view">
-                            <label>Issue Date</label>
-                            <span>Jan 11, 2023</span>
-                        </div>
-                        <div class="invoice-view">
-                            <label>Due Date</label>
-                            <span>Jan 23, 2023</span>
-                        </div>
-                        <div class="invoice-view">
-                            <label>Tax No.</label>
-                            <span>322.081-890-23</span>
-                        </div>
-                        <div class="invoice-view">
-                            <label>Invoice No.</label>
-                            <span>110123</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="col-12 mt-50">
-                        <p>Invoice to</p>
-                        <h3>Sample Inc</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="col-12 mt-24">
-                    <p-table     [rows]="20"  [value]="tasks"  [responsiveLayout]="'scroll'" sortMode="single"
-                    sortMode="single" 
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            (onPage)="pageChange($event)"         [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}"
-                    >
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th pSortableColumn="legalName">
-                                    Items<p-sortIcon field="legalName"></p-sortIcon>
-                                </th>
-                                <th pSortableColumn="aliasName">
-                                    Description <p-sortIcon field="aliasName"></p-sortIcon>
-                                </th>
-                                <th pSortableColumn="country">
-                                    Price <p-sortIcon field="country"></p-sortIcon>
-                                </th>
-                                <th pSortableColumn="currency">
-                                  Discount <p-sortIcon field="currency"></p-sortIcon>
-                                </th>
-                                <th pSortableColumn="Actions">
-                                    Total 
-                                </th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-dataItem>
-                            <tr>
-                              <td>
-                                Hero lily
-                                </td>
-                                <td> Hand bouquet </td>
-                                <td> &euro;1200</td>
-                                <td>- </td>
-                                <td>
-                                    &euro;3600
-                                </td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-                </div>
-                </div>
-                <div class="grid mt-24">
-                    <div class="col-6 ml-20">
-                        <div>
-                        <span> Notes </span>
-                        <p class="weight-500">Please paid to Mizuno Bank 400.2321.927</p></div>
-                        <div class="mt-24">
-                            <span> Terms & Conditions </span>
-                            <p class="weight-500">Pay before Jan 23, 2025</p></div>
-                    </div>
-                    <div class="col-5 text-right">
-                        <div class="invoice-view justify-content-end">
-                            <span>Jan 11, 2025</span>
-                        </div>
-                        
-                    </div>
-                </div>
+            <div class="heading mt-50">
+                <h2>Imported Files</h2>
             </div>
-        </p-sidebar>
-         
-        
-         
-        
+            <div class="col-12">
+                <p-table [paginator]="true" [rows]="20" [value]="tasks" [responsiveLayout]="'scroll'" sortMode="single"
+                    sortMode="single" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    (onPage)="pageChange($event)" [showCurrentPageReport]="true"
+                    [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="legalName">
+                                Imported File <p-sortIcon field="legalName"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="aliasName">
+                                Import Results <p-sortIcon field="aliasName"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="country">
+                                Imported on <p-sortIcon field="country"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="currency">
+                                Imported By <p-sortIcon field="currency"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="Actions">
+                                Actions
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-dataItem>
+                        <tr>
+                            <td>
+                                <a href="javascript:void(0)" (click)="visible = true">{{ dataItem.importedFile }}</a>
+                            </td>
+                            <td>{{ dataItem.importResults }}</td>
+                            <td>{{ dataItem.importedOn }}</td>
+                            <td>{{ dataItem.importedBy }}</td>
+                            <td>
+                                <!-- <a href="#"> <em class="far fa-edit"></em> </a> -->
+                                <a href="#"> <em class="far fa-eye"></em> </a>
+                                <a href="#"> <em class="far fa-trash-alt"></em> </a>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <p-sidebar [(visible)]="visible" position="right" [modal]="true">
+                <!-- Custom Header -->
+                <div class="p-sidebar-header-custom">
+                    <h3>Invoice</h3>
+                    <button pButton icon="pi pi-times" class="close-btn" (click)="visible = false"></button>
+                </div>
+                <!-- Sidebar Body -->
+                <div class="p-sidebar-body">
+                    <div class="grid mt-24">
+                        <div class="col-6">
+                            <h2>Invoice</h2>
+                        </div>
+                        <div class="col-6">
+                            <div class="invoice-view">
+                                <label>Reference</label>
+                                <span>INV/2023/009</span>
+                            </div>
+                            <div class="invoice-view">
+                                <label>Issue Date</label>
+                                <span>Jan 11, 2023</span>
+                            </div>
+                            <div class="invoice-view">
+                                <label>Due Date</label>
+                                <span>Jan 23, 2023</span>
+                            </div>
+                            <div class="invoice-view">
+                                <label>Tax No.</label>
+                                <span>322.081-890-23</span>
+                            </div>
+                            <div class="invoice-view">
+                                <label>Invoice No.</label>
+                                <span>110123</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-12 mt-50">
+                            <p>Invoice to</p>
+                            <h3>Sample Inc</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-12 mt-24">
+                            <p-table [rows]="20" [value]="tasks" [responsiveLayout]="'scroll'" sortMode="single"
+                                sortMode="single"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                (onPage)="pageChange($event)" [showCurrentPageReport]="true"
+                                [tableStyle]="{ 'min-width': '50rem', 'border': '1px solid lightgray',  'border-radius': '5px'}">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th pSortableColumn="legalName">
+                                            Items<p-sortIcon field="legalName"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="aliasName">
+                                            Description <p-sortIcon field="aliasName"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="country">
+                                            Price <p-sortIcon field="country"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="currency">
+                                            Discount <p-sortIcon field="currency"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="Actions">
+                                            Total
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-dataItem>
+                                    <tr>
+                                        <td>
+                                            Hero lily
+                                        </td>
+                                        <td> Hand bouquet </td>
+                                        <td> &euro;1200</td>
+                                        <td>- </td>
+                                        <td>
+                                            &euro;3600
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                    <div class="grid mt-24">
+                        <div class="col-6 ml-20">
+                            <div>
+                                <span> Notes </span>
+                                <p class="weight-500">Please paid to Mizuno Bank 400.2321.927</p>
+                            </div>
+                            <div class="mt-24">
+                                <span> Terms & Conditions </span>
+                                <p class="weight-500">Pay before Jan 23, 2025</p>
+                            </div>
+                        </div>
+                        <div class="col-5 text-right">
+                            <div class="invoice-view justify-content-end">
+                                <span>Jan 11, 2025</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </p-sidebar>
+
+
+
+
+        </div>
+
     </div>
-
-    </div> </div>
+</div>

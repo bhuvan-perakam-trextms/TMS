@@ -63,7 +63,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Treasury Deals',
                 items: [
                     {
-                        label: 'Investment Portfolio', icon: 'fa-regular fa-address-book', routerLink: ['/invoicemanagement/invoices']
+                        label: 'Investment Portfolio', icon: 'fa-regular fa-address-book', routerLink: ['/deals/projections']
                     },
                     {
                         label: 'Deposits', icon: 'pi pi-fw pi-credit-card', routerLink: ['/deals/deposits']

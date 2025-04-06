@@ -47,7 +47,7 @@ import { InvoicesComponent } from './demo/components/invoicemanagement/invoices/
             {
               path: 'invoicemanagement', component: AppLayoutComponent,
               children: [
-                  { path: 'invoices', component: InvoicesComponent }
+                  { path: 'invoices', loadChildren: () => import('./demo/components/invoicemanagement/invoices/invoices.module').then(m => m.InvoicesModule)}
               ]
             },
             { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
