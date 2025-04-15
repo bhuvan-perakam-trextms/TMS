@@ -13,7 +13,7 @@ export class BankaccountsComponent implements OnInit, OnDestroy {
 
   group = [{ field: "entity" }]
   bankAccountDetails: BankAccountDetail[] = []
-  filterMode: FilterableSettings = "menu";
+  filterMode: boolean = true;
   displayOverlay: boolean = false;
   selectedBankAccountDetail: any;
 

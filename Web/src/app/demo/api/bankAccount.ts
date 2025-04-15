@@ -7,4 +7,6 @@ export interface BankAccount
     accountNumber: string;
     amount: number;
     currency: string;
+    imageHeight: number;
+    country: string;
 }

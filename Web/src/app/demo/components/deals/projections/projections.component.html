@@ -6,25 +6,38 @@
 
             <br /> <br />
             <div class="grid-container">
-                <kendo-grid [data]="gridData" [pageable]="true" [pageSize]="10" [skip]="0" [sortable]="true"
-                    [filterable]="filterMode" [resizable]="false" [groupable]="true" [group]="group" (groupChange)="onGroupChange($event)">
-                    <kendo-grid-column field="Instrument" title="Instrument" width="150"></kendo-grid-column>
-                    <kendo-grid-column field="Counterparty" title="Counterparty" width="140"></kendo-grid-column>
-                    <kendo-grid-column field="StartDate" title="Start Date" width="120" format="{0:dd/MM/yyyy}">
-                    </kendo-grid-column>
-                    <kendo-grid-column field="Maturity" title="Maturity" width="120" format="{0:dd/MM/yyyy}">
-                    </kendo-grid-column>
-                    <kendo-grid-column field="Notional" title="Notional" width="120">
-                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                            {{dataItem.Notional | currency: dataItem.Currency}}
-                        </ng-template>
-                    </kendo-grid-column>
-
-                    <kendo-grid-column field="InterestRate" title="Interest Rate" width="130">
-                    </kendo-grid-column>
-                    <kendo-grid-column field="Yield" title="Yield" width="120">
-                    </kendo-grid-column>
-                </kendo-grid>
+                <p-table [value]="gridData" [paginator]="true" [rows]="10" [sortMode]="'multiple'" [responsiveLayout]="'scroll'" [groupRowsBy]="group" (onSort)="onGroupChange($event)">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="Instrument">Instrument <p-sortIcon field="Instrument"></p-sortIcon></th>
+                            <th pSortableColumn="Counterparty">Counterparty <p-sortIcon field="Counterparty"></p-sortIcon></th>
+                            <th pSortableColumn="StartDate">Start Date <p-sortIcon field="StartDate"></p-sortIcon></th>
+                            <th pSortableColumn="Maturity">Maturity <p-sortIcon field="Maturity"></p-sortIcon></th>
+                            <th pSortableColumn="Notional">Notional <p-sortIcon field="Notional"></p-sortIcon></th>
+                            <th pSortableColumn="InterestRate">Interest Rate <p-sortIcon field="InterestRate"></p-sortIcon></th>
+                            <th pSortableColumn="Yield">Yield <p-sortIcon field="Yield"></p-sortIcon></th>
+                        </tr>
+                    </ng-template>
+                
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td>{{data.Instrument}}</td>
+                            <td>{{data.Counterparty}}</td>
+                            <td>{{data.StartDate | date:'dd/MM/yyyy'}}</td>
+                            <td>{{data.Maturity | date:'dd/MM/yyyy'}}</td>
+                            <td>{{data.Notional | currency:data.Currency}}</td>
+                            <td>{{data.InterestRate}}</td>
+                            <td>{{data.Yield}}</td>
+                        </tr>
+                    </ng-template>
+                
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">No data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                
             </div>
         </div>
     </div>
