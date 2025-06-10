@@ -90,99 +90,19 @@
                                 <h2>News Feed</h2>
                                 <div class="right__btn">
                                     <p-button label="View All" />
-                                  
                                 </div>
                             </div>
                 
                             <ul class="list-none my__task my__news">
-                                <li>
-                                    
-                                    <div class="task__details"> 
-                                        <a href="#">EU-UK alignment 'common sense' as OECD downgrades UK growth<span> 6 hrs ago </span></a> 
-                                        <span>Campaigners are calling for the UK to align more closely with the EU as the Organisation for Economic Co-operation and Development (OECD) cites US tariffs for global economic slowdown.</span>
-                                    </div>
-                                   
+                                <li *ngIf="loading" class="text-center p-3">
+                                    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
                                 </li>
-                                <li>
-                                  
+                                <li *ngFor="let item of newsItems">
                                     <div class="task__details"> 
-                                         <a href="#">Will the Bank of England cut interest rates on 20 March ? <span> 6 hrs ago </span></a> 
-                                        <span>Will interest rates be cut when the Bank of England Monetary Policy Committee next meets? We look at what's predicted, what this means for your mortgage and what's expected to happen later this year.</span>                                         
+                                        <a [href]="item.link" target="_blank">{{item.title}}<span style="margin-left: 8px;">{{item.pubDate}}</span></a> 
+                                        <span>{{item.description}}</span>
                                     </div>
                                 </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> From contactless limits to mortgages. What plans to cut red tape mean for your wallet? <span> 6 hrs ago </span></a> 
-                                        <span>The Government is aiming to reduce duplication by different bodies and help drive economic growth.</span>
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                               
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                                <li>
-                                  
-                                    <div class="task__details"> 
-                                         <a href="#"> Lawyer probing Reform UK row contradicts MP Lowe <span> 6 hrs ago </span></a> 
-                                        <span>Comments attributed to the senior lawyer by the Great Yarmouth MP in his defence have been denied by her.  </span>
-                                         
-                                    </div>
-                                </li>
-                               
                             </ul>
                         </div>
                      
