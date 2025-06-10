@@ -2,52 +2,35 @@
     <div class="col-12">
         <div class="header_main">
             <h1>Money Market Deposits</h1>
-             
-            </div>
+        </div>
         <div class="card p-fluid">
             <div class="card_container">
-               <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Logo</th>
-                        <th pSortableColumn="counterparty">Counterparty <p-sortIcon field="counterparty"></p-sortIcon></th>
-                        <th pSortableColumn="currency">Currency <p-sortIcon field="currency"></p-sortIcon></th>
-                        <th pSortableColumn="exposure">Exposure <p-sortIcon field="exposure"></p-sortIcon></th>
-                        <th pSortableColumn="limit">Limit <p-sortIcon field="limit"></p-sortIcon></th>
-                        <th pSortableColumn="remainingLimit">Remaining Limit <p-sortIcon field="remainingLimit"></p-sortIcon></th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-dataItem>
-                    <tr>
-                    <td><img [src]="dataItem.logo" width="40"></td>
-                    <td>{{ dataItem.counterparty }}</td>
-                    <td>{{ dataItem.currency }}</td>
-                     
-                    <td>{{ dataItem.exposure }}</td>
-                    <td>{{ dataItem.limit   }}</td>
-                    <td>{{ dataItem.remainingLimit  }}</td></tr>
-                </ng-template>
+                <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <!-- <th>Logo</th> -->
+                            <th pSortableColumn="counterparty">Counterparty <p-sortIcon
+                                    field="counterparty"></p-sortIcon></th>
+                            <th pSortableColumn="currency">Currency <p-sortIcon field="currency"></p-sortIcon></th>
+                            <th pSortableColumn="exposure">Exposure <p-sortIcon field="exposure"></p-sortIcon></th>
+                            <th pSortableColumn="limit">Limit <p-sortIcon field="limit"></p-sortIcon></th>
+                            <th pSortableColumn="remainingLimit">Remaining Limit <p-sortIcon
+                                    field="remainingLimit"></p-sortIcon></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-dataItem>
+                        <tr>
+                            <!-- <td><img [src]="dataItem.logo" width="40"></td> -->
+                            <td>{{ dataItem.counterparty }}</td>
+                            <td>{{ dataItem.currency }}</td>
 
-               </p-table>
+                            <td>{{ dataItem.exposure }}</td>
+                            <td>{{ dataItem.limit }}</td>
+                            <td>{{ dataItem.remainingLimit }}</td>
+                        </tr>
+                    </ng-template>
 
-             
-                <!-- <kendo-grid [data]="gridData" [resizable]="true" [reorderable]="true" [sortable]="true"
-                    style="min-width: 1000px;">
-
-                    <kendo-grid-column field="logo" title=" " width="50">
-                        <ng-template kendoGridCellTemplate let-dataItem>
-                            <img src="{{dataItem.logo}}" 
-                                width="40">
-                        </ng-template>
-                    </kendo-grid-column>
-
-                    <kendo-grid-column field="counterparty" title="Counterparty" width="250"></kendo-grid-column>
-                    <kendo-grid-column field="currency" title="Currency" width="100"></kendo-grid-column>
-                    <kendo-grid-column field="exposure" title="Exposure" width="150" format="{n0}"></kendo-grid-column>
-                    <kendo-grid-column field="limit" title="Limit" width="150" format="{n0}"></kendo-grid-column>
-                    <kendo-grid-column field="remainingLimit" title="Remaining Limit" width="150"
-                        format="{n0}"></kendo-grid-column>
-                </kendo-grid> -->
-              </div>
+                </p-table>
+            </div>
         </div>
     </div>

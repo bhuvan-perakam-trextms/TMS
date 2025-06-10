@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CashHistory } from '../../api/cashhistory';
+import { CashHistory } from '../../../api/cashhistory';
 import { FilterableSettings } from "@progress/kendo-angular-grid";
-import { CashHistoryService } from '../../service/cashhistory.service';
+import { CashHistoryService } from '../../../service/cashhistory.service';
 
 @Component({
+  standalone: false,
   selector: 'app-cashhistory',
   templateUrl: './cashhistory.component.html'
 })

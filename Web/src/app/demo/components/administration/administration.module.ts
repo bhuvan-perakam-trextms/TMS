@@ -8,9 +8,10 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DragDropModule } from '@angular/cdk/drag-drop'; 
-import { ProjectionsComponent } from './projections.component';
-import { ProjectionsRoutingModule } from './projections-routing.module';
-import { GridModule } from '@progress/kendo-angular-grid';
+import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { RolemanagementComponent } from './rolemanagement/rolemanagement.component';
+import { PermissionsComponent } from './permissions/permissions.component';
+import { AdministrationRoutingModule } from './administration-routing.module';
 
 @NgModule({
     imports: [
@@ -22,11 +23,9 @@ import { GridModule } from '@progress/kendo-angular-grid';
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
-        ProjectionsRoutingModule,
-        DragDropModule,
-        ChartModule,
-        GridModule
+        AdministrationRoutingModule,
+        DragDropModule
     ],
-    declarations: [ProjectionsComponent]
+    declarations: [UsermanagementComponent, RolemanagementComponent, PermissionsComponent]
 })
-export class ProjectionsModule { }
+export class AdministrationModule { }

@@ -5,7 +5,7 @@ import { ReportbuilderComponent } from './reportbuilder/reportbuilder.component'
 
 @NgModule({
     imports: [RouterModule.forChild([
-        { path: '', component: ReportsComponent },
+        { path: 'reports', component: ReportsComponent },
         { path: 'reportbuilder', component: ReportbuilderComponent }
     ])],
     exports: [RouterModule]

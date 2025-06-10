@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 
 
 @Component({
+  standalone: false,
   selector: 'app-transfers',
   templateUrl: './transfers.component.html',
   styleUrls: ['./transfers.component.css'],

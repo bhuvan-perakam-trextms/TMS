@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cash',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './cash.component.html',
   styleUrl: './cash.component.scss'
 })

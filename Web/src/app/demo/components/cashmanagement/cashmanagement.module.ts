@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
@@ -12,25 +12,28 @@ import { PanelModule } from 'primeng/panel';
 import { SplitterModule } from 'primeng/splitter';
 import { DividerModule } from 'primeng/divider';
 
-import { BankAccountsRoutingModule } from './bankaccounts-routing.module';
-import { BankaccountsComponent } from './bankaccounts.component';
+import { CashHistoryComponent } from './cashhistory/cashhistory.component';
+import { TransfersComponent } from './transfers/transfers.component';
+import { BankaccountsComponent } from './bankaccounts/bankaccounts.component';
+
+import { CashManagementRoutingModule } from './cashmanagement-routing.module';
 
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CalendarModule } from "primeng/calendar";
 import { ChipsModule } from "primeng/chips";
 import { DropdownModule } from "primeng/dropdown";
+import { DialogModule } from "primeng/dialog";
+import { TabViewModule } from "primeng/tabview";
 import { InputMaskModule } from "primeng/inputmask";
 import { InputNumberModule } from "primeng/inputnumber";
 import { CascadeSelectModule } from "primeng/cascadeselect";
 import { MultiSelectModule } from "primeng/multiselect";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
-import { DialogModule } from 'primeng/dialog';
+
 
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-
-import { MapToArrayPipe } from '../../pipes/map-to-array.pipe';
 
 @NgModule({
     imports: [
@@ -38,32 +41,35 @@ import { MapToArrayPipe } from '../../pipes/map-to-array.pipe';
         FormsModule,
         ChartModule,
         DividerModule,
-        DialogModule,
         MenuModule,
         TableModule,
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
-        BankAccountsRoutingModule,
+        CashManagementRoutingModule,
         PanelModule,
         SplitterModule,
 
         //AutoCompleteModule,
         //CalendarModule,
         ChipsModule,
+        DropdownModule,
         //DropdownModule,
         //InputMaskModule,
         //InputNumberModule,
         //CascadeSelectModule,
         //MultiSelectModule,
         //InputTextareaModule,
-        //InputTextModule,
+        //InputTextModule
 
         GridModule,
-        DropDownsModule
+        DropDownsModule,
+        DialogModule,
+        TabViewModule,
+        ReactiveFormsModule
     ],
-    declarations: [BankaccountsComponent, MapToArrayPipe],
+    declarations: [CashHistoryComponent, BankaccountsComponent, TransfersComponent],
 })
-export class BankAccountsModule { }
+export class CashManagementModule { }
 
 

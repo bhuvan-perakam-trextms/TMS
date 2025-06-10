@@ -8,24 +8,23 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DragDropModule } from '@angular/cdk/drag-drop'; 
-import { FundsComponent } from './funds.component';
-import { FundsRoutingModule } from './funds-routing.module';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { SidebarModule } from 'primeng/sidebar';
+import { AssetsComponent } from './assets/assets.component';
+import { AlmRoutingModule } from './alm-routing.modules';
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ChartModule,
-        MenuModule,
-        TableModule,
-        StyleClassModule,
-        PanelMenuModule,
-        ButtonModule,
-        FundsRoutingModule,
-        DragDropModule,
-        GridModule
+           CommonModule,
+           FormsModule,
+           MenuModule,
+           TableModule,
+           StyleClassModule,
+           PanelMenuModule,
+           ButtonModule,
+           SidebarModule,
+           AlmRoutingModule
     ],
-    declarations: [FundsComponent]
+    declarations: [AssetsComponent]
 })
-export class FundsModule { }
+export class AlmModule { }
