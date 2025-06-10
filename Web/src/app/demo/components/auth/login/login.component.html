@@ -1,26 +1,88 @@
-<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
-    <div class="flex flex-column align-items-center justify-content-center">
-        <img src="assets/layout/images/TREX_Full_Logo.png" alt="TREX logo" class="mb-5 w-12rem flex-shrink-0" style="border-radius: 5%;">                
-        <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, #324533 10%, rgba(62, 69, 51, 0) 30%);">
-            <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-                <div class="text-center mb-5">
-                    <img src="assets/demo/images/login/generic-avatar.png" alt="Image" height="50" class="mb-3">
-                    <div class="text-900 text-3xl font-medium mb-3">Welcome to TREX</div>
-                    
-                    
-                    <!--
-                    <div style="display: flex; justify-content: center; align-items: center; text-align: center;">
-                        <asl-google-signin-button type='standard' size='large'></asl-google-signin-button>
-                    </div>
-                    -->
-
-                    
-                </div>
-
-                <div>
-                    
-                </div>
+<div class="layout-topbar" style="background-color: #07435B; height: 8rem; padding: 1.5rem 2rem;">
+    <a routerLink="" style="margin-right: 4rem;">
+        <img src="assets/layout/images/TrexBlueLogo.png" width="250" alt="logo">
+    </a>
+    <div class="layout-topbar-menu" style="margin-left: auto;">
+        <div class="tor__right">
+            <div>
+                <span class="user__details" style="color: white; font-size: 1.5rem; display: block; margin-bottom: 0.5rem;">Welcome to TREX</span>
+                <span class="block font-medium" style="color: white; font-size: 1.2rem;">
+                    A Treasury Management Solution
+                </span>
             </div>
         </div>
     </div>
 </div>
+
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden" style="font-family: 'Inter var', sans-serif; background-color: #07435B; margin-top: 2rem;">
+    <div class="flex flex-column md:flex-row align-items-center justify-content-center w-full">
+        <!-- Banner Section -->
+        <div class="banner-section" style="width: 100%; max-width: 900px; height: 500px; border-radius: 16px; margin-right: 2rem; padding: 2.5rem; display: flex; flex-direction: row; justify-content: center; position: relative; overflow: hidden;">
+            <!-- Right Content - Login Form -->
+            <div style="width: 45%; background: #07435B; border-radius: 12px; padding: 2rem; position: relative; z-index: 1;">
+                <div class="text-center mb-4">
+                    <h2 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">Sign In</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1rem;">Enter your credentials</p>
+                </div>
+
+                <div class="flex flex-column gap-3">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon" style="background: rgba(255,255,255,0.2); border: none;">
+                            <i class="pi pi-user" style="color: white;"></i>
+                        </span>
+                        <input type="text" pInputText placeholder="Username" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.75rem; width: 100%;" class="white-placeholder" />
+                    </div>
+
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon" style="background: rgba(255,255,255,0.2); border: none;">
+                            <i class="pi pi-lock" style="color: white;"></i>
+                        </span>
+                        <input type="password" pInputText placeholder="Password" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.75rem; width: 100%;" class="white-placeholder" />
+                    </div>
+
+                    <div class="flex align-items-center justify-content-between mb-3">
+                        <div class="flex align-items-center">
+                            <p-checkbox [binary]="true" styleClass="mr-2"></p-checkbox>
+                            <span style="color: white; font-size: 0.9rem;">Remember me</span>
+                        </div>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">Forgot Password?</a>
+                    </div>
+
+                    <button pButton label="Sign In" style="background: white; color: #07435B; border: none; padding: 0.75rem; font-weight: 600;"></button>
+
+                    <div class="text-center mt-2">
+                        <span style="color: white; font-size: 0.9rem;">Or sign in with</span>
+                        <div class="mt-2 flex justify-content-center">
+                            <asl-google-signin-button type='standard' size='large'></asl-google-signin-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
+            <div style="position: absolute; bottom: 0; right: 0; width: 100%; height: 100%; background: radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
+        </div>
+    </div>
+</div>
+
+<div class="layout-footer" style="background-color: #07435B; padding: 1rem 2rem; color: white; display: flex; align-items: center; justify-content: center;">
+    <img src="assets/layout/images/TrexBlueIcon.png" alt="Logo" height="20" class="mr-2"/>
+    <span style="font-size: 1.1rem;">Connecting the dots in Treasury.</span>
+    <span class="font-medium ml-2" style="font-size: 1.1rem;">TREX - 2025</span>
+</div>
+
+<style>
+    .white-placeholder::placeholder {
+        color: white !important;
+        opacity: 0.8;
+    }
+    .white-placeholder:-ms-input-placeholder {
+        color: white !important;
+        opacity: 0.8;
+    }
+    .white-placeholder::-ms-input-placeholder {
+        color: white !important;
+        opacity: 0.8;
+    }
+</style>

@@ -26,14 +26,10 @@ import {
         InputTextModule,
         FormsModule,
         PasswordModule,
-
-        
         GoogleSigninButtonModule,
         SocialLoginModule
-        
     ],
     declarations: [LoginComponent],
-    /*
     providers:[ 
         {
             provide: 'SocialAuthServiceConfig',
@@ -52,7 +48,6 @@ import {
         },
         GoogleSigninButtonDirective 
     ],
-    */
-   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LoginModule { }

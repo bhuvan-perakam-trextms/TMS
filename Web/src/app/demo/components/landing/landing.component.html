@@ -2,15 +2,11 @@
     <a routerLink="">
         <img src="assets/layout/images/TrexBlueLogo.png" width="90" alt="logo">
     </a>
-    <!-- <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-        <i class="pi pi-bars top-bar-text-color"></i>
-    </button> -->
 
     <div #topbarmenu class="layout-topbar-menu landing__topbar">
         <div>
             <span class="block font-medium">
-                <!-- <i class="pi pi-fw pi-flag-fill"></i>  -->
-                Welcome Administrator 
+                Welcome {{ userService.getUser()?.name || 'Administrator' }}
             </span>
             <span class="block font-medium">
                 Total Account Balance is £600,000
@@ -31,71 +27,58 @@
                     </h2></div>
                     <div class="grid  mt-8 md:mt-0">
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items"
-                                [routerLink]="['/home/dashboard']">
-                                <img src="assets/demo/images/landing/asset-management.png"   alt="enterprise">
-                                
-                                <span>Cash Management</span>
+                            <div class="lading__items" [routerLink]="['/home/dashboard']" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/asset-management.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Cash Management</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items"
-                                [routerLink]="['/deals/projections']">
-                                <img src="assets/demo/images/landing/cashdealing.png"   alt="enterprise">
-                                
-                                <span>Treasury Dealing</span>
+                            <div class="lading__items" [routerLink]="['/deals/projections']" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/cashdealing.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Treasury Dealing</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items"
-                                [routerLink]="['/invoicemanagement/invoices']">
-                                <img src="assets/demo/images/landing/receipt.png"   alt="enterprise">
-                                
-                                <span >Invoice Management System</span>
+                            <div class="lading__items" [routerLink]="['/invoicemanagement/invoices']" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/receipt.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Invoice Management</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items"
-                                [routerLink]="['/reporting/reports']"
-                                >
-                                <img src="assets/demo/images/landing/economy.png"   alt="enterprise">
-                                
-                                <span >Reporting</span>
+                            <div class="lading__items" [routerLink]="['/reporting/reports']" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/economy.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Reporting</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items">
-                                <img src="assets/demo/images/landing/assets.png"   alt="enterprise">
-                                
-                                <span>Asset & Liability Management</span>
+                            <div class="lading__items" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/assets.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Asset & Liability</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items">
-                                <img src="assets/demo/images/landing/cashflow.png"  alt="enterprise">
-                                
-                                <span>Cash Forecast</span>
+                            <div class="lading__items" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/cashflow.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Cash Forecast</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items">
-                                <img src="assets/demo/images/landing/administrator1.png"   alt="enterprise">
-                                
-                                <span>Administrator</span>
+                            <div class="lading__items" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/administrator1.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Administrator</span>
                             </div>
                         </div>
         
                         <div class="col-12 lg:col-3">
-                            <div class=" lading__items">
-                                <img src="assets/demo/images/landing/settings1.png"   alt="enterprise">
-                                
-                                <span>Settings</span>
+                            <div class="lading__items" style="background-color: #EBF9FF; border-radius: 16px; text-align: center; display: block; width: 100%; cursor: pointer; padding: 20px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <img src="assets/demo/images/landing/settings1.png" alt="enterprise" style="height: 70px; margin-bottom: 12px;">
+                                <span style="font-size: 15px; color: #07435B; font-weight: 600; display: block;">Settings</span>
                             </div>
                         </div>
                     </div>
@@ -115,7 +98,7 @@
                                 <li>
                                     
                                     <div class="task__details"> 
-                                        <a href="#">EU-UK alignment ‘common sense’ as OECD downgrades UK growth<span> 6 hrs ago </span></a> 
+                                        <a href="#">EU-UK alignment 'common sense' as OECD downgrades UK growth<span> 6 hrs ago </span></a> 
                                         <span>Campaigners are calling for the UK to align more closely with the EU as the Organisation for Economic Co-operation and Development (OECD) cites US tariffs for global economic slowdown.</span>
                                     </div>
                                    
@@ -124,7 +107,7 @@
                                   
                                     <div class="task__details"> 
                                          <a href="#">Will the Bank of England cut interest rates on 20 March ? <span> 6 hrs ago </span></a> 
-                                        <span>Will interest rates be cut when the Bank of England Monetary Policy Committee next meets? We look at what’s predicted, what this means for your mortgage and what’s expected to happen later this year.</span>                                         
+                                        <span>Will interest rates be cut when the Bank of England Monetary Policy Committee next meets? We look at what's predicted, what this means for your mortgage and what's expected to happen later this year.</span>                                         
                                     </div>
                                 </li>
                                 <li>
@@ -201,19 +184,6 @@
                                 </li>
                                
                             </ul>
-                            <!-- <ul class="list-none p-0 m-0">
-                                    <li *ngFor="let task of tasks" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-5">
-                                        <div>
-                                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0">{{task.Name}}</span>
-                                        </div>
-                                        <div class="mt-2 md:mt-0 flex align-items-center">
-                                            <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '8px'}">
-                                                <div [ngClass]="'bg-' + task.Color + '-500 h-full'" [ngStyle]="{width: task.Percentage}"></div>
-                                            </div>
-                                            <span [ngClass]="'text-'+ task.Color + '-500 ml-3 font-medium'">{{task.Percentage}}</span>
-                                        </div>
-                                    </li>
-                                </ul> -->
                         </div>
                      
                     
@@ -226,8 +196,10 @@
     </div>
 </div>
 
-<div class="layout-footer">
-    <img src="assets/layout/images/TrexBlueIcon.png" alt="Logo" height="20" class="mr-2"/>
-    Connecting the dots in Treasury.
-    <span class="font-medium ml-2">TREX - 2025</span>
+<div class="layout-footer" style="background-color: #07435B; color: white; width: 100%; margin: 0; position: fixed; bottom: 0; left: 0; height: 3rem; display: flex; align-items: center; justify-content: center; padding: 0 2rem;">
+    <div style="display: flex; align-items: center;">
+        <img src="assets/layout/images/TrexBlueIcon.png" alt="Logo" height="20" class="mr-2"/>
+        <span style="line-height: 1;">Connecting the dots in Treasury.</span>
+        <span class="font-medium ml-2" style="line-height: 1;">TREX - 2025</span>
+    </div>
 </div>

@@ -13,36 +13,31 @@
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
          
-            <div class="input-group search-bar">
-               
-    <input type="text" class="form-control" placeholder="Search for result">
-    <a class="input-group-text">
-        <i class="pi pi-search"></i>  <!-- PrimeNG Search Icon -->
-    </a>
- 
+        <div class="input-group search-bar">
+            <input type="text" class="form-control" placeholder="Search for result">
+            <a class="input-group-text">
+                <i class="pi pi-search"></i>
+            </a>
         </div>
          
         <div class="tor__right">
             <button class="layout_topbar_iconbutton"> 
                 <i class="pi pi-bell"></i>
-                 
             </button> 
             <button class="layout_topbar_iconbutton">
-                <i class="pi pi-spin pi-cog"  ></i>
-
-                
+                <i class="pi pi-spin pi-cog"></i>
             </button> 
 
             <div>
-            <span class="user__details">Welcome, {{ this.userService.getUser()?.name || 'Administrator' }}
-            </span>
-            <span class="block font-medium">
-                Total Account Balance is £600,000
-            </span>
+                <span class="user__details">Welcome, {{ this.userService.getUser()?.name || 'Administrator' }}</span>
+                <span class="block font-medium">
+                    Total Account Balance is £600,000
+                </span>
+            </div>
+            <button class="p-link layout-topbar-button" (click)="signOut()">
+                <i class="pi pi-sign-out"></i>
+                <span>Sign out</span>
+            </button>
         </div>
-        <button class="p-link layout-topbar-button " (click)="signOut()">
-            <i class="pi pi-sign-out"></i>
-            <span>Sign out</span>
-        </button> </div>
     </div>
 </div>

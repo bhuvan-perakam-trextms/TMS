@@ -11,6 +11,7 @@ import {
   GoogleSigninButtonModule,
   GoogleSigninButtonDirective
 } from '@abacritt/angularx-social-login';
+
 @NgModule({
   imports: [
     RouterModule.forRoot([
@@ -92,10 +93,10 @@ import {
             { path: '', loadChildren: () => import('./demo/components/alm/alm.module').then(m => m.AlmModule) }
           ]
       },
-      { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
+      { path: '', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
       { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
       { path: 'notfound', component: NotfoundComponent },
-      { path: '**', redirectTo: '/notfound' },
+      { path: '**', redirectTo: 'notfound' }
     ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' }),
     PanelModule
   ],
@@ -119,5 +120,4 @@ import {
     GoogleSigninButtonDirective
   ],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }
