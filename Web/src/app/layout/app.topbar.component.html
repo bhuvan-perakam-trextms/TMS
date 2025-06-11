@@ -24,6 +24,9 @@
             <button class="layout_topbar_iconbutton"> 
                 <i class="pi pi-bell"></i>
             </button> 
+            <button class="layout_topbar_iconbutton" (click)="onChatButtonClick()"> 
+                <i class="pi pi-comment"></i>
+            </button>
             <button class="layout_topbar_iconbutton">
                 <i class="pi pi-spin pi-cog"></i>
             </button> 
@@ -41,3 +44,55 @@
         </div>
     </div>
 </div>
+
+<p-sidebar [(visible)]="ChatVisible" position="right" [transitionOptions]="'.3s cubic-bezier(0, 0, 0.2, 1)'" styleClass="layout-chat-sidebar w-29-5rem">
+    <!-- Chat Header -->
+    <div class="chat-header p-3 d-flex align-items-center" style="background-color: #07435B; color: white;">
+      <h5 class="m-0 d-flex align-items-center" style="color: white;">
+        <i class="pi pi-bolt mr-2"></i>
+        <span>AI Chat Assistant</span>
+        <button type="button" class="p-button p-button-sm p-button-text ml-2" style="color: white; border: none; background: transparent;" (click)="clearChat()" title="Clear chat">
+          <i class="pi pi-trash"></i>
+        </button>
+      </h5>
+    </div>
+  
+    <!-- Chat Content -->
+    <div class="chat-content p-3" style="display: flex; flex-direction: column; height: calc(100% - 70px); background-color: #f8f9fa;">
+      <!-- Message List -->
+      <div #chatMessagesDiv class="chat-messages" style="flex: 1; overflow-y: auto; margin-bottom: 1rem; padding: 1rem;">
+        <ng-container *ngFor="let msg of chatMessages">
+          <div [ngClass]="{'message received mb-3': msg.sender === 'bot', 'message sent mb-3': msg.sender === 'user'}" [style.text-align]="msg.sender === 'user' ? 'right' : 'left'">
+            <div class="message-text p-3" [ngStyle]="{
+              'background-color': msg.sender === 'user' ? '#07435B' : 'white',
+              'color': msg.sender === 'user' ? 'white' : '#07435B',
+              'border-radius': '0.5rem',
+              'display': 'inline-block',
+              'max-width': '85%',
+              'box-shadow': '0 1px 2px rgba(0,0,0,0.1)'
+            }">
+              <ng-container *ngFor="let line of msg.text.split('\n')">
+                <p style="margin: 0 0 0.5em 0; white-space: pre-line;">{{ line }}</p>
+              </ng-container>
+            </div>
+            <div class="message-time text-muted mt-1" style="font-size: 0.75rem;">{{ msg.time }}</div>
+          </div>
+        </ng-container>
+        <div *ngIf="loading" class="d-flex align-items-center justify-content-center mt-2 mb-2">
+          <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem; color: #07435B;"></i>
+          <span class="ml-2" style="color: #07435B;">AI is typing...</span>
+        </div>
+      </div>
+  
+      <!-- Chat Input -->
+      <div class="chat-input p-3" style="background-color: white; border-top: 1px solid #dee2e6;">
+        <form (ngSubmit)="sendMessage()" class="d-flex align-items-center gap-2" style="width: 100%;">
+          <textarea pInputTextarea rows="3" class="flex-grow-1" style="flex: 1 1 0%; width: 100%; border: 1px solid #07435B; border-radius: 0.5rem; padding: 0.75rem; resize: none; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.5; transition: border-color 0.2s, box-shadow 0.2s; color: #07435B; min-height: 60px; max-height: 120px;" placeholder="Type your message here..." [(ngModel)]="chatInput" name="chatInput" [disabled]="loading" (keydown)="onInputKeydown($event)"></textarea>
+          <button type="submit" pButton class="p-button-primary" style="background-color: #07435B; border-color: #07435B; min-width: 100px; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; transition: background-color 0.2s; color: white; display: flex; align-items: center; justify-content: center;" [disabled]="loading || !chatInput.trim()">
+            <i class="pi pi-send mr-2"></i>
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+</p-sidebar>

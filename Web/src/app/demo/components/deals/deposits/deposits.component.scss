@@ -1,0 +1,35 @@
+// Compact table rows and cells
+:host ::ng-deep .p-table tbody tr, :host ::ng-deep .p-table td, :host ::ng-deep .p-table th {
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  border-bottom: 1px solid #e0e4ea !important;
+  vertical-align: middle !important;
+}
+
+// Table header background
+:host ::ng-deep .p-table thead th {
+  background: #eaf4fa !important;
+  color: #07435B !important;
+  font-weight: 600;
+}
+
+// Subtle hover effect
+:host ::ng-deep .p-table tbody tr:hover {
+  background-color: #f5fafd !important;
+}
+
+// Center action icons
+:host ::ng-deep .p-table td:last-child {
+  text-align: center;
+  vertical-align: middle;
+}
+:host ::ng-deep .p-table td:last-child button {
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+// Remove extra spacing in action column
+:host ::ng-deep .p-table td:last-child {
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+}

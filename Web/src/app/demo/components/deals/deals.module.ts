@@ -19,6 +19,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DepositsComponent } from './deposits/deposits.component';
 import { FundsComponent } from './funds/funds.component';
 import { ProjectionsComponent } from './projections/projections.component';
+import { InterestRateSwapsComponent } from './interest-rate-swaps/interest-rate-swaps.component';
 
 @NgModule({
     imports: [
@@ -39,6 +40,6 @@ import { ProjectionsComponent } from './projections/projections.component';
         InputTextModule,
         DialogModule
     ],
-    declarations: [DepositsComponent, FundsComponent, ProjectionsComponent]
+    declarations: [DepositsComponent, FundsComponent, ProjectionsComponent, InterestRateSwapsComponent]
 })
 export class DealsModule { }

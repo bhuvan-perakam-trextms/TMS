@@ -25,16 +25,16 @@ interface Deposit {
 }
 
 @Component({
-    selector: 'app-deposits',
-    standalone: false,
-    templateUrl: './deposits.component.html',
+  selector: 'app-deposits',
+  standalone: false,
+  templateUrl: './deposits.component.html',
     styleUrl: './deposits.component.scss',
     providers: [MessageService]
 })
 export class DepositsComponent implements OnInit, OnDestroy {
 
-    filterMode: FilterableSettings = "menu";
-    
+  filterMode: FilterableSettings = "menu";
+
     // Dropdown options
     counterparties: Counterparty[] = [
         { name: 'HSBC', code: 'HSBC' },
@@ -64,7 +64,7 @@ export class DepositsComponent implements OnInit, OnDestroy {
     // New deposit form model
     newDeposit: Deposit = {
         counterparty: null,
-        currency: 'GBP',
+      currency: 'GBP',
         amount: null,
         interestRate: null,
         startDate: new Date(),
@@ -121,6 +121,117 @@ export class DepositsComponent implements OnInit, OnDestroy {
                 startDate: new Date('2024-03-16'),
                 maturityDate: new Date('2024-09-16'),
                 account: this.accounts[2],
+                notes: '6-month deposit'
+            },
+            // Additional 10 sample deposits
+            {
+                id: 3,
+                counterparty: this.counterparties[2],
+                currency: 'GBP',
+                amount: 1500000,
+                interestRate: 4.2,
+                startDate: new Date('2024-04-01'),
+                maturityDate: new Date('2024-07-01'),
+                account: this.accounts[1],
+                notes: '3-month deposit'
+            },
+            {
+                id: 4,
+                counterparty: this.counterparties[3],
+                currency: 'EUR',
+                amount: 1200000,
+                interestRate: 4.8,
+                startDate: new Date('2024-04-10'),
+                maturityDate: new Date('2024-10-10'),
+                account: this.accounts[3],
+                notes: '6-month deposit'
+            },
+            {
+                id: 5,
+                counterparty: this.counterparties[4],
+                currency: 'USD',
+                amount: 1750000,
+                interestRate: 5.1,
+                startDate: new Date('2024-05-01'),
+                maturityDate: new Date('2024-08-01'),
+                account: this.accounts[4],
+                notes: '3-month deposit'
+            },
+            {
+                id: 6,
+                counterparty: this.counterparties[5],
+                currency: 'EUR',
+                amount: 900000,
+                interestRate: 4.3,
+                startDate: new Date('2024-05-15'),
+                maturityDate: new Date('2024-11-15'),
+                account: this.accounts[5],
+                notes: '6-month deposit'
+            },
+            {
+                id: 7,
+                counterparty: this.counterparties[6],
+                currency: 'GBP',
+                amount: 1100000,
+                interestRate: 4.7,
+                startDate: new Date('2024-06-01'),
+                maturityDate: new Date('2024-09-01'),
+                account: this.accounts[6],
+                notes: '3-month deposit'
+            },
+            {
+                id: 8,
+                counterparty: this.counterparties[7],
+                currency: 'USD',
+                amount: 2100000,
+                interestRate: 5.2,
+                startDate: new Date('2024-06-10'),
+                maturityDate: new Date('2024-12-10'),
+                account: this.accounts[7],
+                notes: '6-month deposit'
+            },
+            {
+                id: 9,
+                counterparty: this.counterparties[8],
+                currency: 'EUR',
+                amount: 950000,
+                interestRate: 4.6,
+                startDate: new Date('2024-07-01'),
+                maturityDate: new Date('2024-10-01'),
+                account: this.accounts[0],
+                notes: '3-month deposit'
+            },
+            {
+                id: 10,
+                counterparty: this.counterparties[0],
+                currency: 'GBP',
+                amount: 1300000,
+                interestRate: 4.9,
+                startDate: new Date('2024-07-15'),
+                maturityDate: new Date('2025-01-15'),
+                account: this.accounts[1],
+                notes: '6-month deposit'
+            },
+            {
+                id: 11,
+                counterparty: this.counterparties[1],
+                currency: 'USD',
+                amount: 2200000,
+                interestRate: 5.3,
+                startDate: new Date('2024-08-01'),
+                maturityDate: new Date('2024-11-01'),
+                account: this.accounts[2],
+                notes: '3-month deposit'
+            },
+            {
+                id: 12,
+                counterparty: this.counterparties[2],
+                currency: 'EUR',
+                amount: 1050000,
+                interestRate: 4.4,
+                startDate: new Date('2024-08-10'),
+                maturityDate: new Date('2025-02-10'),
+                account: this.accounts[3],
                 notes: '6-month deposit'
             }
         ];

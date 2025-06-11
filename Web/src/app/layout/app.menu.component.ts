@@ -71,6 +71,9 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Funds', icon: 'fas fa-dollar-sign', routerLink: ['/deals/funds']
                     },
+                    {
+                        label: 'Interest Rate Swaps', icon: 'pi pi-fw pi-calculator', routerLink: ['/deals/interest-rate-swaps']
+                    }
                 ],
             },
             {

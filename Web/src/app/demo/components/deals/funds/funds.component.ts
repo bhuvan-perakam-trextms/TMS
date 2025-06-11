@@ -21,19 +21,33 @@ interface MonthlyBreakdown {
 }
 
 @Component({
-    selector: 'app-funds',
-    standalone: false,
-    templateUrl: './funds.component.html',
+  selector: 'app-funds',
+  standalone: false,
+  templateUrl: './funds.component.html',
     styleUrl: './funds.component.scss',
     providers: [MessageService]
 })
 export class FundsComponent implements OnInit, OnDestroy {
-    filterMode: FilterableSettings = "menu";
+filterMode: FilterableSettings = "menu";
     gridData: Fund[] = [];
     selectedFund: Fund | null = null;
     monthlyYield: number = 0;
     monthlyReturn: number = 0;
     monthlyBreakdown: MonthlyBreakdown[] = [];
+    showCalculationDialog: boolean = false;
+    showFundDialog: boolean = false;
+    newFund: Fund = {
+        ISIN: '',
+        Counterparty: '',
+        FundName: '',
+        Currency: 'USD',
+        Exposure: null,
+        Limit: null,
+        MMFInvestment: null,
+        DailyYield: null
+    };
+    isEditMode: boolean = false;
+    editingIndex: number = null;
 
     constructor(private messageService: MessageService) {}
 
@@ -46,25 +60,25 @@ export class FundsComponent implements OnInit, OnDestroy {
     loadFunds() {
         // Sample data - replace with actual API call
         this.gridData = [
-            {
+    {
                 ISIN: 'ISIN001',
                 Counterparty: 'Bank A',
                 FundName: 'Money Market Fund A',
-                Currency: 'USD',
-                Exposure: 1000000,
-                Limit: 2000000,
-                MMFInvestment: 1500000,
-                DailyYield: 4.86
-            },
-            {
+      Currency: 'USD',
+                Exposure: 1000,
+                Limit: 2000,
+                MMFInvestment: 1500,
+                DailyYield: 0.25
+    },
+    {
                 ISIN: 'ISIN002',
                 Counterparty: 'Bank B',
                 FundName: 'Money Market Fund B',
-                Currency: 'EUR',
-                Exposure: 2000000,
-                Limit: 3000000,
-                MMFInvestment: 2500000,
-                DailyYield: 4.91
+      Currency: 'EUR',
+                Exposure: 2000,
+                Limit: 3000,
+                MMFInvestment: 2500,
+                DailyYield: 0.5
             }
         ];
     }
@@ -72,6 +86,7 @@ export class FundsComponent implements OnInit, OnDestroy {
     selectFund(fund: Fund) {
         this.selectedFund = fund;
         this.calculateMonthlyReturns();
+        this.showCalculationDialog = true;
     }
 
     calculateMonthlyReturns() {
@@ -110,5 +125,55 @@ export class FundsComponent implements OnInit, OnDestroy {
             balance = closingBalance; // Update balance for next month
             return breakdown;
         });
+    }
+
+    closeCalculationDialog() {
+        this.showCalculationDialog = false;
+    }
+
+    openFundDialog() {
+        this.resetFundForm();
+        this.showFundDialog = true;
+    }
+
+    openEditFundDialog(fund: Fund, idx: number) {
+        this.editFund(fund, idx);
+        this.showFundDialog = true;
+    }
+
+    closeFundDialog() {
+        this.showFundDialog = false;
+        this.resetFundForm();
+    }
+
+    addOrUpdateFund() {
+        if (!this.newFund.ISIN || !this.newFund.FundName || !this.newFund.Currency) return;
+        if (this.isEditMode && this.editingIndex !== null) {
+            this.gridData[this.editingIndex] = { ...this.newFund };
+        } else {
+            this.gridData.push({ ...this.newFund });
+        }
+        this.closeFundDialog();
+    }
+
+    editFund(fund: Fund, idx: number) {
+        this.newFund = { ...fund };
+        this.isEditMode = true;
+        this.editingIndex = idx;
+    }
+
+    resetFundForm() {
+        this.newFund = {
+            ISIN: '',
+            Counterparty: '',
+            FundName: '',
+            Currency: 'USD',
+            Exposure: null,
+            Limit: null,
+            MMFInvestment: null,
+            DailyYield: null
+        };
+        this.isEditMode = false;
+        this.editingIndex = null;
     }
 }

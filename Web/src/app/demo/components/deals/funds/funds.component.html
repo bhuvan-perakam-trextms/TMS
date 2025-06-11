@@ -6,97 +6,41 @@
         
         <!-- Fund Details Card -->
         <div class="card mb-4">
-            <div class="grid p-fluid">
-                <div class="col-12 md:col-3 mb-3">
-                    <div class="field">
-                        <label for="fund" class="block mb-2">Select Fund</label>
-                        <p-dropdown id="fund" [options]="gridData" [(ngModel)]="selectedFund" optionLabel="FundName" placeholder="Select Fund" styleClass="w-full" (onChange)="calculateMonthlyReturns()"></p-dropdown>
-                    </div>
+            <div class="d-flex align-items-end gap-3" style="max-width: 600px;">
+                <div style="flex: 1;">
+                    <label for="fund" class="block mb-2">Select Fund</label>
+                    <p-dropdown id="fund" [options]="gridData" [(ngModel)]="selectedFund" optionLabel="FundName" placeholder="Select Fund" styleClass="w-full" (onChange)="calculateMonthlyReturns()"></p-dropdown>
+                </div>
+                <div style="margin-top: 5px;">
+                    <button pButton type="button" label="Add Fund" class="p-button-primary" style="background-color: #07435B; min-width: 100px;" (click)="openFundDialog()"></button>
                 </div>
             </div>
         </div>
 
         <!-- Monthly Calculations Card -->
-        <div class="card mb-4" *ngIf="selectedFund">
-            <h5 class="mb-3">Monthly Returns Calculation</h5>
-            <div class="grid">
-                <div class="col-12 md:col-3 mb-3">
-                    <div class="field">
-                        <label class="block mb-2">Investment Amount</label>
-                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
-                            {{selectedFund.MMFInvestment | currency:selectedFund.Currency}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 md:col-3 mb-3">
-                    <div class="field">
-                        <label class="block mb-2">Daily Yield</label>
-                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
-                            {{selectedFund.DailyYield}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 md:col-3 mb-3">
-                    <div class="field">
-                        <label class="block mb-2">Monthly Yield</label>
-                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
-                            {{monthlyYield}}%
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 md:col-3 mb-3">
-                    <div class="field">
-                        <label class="block mb-2">Monthly Return</label>
-                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
-                            {{monthlyReturn | currency:selectedFund.Currency}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <!-- Removed in-screen calculation display -->
         <!-- Monthly Breakdown Table -->
-        <div class="card" *ngIf="selectedFund">
-            <h5 class="mb-3">Monthly Breakdown</h5>
-            <p-table [value]="monthlyBreakdown" [paginator]="true" [rows]="12" [responsiveLayout]="'scroll'" styleClass="p-datatable-sm">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Month</th>
-                        <th>Opening Balance</th>
-                        <th>Monthly Return</th>
-                        <th>Closing Balance</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-item>
-                    <tr>
-                        <td>{{item.month}}</td>
-                        <td>{{item.openingBalance | currency:selectedFund.Currency}}</td>
-                        <td>{{item.monthlyReturn | currency:selectedFund.Currency}}</td>
-                        <td>{{item.closingBalance | currency:selectedFund.Currency}}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </div>
+        <!-- Removed in-screen breakdown display -->
 
         <!-- Funds List -->
         <div class="card p-fluid">
             <div class="card_container">
                 <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [sortMode]="'multiple'">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th pSortableColumn="ISIN">ISIN <p-sortIcon field="ISIN"></p-sortIcon></th>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="ISIN">ISIN <p-sortIcon field="ISIN"></p-sortIcon></th>
                             <th pSortableColumn="Counterparty">Counterparty <p-sortIcon field="Counterparty"></p-sortIcon></th>
                             <th pSortableColumn="FundName">Fund Name <p-sortIcon field="FundName"></p-sortIcon></th>
                             <th pSortableColumn="Currency">Currency <p-sortIcon field="Currency"></p-sortIcon></th>
-                            <th pSortableColumn="Exposure">Exposure <p-sortIcon field="Exposure"></p-sortIcon></th>
-                            <th pSortableColumn="Limit">Limit <p-sortIcon field="Limit"></p-sortIcon></th>
-                            <th pSortableColumn="MMFInvestment">Investment <p-sortIcon field="MMFInvestment"></p-sortIcon></th>
-                            <th pSortableColumn="DailyYield">Daily Yield <p-sortIcon field="DailyYield"></p-sortIcon></th>
+            <th pSortableColumn="Exposure">Exposure <p-sortIcon field="Exposure"></p-sortIcon></th>
+            <th pSortableColumn="Limit">Limit <p-sortIcon field="Limit"></p-sortIcon></th>
+            <th pSortableColumn="MMFInvestment">Investment <p-sortIcon field="MMFInvestment"></p-sortIcon></th>
+            <th pSortableColumn="DailyYield">Daily Yield <p-sortIcon field="DailyYield"></p-sortIcon></th>
                             <th>Actions</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-fund>
-                        <tr>
+        </tr>
+    </ng-template>
+                    <ng-template pTemplate="body" let-fund let-rowIndex="rowIndex">
+        <tr>
                             <td>{{fund.ISIN}}</td>
                             <td>{{fund.Counterparty}}</td>
                             <td>{{fund.FundName}}</td>
@@ -107,13 +51,123 @@
                             <td>{{fund.DailyYield}}%</td>
                             <td>
                                 <button pButton icon="pi pi-calculator" class="p-button-rounded p-button-text" (click)="selectFund(fund)" [style]="{'color': '#07435B'}"></button>
+                                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="openEditFundDialog(fund, rowIndex)" [style]="{'color': '#07435B'}" pTooltip="Edit"></button>
                             </td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
+        </tr>
+    </ng-template>
+</p-table>
+             </div>
         </div>
     </div>
 </div>
 
+<p-dialog header="Monthly Returns Calculation" [(visible)]="showCalculationDialog" [style]="{width: '900px'}" [modal]="true" [draggable]="false" [resizable]="false" (onHide)="closeCalculationDialog()">
+    <div *ngIf="selectedFund">
+        <div class="grid">
+            <div class="col-12 md:col-3 mb-3">
+                <div class="field">
+                    <label class="block mb-2">Investment Amount</label>
+                    <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                        {{selectedFund.MMFInvestment | currency:selectedFund.Currency}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-3 mb-3">
+                <div class="field">
+                    <label class="block mb-2">Daily Yield</label>
+                    <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                        {{selectedFund.DailyYield}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-3 mb-3">
+                <div class="field">
+                    <label class="block mb-2">Monthly Yield</label>
+                    <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                        {{monthlyYield}}%
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-3 mb-3">
+                <div class="field">
+                    <label class="block mb-2">Monthly Return</label>
+                    <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                        {{monthlyReturn | currency:selectedFund.Currency}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 class="mb-3">Monthly Breakdown</h5>
+        <p-table [value]="monthlyBreakdown" [paginator]="true" [rows]="12" [responsiveLayout]="'scroll'" styleClass="p-datatable-sm">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Month</th>
+                    <th>Opening Balance</th>
+                    <th>Monthly Return</th>
+                    <th>Closing Balance</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+                <tr>
+                    <td>{{item.month}}</td>
+                    <td>{{item.openingBalance | currency:selectedFund.Currency}}</td>
+                    <td>{{item.monthlyReturn | currency:selectedFund.Currency}}</td>
+                    <td>{{item.closingBalance | currency:selectedFund.Currency}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Close" icon="pi pi-times" class="p-button-text" (click)="closeCalculationDialog()"></button>
+    </ng-template>
+</p-dialog>
+
 <p-toast></p-toast>
+
+<!-- Fund Add/Edit Dialog -->
+<p-dialog header="{{isEditMode ? 'Edit Fund' : 'Add Fund'}}" [(visible)]="showFundDialog" [style]="{width: '800px'}" [modal]="true" [draggable]="false" [resizable]="false" (onHide)="closeFundDialog()">
+    <form (ngSubmit)="addOrUpdateFund()">
+        <div class="d-flex gap-4">
+            <div style="flex:1; min-width:0;">
+                <div class="field mb-3">
+                    <label for="isin" class="block mb-2">ISIN</label>
+                    <input id="isin" type="text" pInputText [(ngModel)]="newFund.ISIN" name="ISIN" class="w-full" required>
+                </div>
+                <div class="field mb-3">
+                    <label for="counterparty" class="block mb-2">Counterparty</label>
+                    <input id="counterparty" type="text" pInputText [(ngModel)]="newFund.Counterparty" name="Counterparty" class="w-full" required>
+                </div>
+                <div class="field mb-3">
+                    <label for="fundName" class="block mb-2">Fund Name</label>
+                    <input id="fundName" type="text" pInputText [(ngModel)]="newFund.FundName" name="FundName" class="w-full" required>
+                </div>
+                <div class="field mb-3">
+                    <label for="currency" class="block mb-2">Currency</label>
+                    <p-dropdown id="currency" [options]="['USD','EUR','GBP']" [(ngModel)]="newFund.Currency" name="Currency" placeholder="Currency" class="w-full"></p-dropdown>
+                </div>
+            </div>
+            <div style="flex:1; min-width:0;">
+                <div class="field mb-3">
+                    <label for="exposure" class="block mb-2">Exposure</label>
+                    <input id="exposure" type="number" pInputText [(ngModel)]="newFund.Exposure" name="Exposure" class="w-full">
+                </div>
+                <div class="field mb-3">
+                    <label for="limit" class="block mb-2">Limit</label>
+                    <input id="limit" type="number" pInputText [(ngModel)]="newFund.Limit" name="Limit" class="w-full">
+                </div>
+                <div class="field mb-3">
+                    <label for="mmfInvestment" class="block mb-2">Investment</label>
+                    <input id="mmfInvestment" type="number" pInputText [(ngModel)]="newFund.MMFInvestment" name="MMFInvestment" class="w-full">
+                </div>
+                <div class="field mb-3">
+                    <label for="dailyYield" class="block mb-2">Daily Yield</label>
+                    <input id="dailyYield" type="number" pInputText [(ngModel)]="newFund.DailyYield" name="DailyYield" class="w-full">
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-2 justify-content-end mt-4">
+            <button pButton type="submit" [label]="isEditMode ? 'Update Fund' : 'Add Fund'" class="p-button-primary" style="background-color: #07435B;"></button>
+            <button *ngIf="isEditMode" pButton type="button" label="Cancel" class="p-button-secondary" (click)="closeFundDialog()"></button>
+        </div>
+    </form>
+</p-dialog>

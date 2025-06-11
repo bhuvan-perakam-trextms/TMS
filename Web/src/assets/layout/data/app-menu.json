@@ -269,8 +269,15 @@
                 }
             ],
             "separator": true   
+        },
+        {
+            "label": "Deals",
+            "items": [
+                { "label": "Deposits", "icon": "pi pi-fw pi-wallet", "routerLink": "/deals/deposits" },
+                { "label": "Funds", "icon": "pi pi-fw pi-briefcase", "routerLink": "/deals/funds" },
+                { "label": "Projections", "icon": "pi pi-fw pi-chart-line", "routerLink": "/deals/projections" },
+                { "label": "Interest Rate Swaps", "icon": "pi pi-fw pi-calculator", "routerLink": "/deals/interest-rate-swaps" }
+            ]
         }
-    
-                
     ]
 }

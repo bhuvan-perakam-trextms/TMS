@@ -1,0 +1,145 @@
+<div class="card">
+  <h2>Interest Rate Swaps</h2>
+  <p-table [value]="swaps" [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Counterparty</th>
+        <th>Notional</th>
+        <th>Fixed Rate</th>
+        <th>Floating Rate</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-swap>
+      <tr>
+        <td>{{swap.counterparty}}</td>
+        <td>{{swap.notional | currency:'USD'}}</td>
+        <td>{{swap.fixedRate}}%</td>
+        <td>{{swap.floatingRate}}</td>
+        <td>{{swap.startDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{swap.endDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{swap.notes}}</td>
+        <td>
+          <button pButton icon="pi pi-calculator" class="p-button-rounded p-button-text" (click)="openCalculator(swap)" [style]="{'color': '#07435B'}" pTooltip="Calculate"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog header="Swap Calculator" [(visible)]="showCalculator" [style]="{width: '700px'}" [modal]="true" [draggable]="false" [resizable]="false" (onHide)="closeCalculator()">
+  <div *ngIf="selectedSwap">
+    <div class="swap-details-card">
+      <div class="grid p-fluid">
+        <div class="col-12 md:col-6 mb-3">
+          <div class="field">
+            <label class="block mb-2">Counterparty</label>
+            <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+              {{selectedSwap.counterparty}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 mb-3">
+          <div class="field">
+            <label class="block mb-2">Notional</label>
+            <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+              {{selectedSwap.notional | currency:'USD'}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 mb-3">
+          <div class="field">
+            <label class="block mb-2">Fixed Rate</label>
+            <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+              {{selectedSwap.fixedRate}}%
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 mb-3">
+          <div class="field">
+            <label class="block mb-2">Floating Rate</label>
+            <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+              {{selectedSwap.floatingRate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 mb-3">
+          <div class="field">
+            <label class="block mb-2">Start Date</label>
+            <div class="p-inputtext" style="background-color: #fff; color: #07435B; font-weight: 600;">
+              {{selectedSwap.startDate | date:'dd/MM/yyyy'}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 mb-3">
+          <div class="field">
+            <label class="block mb-2">End Date</label>
+            <div class="p-inputtext" style="background-color: #fff; color: #07435B; font-weight: 600;">
+              {{selectedSwap.endDate | date:'dd/MM/yyyy'}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <div class="field">
+            <label class="block mb-2">Notes</label>
+            <div class="p-inputtext" style="background-color: #fff; color: #07435B; font-weight: 600;">
+              {{selectedSwap.notes}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swap-section-divider"></div>
+    <h5 class="swap-section-title">Yearly Breakdown</h5>
+    <table class="swap-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Year</th>
+          <th>Opening Notional</th>
+          <th>Interest Paid</th>
+          <th>Closing Notional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let row of yearRows">
+          <tr>
+            <td style="width: 40px; text-align: center;">
+              <button pButton type="button" icon="pi" [icon]="isYearExpanded(row.year) ? 'pi-chevron-down' : 'pi-chevron-right'" class="p-button-text p-button-sm swap-expand-btn" (click)="toggleYear(row.year)"></button>
+            </td>
+            <td>{{row.year}}</td>
+            <td class="number">{{row.opening | currency:'USD'}}</td>
+            <td class="number">{{row.interestPaid | currency:'USD'}}</td>
+            <td class="number">{{row.closing | currency:'USD'}}</td>
+          </tr>
+          <tr *ngIf="isYearExpanded(row.year)">
+            <td colspan="5" style="background: #f8f9fa; padding: 0;">
+              <table class="swap-table mb-0">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Interest</th>
+                    <th>Notional</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let m of row.months">
+                    <td>{{m.month}}</td>
+                    <td class="number">{{m.interest | currency:'USD'}}</td>
+                    <td class="number">{{m.notional | currency:'USD'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Close" icon="pi pi-times" class="p-button-text" (click)="closeCalculator()"></button>
+  </ng-template>
+</p-dialog> 
