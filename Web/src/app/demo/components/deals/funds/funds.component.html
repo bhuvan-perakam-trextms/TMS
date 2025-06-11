@@ -2,65 +2,118 @@
     <div class="col-12">
         <div class="header_main">
             <h1>Money Market Funds</h1>
-             
+        </div>
+        
+        <!-- Fund Details Card -->
+        <div class="card mb-4">
+            <div class="grid p-fluid">
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="fund" class="block mb-2">Select Fund</label>
+                        <p-dropdown id="fund" [options]="gridData" [(ngModel)]="selectedFund" optionLabel="FundName" placeholder="Select Fund" styleClass="w-full" (onChange)="calculateMonthlyReturns()"></p-dropdown>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Monthly Calculations Card -->
+        <div class="card mb-4" *ngIf="selectedFund">
+            <h5 class="mb-3">Monthly Returns Calculation</h5>
+            <div class="grid">
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label class="block mb-2">Investment Amount</label>
+                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                            {{selectedFund.MMFInvestment | currency:selectedFund.Currency}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label class="block mb-2">Daily Yield</label>
+                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                            {{selectedFund.DailyYield}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label class="block mb-2">Monthly Yield</label>
+                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                            {{monthlyYield}}%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label class="block mb-2">Monthly Return</label>
+                        <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                            {{monthlyReturn | currency:selectedFund.Currency}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Breakdown Table -->
+        <div class="card" *ngIf="selectedFund">
+            <h5 class="mb-3">Monthly Breakdown</h5>
+            <p-table [value]="monthlyBreakdown" [paginator]="true" [rows]="12" [responsiveLayout]="'scroll'" styleClass="p-datatable-sm">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Month</th>
+                        <th>Opening Balance</th>
+                        <th>Monthly Return</th>
+                        <th>Closing Balance</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item>
+                    <tr>
+                        <td>{{item.month}}</td>
+                        <td>{{item.openingBalance | currency:selectedFund.Currency}}</td>
+                        <td>{{item.monthlyReturn | currency:selectedFund.Currency}}</td>
+                        <td>{{item.closingBalance | currency:selectedFund.Currency}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <!-- Funds List -->
         <div class="card p-fluid">
             <div class="card_container">
-         
-                <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" sortMode="multiple"
-    [tableStyle]="{ 'min-width': '1000px', 'border': '1px solid lightgray', 'border-radius': '5px'}">
-    
-    <ng-template pTemplate="header">
-        <tr>
-            <th pSortableColumn="ISIN">ISIN <p-sortIcon field="ISIN"></p-sortIcon></th>
-            <th pSortableColumn="Counterparty" width="250">Counterparty <p-sortIcon field="Counterparty"></p-sortIcon></th>
-            <th pSortableColumn="FundName" width="250">Fund Name <p-sortIcon field="FundName"></p-sortIcon></th>
-            <th pSortableColumn="Exposure">Exposure <p-sortIcon field="Exposure"></p-sortIcon></th>
-            <th pSortableColumn="Limit">Limit <p-sortIcon field="Limit"></p-sortIcon></th>
-            <th pSortableColumn="MMFInvestment">Investment <p-sortIcon field="MMFInvestment"></p-sortIcon></th>
-            <th pSortableColumn="DailyYield">Daily Yield <p-sortIcon field="DailyYield"></p-sortIcon></th>
-        </tr>
-    </ng-template>
-
-    <ng-template pTemplate="body" let-dataItem>
-        <tr>
-            <td>{{ dataItem.ISIN }}</td>
-            <td>{{ dataItem.Counterparty }}</td>
-            <td>{{ dataItem.FundName }}</td>
-            <td>{{ dataItem.Exposure | currency: dataItem.Currency }}</td>
-            <td>{{ dataItem.Limit | currency: dataItem.Currency }}</td>
-            <td>{{ dataItem.MMFInvestment | currency: dataItem.Currency }}</td>
-            <td>{{ dataItem.DailyYield }}</td>
-        </tr>
-    </ng-template>
-</p-table>
-
-
-            
-                <!-- <kendo-grid [data]="gridData" [pageSize]="10" [skip]="0" [pageable]="true" [sortable]="true"
-                    [filterable]="filterMode" [resizable]="true">
-                    <kendo-grid-column field="ISIN" title="ISIN" width="120"></kendo-grid-column>
-                    <kendo-grid-column field="Counterparty" title="Counterparty" width="200"></kendo-grid-column>
-                    <kendo-grid-column field="FundName" title="Fund Name" width="200"></kendo-grid-column>
-                    <kendo-grid-column field="Exposure" title="Exposure" width="120">
-                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                            {{dataItem.Exposure | currency: dataItem.Currency}}
-                        </ng-template>
-                    </kendo-grid-column>
-
-                    <kendo-grid-column field="Limit" title="Limit" width="120">
-                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                            {{dataItem.Limit | currency: dataItem.Currency}}
-                        </ng-template>
-                    </kendo-grid-column>
-
-                    <kendo-grid-column field="MMFInvestment" title="Investment">
-                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                            {{dataItem.MMFInvestment | currency: dataItem.Currency}}
-                        </ng-template>
-                    </kendo-grid-column>
-                    <kendo-grid-column field="DailyYield" title="Daily Yield" width="130"></kendo-grid-column>
-                </kendo-grid> -->
-             </div>
+                <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [sortMode]="'multiple'">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="ISIN">ISIN <p-sortIcon field="ISIN"></p-sortIcon></th>
+                            <th pSortableColumn="Counterparty">Counterparty <p-sortIcon field="Counterparty"></p-sortIcon></th>
+                            <th pSortableColumn="FundName">Fund Name <p-sortIcon field="FundName"></p-sortIcon></th>
+                            <th pSortableColumn="Currency">Currency <p-sortIcon field="Currency"></p-sortIcon></th>
+                            <th pSortableColumn="Exposure">Exposure <p-sortIcon field="Exposure"></p-sortIcon></th>
+                            <th pSortableColumn="Limit">Limit <p-sortIcon field="Limit"></p-sortIcon></th>
+                            <th pSortableColumn="MMFInvestment">Investment <p-sortIcon field="MMFInvestment"></p-sortIcon></th>
+                            <th pSortableColumn="DailyYield">Daily Yield <p-sortIcon field="DailyYield"></p-sortIcon></th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-fund>
+                        <tr>
+                            <td>{{fund.ISIN}}</td>
+                            <td>{{fund.Counterparty}}</td>
+                            <td>{{fund.FundName}}</td>
+                            <td>{{fund.Currency}}</td>
+                            <td>{{fund.Exposure | currency:fund.Currency}}</td>
+                            <td>{{fund.Limit | currency:fund.Currency}}</td>
+                            <td>{{fund.MMFInvestment | currency:fund.Currency}}</td>
+                            <td>{{fund.DailyYield}}%</td>
+                            <td>
+                                <button pButton icon="pi pi-calculator" class="p-button-rounded p-button-text" (click)="selectFund(fund)" [style]="{'color': '#07435B'}"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
         </div>
     </div>
+</div>
+
+<p-toast></p-toast>

@@ -3,34 +3,153 @@
         <div class="header_main">
             <h1>Money Market Deposits</h1>
         </div>
+        
+        <!-- New Deposit Form -->
+        <div class="card mb-4">
+            <div class="grid p-fluid">
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="counterparty" class="block mb-2">Counterparty</label>
+                        <p-dropdown id="counterparty" [options]="counterparties" [(ngModel)]="newDeposit.counterparty" optionLabel="name" placeholder="Select Counterparty" styleClass="w-full"></p-dropdown>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="currency" class="block mb-2">Currency</label>
+                        <p-dropdown id="currency" [options]="currencies" [(ngModel)]="newDeposit.currency" placeholder="Select Currency" styleClass="w-full"></p-dropdown>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="amount" class="block mb-2">Amount</label>
+                        <p-inputNumber id="amount" [(ngModel)]="newDeposit.amount" mode="currency" [currency]="newDeposit.currency" locale="en-US" styleClass="w-full"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="interestRate" class="block mb-2">Interest Rate (%)</label>
+                        <p-inputNumber id="interestRate" [(ngModel)]="newDeposit.interestRate" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2" styleClass="w-full"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="startDate" class="block mb-2">Start Date</label>
+                        <p-calendar id="startDate" [(ngModel)]="newDeposit.startDate" [showIcon]="true" dateFormat="dd/mm/yy" styleClass="w-full"></p-calendar>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="maturityDate" class="block mb-2">Maturity Date</label>
+                        <p-calendar id="maturityDate" [(ngModel)]="newDeposit.maturityDate" [showIcon]="true" dateFormat="dd/mm/yy" styleClass="w-full"></p-calendar>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="account" class="block mb-2">Account</label>
+                        <p-dropdown id="account" [options]="accounts" [(ngModel)]="newDeposit.account" optionLabel="name" placeholder="Select Account" styleClass="w-full"></p-dropdown>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 mb-3">
+                    <div class="field">
+                        <label for="notes" class="block mb-2">Notes</label>
+                        <input id="notes" type="text" pInputText [(ngModel)]="newDeposit.notes" class="w-full">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="flex justify-content-end gap-2 mt-3">
+                        <p-button *ngIf="isEditMode" label="Cancel" (onClick)="cancelEdit()" styleClass="p-button-secondary"></p-button>
+                        <p-button [label]="isEditMode ? 'Update Deposit' : 'Add Deposit'" (onClick)="addDeposit()" styleClass="p-button-primary" [style]="{'background-color': '#07435B'}"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deposits List -->
         <div class="card p-fluid">
             <div class="card_container">
-                <p-table [value]="gridData" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+                <p-table [value]="deposits" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [sortMode]="'multiple'">
                     <ng-template pTemplate="header">
                         <tr>
-                            <!-- <th>Logo</th> -->
-                            <th pSortableColumn="counterparty">Counterparty <p-sortIcon
-                                    field="counterparty"></p-sortIcon></th>
+                            <th pSortableColumn="counterparty">Counterparty <p-sortIcon field="counterparty"></p-sortIcon></th>
                             <th pSortableColumn="currency">Currency <p-sortIcon field="currency"></p-sortIcon></th>
-                            <th pSortableColumn="exposure">Exposure <p-sortIcon field="exposure"></p-sortIcon></th>
-                            <th pSortableColumn="limit">Limit <p-sortIcon field="limit"></p-sortIcon></th>
-                            <th pSortableColumn="remainingLimit">Remaining Limit <p-sortIcon
-                                    field="remainingLimit"></p-sortIcon></th>
+                            <th pSortableColumn="amount">Amount <p-sortIcon field="amount"></p-sortIcon></th>
+                            <th pSortableColumn="interestRate">Interest Rate <p-sortIcon field="interestRate"></p-sortIcon></th>
+                            <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon></th>
+                            <th pSortableColumn="maturityDate">Maturity Date <p-sortIcon field="maturityDate"></p-sortIcon></th>
+                            <th pSortableColumn="account">Account <p-sortIcon field="account"></p-sortIcon></th>
+                            <th pSortableColumn="notes">Notes <p-sortIcon field="notes"></p-sortIcon></th>
+                            <th>Actions</th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-dataItem>
+                    <ng-template pTemplate="body" let-deposit>
                         <tr>
-                            <!-- <td><img [src]="dataItem.logo" width="40"></td> -->
-                            <td>{{ dataItem.counterparty }}</td>
-                            <td>{{ dataItem.currency }}</td>
-
-                            <td>{{ dataItem.exposure }}</td>
-                            <td>{{ dataItem.limit }}</td>
-                            <td>{{ dataItem.remainingLimit }}</td>
+                            <td>{{deposit.counterparty.name}}</td>
+                            <td>{{deposit.currency}}</td>
+                            <td>{{deposit.amount | currency:deposit.currency}}</td>
+                            <td>{{deposit.interestRate}}%</td>
+                            <td>{{deposit.startDate | date:'dd/MM/yyyy'}}</td>
+                            <td>{{deposit.maturityDate | date:'dd/MM/yyyy'}}</td>
+                            <td>{{deposit.account.name}}</td>
+                            <td>{{deposit.notes}}</td>
+                            <td>
+                                <button pButton icon="pi pi-calculator" class="p-button-rounded p-button-text" (click)="calculateReturns(deposit)" [style]="{'color': '#07435B'}" pTooltip="Calculate Returns"></button>
+                                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="editDeposit(deposit)" [style]="{'color': '#07435B'}" pTooltip="Edit" [disabled]="isEditMode"></button>
+                                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" (click)="deleteDeposit(deposit)" pTooltip="Delete" [disabled]="isEditMode"></button>
+                            </td>
                         </tr>
                     </ng-template>
-
                 </p-table>
             </div>
         </div>
     </div>
+</div>
+
+<p-toast></p-toast>
+
+<p-dialog header="Deposit Returns Calculation" [(visible)]="showCalculationDialog" [style]="{width: '450px'}" [modal]="true" [draggable]="false" [resizable]="false">
+    <div class="grid p-fluid">
+        <div class="col-12 mb-3">
+            <div class="field">
+                <label class="block mb-2">Principal Amount</label>
+                <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                    {{selectedDeposit?.amount | currency:selectedDeposit?.currency}}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="field">
+                <label class="block mb-2">Interest Rate</label>
+                <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                    {{selectedDeposit?.interestRate}}%
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="field">
+                <label class="block mb-2">Term</label>
+                <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                    {{totalDays}} days
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="field">
+                <label class="block mb-2">Total Interest</label>
+                <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                    {{totalInterest | currency:selectedDeposit?.currency}}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="field">
+                <label class="block mb-2">Maturity Amount</label>
+                <div class="p-inputtext" style="background-color: #f8f9fa; color: #07435B; font-weight: 600;">
+                    {{maturityAmount | currency:selectedDeposit?.currency}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Close" icon="pi pi-times" class="p-button-text" (click)="showCalculationDialog = false"></button>
+    </ng-template>
+</p-dialog>
