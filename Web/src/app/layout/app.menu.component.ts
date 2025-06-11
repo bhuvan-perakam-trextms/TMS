@@ -49,13 +49,13 @@ export class AppMenuComponent implements OnInit {
                 label: 'Counterparty', icon: 'far fa-object-ungroup',
                 items: [
                     {
-                        label: 'List', icon: 'pi pi-fw pi-book', routerLink: ['/dashboard/counterparty/list']
+                        label: 'List', icon: 'pi pi-fw pi-book', routerLink: ['/counterparty/list']
                     },
                     {
-                        label: 'Account', icon: 'pi pi-fw pi-user', routerLink: ['/dashboard/counterparty/account']
+                        label: 'Account', icon: 'pi pi-fw pi-user', routerLink: ['/counterparty/account']
                     },
                     {
-                        label: 'Rules', icon: 'pi pi-fw pi-shield', routerLink: ['/dashboard/counterparty/rules']
+                        label: 'Rules', icon: 'pi pi-fw pi-shield', routerLink: ['/counterparty/rules']
                     },
                 ]
             },

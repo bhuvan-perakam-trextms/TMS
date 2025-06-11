@@ -1,18 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { UserService } from 'src/app/demo/service/user.service';
 import { HttpClient } from '@angular/common/http';
-import { interval, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-landing',
     templateUrl: './landing.component.html'
 })
-export class LandingComponent implements OnInit, OnDestroy {
+export class LandingComponent implements OnInit {
     newsItems: any[] = [];
     loading: boolean = true;
-    private refreshSubscription: Subscription | undefined;
 
     constructor(
         public layoutService: LayoutService, 
@@ -23,16 +21,6 @@ export class LandingComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.fetchNews();
-        // Refresh news every 5 minutes
-        this.refreshSubscription = interval(5 * 60 * 1000).subscribe(() => {
-            this.fetchNews();
-        });
-    }
-
-    ngOnDestroy() {
-        if (this.refreshSubscription) {
-            this.refreshSubscription.unsubscribe();
-        }
     }
 
     fetchNews() {
