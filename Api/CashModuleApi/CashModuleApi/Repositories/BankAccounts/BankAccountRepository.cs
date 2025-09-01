@@ -1,4 +1,4 @@
-﻿using CashModuleApi.Domain;
+﻿using CashModuleApi.Models;
 using Npgsql;
 namespace CashModuleApi.Repositories.BankAccounts
 {

@@ -1,4 +1,4 @@
-﻿using CashModuleApi.Domain;
+﻿using CashModuleApi.Models;
 using CashModuleApi.Repositories.BankAccounts;
 using CashModuleApi.Services.BankAccounts;
 

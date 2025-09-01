@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using CashModuleApi.Domain;
 using CashModuleApi.Services.BankAccounts;
+using CashModuleApi.Models;
 
 namespace CashModuleApi.Controllers
 {

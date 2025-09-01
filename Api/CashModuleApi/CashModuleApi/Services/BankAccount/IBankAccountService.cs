@@ -1,4 +1,4 @@
-﻿using CashModuleApi.Domain;
+﻿using CashModuleApi.Models;
 namespace CashModuleApi.Services.BankAccounts
 {
     public interface IBankAccountService
