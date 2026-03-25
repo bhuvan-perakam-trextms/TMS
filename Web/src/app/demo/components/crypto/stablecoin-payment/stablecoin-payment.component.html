@@ -120,7 +120,7 @@
       <div class="card ledger-preview p-4 h-full">
         <div class="flex justify-content-between align-items-center mb-3">
           <h2 class="m-0 text-xl">Settlement queue</h2>
-          <a routerLink="/crypto/transactions" class="ledger-link text-primary font-medium">Full ledger →</a>
+          <a routerLink="/crypto/transactions" class="ledger-link crypto-ribbon-link font-medium">Full ledger →</a>
         </div>
         <p class="text-600 mt-0 mb-3">Latest confirmations across treasury wallets — matches Transactions History.</p>
         <div class="queue-list" *ngIf="recentRows.length; else emptyQueue">

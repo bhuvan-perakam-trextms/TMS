@@ -1,9 +1,11 @@
+/* Match topbar ribbon: #07435B */
 .crypto-ledger-page {
-  --crypto-navy: #07435b;
+  --crypto-primary: #07435b;
+  --crypto-rgb: 7, 67, 91;
 }
 
 .ledger-header h1 {
-  color: var(--crypto-navy);
+  color: var(--crypto-primary);
 }
 
 .ledger-header-icon {
@@ -15,7 +17,7 @@
   border-radius: 12px;
   background: linear-gradient(145deg, #e8f4f8, #fff);
   border: 1px solid #d0e3ea;
-  color: #0b6183;
+  color: var(--crypto-primary);
   font-size: 1.35rem;
   flex-shrink: 0;
 }
@@ -40,7 +42,7 @@
 .ledger-table-card {
   border-radius: 14px;
   border: 1px solid #dfe8ec;
-  box-shadow: 0 8px 28px rgba(7, 67, 91, 0.07);
+  box-shadow: 0 8px 28px rgba(var(--crypto-rgb), 0.08);
 }
 
 :host ::ng-deep .ledger-filter {
@@ -68,5 +70,5 @@
 }
 
 :host ::ng-deep .crypto-table .p-progressbar-value {
-  background: linear-gradient(90deg, #0b6183, #10b981);
+  background: linear-gradient(90deg, #07435b, #10b981);
 }

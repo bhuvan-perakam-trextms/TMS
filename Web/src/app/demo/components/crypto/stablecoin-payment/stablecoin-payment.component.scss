@@ -1,15 +1,17 @@
+/* Match layout topbar / ribbon: assets/layout/styles/layout/_topbar.scss */
 .crypto-dashboard {
-  --crypto-navy: #07435b;
-  --crypto-teal: #0b6183;
+  --crypto-primary: #07435b;
+  --crypto-primary-hover: #052a3a;
+  --crypto-rgb: 7, 67, 91;
 }
 
 .crypto-header h1 {
-  color: var(--crypto-navy);
+  color: var(--crypto-primary);
   margin-bottom: 0.25rem;
 }
 
 .header-inline-icon {
-  color: var(--crypto-teal);
+  color: var(--crypto-primary);
   margin-right: 0.5rem;
   font-size: 0.95em;
 }
@@ -28,7 +30,7 @@
   border-radius: 14px;
   background: linear-gradient(145deg, #e8f4f8 0%, #ffffff 100%);
   border: 1px solid #d0e3ea;
-  box-shadow: 0 6px 20px rgba(7, 67, 91, 0.12);
+  box-shadow: 0 6px 20px rgba(var(--crypto-rgb), 0.14);
 }
 
 .crypto-mark-asset {
@@ -42,18 +44,18 @@
 
 .gateway-inline-badge {
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(7, 67, 91, 0.1);
+  box-shadow: 0 2px 10px rgba(var(--crypto-rgb), 0.12);
   flex-shrink: 0;
 }
 
 .gateway-title-icon {
-  color: var(--crypto-teal);
+  color: var(--crypto-primary);
   margin-right: 0.4rem;
   font-size: 0.95em;
 }
 
 .label-icon {
-  color: var(--crypto-teal);
+  color: var(--crypto-primary);
   margin-right: 0.4rem;
   font-size: 0.9em;
 }
@@ -70,7 +72,7 @@
   border: 1px solid #e5ecef;
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
-  box-shadow: 0 4px 18px rgba(7, 67, 91, 0.06);
+  box-shadow: 0 4px 18px rgba(var(--crypto-rgb), 0.07);
 }
 
 .metric-card-icon {
@@ -78,8 +80,8 @@
   top: 1rem;
   right: 1rem;
   font-size: 1.25rem;
-  color: var(--crypto-teal);
-  opacity: 0.35;
+  color: var(--crypto-primary);
+  opacity: 0.32;
 }
 
 .metric-card-icon.metric-icon-health {
@@ -98,7 +100,7 @@
 
 .metric-value {
   font-size: 1.35rem;
-  color: var(--crypto-navy);
+  color: var(--crypto-primary);
 }
 
 .status-ok {
@@ -114,11 +116,11 @@
 .gateway-card {
   border-radius: 14px;
   border: 1px solid #dfe8ec;
-  box-shadow: 0 8px 32px rgba(7, 67, 91, 0.08);
+  box-shadow: 0 8px 32px rgba(var(--crypto-rgb), 0.09);
 }
 
 .gateway-title {
-  color: var(--crypto-navy);
+  color: var(--crypto-primary);
   font-size: 1.35rem;
 }
 
@@ -139,7 +141,7 @@
   border: 1px dashed #b9ccd4;
   border-radius: 8px;
   padding: 0.75rem 1rem;
-  color: var(--crypto-navy);
+  color: var(--crypto-primary);
 }
 
 .uri-preview {
@@ -148,13 +150,13 @@
 }
 
 :host ::ng-deep .crypto-primary.p-button {
-  background: var(--crypto-teal);
-  border-color: var(--crypto-teal);
+  background: var(--crypto-primary);
+  border-color: var(--crypto-primary);
 }
 
 :host ::ng-deep .crypto-primary.p-button:hover {
-  background: #095a78;
-  border-color: #095a78;
+  background: var(--crypto-primary-hover);
+  border-color: var(--crypto-primary-hover);
 }
 
 .ledger-preview {
@@ -165,6 +167,15 @@
 
 .ledger-link {
   text-decoration: none;
+}
+
+.crypto-ribbon-link {
+  color: var(--crypto-primary);
+}
+
+.crypto-ribbon-link:hover {
+  color: var(--crypto-primary-hover);
+  text-decoration: underline;
 }
 
 .queue-row {
@@ -183,5 +194,5 @@
 .amount-pill {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--crypto-navy);
+  color: var(--crypto-primary);
 }
