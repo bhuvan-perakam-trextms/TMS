@@ -30,6 +30,13 @@ import {
           ]
       },
       {
+        path: 'crypto', component: AppLayoutComponent,
+        children:
+          [
+            { path: '', loadChildren: () => import('./demo/components/crypto/crypto.module').then(m => m.CryptoModule) },
+          ]
+      },
+      {
         path: 'payments', component: AppLayoutComponent,
         children:
           [

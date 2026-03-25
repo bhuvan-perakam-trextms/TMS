@@ -46,6 +46,22 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Crypto',
+                icon: 'fa-solid fa-bitcoin-sign',
+                items: [
+                    {
+                        label: 'Stable coins Payment',
+                        icon: 'fa-solid fa-coins',
+                        routerLink: ['/crypto/stablecoin-payment']
+                    },
+                    {
+                        label: 'Transactions History',
+                        icon: 'fa-solid fa-receipt',
+                        routerLink: ['/crypto/transactions']
+                    },
+                ]
+            },
+            {
                 label: 'Counterparty', icon: 'far fa-object-ungroup',
                 items: [
                     {

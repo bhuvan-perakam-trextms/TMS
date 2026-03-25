@@ -1,0 +1,72 @@
+.crypto-ledger-page {
+  --crypto-navy: #07435b;
+}
+
+.ledger-header h1 {
+  color: var(--crypto-navy);
+}
+
+.ledger-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #e8f4f8, #fff);
+  border: 1px solid #d0e3ea;
+  color: #0b6183;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.cell-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ledger-row-icon {
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.subtitle {
+  color: #5c6b73;
+  max-width: 56rem;
+  line-height: 1.5;
+}
+
+.ledger-table-card {
+  border-radius: 14px;
+  border: 1px solid #dfe8ec;
+  box-shadow: 0 8px 28px rgba(7, 67, 91, 0.07);
+}
+
+:host ::ng-deep .ledger-filter {
+  min-width: 11rem;
+}
+
+.conf-cell {
+  min-width: 120px;
+}
+
+.conf-text {
+  font-size: 0.8rem;
+  color: #5c6b73;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.hash-cell {
+  max-width: 7rem;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+:host ::ng-deep .crypto-table .p-progressbar-value {
+  background: linear-gradient(90deg, #0b6183, #10b981);
+}

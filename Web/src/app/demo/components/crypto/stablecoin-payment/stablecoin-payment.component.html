@@ -1,0 +1,145 @@
+<div class="crypto-dashboard">
+  <div class="header_main crypto-header">
+    <div class="flex align-items-start gap-3">
+      <div class="crypto-header-mark" aria-hidden="true">
+        <span class="crypto-mark-ring">
+          <img [src]="activeNetworkIcon" width="44" height="44" alt="" />
+        </span>
+        <img class="crypto-mark-asset" [src]="activeAssetIcon" width="26" height="26" alt="" />
+      </div>
+      <div>
+        <h1><i class="fa-solid fa-building-columns header-inline-icon" aria-hidden="true"></i> Stablecoin Treasury Gateway</h1>
+        <p class="subtitle">Institutional-grade settlement rail — encoded requests, transparent fees, auditable confirmations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust strip -->
+  <div class="grid metrics mb-4">
+    <div class="col-12 md:col-4">
+      <div class="metric-card">
+        <i class="fa-solid fa-chart-line metric-card-icon" aria-hidden="true"></i>
+        <span class="metric-label">Rolling 24h notional</span>
+        <strong class="metric-value">{{ volume24h }}</strong>
+        <span class="metric-foot text-500">Across ERC-20 & TRC-20 rails</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="metric-card">
+        <i class="fa-solid fa-gauge-high metric-card-icon" aria-hidden="true"></i>
+        <span class="metric-label">Median time to success</span>
+        <strong class="metric-value">{{ settlementAvg }}</strong>
+        <span class="metric-foot text-500">Observed mainnet — demo simulation</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="metric-card">
+        <i class="fa-solid fa-heart-pulse metric-card-icon metric-icon-health" aria-hidden="true"></i>
+        <span class="metric-label">Network health</span>
+        <strong class="metric-value status-ok">{{ networkHealth }}</strong>
+        <span class="metric-foot text-500">Ethereum & TRON endpoints monitored</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Payment gateway -->
+    <div class="col-12 xl:col-7">
+      <div class="card gateway-card p-4">
+        <div class="flex justify-content-between align-items-start flex-wrap gap-3 mb-3">
+          <div class="flex align-items-start gap-2">
+            <img class="gateway-inline-badge" [src]="activeNetworkIcon" width="36" height="36" alt="" />
+            <img class="gateway-inline-badge" [src]="activeAssetIcon" width="36" height="36" alt="" />
+            <div>
+            <h2 class="gateway-title m-0"><i class="fa-solid fa-qrcode gateway-title-icon" aria-hidden="true"></i> Payment request</h2>
+            <p class="text-600 m-0 mt-1">Select chain, asset, and amount — QR updates in real time for counterparties.</p>
+            </div>
+          </div>
+          <p-tag severity="success" value="Non-custodial routing" [rounded]="true" icon="pi pi-shield"></p-tag>
+        </div>
+
+        <div class="field grid">
+          <div class="col-12 md:col-6">
+            <label class="block mb-2 font-medium"><i class="fa-solid fa-network-wired label-icon" aria-hidden="true"></i> Settlement network</label>
+            <p-dropdown [options]="networkOpts" [(ngModel)]="network" optionLabel="label" optionValue="value"
+              placeholder="Network" styleClass="w-full" (onChange)="onGatewayFieldChange()"
+              [showClear]="false"></p-dropdown>
+            <small class="text-500 block mt-1">{{ network === 'Ethereum' ? 'Finality typically ~12 confirmations.' : 'Finality typically ~19 confirmations.' }}</small>
+          </div>
+          <div class="col-12 md:col-6">
+            <label class="block mb-2 font-medium"><i class="fa-solid fa-coins label-icon" aria-hidden="true"></i> Stablecoin</label>
+            <p-dropdown [options]="assetOpts" [(ngModel)]="asset" optionLabel="label" optionValue="value"
+              styleClass="w-full" (onChange)="onGatewayFieldChange()"></p-dropdown>
+          </div>
+          <div class="col-12 md:col-6">
+            <label class="block mb-2 font-medium">Amount (USD)</label>
+            <p-inputNumber [(ngModel)]="amount" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
+              [min]="0" styleClass="w-full" inputStyleClass="w-full" (ngModelChange)="onGatewayFieldChange()">
+            </p-inputNumber>
+          </div>
+          <div class="col-12 md:col-6">
+            <label class="block mb-2 font-medium">Memo / reference (optional)</label>
+            <input type="text" pInputText class="w-full" [(ngModel)]="memo" (ngModelChange)="onGatewayFieldChange()"
+              placeholder="Invoice or internal ref" />
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="grid align-items-center">
+          <div class="col-12 md:col-5 flex flex-column align-items-center qr-wrap">
+            <span class="text-600 text-sm mb-2">Live QR (payment URI)</span>
+            <div class="qr-frame">
+              <img [src]="qrSrc" width="220" height="220" alt="Stablecoin payment QR code" />
+            </div>
+            <small class="text-500 text-center m-0 mt-2">Regenerates when network, asset, or amount changes.</small>
+          </div>
+          <div class="col-12 md:col-7">
+            <label class="block mb-2 font-medium">Treasury deposit address</label>
+            <div class="address-box font-mono text-sm break-all">{{ treasuryAddress() }}</div>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button pButton type="button" label="Copy address" class="p-button-outlined p-button-sm"
+                (click)="copyAddress()"></button>
+              <button pButton type="button" label="Copy payment link" class="p-button-outlined p-button-sm"
+                (click)="copyUri()" pTooltip="Full URI encoded in QR"></button>
+            </div>
+            <p class="uri-preview text-600 font-mono text-xs mt-3 mb-0 break-all">{{ paymentUri }}</p>
+          </div>
+        </div>
+
+        <div class="flex justify-content-end mt-4 gap-2 flex-wrap">
+          <button pButton type="button" label="Simulate inbound settlement"
+            class="crypto-primary" icon="pi pi-play" (click)="simulateTreasuryReceipt()"
+            pTooltip="Demo: moves a new row from Pending → Confirming → Success with gas fee"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live ledger strip -->
+    <div class="col-12 xl:col-5">
+      <div class="card ledger-preview p-4 h-full">
+        <div class="flex justify-content-between align-items-center mb-3">
+          <h2 class="m-0 text-xl">Settlement queue</h2>
+          <a routerLink="/crypto/transactions" class="ledger-link text-primary font-medium">Full ledger →</a>
+        </div>
+        <p class="text-600 mt-0 mb-3">Latest confirmations across treasury wallets — matches Transactions History.</p>
+        <div class="queue-list" *ngIf="recentRows.length; else emptyQueue">
+          <div class="queue-row" *ngFor="let row of recentRows">
+            <div>
+              <span class="font-medium">{{ row.id }}</span>
+              <span class="text-500 text-sm block">{{ row.network }} · {{ row.asset }}</span>
+            </div>
+            <div class="text-right">
+              <p-tag [severity]="row.status === 'Success' ? 'success' : row.status === 'Failed' ? 'danger' : 'warn'"
+                [value]="row.status"></p-tag>
+              <div class="amount-pill mt-1">{{ row.amount | number:'1.2-2' }} USD</div>
+            </div>
+          </div>
+        </div>
+        <ng-template #emptyQueue>
+          <p class="text-500">No activity yet — simulate a receipt from the gateway.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

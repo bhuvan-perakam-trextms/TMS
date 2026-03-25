@@ -68,7 +68,11 @@ export class LoginComponent {
 
     valCheck: string[] = ['remember'];
 
-    password!: string;
+    username = '';
+
+    password = '';
+
+    loginError = '';
 
     constructor(public layoutService: LayoutService, 
                 private authService: SocialAuthService,
@@ -96,5 +100,15 @@ export class LoginComponent {
     signOut(): void 
     {
         this.authService.signOut();
+    }
+
+    onPasswordLogin(): void {
+        this.loginError = '';
+        if (this.username === 'admin' && this.password === 'admin') {
+            this.userService.setLocalUser(this.username);
+            this.router.navigateByUrl('/landing');
+            return;
+        }
+        this.loginError = 'Invalid username or password.';
     }
 }

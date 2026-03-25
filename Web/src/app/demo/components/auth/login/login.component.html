@@ -30,14 +30,14 @@
                         <span class="p-inputgroup-addon" style="background: rgba(255,255,255,0.2); border: none;">
                             <i class="pi pi-user" style="color: white;"></i>
                         </span>
-                        <input type="text" pInputText placeholder="Username" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.75rem; width: 100%;" class="white-placeholder" />
+                        <input type="text" pInputText placeholder="Username" [(ngModel)]="username" name="username" autocomplete="username" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.75rem; width: 100%;" class="white-placeholder" />
                     </div>
 
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon" style="background: rgba(255,255,255,0.2); border: none;">
                             <i class="pi pi-lock" style="color: white;"></i>
                         </span>
-                        <input type="password" pInputText placeholder="Password" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.75rem; width: 100%;" class="white-placeholder" />
+                        <input type="password" pInputText placeholder="Password" [(ngModel)]="password" name="password" autocomplete="current-password" (keyup.enter)="onPasswordLogin()" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.75rem; width: 100%;" class="white-placeholder" />
                     </div>
 
                     <div class="flex align-items-center justify-content-between mb-3">
@@ -48,7 +48,8 @@
                         <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">Forgot Password?</a>
                     </div>
 
-                    <button pButton label="Sign In" style="background: white; color: #07435B; border: none; padding: 0.75rem; font-weight: 600;"></button>
+                    <p *ngIf="loginError" class="text-center m-0" style="color: #ffb4b4; font-size: 0.9rem;">{{ loginError }}</p>
+                    <button type="button" pButton label="Sign In" (click)="onPasswordLogin()" style="background: white; color: #07435B; border: none; padding: 0.75rem; font-weight: 600;"></button>
 
                     <div class="text-center mt-2">
                         <span style="color: white; font-size: 0.9rem;">Or sign in with</span>
